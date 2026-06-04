@@ -75,124 +75,26 @@
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\SessionManager.cs" />
     <Compile Include="Helpers\StringToVisibilityConverter.cs" />
-    <Compile Include="Models\ANH_SP.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BienTheHienThiModel.cs" />
-    <Compile Include="Models\BIEN_THE_SP.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CT_HOA_DON.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CT_PHIEU_NHAP.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DON_VI_TINH.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GioHangItemModel.cs" />
-    <Compile Include="Models\HOA_DON.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\KHACH_HANG.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\KHO.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LOAI_HANG.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MAU_SAC.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NHAN_VIEN.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NHA_SAN_XUAT.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PhieuNhap.cs" />
-    <Compile Include="Models\PHIEU_NHAP.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PHUONG_THUC_TT.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\QLShopGiay.Context.cs" />
-    <Compile Include="Models\QLShopGiay.Context1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLShopGiay.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\QLShopGiay.cs" />
-    <Compile Include="Models\QLShopGiay.Designer.cs">
-      <DependentUpon>QLShopGiay.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\QLShopGiay1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLShopGiay.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\QLShopGiay1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLShopGiay.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SAN_PHAM.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\shopbangiay.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>shopbangiay.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\shopbangiay.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>shopbangiay.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\shopbangiay.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>shopbangiay.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SIZE_GIAY.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TAI_KHOAN.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TON_KHO.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VAI_TRO.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\YEU_CAU_DANG_KY.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\ChiTietHoaDon.cs" />
+    <Compile Include="Models\ChiTietHoaDonNhap.cs" />
+    <Compile Include="Models\HoaDon.cs" />
+    <Compile Include="Models\HoaDonNhap.cs" />
+    <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\LoaiSanPham.cs" />
+    <Compile Include="Models\Model1.Context.cs" />
+    <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\Model1.Designer.cs" />
+    <Compile Include="Models\NhaCungCap.cs" />
+    <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\SanPham.cs" />
+    <Compile Include="Models\sp_ThongKeDoanhThuTheoSanPham_Result.cs" />
+    <Compile Include="Models\VaiTro.cs" />
     <Compile Include="Services\SanPhamService.cs" />
     <Compile Include="Services\ServiceResult.cs" />
     <Compile Include="Services\TaiKhoanService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\HoaDonNhapViewModel.cs" />
     <Compile Include="ViewModels\HoaDonViewModel.cs" />
     <Compile Include="ViewModels\KhachHangViewModel.cs" />
     <Compile Include="ViewModels\KhoHangViewModel.cs" />
@@ -209,14 +111,14 @@
     <Compile Include="Views\Pages\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\DonNhapHangPage.xaml.cs">
+      <DependentUpon>DonNhapHangPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\HoaDonPage.xaml.cs">
       <DependentUpon>HoaDonPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\KhachHangPage.xaml.cs">
       <DependentUpon>KhachHangPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Pages\KhoHangPage.xaml.cs">
-      <DependentUpon>KhoHangPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\NhanVienPage.xaml.cs">
       <DependentUpon>NhanVienPage.xaml</DependentUpon>
@@ -226,9 +128,6 @@
     </Compile>
     <Compile Include="Views\Pages\TaiKhoanPage.xaml.cs">
       <DependentUpon>TaiKhoanPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SignUp.xaml.cs">
-      <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StartApp.xaml.cs">
       <DependentUpon>StartApp.xaml</DependentUpon>
@@ -253,15 +152,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pages\DonNhapHangPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\HoaDonPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\KhachHangPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Pages\KhoHangPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -274,10 +173,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\TaiKhoanPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SignUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -304,27 +199,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\QLShopGiay.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QLShopGiay1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </None>
-    <None Include="Models\QLShopGiay.edmx.diagram">
-      <DependentUpon>QLShopGiay.edmx</DependentUpon>
-    </None>
-    <EntityDeploy Include="Models\shopbangiay.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>shopbangiay.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Models\shopbangiay.edmx.diagram">
-      <DependentUpon>shopbangiay.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -342,36 +216,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Anh\bg_SignUp.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Models\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\QLShopGiay.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QLShopGiay.Context1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\QLShopGiay.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QLShopGiay1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\shopbangiay.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>shopbangiay.edmx</DependentUpon>
-      <LastGenOutput>shopbangiay.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\shopbangiay.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>shopbangiay.edmx</DependentUpon>
-      <LastGenOutput>shopbangiay.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

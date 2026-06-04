@@ -1,7 +1,9 @@
-﻿using QuanLyShopGiay.Helpers;
-using QuanLyShopGiay.Models;
+﻿using QuanLyShopGiay.Models;
 using QuanLyShopGiay.Views;
+using System;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,122 +11,74 @@ namespace QuanLyShopGiay.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        private string _tenDangNhap;
-        private string _matKhau;
-        private string _thongBaoLoi;
-        private bool _dangXuLy;
-
-        public string TenDangNhap
+        private byte[] ToMD5ByteArray(string plaintext)
         {
-            get => _tenDangNhap;
-            set => SetProperty(ref _tenDangNhap, value);
+            using (MD5 md5 = MD5.Create())
+            {
+                return md5.ComputeHash(Encoding.UTF8.GetBytes(plaintext));
+            }
+        }
+        private string _maNV;
+        public string MaNV
+        {
+            get => _maNV;
+            set { _maNV = value; OnPropertyChanged(); }
         }
 
+        private string _matKhau;
         public string MatKhau
         {
             get => _matKhau;
-            set => SetProperty(ref _matKhau, value);
+            set { _matKhau = value; OnPropertyChanged(); }
         }
 
-        public string ThongBaoLoi
-        {
-            get => _thongBaoLoi;
-            set => SetProperty(ref _thongBaoLoi, value);
-        }
+        private QLShopGiayEntities3 db = new QLShopGiayEntities3();
 
-        public bool DangXuLy
-        {
-            get => _dangXuLy;
-            set => SetProperty(ref _dangXuLy, value);
-        }
-
-        public ICommand LoginCommand { get; }
-        public ICommand ChuyenDangKyCommand { get; }
+        public ICommand LoginCommand { get; set; }
 
         public LoginViewModel()
         {
-            LoginCommand = new RelayCommand(p => ThucHienDangNhap(p as Window), _ => !DangXuLy);
-
-            // SỬA Ở ĐÂY: Truyền tham số Window vào hàm ThucHienChuyenDangKy
-            ChuyenDangKyCommand = new RelayCommand(p => ThucHienChuyenDangKy(p as Window));
-        }
-        private void ThucHienChuyenDangKy(Window currentWindow)
-        {
-            SignUp signUpWindow = new SignUp();
-            signUpWindow.Show();
-            currentWindow?.Close(); // Đóng màn hình Login
-        }
-        private void ThucHienDangNhap(Window currentWindow)
-        {
-            ThongBaoLoi = string.Empty;
-
-            string tenDN = TenDangNhap?.Trim();
-            string matKhau = MatKhau?.Trim(); // Lấy trực tiếp từ thuộc tính đã được Bind dữ liệu liên tục
-
-            if (string.IsNullOrWhiteSpace(tenDN) || string.IsNullOrWhiteSpace(matKhau))
+            LoginCommand = new RelayCommand(o=>
             {
-                ThongBaoLoi = "Vui lòng nhập tên đăng nhập và mật khẩu!";
-                return;
-            }
-
-            DangXuLy = true;
-            try
-            {
-                TAI_KHOAN taiKhoan = null;
-
-                using (var db = new QLShopGiayEntities())
+                // 1. Kiểm tra đầu vào
+                if (string.IsNullOrWhiteSpace(MaNV) || string.IsNullOrWhiteSpace(MatKhau))
                 {
-                    taiKhoan = db.TAI_KHOAN
-                        .Include("VAI_TRO")
-                        .Include("NHAN_VIEN")
-                        .FirstOrDefault(tk => tk.TenDangNhap == tenDN && tk.IsDeleted != true);
-                }
-
-                if (taiKhoan == null)
-                {
-                    ThongBaoLoi = "Tên đăng nhập không tồn tại hoặc tài khoản đã bị khoá!";
+                    MessageBox.Show("Tên đăng nhập và mật khẩu không được để trống!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                if (taiKhoan.Salt == null || taiKhoan.MatKhau == null)
+                // 1. Mã hóa mật khẩu người dùng nhập sang dạng mảng byte đã băm MD5
+                byte[] hashedMatKhau = ToMD5ByteArray(MatKhau);
+
+                // 2. Tìm kiếm nhân viên trong Database
+                var user = db.NhanVien.AsEnumerable().FirstOrDefault(x =>
+                    x.MaNV.Trim() == MaNV.Trim() &&
+                    x.MatKhau.SequenceEqual(hashedMatKhau)); 
+                if (user != null)
                 {
-                    ThongBaoLoi = "Tài khoản chưa có mật khẩu. Liên hệ Admin!";
-                    return;
-                }
+                    // SỬA LỖI CS0103 (UserSession): Gán trực tiếp vào thuộc tính tĩnh của App 
+                    // hoặc lưu tạm vào Properties của Application để không bị lỗi thiếu Class
+                    Application.Current.Properties["MaNV"] = user.MaNV;
+                    Application.Current.Properties["TenNV"] = user.HoTen;
 
-                byte[] hashNhap = PasswordHelper.HashPassword(matKhau, taiKhoan.Salt.Value);
-                if (!hashNhap.SequenceEqual(taiKhoan.MatKhau))
+                    // 3. Mở giao diện chính MainWindow
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+
+                    // 4. Đóng giao diện Đăng nhập hiện tại
+                    // SỬA LỖI CS0246: Tìm đúng cửa sổ đang kích hoạt (ActiveWindow) để đóng, không cần chỉ định chính xác tên class Login_View
+                    var loginWindow = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.IsActive || w.DataContext == this);
+                    loginWindow?.Close();
+                }
+                else
                 {
-                    ThongBaoLoi = "Mật khẩu không đúng!";
-                    return;
+                    MessageBox.Show(
+                        "Tên đăng nhập hoặc mật khẩu không đúng!",
+                        "Thông báo",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
                 }
-
-                if (taiKhoan.NHAN_VIEN?.IsDeleted == true)
-                {
-                    ThongBaoLoi = "Tài khoản bị vô hiệu hóa (nhân viên đã nghỉ việc)!";
-                    return;
-                }
-
-                // Lưu dữ liệu đăng nhập vào Session toàn cục
-                SessionManager.DangNhap(
-                    maTK: taiKhoan.MaTK,
-                    tenDangNhap: taiKhoan.TenDangNhap,
-                    maVT: taiKhoan.MaVT,
-                    tenVT: taiKhoan.VAI_TRO?.TenVT,
-                    hoTenNV: taiKhoan.NHAN_VIEN?.HoTen
-                );
-
-                // Mở màn hình ứng dụng chính MainWindow
-                MainWindow main = new MainWindow();
-                main.Show();
-
-                // Tự động đóng màn hình Login hiện tại thông qua tham số giao diện truyền xuống
-                currentWindow?.Close();
-            }
-            finally
-            {
-                DangXuLy = false;
-            }
+            });
         }
     }
 }

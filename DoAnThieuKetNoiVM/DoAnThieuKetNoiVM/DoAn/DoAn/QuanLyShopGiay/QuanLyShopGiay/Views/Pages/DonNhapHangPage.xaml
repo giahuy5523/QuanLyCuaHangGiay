@@ -1,0 +1,145 @@
+﻿<Page x:Class="QuanLyShopGiay.Views.Pages.DonNhapHangPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyShopGiay.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DonNhapHangPage">
+
+    <Grid Background="#F5F5F5">
+        <StackPanel Margin="20">
+            <!-- THÔNG TIN PHIẾU NHẬP -->
+            <GroupBox Header="THÔNG TIN PHIẾU NHẬP" Padding="15" Margin="0,0,0,15">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Mã HĐ Nhập -->
+                    <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                        <Label Content="Mã HĐ Nhập:" FontWeight="Bold"/>
+                        <TextBox Text="{Binding MaPhieuNhap}" 
+                                 IsEnabled="False" Height="35" Padding="10"/>
+                    </StackPanel>
+
+                    <!-- Mã Cung Cấp -->
+                    <StackPanel Grid.Column="1" Margin="0,0,10,0">
+                        <Label Content="Mã Cung Cấp:" FontWeight="Bold"/>
+                        <ComboBox ItemsSource="{Binding DsNCC}" 
+                                  SelectedValue="{Binding MaNCC}"
+                                  DisplayMemberPath="TenKhachHang"
+                                  SelectedValuePath="MaKhachHang"
+                                  Height="35" Padding="10"/>
+                    </StackPanel>
+
+                    <!-- Ngày Nhập -->
+                    <StackPanel Grid.Column="2">
+                        <Label Content="Ngày Nhập:" FontWeight="Bold"/>
+                        <DatePicker SelectedDate="{Binding NgayNhap}" 
+                                    Height="35" Padding="10"/>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+
+            <!-- CHI TIẾT PHIẾU NHẬP -->
+            <GroupBox Header="CHI TIẾT PHIẾU NHẬP" Padding="15" Margin="0,0,0,15">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Mã Sản Phẩm -->
+                    <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                        <Label Content="Mã sản phẩm:" FontWeight="Bold"/>
+                        <ComboBox ItemsSource="{Binding DsSanPham}"
+                                  SelectedValue="{Binding ChiTietInput.MaSanPham}"
+                                  DisplayMemberPath="TenSanPham"
+                                  SelectedValuePath="MaSanPham"
+                                  Height="35" Padding="10"/>
+                    </StackPanel>
+
+                    <!-- Đơn Giá -->
+                    <StackPanel Grid.Column="1" Margin="0,0,10,0">
+                        <Label Content="Đơn giá:" FontWeight="Bold"/>
+                        <TextBox Text="{Binding ChiTietInput.DonGiaNhap}"
+                                 IsEnabled="False" Height="35" Padding="10"/>
+                    </StackPanel>
+
+                    <!-- Số Lượng -->
+                    <StackPanel Grid.Column="2" Margin="0,0,10,0">
+                        <Label Content="Số lượng:" FontWeight="Bold"/>
+                        <TextBox Text="{Binding ChiTietInput.SoLuong}"
+                                 Height="35" Padding="10"/>
+                    </StackPanel>
+
+                    <!-- Nút Thêm -->
+                    <Button Grid.Column="3" Grid.Row="0" 
+                            Content="Thêm Sản Phẩm" 
+                            Command="{Binding ThemSanPhamCommand}"
+                            Background="#007BFF" Foreground="White" 
+                            Width="120" Height="35" VerticalAlignment="Bottom"/>
+
+                    <!-- Nút Tạo Phiếu -->
+                    <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4"
+                            Content="Tạo Phiếu Nhập"
+                            Command="{Binding TaoPhieuCommand}"
+                            Background="#28A745" Foreground="White"
+                            Height="35" Margin="0,10,0,0"/>
+                </Grid>
+            </GroupBox>
+
+            <!-- DATAGRID CHI TIẾT -->
+            <GroupBox Header="DANH SÁCH CHI TIẾT PHIẾU" Padding="15" Margin="0,0,0,15">
+                <DataGrid ItemsSource="{Binding DsChiTiet}"
+                          AutoGenerateColumns="False"
+                          Height="200">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Mã sản phẩm" 
+                                            Binding="{Binding MaSanPham}" Width="100"/>
+                        <DataGridTextColumn Header="Tên sản phẩm" 
+                                            Binding="{Binding TenSanPham}" Width="*"/>
+                        <DataGridTextColumn Header="Số lượng" 
+                                            Binding="{Binding SoLuong}" Width="80"/>
+                        <DataGridTextColumn Header="Đơn giá" 
+                                            Binding="{Binding DonGiaNhap}" Width="100"/>
+                        <DataGridTextColumn Header="Thành tiền" 
+                                            Binding="{Binding ThanhTien}" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+
+            <!-- TỔNG TIỀN & NÚT -->
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Right" 
+                        Margin="0,10,0,0">
+
+                <StackPanel Margin="0,0,20,0">
+                    <Label Content="Tổng tiền phiếu nhập:" FontWeight="Bold"/>
+                    <TextBox Text="{Binding TongTien, StringFormat='0 VND'}"
+                             IsEnabled="False" Width="150" Height="35" Padding="10"/>
+                </StackPanel>
+
+                <Button Content="Lưu Phiếu"
+                        Command="{Binding LuuPhieuCommand}"
+                        Background="#28A745" Foreground="White"
+                        Width="100" Height="35"/>
+
+                <Button Content="Hủy"
+                        Command="{Binding HuyCommand}"
+                        Background="#DC3545" Foreground="White"
+                        Width="100" Height="35" Margin="10,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

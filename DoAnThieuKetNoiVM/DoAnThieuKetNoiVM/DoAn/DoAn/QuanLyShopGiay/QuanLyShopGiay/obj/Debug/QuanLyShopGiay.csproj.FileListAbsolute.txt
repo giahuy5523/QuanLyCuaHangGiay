@@ -186,3 +186,4 @@ C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKe
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay_MarkupCompile.lref
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.exe
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.pdb
+C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\DonNhapHangPage.g.cs
