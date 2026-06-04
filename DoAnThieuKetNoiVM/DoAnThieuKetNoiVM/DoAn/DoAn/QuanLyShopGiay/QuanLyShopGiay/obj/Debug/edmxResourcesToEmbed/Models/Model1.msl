@@ -1,74 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="QLShopGiayModel1StoreContainer" CdmEntityContainer="QLShopGiayEntities1">
-    <EntitySetMapping Name="ANH_SP">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.ANH_SP">
-        <MappingFragment StoreEntitySet="ANH_SP">
-          <ScalarProperty Name="MaAnh" ColumnName="MaAnh" />
-          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
-          <ScalarProperty Name="DuongDan" ColumnName="DuongDan" />
-          <ScalarProperty Name="LaAnhChinh" ColumnName="LaAnhChinh" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BIEN_THE_SP">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.BIEN_THE_SP">
-        <MappingFragment StoreEntitySet="BIEN_THE_SP">
-          <ScalarProperty Name="MaBienThe" ColumnName="MaBienThe" />
-          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
-          <ScalarProperty Name="MaSize" ColumnName="MaSize" />
-          <ScalarProperty Name="MaMau" ColumnName="MaMau" />
-          <ScalarProperty Name="SKU" ColumnName="SKU" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CT_HOA_DON">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.CT_HOA_DON">
-        <MappingFragment StoreEntitySet="CT_HOA_DON">
+  <EntityContainerMapping StorageEntityContainer="QLShopGiayModelStoreContainer" CdmEntityContainer="QLShopGiayEntities3">
+    <EntitySetMapping Name="ChiTietHoaDon">
+      <EntityTypeMapping TypeName="QLShopGiayModel.ChiTietHoaDon">
+        <MappingFragment StoreEntitySet="ChiTietHoaDon">
           <ScalarProperty Name="MaHD" ColumnName="MaHD" />
-          <ScalarProperty Name="MaBienThe" ColumnName="MaBienThe" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CT_PHIEU_NHAP">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.CT_PHIEU_NHAP">
-        <MappingFragment StoreEntitySet="CT_PHIEU_NHAP">
-          <ScalarProperty Name="MaPN" ColumnName="MaPN" />
-          <ScalarProperty Name="MaBienThe" ColumnName="MaBienThe" />
+    <EntitySetMapping Name="ChiTietHoaDonNhap">
+      <EntityTypeMapping TypeName="QLShopGiayModel.ChiTietHoaDonNhap">
+        <MappingFragment StoreEntitySet="ChiTietHoaDonNhap">
+          <ScalarProperty Name="MaHDN" ColumnName="MaHDN" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DON_VI_TINH">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.DON_VI_TINH">
-        <MappingFragment StoreEntitySet="DON_VI_TINH">
-          <ScalarProperty Name="MaDVT" ColumnName="MaDVT" />
-          <ScalarProperty Name="TenDVT" ColumnName="TenDVT" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="HOA_DON">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.HOA_DON">
-        <MappingFragment StoreEntitySet="HOA_DON">
+    <EntitySetMapping Name="HoaDon">
+      <EntityTypeMapping TypeName="QLShopGiayModel.HoaDon">
+        <MappingFragment StoreEntitySet="HoaDon">
           <ScalarProperty Name="MaHD" ColumnName="MaHD" />
           <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-          <ScalarProperty Name="MaTK" ColumnName="MaTK" />
-          <ScalarProperty Name="MaKho" ColumnName="MaKho" />
-          <ScalarProperty Name="MaPT" ColumnName="MaPT" />
+          <ScalarProperty Name="MaNV" ColumnName="MaNV" />
           <ScalarProperty Name="TongTien" ColumnName="TongTien" />
           <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="KHACH_HANG">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.KHACH_HANG">
-        <MappingFragment StoreEntitySet="KHACH_HANG">
-          <ScalarProperty Name="DiemTichLuy" ColumnName="DiemTichLuy" />
+    <EntitySetMapping Name="HoaDonNhap">
+      <EntityTypeMapping TypeName="QLShopGiayModel.HoaDonNhap">
+        <MappingFragment StoreEntitySet="HoaDonNhap">
+          <ScalarProperty Name="MaHDN" ColumnName="MaHDN" />
+          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+          <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+          <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhachHang">
+      <EntityTypeMapping TypeName="QLShopGiayModel.KhachHang">
+        <MappingFragment StoreEntitySet="KhachHang">
           <ScalarProperty Name="MaKH" ColumnName="MaKH" />
           <ScalarProperty Name="TenKH" ColumnName="TenKH" />
           <ScalarProperty Name="SDT" ColumnName="SDT" />
@@ -76,120 +54,83 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="KHOes">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.KHO">
-        <MappingFragment StoreEntitySet="KHO">
-          <ScalarProperty Name="MaKho" ColumnName="MaKho" />
-          <ScalarProperty Name="TenKho" ColumnName="TenKho" />
-          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="LOAI_HANG">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.LOAI_HANG">
-        <MappingFragment StoreEntitySet="LOAI_HANG">
+    <EntitySetMapping Name="LoaiSanPham">
+      <EntityTypeMapping TypeName="QLShopGiayModel.LoaiSanPham">
+        <MappingFragment StoreEntitySet="LoaiSanPham">
           <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
           <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="MAU_SAC">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.MAU_SAC">
-        <MappingFragment StoreEntitySet="MAU_SAC">
-          <ScalarProperty Name="MaMau" ColumnName="MaMau" />
-          <ScalarProperty Name="TenMau" ColumnName="TenMau" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="NHA_SAN_XUAT">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.NHA_SAN_XUAT">
-        <MappingFragment StoreEntitySet="NHA_SAN_XUAT">
-          <ScalarProperty Name="MaNSX" ColumnName="MaNSX" />
-          <ScalarProperty Name="TenNSX" ColumnName="TenNSX" />
+    <EntitySetMapping Name="NhaCungCap">
+      <EntityTypeMapping TypeName="QLShopGiayModel.NhaCungCap">
+        <MappingFragment StoreEntitySet="NhaCungCap">
+          <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+          <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
           <ScalarProperty Name="SDT" ColumnName="SDT" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NHAN_VIEN">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.NHAN_VIEN">
-        <MappingFragment StoreEntitySet="NHAN_VIEN">
+    <EntitySetMapping Name="NhanVien">
+      <EntityTypeMapping TypeName="QLShopGiayModel.NhanVien">
+        <MappingFragment StoreEntitySet="NhanVien">
           <ScalarProperty Name="MaNV" ColumnName="MaNV" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
           <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PHIEU_NHAP">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.PHIEU_NHAP">
-        <MappingFragment StoreEntitySet="PHIEU_NHAP">
-          <ScalarProperty Name="MaPN" ColumnName="MaPN" />
-          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
-          <ScalarProperty Name="MaKho" ColumnName="MaKho" />
-          <ScalarProperty Name="MaNSX" ColumnName="MaNSX" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PHUONG_THUC_TT">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.PHUONG_THUC_TT">
-        <MappingFragment StoreEntitySet="PHUONG_THUC_TT">
-          <ScalarProperty Name="MaPT" ColumnName="MaPT" />
-          <ScalarProperty Name="TenPT" ColumnName="TenPT" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SAN_PHAM">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.SAN_PHAM">
-        <MappingFragment StoreEntitySet="SAN_PHAM">
+    <EntitySetMapping Name="SanPham">
+      <EntityTypeMapping TypeName="QLShopGiayModel.SanPham">
+        <MappingFragment StoreEntitySet="SanPham">
           <ScalarProperty Name="MaSP" ColumnName="MaSP" />
           <ScalarProperty Name="TenSP" ColumnName="TenSP" />
           <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
-          <ScalarProperty Name="MaNSX" ColumnName="MaNSX" />
-          <ScalarProperty Name="MaDVT" ColumnName="MaDVT" />
+          <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="MauSac" ColumnName="MauSac" />
+          <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
           <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SIZE_GIAY">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.SIZE_GIAY">
-        <MappingFragment StoreEntitySet="SIZE_GIAY">
-          <ScalarProperty Name="MaSize" ColumnName="MaSize" />
-          <ScalarProperty Name="TenSize" ColumnName="TenSize" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TAI_KHOAN">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.TAI_KHOAN">
-        <MappingFragment StoreEntitySet="TAI_KHOAN">
-          <ScalarProperty Name="MaTK" ColumnName="MaTK" />
-          <ScalarProperty Name="MaNV" ColumnName="MaNV" />
-          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
-          <ScalarProperty Name="Salt" ColumnName="Salt" />
-          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
-          <ScalarProperty Name="MaVT" ColumnName="MaVT" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TON_KHO">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.TON_KHO">
-        <MappingFragment StoreEntitySet="TON_KHO">
-          <ScalarProperty Name="MaKho" ColumnName="MaKho" />
-          <ScalarProperty Name="MaBienThe" ColumnName="MaBienThe" />
           <ScalarProperty Name="SoLuongTon" ColumnName="SoLuongTon" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="VAI_TRO">
-      <EntityTypeMapping TypeName="QLShopGiayModel1.VAI_TRO">
-        <MappingFragment StoreEntitySet="VAI_TRO">
-          <ScalarProperty Name="MaVT" ColumnName="MaVT" />
-          <ScalarProperty Name="TenVT" ColumnName="TenVT" />
+    <EntitySetMapping Name="VaiTro">
+      <EntityTypeMapping TypeName="QLShopGiayModel.VaiTro">
+        <MappingFragment StoreEntitySet="VaiTro">
+          <ScalarProperty Name="MaVaiTro" ColumnName="MaVaiTro" />
+          <ScalarProperty Name="TenVaiTro" ColumnName="TenVaiTro" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="NhanVien_VaiTro" TypeName="QLShopGiayModel.NhanVien_VaiTro" StoreEntitySet="NhanVien_VaiTro">
+      <EndProperty Name="VaiTro">
+        <ScalarProperty Name="MaVaiTro" ColumnName="MaVaiTro" />
+      </EndProperty>
+      <EndProperty Name="NhanVien">
+        <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="sp_ThongKeDoanhThuTheoSanPham" FunctionName="QLShopGiayModel.Store.sp_ThongKeDoanhThuTheoSanPham">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QLShopGiayModel.sp_ThongKeDoanhThuTheoSanPham_Result">
+          <ScalarProperty Name="TenLoaiSanPham" ColumnName="TenLoaiSanPham" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="TenSP" ColumnName="TenSP" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="MauSac" ColumnName="MauSac" />
+          <ScalarProperty Name="SoLuongDaBan" ColumnName="SoLuongDaBan" />
+          <ScalarProperty Name="DoanhThuThuVe" ColumnName="DoanhThuThuVe" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>
