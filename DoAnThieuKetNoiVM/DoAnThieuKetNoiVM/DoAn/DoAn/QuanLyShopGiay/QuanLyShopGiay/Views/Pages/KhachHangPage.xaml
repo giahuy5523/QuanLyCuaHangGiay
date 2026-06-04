@@ -30,7 +30,7 @@
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <TextBlock Text="👤 Tài khoản: " Foreground="#FF555555" FontSize="13"/>
-                <TextBlock Text="tuanadmin" FontWeight="Bold" Foreground="#FF2980B9" FontSize="13" Margin="0,0,16,0"/>
+                <TextBlock Text="admin" FontWeight="Bold" Foreground="#FF2980B9" FontSize="13" Margin="0,0,16,0"/>
                 <TextBlock Text="Quyền: " Foreground="#FF555555" FontSize="13"/>
                 <TextBlock Text="Quản lý" FontWeight="Bold" Foreground="#FF27AE60" FontSize="13"/>
             </StackPanel>
