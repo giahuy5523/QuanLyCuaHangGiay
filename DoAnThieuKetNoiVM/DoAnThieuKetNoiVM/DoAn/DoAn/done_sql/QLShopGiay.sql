@@ -15,7 +15,7 @@ USE QLShopGiay;
 GO
 
 --------------------------------------------------------------------------------
--- CẤU TRÚC BẢNG (THEO DANH SÁCH RÚT GỌN CỦA HUY)
+-- CẤU TRÚC BẢNG 
 --------------------------------------------------------------------------------
 
 CREATE TABLE LoaiSanPham (
@@ -31,19 +31,35 @@ CREATE TABLE NhaCungCap (
     CONSTRAINT CK_NCC_SDT CHECK (SDT NOT LIKE '%[^0-9]%' AND LEN(SDT) BETWEEN 10 AND 15)
 );
 
+-- BỔ SUNG: Bảng VaiTro để phục vụ yêu cầu số 4 (Đăng nhập phân quyền)
+CREATE TABLE VaiTro (
+    MaVaiTro VARCHAR(20) PRIMARY KEY,
+    TenVaiTro NVARCHAR(50) NOT NULL,
+    MoTa NVARCHAR(200)
+);
+
 CREATE TABLE NhanVien (
     MaNV VARCHAR(20) PRIMARY KEY,
     HoTen NVARCHAR(100) NOT NULL,
     NgaySinh DATE,
     SDT VARCHAR(15),
     Email VARCHAR(100) UNIQUE,
-    ChucVu NVARCHAR(50),
+    ChucVu NVARCHAR(50), -- Giữ nguyên để tránh lỗi cấu trúc cũ
     MatKhau VARBINARY(MAX),
     Salt UNIQUEIDENTIFIER DEFAULT NEWID(),
     TrangThai BIT DEFAULT 1,
     CONSTRAINT CK_NV_Tuoi CHECK (DATEDIFF(YEAR, NgaySinh, GETDATE()) >= 18),
     CONSTRAINT CK_NV_SDT CHECK (SDT NOT LIKE '%[^0-9]%' AND LEN(SDT) BETWEEN 10 AND 15),
     CONSTRAINT CK_Email_Format CHECK (Email LIKE '%_@_%._%')
+);
+
+-- BỔ SUNG: Bảng trung gian phân quyền Nhân viên - Vai trò
+CREATE TABLE NhanVien_VaiTro (
+    MaNV VARCHAR(20),
+    MaVaiTro VARCHAR(20),
+    PRIMARY KEY (MaNV, MaVaiTro),
+    FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV) ON DELETE CASCADE,
+    FOREIGN KEY (MaVaiTro) REFERENCES VaiTro(MaVaiTro) ON DELETE CASCADE
 );
 
 CREATE TABLE KhachHang (
@@ -115,7 +131,7 @@ CREATE TABLE ChiTietHoaDon (
 GO
 
 --------------------------------------------------------------------------------
--- CÁC TRIGGER TỰ ĐỘNG ĐỒNG BỘ DỮ LIỆU (ĐÃ FIX LỖI)
+-- CÁC TRIGGER TỰ ĐỘNG ĐỒNG BỘ DỮ LIỆU
 --------------------------------------------------------------------------------
 CREATE TRIGGER TRG_UpdateKho_KhiNhapHang ON ChiTietHoaDonNhap AFTER INSERT AS
 BEGIN
@@ -170,13 +186,59 @@ BEGIN
         WHERE hd.TrangThai <> N'Đã hủy';
     END
 
-    -- 3. Cập nhật lại tổng tiền cho hóa đơn (ĐÃ ĐỔI TÊN BIẾN MaHDEN THÀNH MaHD CHUẨN)
+    -- 3. Cập nhật lại tổng tiền cho hóa đơn
     UPDATE hd
     SET hd.TongTien = (SELECT COALESCE(SUM(SoLuong * GiaBan), 0) FROM ChiTietHoaDon WHERE MaHD = hd.MaHD)
     FROM HoaDon hd
     WHERE hd.MaHD IN (SELECT MaHD FROM inserted UNION SELECT MaHD FROM deleted);
 END;
 GO
+
+--------------------------------------------------------------------------------
+-- BỔ SUNG: VIEW VÀ STORED PROCEDURE LÀM DATA SOURCE THỐNG KÊ (YÊU CẦU 7)
+--------------------------------------------------------------------------------
+
+-- 1. View Thống kê doanh thu, số đơn hàng và tổng lượng bán theo Tháng/Năm
+CREATE VIEW v_DoanhThuTheoThang AS
+SELECT 
+    YEAR(NgayLap) AS Nam,
+    MONTH(NgayLap) AS Thang,
+    COUNT(DISTINCT hd.MaHD) AS TongSoHoaDon,
+    SUM(ct.SoLuong) AS TongSanPhamDaBan,
+    SUM(hd.TongTien) AS TongDoanhThu
+FROM HoaDon hd
+JOIN ChiTietHoaDon ct ON hd.MaHD = ct.MaHD
+WHERE hd.TrangThai = N'Đã thanh toán'
+GROUP BY YEAR(NgayLap), MONTH(NgayLap);
+GO
+
+-- 2. Stored Procedure Thống kê Sản phẩm bán chạy (Có gom nhóm theo loại và lọc theo khoảng thời gian)
+CREATE PROCEDURE sp_ThongKeDoanhThuTheoSanPham
+    @TuNgay DATETIME,
+    @DenNgay DATETIME
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    SELECT 
+        lsp.TenLoai AS TenLoaiSanPham,
+        sp.MaSP,
+        sp.TenSP,
+        sp.Size,
+        sp.MauSac,
+        SUM(cthd.SoLuong) AS SoLuongDaBan,
+        SUM(cthd.SoLuong * cthd.GiaBan) AS DoanhThuThuVe
+    FROM ChiTietHoaDon cthd
+    JOIN HoaDon hd ON cthd.MaHD = hd.MaHD
+    JOIN SanPham sp ON cthd.MaSP = sp.MaSP
+    JOIN LoaiSanPham lsp ON sp.MaLoai = lsp.MaLoai
+    WHERE hd.TrangThai = N'Đã thanh toán' 
+      AND hd.NgayLap BETWEEN @TuNgay AND @DenNgay
+    GROUP BY lsp.TenLoai, sp.MaSP, sp.TenSP, sp.Size, sp.MauSac
+    ORDER BY SoLuongDaBan DESC;
+END;
+GO
+
 
 --------------------------------------------------------------------------------
 -- HỆ THỐNG DỮ LIỆU MẪU QUY MÔ LỚN (TEST DATA)
@@ -197,12 +259,26 @@ INSERT INTO NhaCungCap (MaNCC, TenNCC, DiaChi, SDT) VALUES
 ('NCC03', N'Tổng kho Puma Miền Nam', N'KCN Tân Bình, Tân Phú, HCM', '0908123456'),
 ('NCC04', N'Công ty Cổ phần Biti''s Việt Nam', N'Chợ Lớn, Quận 6, HCM', '02838554900');
 
+-- BỔ SUNG DATA: VAI TRÒ
+INSERT INTO VaiTro (MaVaiTro, TenVaiTro, MoTa) VALUES
+('ADMIN', N'Quản trị hệ thống', N'Toàn quyền quản lý ứng dụng'),
+('MANAGER', N'Quản lý cửa hàng', N'Xem báo cáo, duyệt hóa đơn nhập'),
+('CASHIER', N'Thu ngân / Bán hàng', N'Lập hóa đơn bán hàng cho khách'),
+('STOCK', N'Nhân viên kho', N'Quản lý nhập kho, kiểm kê hàng hóa');
+
 -- 3. NHÂN VIÊN
 INSERT INTO NhanVien (MaNV, HoTen, NgaySinh, SDT, Email, ChucVu) VALUES 
 ('NV01', N'Nguyễn Quản Lý', '1990-05-15', '0912345678', 'quanly@shopgiay.com', N'Quản lý cửa hàng'),
 ('NV02', N'Trần Bán Hàng', '1998-11-20', '0988888888', 'banhang1@shopgiay.com', N'Nhân viên bán hàng'),
 ('NV03', N'Lê Thu Ngân', '2001-02-25', '0977777777', 'thungan@shopgiay.com', N'Nhân viên thu ngân'),
 ('NV04', N'Phạm Kho Quỹ', '1995-07-12', '0966666666', 'khoquy@shopgiay.com', N'Nhân viên kho');
+
+-- BỔ SUNG DATA: GÁN VAI TRÒ CHO NHÂN VIÊN
+INSERT INTO NhanVien_VaiTro (MaNV, MaVaiTro) VALUES
+('NV01', 'MANAGER'),
+('NV02', 'CASHIER'),
+('NV03', 'CASHIER'),
+('NV04', 'STOCK');
 
 -- 4. KHÁCH HÀNG
 INSERT INTO KhachHang (MaKH, TenKH, SDT, DiaChi) VALUES 
@@ -225,57 +301,51 @@ INSERT INTO SanPham (MaSP, TenSP, MaLoai, MaNCC, Size, MauSac, GiaNhap, GiaBan, 
 ('SP09', N'Biti''s Hunter X Dune', 'LH01', 'NCC04', '40', N'Xanh Rêu', 650000, 1100000, 0),
 ('SP10', N'Giày Tây Oxford Premium', 'LH02', 'NCC04', '41', N'Nâu Đất', 900000, 1500000, 0);
 
--- 6. TIẾN HÀNH NHẬP HÀNG (Kích hoạt Trigger nhập kho tự động cộng hàng tồn)
--- Đơn nhập 01: Nhập hàng Nike
+-- 6. TIẾN HÀNH NHẬP HÀNG
 INSERT INTO HoaDonNhap (MaHDN, NgayNhap, MaNCC, MaNV) VALUES ('HDN01', '2026-05-01 09:00:00', 'NCC01', 'NV04');
 INSERT INTO ChiTietHoaDonNhap (MaHDN, MaSP, SoLuong, GiaNhap) VALUES 
 ('HDN01', 'SP01', 50, 1600000),
 ('HDN01', 'SP02', 50, 1600000),
 ('HDN01', 'SP03', 30, 1650000);
 
--- Đơn nhập 02: Nhập hàng Adidas và Puma
 INSERT INTO HoaDonNhap (MaHDN, NgayNhap, MaNCC, MaNV) VALUES ('HDN02', '2026-05-05 14:30:00', 'NCC02', 'NV04');
 INSERT INTO ChiTietHoaDonNhap (MaHDN, MaSP, SoLuong, GiaNhap) VALUES 
 ('HDN02', 'SP04', 40, 2800000),
 ('HDN02', 'SP05', 40, 2850000),
 ('HDN02', 'SP06', 20, 1100000);
 
--- Đơn nhập 03: Nhập hàng Biti's
 INSERT INTO HoaDonNhap (MaHDN, NgayNhap, MaNCC, MaNV) VALUES ('HDN03', '2026-05-10 10:15:00', 'NCC04', 'NV04');
 INSERT INTO ChiTietHoaDonNhap (MaHDN, MaSP, SoLuong, GiaNhap) VALUES 
 ('HDN03', 'SP08', 60, 650000),
 ('HDN03', 'SP09', 60, 650000),
 ('HDN03', 'SP10', 30, 900000);
 
--- 7. TIẾN HÀNH XUẤT BÁN HÀNG (Kích hoạt Trigger trừ kho và tự động tính tổng tiền hóa đơn)
--- Hóa đơn 01: Khách hàng lẻ tại quầy
+-- 7. TIẾN HÀNH XUẤT BÁN HÀNG
 INSERT INTO HoaDon (MaHD, NgayLap, MaKH, MaNV, TrangThai) VALUES ('HD01', '2026-05-12 11:00:00', 'KH01', 'NV02', N'Đã thanh toán');
 INSERT INTO ChiTietHoaDon (MaHD, MaSP, SoLuong, GiaBan) VALUES 
 ('HD01', 'SP01', 2, 2800000),
 ('HD01', 'SP08', 1, 1100000);
 
--- Hóa đơn 02: Khách hàng Nguyễn Đình Anh mua đơn lớn
 INSERT INTO HoaDon (MaHD, NgayLap, MaKH, MaNV, TrangThai) VALUES ('HD02', '2026-05-15 19:30:00', 'KH02', 'NV02', N'Đã thanh toán');
 INSERT INTO ChiTietHoaDon (MaHD, MaSP, SoLuong, GiaBan) VALUES 
 ('HD02', 'SP04', 5, 4500000),
 ('HD02', 'SP05', 2, 4550000),
 ('HD02', 'SP10', 3, 1500000);
 
--- Hóa đơn 03: Đơn hàng đặt trước chưa trả tiền
 INSERT INTO HoaDon (MaHD, NgayLap, MaKH, MaNV, TrangThai) VALUES ('HD03', '2026-05-18 08:45:00', 'KH04', 'NV03', N'Chưa thanh toán');
 INSERT INTO ChiTietHoaDon (MaHD, MaSP, SoLuong, GiaBan) VALUES 
 ('HD03', 'SP02', 1, 2800000),
 ('HD03', 'SP09', 4, 1100000);
 
--- Hóa đơn 04: Đơn hàng bị hủy (Hệ thống tự động cộng trả lại hàng vào kho)
 INSERT INTO HoaDon (MaHD, NgayLap, MaKH, MaNV, TrangThai) VALUES ('HD04', '2026-05-20 15:00:00', 'KH03', 'NV02', N'Đã hủy');
 INSERT INTO ChiTietHoaDon (MaHD, MaSP, SoLuong, GiaBan) VALUES 
 ('HD04', 'SP03', 5, 2850000);
 GO
 
 --------------------------------------------------------------------------------
--- KIỂM TRA KẾT QUẢ TRUY VẤN SAU KHI CHẠY (QUICK TEST)
+-- KIỂM TRA DATA SOURCE THỐNG KÊ MỚI THÊM (QUICK TEST)
 --------------------------------------------------------------------------------
+<<<<<<< HEAD
 SELECT * FROM SanPham;
 SELECT * FROM HoaDonNhap;
 =======
@@ -560,3 +630,16 @@ SELECT * FROM SanPham;
 SELECT * FROM HoaDonNhap;
 >>>>>>> Stashed changes
 SELECT * FROM HoaDon;
+=======
+-- 1. Test View Thống kê doanh thu theo tháng
+SELECT * FROM v_DoanhThuTheoThang;
+
+-- 2. Test Stored Procedure Thống kê chi tiết theo sản phẩm trong tháng 05/2026
+EXEC sp_ThongKeDoanhThuTheoSanPham '2026-05-01', '2026-05-31';
+
+-- 3. Test kiểm tra phân quyền nhân viên
+SELECT nv.MaNV, nv.HoTen, vt.TenVaiTro 
+FROM NhanVien nv
+JOIN NhanVien_VaiTro nvt ON nv.MaNV = nvt.MaNV
+JOIN VaiTro vt ON nvt.MaVaiTro = vt.MaVaiTro;
+>>>>>>> e00463a555ef52a3f69b8b79f4320a086063c430
