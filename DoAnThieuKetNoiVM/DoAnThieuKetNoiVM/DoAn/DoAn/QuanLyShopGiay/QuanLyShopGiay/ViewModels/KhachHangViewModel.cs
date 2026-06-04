@@ -20,7 +20,7 @@ namespace QuanLyShopGiay.ViewModels
 
     public class KhachHangViewModel : BaseViewModel
     {
-        private readonly QLShopGiayEntities _db; // Khớp chuẩn xác tên DbContext của bạn
+        private readonly QLShopGiayEntities3 _db; // Khớp chuẩn xác tên DbContext của bạn
 
         private ObservableCollection<KhachHangDisplayModel> _listKhachHang;
         public ObservableCollection<KhachHangDisplayModel> ListKhachHang
@@ -116,7 +116,7 @@ namespace QuanLyShopGiay.ViewModels
 
         public KhachHangViewModel()
         {
-            _db = new QLShopGiayEntities();
+            _db = new QLShopGiayEntities3();
             LoadData();
 
             AddCommand = new RelayCommand(
@@ -240,7 +240,7 @@ namespace QuanLyShopGiay.ViewModels
                 }
 
                 ListKhachHang = new ObservableCollection<KhachHangDisplayModel>(query.ToList().Select(kh => {
-                    decimal tongChiTieu = _db.HoaDon.Where(hd => hd.MaKH == kh.MaKH && hd.TrangThai == N"Đã thanh toán").Sum(hd => (decimal?)hd.TongTien) ?? 0;
+                    decimal tongChiTieu = _db.HoaDon.Where(hd => hd.MaKH == kh.MaKH && hd.TrangThai == "Đã thanh toán").Sum(hd => (decimal?)hd.TongTien) ?? 0;
                     return new KhachHangDisplayModel
                     {
                         MaKH = kh.MaKH,

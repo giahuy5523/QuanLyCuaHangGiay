@@ -1,15 +1,17 @@
-﻿using QuanLyShopGiay.Models;
-using QuanLyShopGiay.Views;
-using System;
+﻿using  QuanLyShopGiay.Command;
+using  QuanLyShopGiay.Helpers;
+using  QuanLyShopGiay.Models;
+using  QuanLyShopGiay.Views;
+using QuanLyShopGiay.ViewModels;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows;
-using System.Windows.Input;
+using System.Security.Cryptography; 
+using System.Text;
 
-namespace QuanLyShopGiay.ViewModels
+
+namespace  QuanLyShopGiay.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    class Login_ModelView : BaseViewModel
     {
         private byte[] ToMD5ByteArray(string plaintext)
         {
@@ -19,31 +21,41 @@ namespace QuanLyShopGiay.ViewModels
             }
         }
         private string _maNV;
+
         public string MaNV
         {
             get => _maNV;
-            set { _maNV = value; OnPropertyChanged(); }
+            set
+            {
+                _maNV = value;
+                OnPropertyChanged();
+            }
         }
 
         private string _matKhau;
+
         public string MatKhau
         {
             get => _matKhau;
-            set { _matKhau = value; OnPropertyChanged(); }
+            set
+            {
+                _matKhau = value;
+                OnPropertyChanged();
+            }
         }
 
-        private QLShopGiayEntities3 db = new QLShopGiayEntities3();
+        QLShopGiayEntities3 db = new QLShopGiayEntities3();
 
-        public ICommand LoginCommand { get; set; }
+        public RelayCommand LoginCommand { get; set; }
 
-        public LoginViewModel()
+        public Login_ModelView()
         {
-            LoginCommand = new RelayCommand(o=>
+            LoginCommand = new RelayCommand(o =>
             {
-                // 1. Kiểm tra đầu vào
+                // Kiểm tra input
                 if (string.IsNullOrWhiteSpace(MaNV) || string.IsNullOrWhiteSpace(MatKhau))
                 {
-                    MessageBox.Show("Tên đăng nhập và mật khẩu không được để trống!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Tên đăng nhập và mật khẩu không được để trống!", "Thông báo");
                     return;
                 }
 
@@ -53,22 +65,23 @@ namespace QuanLyShopGiay.ViewModels
                 // 2. Tìm kiếm nhân viên trong Database
                 var user = db.NhanVien.AsEnumerable().FirstOrDefault(x =>
                     x.MaNV.Trim() == MaNV.Trim() &&
-                    x.MatKhau.SequenceEqual(hashedMatKhau)); 
+                    x.MatKhau.SequenceEqual(hashedMatKhau)); // SỬA: Dùng SequenceEqual để so sánh 2 mảng byte với nhau
+
                 if (user != null)
                 {
-                    // SỬA LỖI CS0103 (UserSession): Gán trực tiếp vào thuộc tính tĩnh của App 
-                    // hoặc lưu tạm vào Properties của Application để không bị lỗi thiếu Class
-                    Application.Current.Properties["MaNV"] = user.MaNV;
-                    Application.Current.Properties["TenNV"] = user.HoTen;
+                    // Lưu session
+                    UserSession.MaNV = user.MaNV;
+                    UserSession.TenNV = user.HoTen;
 
-                    // 3. Mở giao diện chính MainWindow
+                    // Mở MainWindow
                     MainWindow mainWindow = new MainWindow();
                     mainWindow.Show();
 
-                    // 4. Đóng giao diện Đăng nhập hiện tại
-                    // SỬA LỖI CS0246: Tìm đúng cửa sổ đang kích hoạt (ActiveWindow) để đóng, không cần chỉ định chính xác tên class Login_View
-                    var loginWindow = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.IsActive || w.DataContext == this);
-                    loginWindow?.Close();
+                    // Đóng Login Window
+                    Application.Current.Windows
+                        .OfType<Window>()
+                        .SingleOrDefault(x => x is Login)
+                        ?.Close();
                 }
                 else
                 {
@@ -76,7 +89,7 @@ namespace QuanLyShopGiay.ViewModels
                         "Tên đăng nhập hoặc mật khẩu không đúng!",
                         "Thông báo",
                         MessageBoxButton.OK,
-                        MessageBoxImage.Error);
+                        MessageBoxImage.Warning);
                 }
             });
         }

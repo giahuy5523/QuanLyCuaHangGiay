@@ -70,8 +70,8 @@
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Helpers\BoolToOpacityConverter.cs" />
+    <Compile Include="Helpers\helper_pass.cs" />
     <Compile Include="Helpers\InverseBooltovisibilityconverter.cs" />
-    <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\SessionManager.cs" />
     <Compile Include="Helpers\StringToVisibilityConverter.cs" />
@@ -89,9 +89,6 @@
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\sp_ThongKeDoanhThuTheoSanPham_Result.cs" />
     <Compile Include="Models\VaiTro.cs" />
-    <Compile Include="Services\SanPhamService.cs" />
-    <Compile Include="Services\ServiceResult.cs" />
-    <Compile Include="Services\TaiKhoanService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\HoaDonNhapViewModel.cs" />
