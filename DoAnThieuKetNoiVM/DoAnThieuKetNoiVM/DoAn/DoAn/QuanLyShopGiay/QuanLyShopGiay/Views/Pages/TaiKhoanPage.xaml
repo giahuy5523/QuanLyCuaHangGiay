@@ -1,0 +1,419 @@
+﻿<Page x:Class="QuanLyShopGiay.Views.Pages.TaiKhoanPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:vm="clr-namespace:QuanLyShopGiay.ViewModels"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TaiKhoanPage"
+      Background="White">
+
+    <!-- FIX 1: Khai báo BoolToVisibilityConverter tại đây (hoặc chuyển lên App.xaml) -->
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Page.Resources>
+
+    <Grid Margin="16">
+        <TabControl x:Name="tabControl"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Padding="0">
+
+            <!-- ════════════════════════════════════════════
+                 TAB 1: QUẢN LÝ TÀI KHOẢN
+            ════════════════════════════════════════════ -->
+            <TabItem Header="Quản lý tài khoản"
+                     Foreground="#FF1E2A38" FontSize="14" FontWeight="SemiBold">
+                <Grid Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.4*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- CỘT TRÁI: DANH SÁCH TÀI KHOẢN -->
+                    <Border Grid.Column="0" Background="White" CornerRadius="12"
+                            Margin="0,0,16,0" Padding="20">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#DDDDDD" BlurRadius="10"
+                                              ShadowDepth="2" Opacity="0.4"/>
+                        </Border.Effect>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Tiêu đề + nút Thêm mới -->
+                            <Grid Grid.Row="0" Margin="0,0,0,12">
+                                <TextBlock Text="Danh sách tài khoản" FontSize="15"
+                                           FontWeight="SemiBold" Foreground="#FF1E2A38"
+                                           VerticalAlignment="Center"/>
+                                <!-- COMMAND: ThemMoiTKCommand | PHÂN QUYỀN: Admin -->
+                                <Button Content="+ Thêm mới"
+                                        HorizontalAlignment="Right" Width="160" Height="32"
+                                        Background="#FF2980B9" Foreground="White"
+                                        BorderThickness="0" Cursor="Hand" FontSize="13"
+                                        Command="{Binding ThemMoiTKCommand}"
+                                        Visibility="{Binding CoQuyenAdmin,
+                                            Converter={StaticResource BoolToVisibilityConverter}}">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}"
+                                                    CornerRadius="6" Padding="8,4">
+                                                <ContentPresenter HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </Grid>
+
+                            <!-- Tìm kiếm realtime - BINDING: TuKhoaTK -->
+                            <Grid Grid.Row="1" Margin="0,0,0,12">
+                                <TextBox Text="{Binding TuKhoaTK, UpdateSourceTrigger=PropertyChanged}"
+                                         Height="34" Padding="10,0"
+                                         FontSize="13" VerticalContentAlignment="Center"
+                                         BorderBrush="#FFE0E0E0" BorderThickness="1"/>
+                            </Grid>
+
+                            <!-- FIX 2: Thêm SelectedItem="{Binding SelectedTK}" -->
+                            <DataGrid x:Name="dgTaiKhoan" Grid.Row="2"
+                                      ItemsSource="{Binding DanhSachTK}"
+                                      SelectedItem="{Binding SelectedTK}"
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      CanUserResizeRows="False"
+                                      GridLinesVisibility="Horizontal"
+                                      HeadersVisibility="Column"
+                                      BorderThickness="0"
+                                      RowHeight="40"
+                                      FontSize="13">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Mã TK"
+                                                        Binding="{Binding MaTK}" Width="80"/>
+                                    <DataGridTextColumn Header="Tên đăng nhập"
+                                                        Binding="{Binding TenDangNhap}" Width="130"/>
+                                    <DataGridTextColumn Header="Họ tên NV"
+                                                        Binding="{Binding NHAN_VIEN.HoTen}" Width="*"/>
+                                    <DataGridTextColumn Header="Vai trò"
+                                                        Binding="{Binding VAI_TRO.TenVT}" Width="160"/>
+                                    <DataGridTemplateColumn Header="Trạng thái" Width="110">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock VerticalAlignment="Center"
+                                                           HorizontalAlignment="Center">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Text" Value="✅ Hoạt động"/>
+                                                            <Setter Property="Foreground" Value="#FF27AE60"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding IsDeleted}" Value="True">
+                                                                    <Setter Property="Text" Value="🚫 Bị khoá"/>
+                                                                    <Setter Property="Foreground" Value="#FFE74C3C"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+
+                    <!-- CỘT PHẢI: FORM THÊM / SỬA -->
+                    <Border Grid.Column="1" Background="White" CornerRadius="12" Padding="20">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#DDDDDD" BlurRadius="10"
+                                              ShadowDepth="2" Opacity="0.4"/>
+                        </Border.Effect>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+
+                                <!-- BINDING: TieuDeFormTK -->
+                                <TextBlock Text="{Binding TieuDeFormTK}"
+                                           FontSize="15" FontWeight="SemiBold"
+                                           Foreground="#FF1E2A38" Margin="0,0,0,20"/>
+
+                                <!-- Mã TK - BINDING: MaTK + IsReadOnly khi sửa -->
+                                <TextBlock Text="Mã tài khoản" Foreground="#FF555555"
+                                           FontSize="12" Margin="0,0,0,4"/>
+                                <TextBox Text="{Binding MaTK, UpdateSourceTrigger=PropertyChanged}"
+                                         IsReadOnly="{Binding MaTKReadOnly}"
+                                         Height="34" Padding="10,0"
+                                         FontSize="13" VerticalContentAlignment="Center"
+                                         BorderBrush="#FFE0E0E0" BorderThickness="1"/>
+
+                                <!-- Tên đăng nhập - BINDING: TenDangNhap -->
+                                <TextBlock Text="Tên đăng nhập" Foreground="#FF555555"
+                                           FontSize="12" Margin="0,12,0,4"/>
+                                <TextBox Text="{Binding TenDangNhap, UpdateSourceTrigger=PropertyChanged}"
+                                         Height="34" Padding="10,0"
+                                         FontSize="13" VerticalContentAlignment="Center"
+                                         BorderBrush="#FFE0E0E0" BorderThickness="1"/>
+
+                                <!-- Mật khẩu - PasswordBox wire-up qua Func<string> -->
+                                <TextBlock Text="Mật khẩu" Foreground="#FF555555"
+                                           FontSize="12" Margin="0,12,0,4"/>
+                                <PasswordBox x:Name="pbMatKhauMoi" Height="34" Padding="10,0"
+                                             FontSize="13" VerticalContentAlignment="Center"
+                                             BorderBrush="#FFE0E0E0" BorderThickness="1"/>
+                                <TextBlock Text="Để trống nếu không muốn đổi mật khẩu"
+                                           FontSize="11" Foreground="#FF9AA5B1" Margin="0,2,0,0"/>
+
+                                <!-- Nhân viên - BINDING: ItemsSource + SelectedValue = MaNV_TK -->
+                                <TextBlock Text="Nhân viên" Foreground="#FF555555"
+                                           FontSize="12" Margin="0,12,0,4"/>
+                                <ComboBox x:Name="cboNhanVien"
+                                          ItemsSource="{Binding DanhSachNV}"
+                                          SelectedValue="{Binding MaNV_TK}"
+                                          DisplayMemberPath="HoTen"
+                                          SelectedValuePath="MaNV"
+                                          Height="34" FontSize="13"
+                                          BorderBrush="#FFE0E0E0"/>
+
+                                <!-- Vai trò - BINDING: ItemsSource + SelectedValue = MaVT -->
+                                <TextBlock Text="Vai trò" Foreground="#FF555555"
+                                           FontSize="12" Margin="0,12,0,4"/>
+                                <ComboBox x:Name="cboVaiTro"
+                                          ItemsSource="{Binding DanhSachVT}"
+                                          SelectedValue="{Binding MaVT}"
+                                          DisplayMemberPath="TenVT"
+                                          SelectedValuePath="MaVT"
+                                          Height="34" FontSize="13"
+                                          BorderBrush="#FFE0E0E0"/>
+
+                                <!-- Nút Lưu / Khoá -->
+                                <Grid Margin="0,24,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- COMMAND: LuuTKCommand -->
+                                    <Button Grid.Column="0" Content="💾 Lưu" Height="36"
+                                            Background="#FF27AE60" Foreground="White"
+                                            BorderThickness="0" Cursor="Hand" FontSize="13"
+                                            Command="{Binding LuuTKCommand}">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                                                    <ContentPresenter HorizontalAlignment="Center"
+                                                                      VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+
+                                    <!-- FIX 3: Đổi tên nút thành "Khoá TK" đúng với logic soft-delete -->
+                                    <Button Grid.Column="2" Content="🚫 Khoá TK" Height="36"
+                                            Background="#FFE74C3C" Foreground="White"
+                                            BorderThickness="0" Cursor="Hand" FontSize="13"
+                                            Command="{Binding XoaTKCommand}"
+                                            IsEnabled="{Binding CoTheXoaTK}">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                                                    <ContentPresenter HorizontalAlignment="Center"
+                                                                      VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </Grid>
+
+                                <!-- COMMAND: HuyTKCommand -->
+                                <Button Content="Huỷ" Height="32"
+                                        Background="Transparent" Foreground="#FF9AA5B1"
+                                        BorderThickness="0" Cursor="Hand" FontSize="13"
+                                        Margin="0,8,0,0"
+                                        Command="{Binding HuyTKCommand}"/>
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- ════════════════════════════════════════════
+                 TAB 2: DUYỆT YÊU CẦU ĐĂNG KÝ
+            ════════════════════════════════════════════ -->
+            <TabItem Header="Duyệt yêu cầu đăng ký"
+                     Foreground="Black" FontSize="14" FontWeight="SemiBold"
+                     Visibility="{Binding HienTabDuyet}">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+
+                <Grid Margin="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="340"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- CỘT TRÁI: DANH SÁCH YÊU CẦU -->
+                    <Border Grid.Column="0" Background="White" CornerRadius="12"
+                            Margin="0,0,16,0" Padding="20">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#DDDDDD" BlurRadius="10"
+                                              ShadowDepth="2" Opacity="0.4"/>
+                        </Border.Effect>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" MinHeight="35"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="Danh sách yêu cầu (chờ duyệt)"
+                                       FontSize="15" FontWeight="SemiBold"
+                                       Foreground="#FF1E2A38" VerticalAlignment="Center" Height="18"/>
+
+                            <!-- FIX 4: Thêm SelectedItem="{Binding SelectedYC}" -->
+                            <DataGrid x:Name="dgYeuCau" Grid.Row="1"
+                                      ItemsSource="{Binding DanhSachYeuCau}"
+                                      SelectedItem="{Binding SelectedYC}"
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      CanUserResizeRows="False"
+                                      GridLinesVisibility="Horizontal"
+                                      HeadersVisibility="Column"
+                                      BorderThickness="0"
+                                      RowHeight="40"
+                                      FontSize="13">
+                                <DataGrid.Columns>
+                                    <!-- FIX 5: Binding MaYeuCau thay vì MaYC (đúng tên property trong model) -->
+                                    <DataGridTextColumn Header="Mã YC"
+                                                        Binding="{Binding MaYeuCau}" Width="60"/>
+                                    <DataGridTextColumn Header="Tên đăng nhập"
+                                                        Binding="{Binding TenDangNhap}" Width="120"/>
+                                    <DataGridTextColumn Header="Họ tên"
+                                                        Binding="{Binding HoTen}" Width="*"/>
+                                    <DataGridTextColumn Header="Email"
+                                                        Binding="{Binding Email}" Width="*"/>
+                                    <DataGridTextColumn Header="Ngày tạo"
+                                                        Binding="{Binding NgayTao, StringFormat='dd/MM/yyyy HH:mm'}"
+                                                        Width="140"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+
+                    <!-- CỘT PHẢI: CHI TIẾT + DUYỆT -->
+                    <Border Grid.Column="1" Background="White" CornerRadius="12" Padding="20">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#DDDDDD" BlurRadius="10"
+                                              ShadowDepth="2" Opacity="0.4"/>
+                        </Border.Effect>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+
+                                <TextBlock Text="Chi tiết yêu cầu"
+                                           FontSize="15" FontWeight="SemiBold"
+                                           Foreground="#FF1E2A38" Margin="0,0,0,20"/>
+
+                                <TextBlock Text="Tên đăng nhập" Foreground="#FF555555"
+                                           FontSize="12" Margin="0,0,0,4"/>
+                                <TextBox Text="{Binding SelectedYC.TenDangNhap, Mode=OneWay}"
+                                         Height="34" Padding="10,0" FontSize="13"
+                                         VerticalContentAlignment="Center"
+                                         BorderBrush="#FFE0E0E0" BorderThickness="1"
+                                         IsReadOnly="True"/>
+
+                                <TextBlock Text="Họ tên" Foreground="#FF555555"
+                                           FontSize="12" Margin="0,12,0,4"/>
+                                <TextBox Text="{Binding SelectedYC.HoTen, Mode=OneWay}"
+                                         Height="34" Padding="10,0" FontSize="13"
+                                         VerticalContentAlignment="Center"
+                                         BorderBrush="#FFE0E0E0" BorderThickness="1"
+                                         IsReadOnly="True"/>
+
+                                <TextBlock Text="Email" Foreground="#FF555555"
+                                           FontSize="12" Margin="0,12,0,4"/>
+                                <TextBox Text="{Binding SelectedYC.Email, Mode=OneWay}"
+                                         Height="34" Padding="10,0" FontSize="13"
+                                         VerticalContentAlignment="Center"
+                                         BorderBrush="#FFE0E0E0" BorderThickness="1"
+                                         IsReadOnly="True"/>
+
+                                <TextBlock Text="Mã nhân viên (nếu có)" Foreground="#FF555555"
+                                           FontSize="12" Margin="0,12,0,4"/>
+                                <TextBox Text="{Binding SelectedYC.MaNV, Mode=OneWay}"
+                                         Height="34" Padding="10,0" FontSize="13"
+                                         VerticalContentAlignment="Center"
+                                         BorderBrush="#FFE0E0E0" BorderThickness="1"
+                                         IsReadOnly="True"/>
+
+                                <!-- Mã TK mới sẽ cấp - BINDING: YC_MaTKMoi -->
+                                <TextBlock Text="Mã TK cấp mới" Foreground="#FF555555"
+                                           FontSize="12" Margin="0,12,0,4"/>
+                                <TextBox Text="{Binding YC_MaTKMoi, UpdateSourceTrigger=PropertyChanged}"
+                                         Height="34" Padding="10,0" FontSize="13"
+                                         VerticalContentAlignment="Center"
+                                         BorderBrush="#FFE0E0E0" BorderThickness="1"/>
+
+                                <!-- Vai trò cần cấp - BINDING: DanhSachVT_YC + YC_MaVT -->
+                                <TextBlock Text="Vai trò cần cấp" Foreground="#FF555555"
+                                           FontSize="12" Margin="0,12,0,4"/>
+                                <ComboBox x:Name="cboYCVaiTro"
+                                          ItemsSource="{Binding DanhSachVT_YC}"
+                                          SelectedValue="{Binding YC_MaVT}"
+                                          DisplayMemberPath="TenVT"
+                                          SelectedValuePath="MaVT"
+                                          Height="34" FontSize="13"
+                                          BorderBrush="#FFE0E0E0"/>
+
+                                <!-- Nút Duyệt / Từ chối -->
+                                <Grid Margin="0,24,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- COMMAND: DuyetYeuCauCommand -->
+                                    <Button Grid.Column="0" Content="✅ Duyệt" Height="36"
+                                            Background="#FF27AE60" Foreground="White"
+                                            BorderThickness="0" Cursor="Hand" FontSize="13"
+                                            Command="{Binding DuyetYeuCauCommand}">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                                                    <ContentPresenter HorizontalAlignment="Center"
+                                                                      VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+
+                                    <!-- COMMAND: TuChoiYeuCauCommand -->
+                                    <Button Grid.Column="2" Content="❌ Từ chối" Height="36"
+                                            Background="#FFE74C3C" Foreground="White"
+                                            BorderThickness="0" Cursor="Hand" FontSize="13"
+                                            Command="{Binding TuChoiYeuCauCommand}">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                                                    <ContentPresenter HorizontalAlignment="Center"
+                                                                      VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </Grid>
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>

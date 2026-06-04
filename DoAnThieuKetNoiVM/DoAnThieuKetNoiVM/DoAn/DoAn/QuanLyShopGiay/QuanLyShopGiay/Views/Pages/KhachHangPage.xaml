@@ -1,0 +1,166 @@
+﻿<Page x:Class="QuanLyShopGiay.Views.Pages.KhachHangPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyShopGiay.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="800"
+      Title="KhachHangPage">
+    <Page.DataContext>
+        <local:KhachHangViewModel/>
+    </Page.DataContext>
+
+    <Grid Margin="24">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="350"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- CỘT TRÁI: DANH SÁCH -->
+        <Border Grid.Column="0" Background="White" CornerRadius="12" Margin="0,0,16,0" Padding="20">
+            <Border.Effect>
+                <DropShadowEffect Color="#DDDDDD" BlurRadius="10" ShadowDepth="2" Opacity="0.4"/>
+            </Border.Effect>
+            <!-- FIX: Thêm RowDefinitions để tiêu đề, ô tìm kiếm, DataGrid không chồng nhau -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Danh sách Khách hàng" FontSize="16" FontWeight="SemiBold"
+                           Foreground="#FF1E2A38" Margin="0,0,0,12"/>
+
+                <TextBox Grid.Row="1" x:Name="txtTimKiem" Height="34" Padding="10,0" FontSize="13"
+                         VerticalContentAlignment="Center" BorderBrush="#FFE0E0E0" BorderThickness="1"
+                         Margin="0,0,0,12"
+                         Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DataGrid Grid.Row="2" x:Name="dgKhachHang"
+                          AutoGenerateColumns="False" IsReadOnly="True"
+                          CanUserResizeRows="False" GridLinesVisibility="Horizontal"
+                          HeadersVisibility="Column" BorderThickness="0" RowHeight="40" FontSize="13"
+                          ItemsSource="{Binding ListKhachHang}"
+                          SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Mã KH"           Binding="{Binding MaKH}"           Width="70"/>
+                        <DataGridTextColumn Header="Tên khách hàng"  Binding="{Binding TenKH}"           Width="150"/>
+                        <DataGridTextColumn Header="Số điện thoại"   Binding="{Binding SDT}"             Width="110"/>
+                        <DataGridTextColumn Header="Địa chỉ"         Binding="{Binding DiaChi}"          Width="*"/>
+                        <DataGridTextColumn Header="Tổng chi tiêu"
+                                            Binding="{Binding TongChiTieu, StringFormat={}{0:N0} ₫}"    Width="110"/>
+                        <DataGridTextColumn Header="Hạng"            Binding="{Binding HangThanhVien}"   Width="110"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+
+        <!-- CỘT PHẢI: FORM -->
+        <Border Grid.Column="1" Background="White" CornerRadius="12" Padding="20" VerticalAlignment="Top">
+            <Border.Effect>
+                <DropShadowEffect Color="#DDDDDD" BlurRadius="10" ShadowDepth="2" Opacity="0.4"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Thông tin khách hàng" FontSize="16" FontWeight="SemiBold"
+                           Foreground="#FF1E2A38" Margin="0,0,0,20"/>
+
+                <TextBlock Text="Mã KH (*)" Foreground="#FF555555" FontSize="12" Margin="0,0,0,4"/>
+                <TextBox x:Name="txtMaKH" Height="34" Padding="10,0" FontSize="13"
+                         VerticalContentAlignment="Center" BorderBrush="#FFE0E0E0" BorderThickness="1"
+                         IsEnabled="{Binding IsMaKHEnabled}"
+                         Text="{Binding MaKH, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBlock Text="Tên khách hàng (*)" Foreground="#FF555555" FontSize="12" Margin="0,12,0,4"/>
+                <TextBox x:Name="txtTenKH" Height="34" Padding="10,0" FontSize="13"
+                         VerticalContentAlignment="Center" BorderBrush="#FFE0E0E0" BorderThickness="1"
+                         Text="{Binding TenKH, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBlock Text="Số điện thoại" Foreground="#FF555555" FontSize="12" Margin="0,12,0,4"/>
+                <TextBox x:Name="txtSDT" Height="34" Padding="10,0" FontSize="13"
+                         VerticalContentAlignment="Center" BorderBrush="#FFE0E0E0" BorderThickness="1"
+                         Text="{Binding SDT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBlock Text="Địa chỉ" Foreground="#FF555555" FontSize="12" Margin="0,12,0,4"/>
+                <TextBox x:Name="txtDiaChi" Height="34" Padding="10,0" FontSize="13"
+                         VerticalContentAlignment="Center" BorderBrush="#FFE0E0E0" BorderThickness="1"
+                         Text="{Binding DiaChi, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <!-- Thông tin thành viên (chỉ đọc) -->
+                <Border Background="#FFF8F9FA" BorderBrush="#FFE0E0E0" BorderThickness="1"
+                        CornerRadius="8" Padding="12" Margin="0,16,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Thông tin thành viên:" FontWeight="SemiBold"
+                                   FontSize="12" Margin="0,0,0,8"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                            <TextBlock Text="Tổng mua:" Width="80" Foreground="#FF7F8C8D"/>
+                            <TextBlock Text="{Binding TongMuaText}" FontWeight="Bold" Foreground="#FF27AE60"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Hạng hiện tại:" Width="80" Foreground="#FF7F8C8D"/>
+                            <TextBlock Text="{Binding HangHienTaiText}" FontWeight="Bold" Foreground="#FF2980B9"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Các nút chức năng -->
+                <Grid Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Content="➕ Thêm" Height="38"
+                            Background="#FF2980B9" Foreground="White"
+                            BorderThickness="0" Cursor="Hand" FontWeight="Bold"
+                            Command="{Binding AddCommand}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="6"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                    <Button Grid.Column="2" Content="💾 Lưu" Height="38"
+                            Background="#FF27AE60" Foreground="White"
+                            BorderThickness="0" Cursor="Hand" FontWeight="Bold"
+                            Command="{Binding SaveCommand}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="6"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                    <Button Grid.Column="4" Content="🗑️ Xóa" Height="38"
+                            Background="#FFE74C3C" Foreground="White"
+                            BorderThickness="0" Cursor="Hand" FontWeight="Bold"
+                            Command="{Binding DeleteCommand}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="6"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                    <Button Grid.Column="6" Content="Mới" Height="38"
+                            Background="#FF9AA5B1" Foreground="White"
+                            BorderThickness="0" Cursor="Hand" FontWeight="Bold"
+                            Command="{Binding ClearCommand}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="6"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
