@@ -110,6 +110,9 @@ CREATE TABLE ChiTietHoaDon (
 );
 GO
 
+-- =========================================================
+-- 1. TRIGGER CHO BẢNG CHI TIẾT NHẬP HÀNG (GIỮ NGUYÊN - TỐT)
+-- =========================================================
 CREATE TRIGGER TRG_UpdateKho_KhiNhapHang ON ChiTietHoaDonNhap AFTER INSERT AS
 BEGIN
     SET NOCOUNT ON;
@@ -125,10 +128,15 @@ BEGIN
 END;
 GO
 
+-- =========================================================
+-- 2. TRIGGER CHI TIẾT BÁN HÀNG: INSERT, UPDATE, DELETE 
+-- (Đã sửa lại cơ chế tính toán kho để tránh lỗi khi sửa giỏ hàng)
+-- =========================================================
 CREATE TRIGGER TRG_ChiTietHoaDon_AllActions ON ChiTietHoaDon AFTER INSERT, UPDATE, DELETE AS
 BEGIN
     SET NOCOUNT ON;
 
+    -- BƯỚC 1: HOÀN LẠI KHO SỐ LƯỢNG CŨ (NẾU LÀ HÀNH ĐỘNG UPDATE HOẶC DELETE)
     IF EXISTS (SELECT 1 FROM deleted)
     BEGIN
         UPDATE sp
@@ -136,11 +144,13 @@ BEGIN
         FROM SanPham sp
         JOIN deleted d ON sp.MaSP = d.MaSP
         JOIN HoaDon hd ON d.MaHD = hd.MaHD
-        WHERE hd.TrangThai <> N'Đã hủy';
+        WHERE hd.TrangThai <> N'Đã hủy'; -- Chỉ hoàn kho nếu hóa đơn chưa từng bị hủy trước đó
     END
 
+    -- BƯỚC 2: TRỪ KHO THEO SỐ LƯỢNG MỚI (NẾU LÀ HÀNH ĐỘNG INSERT HOẶC UPDATE)
     IF EXISTS (SELECT 1 FROM inserted)
     BEGIN
+        -- Kiểm tra xem sau khi tính toán kho mới, có sản phẩm nào bị âm kho không
         IF EXISTS (
             SELECT 1 FROM inserted i
             JOIN SanPham sp ON sp.MaSP = i.MaSP
@@ -148,7 +158,7 @@ BEGIN
             WHERE sp.SoLuongTon < i.SoLuong AND hd.TrangThai <> N'Đã hủy'
         )
         BEGIN
-            RAISERROR(N'Lỗi: Số lượng hàng tồn kho không đủ!', 16, 1);
+            RAISERROR(N'Lỗi: Số lượng hàng tồn kho không đủ để thực hiện giao dịch!', 16, 1);
             ROLLBACK TRANSACTION;
             RETURN;
         END
@@ -161,6 +171,7 @@ BEGIN
         WHERE hd.TrangThai <> N'Đã hủy';
     END
 
+    -- BƯỚC 3: CẬP NHẬT LẠI TỔNG TIỀN TRÊN HÓA ĐƠN
     UPDATE hd
     SET hd.TongTien = (SELECT COALESCE(SUM(SoLuong * GiaBan), 0) FROM ChiTietHoaDon WHERE MaHD = hd.MaHD)
     FROM HoaDon hd
@@ -168,6 +179,36 @@ BEGIN
 END;
 GO
 
+-- =========================================================
+-- 3. TRIGGER MỚI: TỰ ĐỘNG HOÀN KHO KHI C# CẬP NHẬT TRẠNG THÁI "ĐÃ HỦY"
+-- =========================================================
+CREATE TRIGGER TRG_HoaDon_UpdateTrangThai ON HoaDon AFTER UPDATE AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Kiểm tra xem có hóa đơn nào vừa được chuyển trạng thái sang 'Đã hủy' hay không
+    IF EXISTS (
+        SELECT 1 FROM inserted i 
+        JOIN deleted d ON i.MaHD = d.MaHD 
+        WHERE i.TrangThai = N'Đã hủy' AND d.TrangThai <> N'Đã hủy'
+    )
+    BEGIN
+        -- Tiến hành cộng trả lại toàn bộ số lượng sản phẩm của hóa đơn đó vào kho hàng
+        UPDATE sp
+        SET sp.SoLuongTon = sp.SoLuongTon + ct.SoLuong
+        FROM SanPham sp
+        JOIN ChiTietHoaDon ct ON sp.MaSP = ct.MaSP
+        JOIN inserted i ON ct.MaHD = i.MaHD
+        JOIN deleted d ON i.MaHD = d.MaHD
+        WHERE i.TrangThai = N'Đã hủy' AND d.TrangThai <> N'Đã hủy';
+    END
+END;
+GO
+
+
+-- =========================================================
+-- CÁC PHẦN VIEW, PROCEDURE VÀ DATA SEED (GIỮ NGUYÊN)
+-- =========================================================
 CREATE VIEW v_DoanhThuTheoThang AS
 SELECT 
     YEAR(NgayLap) AS Nam,
@@ -207,6 +248,7 @@ BEGIN
 END;
 GO
 
+-- SEED DATA LOẠI SẢN PHẨM
 INSERT INTO LoaiSanPham (MaLoai, TenLoai) VALUES 
 ('LH01', N'Sneaker Thể Thao'), 
 ('LH02', N'Giày Tây Công Sở'), 
@@ -214,18 +256,21 @@ INSERT INTO LoaiSanPham (MaLoai, TenLoai) VALUES
 ('LH04', N'Giày Sandal Học Sinh'),
 ('LH05', N'Dép Thời Trang');
 
+-- SEED DATA NHÀ CUNG CẤP
 INSERT INTO NhaCungCap (MaNCC, TenNCC, DiaChi, SDT) VALUES 
 ('NCC01', N'Công ty TNHH Nike Việt Nam', N'KCN Amata, Biên Hòa, Đồng Nai', '02513891111'), 
 ('NCC02', N'Nhà phân phối Adidas Đông Nam Á', N'Tòa nhà Bitexco, Quận 1, HCM', '02838211222'),
 ('NCC03', N'Tổng kho Puma Miền Nam', N'KCN Tân Bình, Tân Phú, HCM', '0908123456'),
 ('NCC04', N'Công ty Cổ phần Biti''s Việt Nam', N'Chợ Lớn, Quận 6, HCM', '02838554900');
 
+-- SEED DATA NHÂN VIÊN
 INSERT INTO NhanVien (MaNhanVien, TenNhanVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, TenDangNhap, MatKhau, Quyen) VALUES 
 ('NV01', N'Nguyễn Quản Lý', N'Nam', '1990-05-15', N'Quận 1, HCM', '0912345678', 'quanly', '123456', N'Quản lý'),
 ('NV02', N'Trần Bán Hàng', N'Nữ', '1998-11-20', N'Quận 3, HCM', '0988888888', 'banhang1', '123456', N'Nhân viên'),
 ('NV03', N'Lê Thu Ngân', N'Nữ', '2001-02-25', N'Bình Thạnh, HCM', '0977777777', 'thungan', '123456', N'Nhân viên'),
 ('NV04', N'Phạm Kho Quỹ', N'Nam', '1995-07-12', N'Gò Vấp, HCM', '0966666666', 'khoquy', '123456', N'Nhân viên');
 
+-- SEED DATA KHÁCH HÀNG
 INSERT INTO KhachHang (MaKhachHang, TenKhachHang, DienThoai, Diem) VALUES 
 ('KH01', N'Khách Hàng Lẻ', '0000000000', 0),
 ('KH02', N'Nguyễn Đình Anh', '0901234567', 120),
@@ -233,60 +278,11 @@ INSERT INTO KhachHang (MaKhachHang, TenKhachHang, DienThoai, Diem) VALUES
 ('KH04', N'Phạm Hồng Phúc', '0911223344', 85),
 ('KH05', N'Vũ Hoàng Long', '0933445566', 200);
 
+-- SEED DATA SẢN PHẨM (Khởi tạo ban đầu tồn kho = 0)
 INSERT INTO SanPham (MaSP, TenSP, MaLoai, MaNCC, Size, MauSac, GiaNhap, GiaBan, SoLuongTon, GhiChu) VALUES 
 ('SP01', N'Nike Air Force 1 All White', 'LH01', 'NCC01', '40', N'Trắng', 1600000, 2800000, 0, N'Hàng bán chạy'),
 ('SP02', N'Nike Air Force 1 All White', 'LH01', 'NCC01', '41', N'Trắng', 1600000, 2800000, 0, NULL),
 ('SP03', N'Nike Air Force 1 Black', 'LH01', 'NCC01', '42', N'Đen', 1650000, 2850000, 0, NULL),
 ('SP04', N'Adidas Ultraboost 22 Black', 'LH03', 'NCC02', '41', N'Đen', 2800000, 4500000, 0, N'Đế êm'),
 ('SP05', N'Adidas Ultraboost 22 Grey', 'LH03', 'NCC02', '42', N'Xám', 2850000, 4550000, 0, NULL),
-('SP06', N'Puma Suede Classic Red', 'LH01', 'NCC03', '40', N'Đỏ', 1100000, 1900000, 0, NULL),
-('SP07', N'Puma Suede Classic Blue', 'LH01', 'NCC03', '41', N'Xanh Dương', 1100000, 1900000, 0, NULL),
-('SP08', N'Biti''s Hunter X Dune', 'LH01', 'NCC04', '39', N'Đen', 650000, 1100000, 0, N'Phiên bản giới hạn'),
-('SP09', N'Biti''s Hunter X Dune', 'LH01', 'NCC04', '40', N'Xanh Rêu', 650000, 1100000, 0, NULL),
-('SP10', N'Giày Tây Oxford Premium', 'LH02', 'NCC04', '41', N'Nâu Đất', 900000, 1500000, 0, NULL);
-
-INSERT INTO HoaDonNhap (MaHDN, NgayNhap, MaNCC, MaNhanVien) VALUES ('HDN01', '2026-05-01 09:00:00', 'NCC01', 'NV04');
-INSERT INTO ChiTietHoaDonNhap (MaHDN, MaSP, SoLuong, GiaNhap) VALUES 
-('HDN01', 'SP01', 50, 1600000),
-('HDN01', 'SP02', 50, 1600000),
-('HDN01', 'SP03', 30, 1650000);
-
-INSERT INTO HoaDonNhap (MaHDN, NgayNhap, MaNCC, MaNhanVien) VALUES ('HDN02', '2026-05-05 14:30:00', 'NCC02', 'NV04');
-INSERT INTO ChiTietHoaDonNhap (MaHDN, MaSP, SoLuong, GiaNhap) VALUES 
-('HDN02', 'SP04', 40, 2800000),
-('HDN02', 'SP05', 40, 2850000),
-('HDN02', 'SP06', 20, 1100000);
-
-INSERT INTO HoaDonNhap (MaHDN, NgayNhap, MaNCC, MaNhanVien) VALUES ('HDN03', '2026-05-10 10:15:00', 'NCC04', 'NV04');
-INSERT INTO ChiTietHoaDonNhap (MaHDN, MaSP, SoLuong, GiaNhap) VALUES 
-('HDN03', 'SP08', 60, 650000),
-('HDN03', 'SP09', 60, 650000),
-('HDN03', 'SP10', 30, 900000);
-
-INSERT INTO HoaDon (MaHD, NgayLap, MaKhachHang, MaNhanVien, TrangThai) VALUES ('HD01', '2026-05-12 11:00:00', 'KH01', 'NV02', N'Đã thanh toán');
-INSERT INTO ChiTietHoaDon (MaHD, MaSP, SoLuong, GiaBan) VALUES 
-('HD01', 'SP01', 2, 2800000),
-('HD01', 'SP08', 1, 1100000);
-
-INSERT INTO HoaDon (MaHD, NgayLap, MaKhachHang, MaNhanVien, TrangThai) VALUES ('HD02', '2026-05-15 19:30:00', 'KH02', 'NV02', N'Đã thanh toán');
-INSERT INTO ChiTietHoaDon (MaHD, MaSP, SoLuong, GiaBan) VALUES 
-('HD02', 'SP04', 5, 4500000),
-('HD02', 'SP05', 2, 4550000),
-('HD02', 'SP10', 3, 1500000);
-
-INSERT INTO HoaDon (MaHD, NgayLap, MaKhachHang, MaNhanVien, TrangThai) VALUES ('HD03', '2026-05-18 08:45:00', 'KH04', 'NV03', N'Chưa thanh toán');
-INSERT INTO ChiTietHoaDon (MaHD, MaSP, SoLuong, GiaBan) VALUES 
-('HD03', 'SP02', 1, 2800000),
-('HD03', 'SP09', 4, 1100000);
-
-INSERT INTO HoaDon (MaHD, NgayLap, MaKhachHang, MaNhanVien, TrangThai) VALUES ('HD04', '2026-05-20 15:00:00', 'KH03', 'NV02', N'Đã hủy');
-INSERT INTO ChiTietHoaDon (MaHD, MaSP, SoLuong, GiaBan) VALUES 
-('HD04', 'SP03', 5, 2850000);
-GO
-
-SELECT * FROM SanPham;
-SELECT * FROM KhachHang;
-SELECT * FROM NhanVien;
-SELECT * FROM v_DoanhThuTheoThang;
-EXEC sp_ThongKeDoanhThuTheoSanPham '2026-05-01', '2026-05-31';
-GO
+('SP
