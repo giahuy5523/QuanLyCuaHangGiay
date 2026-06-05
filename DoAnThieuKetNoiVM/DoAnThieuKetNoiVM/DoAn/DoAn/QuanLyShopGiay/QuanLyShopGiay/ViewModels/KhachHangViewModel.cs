@@ -80,6 +80,7 @@ namespace QuanLyShopGiay.ViewModels
             {
                 MessageBox.Show("Không thể kết nối cơ sở dữ liệu: " + ex.Message);
             }
+<<<<<<< HEAD
 
             //SearchCommand = new RelayCommand<object>(_ => true, _ => LoadData());
             //AddCommand = new RelayCommand<object>(_ => CanExecuteSave(), _ => ExecuteAdd());
@@ -87,6 +88,15 @@ namespace QuanLyShopGiay.ViewModels
             //DeleteCommand = new RelayCommand<object>(_ => SelectedItem != null, _ => ExecuteDelete());
             //ClearCommand = new RelayCommand<object>(_ => true, _ => ClearInputs());
 
+=======
+        
+            SearchCommand = new RelayCommand(_ => LoadData());
+            AddCommand = new RelayCommand(_ => ExecuteAdd(), _ => CanExecuteSave());
+            EditCommand = new RelayCommand(_ => ExecuteEdit(), _ => SelectedItem != null && CanExecuteSave());
+            DeleteCommand = new RelayCommand(_ => ExecuteDelete(), _ => SelectedItem != null);
+            ClearCommand = new RelayCommand(_ => ClearInputs());
+        
+>>>>>>> fefa3f149b7c8504ca5d1c7a358af47f9535440e
             LoadData();
         }
 
