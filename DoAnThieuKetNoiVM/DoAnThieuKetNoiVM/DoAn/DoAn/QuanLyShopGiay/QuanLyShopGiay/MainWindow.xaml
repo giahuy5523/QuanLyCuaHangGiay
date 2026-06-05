@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyShopGiay.ViewModels"
-        xmlns:views="clr-namespace:QuanLyShopGiay.Views.Pages"
+       xmlns:views="clr-namespace:QuanLyShopGiay.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="900">
     <Window.DataContext>
@@ -92,24 +92,38 @@
 
             <Border Grid.Row="0" Background="White" BorderBrush="#E5E7EB" BorderThickness="0,0,0,1">
                 <Grid Margin="20,0">
-                    <views:TimKiemPage x:Name="SearchPage" 
-                                       HorizontalAlignment="Left" 
-                                       VerticalAlignment="Center"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="{Binding TieuDe}"
-                               FontSize="16" FontWeight="SemiBold"
-                               Foreground="#FF1E2A38" 
-                               VerticalAlignment="Center" 
-                               HorizontalAlignment="Left" 
-                               Margin="260,0,0,0"/>
+                    <views:ucTimKiem x:Name="SearchPage" 
+                         Grid.Column="0"
+                         DataContext="{Binding TimKiemVM}" 
+                         HorizontalAlignment="Left" 
+                         VerticalAlignment="Center"/>
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock Grid.Column="1"
+           Text="{Binding TieuDe}"
+           FontSize="18" FontWeight="Bold"
+           Foreground="#FF1E2A38" 
+           VerticalAlignment="Center" 
+           HorizontalAlignment="Left" 
+           Margin="20,0,0,0"/>
+
+                    <StackPanel Grid.Column="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Center">
+
                         <TextBlock Text="{Binding NgayHienTai}"
-                                   Foreground="#FF9AA5B1" FontSize="13"
-                                   VerticalAlignment="Center" Margin="0,0,15,0"/>
+                       Foreground="#FF9AA5B1" FontSize="13"
+                       VerticalAlignment="Center" 
+                       Margin="0,0,20,0"/>
 
-                        <views:UcNhanVienHeader DataContext="{Binding HeaderVM}" 
-                                                VerticalAlignment="Center"/>
+                        <views:ucNhanVienHeader DataContext="{Binding HeaderVM}" 
+                                    VerticalAlignment="Center"/>
                     </StackPanel>
                 </Grid>
             </Border>

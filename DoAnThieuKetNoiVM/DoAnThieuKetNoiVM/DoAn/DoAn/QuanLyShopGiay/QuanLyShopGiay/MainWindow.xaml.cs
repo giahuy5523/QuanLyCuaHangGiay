@@ -11,9 +11,7 @@ namespace QuanLyShopGiay
         public MainWindow()
         {
             InitializeComponent();
-
-            _vm = new MainViewModel();
-
+            // 2. Định nghĩa sự kiện điều hướng trang (Bắt buộc phải viết TRƯỚC khi gán DataContext)
             _vm.Navigate = (pageName) =>
             {
                 switch (pageName)
@@ -24,16 +22,12 @@ namespace QuanLyShopGiay
                     case "SanPham":
                         MainFrame.Navigate(new Views.Pages.SanPhamPage());
                         break;
-                    // FIX: Thêm case KhachHang còn thiếu
                     case "KhachHang":
                         MainFrame.Navigate(new Views.Pages.KhachHangPage());
                         break;
                     case "HoaDon":
                         MainFrame.Navigate(new Views.Pages.HoaDonBanHangPage());
                         break;
-                    //case "KhoHang":
-                    //    MainFrame.Navigate(new Views.Pages.KhoHangPage());
-                    //    break;
                     case "NhanVien":
                         MainFrame.Navigate(new Views.Pages.NhanVienPage());
                         break;
@@ -43,6 +37,7 @@ namespace QuanLyShopGiay
                 }
             };
 
+            // 3. Định nghĩa sự kiện mở màn hình đăng nhập khi Đăng xuất
             _vm.MoLoginView = () =>
             {
                 var login = new Views.Login();
@@ -51,8 +46,10 @@ namespace QuanLyShopGiay
                 this.Close();
             };
 
-            DataContext = _vm;
+            // 4. Gán DataContext để các Button ngoài XAML nhận được Command
+            this.DataContext = _vm;
 
+            // 5. Hiển thị trang Dashboard mặc định lúc vừa mở app
             MainFrame.Navigate(new Views.Pages.DashboardPage());
         }
     }

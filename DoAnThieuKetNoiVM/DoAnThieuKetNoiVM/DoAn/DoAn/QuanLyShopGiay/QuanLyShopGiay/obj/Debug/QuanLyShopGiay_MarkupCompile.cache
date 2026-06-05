@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\App.xaml
-111923521566
+11825837038
 2-1223955081
-49-154654008
+49-617058738
 19-234270874
-MainWindow.xaml;Views\Login.xaml;Views\Pages\DashboardPage.xaml;Views\Pages\DonNhapHangPage.xaml;Views\Pages\HoaDonBanHangPage.xaml;Views\Pages\KhachHangPage.xaml;Views\Pages\NhanVienHeaderPage.xaml;Views\Pages\NhanVienPage.xaml;Views\Pages\SanPhamPage.xaml;Views\Pages\TaiKhoanPage.xaml;Views\Pages\TimKiemPage.xaml;
+MainWindow.xaml;Views\Login.xaml;Views\Pages\DashboardPage.xaml;Views\Pages\DonNhapHangPage.xaml;Views\Pages\HoaDonBanHangPage.xaml;Views\Pages\KhachHangPage.xaml;Views\Pages\NhanVienPage.xaml;Views\Pages\SanPhamPage.xaml;Views\Pages\TaiKhoanPage.xaml;Views\ucNhanVienHeader.xaml;Views\ucTimKiem.xaml;
 
-True
+False
 
