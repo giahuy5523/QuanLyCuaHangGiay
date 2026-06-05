@@ -3,11 +3,13 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:QuanLyShopGiay.Views.Pages"
+      xmlns:local="clr-namespace:QuanLyShopGiay.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DonNhapHangPage">
-
+    <Page.DataContext>
+        <local:HoaDonNhapViewModel/>
+    </Page.DataContext>
     <Grid Background="#F5F5F5">
         <StackPanel Margin="20">
             <!-- THÔNG TIN PHIẾU NHẬP -->
@@ -63,7 +65,7 @@
                     <StackPanel Grid.Column="0" Margin="0,0,10,0">
                         <Label Content="Mã sản phẩm:" FontWeight="Bold"/>
                         <ComboBox ItemsSource="{Binding DsSanPham}"
-                                  SelectedValue="{Binding ChiTietInput.MaSanPham}"
+                                  SelectedValue="{Binding ChiTietInput.MaSP}"
                                   DisplayMemberPath="TenSanPham"
                                   SelectedValuePath="MaSanPham"
                                   Height="35" Padding="10"/>
@@ -72,7 +74,7 @@
                     <!-- Đơn Giá -->
                     <StackPanel Grid.Column="1" Margin="0,0,10,0">
                         <Label Content="Đơn giá:" FontWeight="Bold"/>
-                        <TextBox Text="{Binding ChiTietInput.DonGiaNhap}"
+                        <TextBox Text="{Binding ChiTietInput.GiaNhap}"
                                  IsEnabled="False" Height="35" Padding="10"/>
                     </StackPanel>
 

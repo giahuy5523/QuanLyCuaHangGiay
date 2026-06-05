@@ -5,9 +5,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
-namespace QuanLyShopGiay.ViewModels // SỬA: Đồng bộ lại namespace chuẩn với dự án của bạn
+namespace QuanLyShopGiay.ViewModels 
 {
-    public class PhieuNhapViewModel : BaseViewModel
+    public class HoaDonNhapViewModel : BaseViewModel
     {
         // 1. Khởi tạo DbContext khớp với database QLShopGiay của bạn
         private QLShopGiayEntities3 db = new QLShopGiayEntities3();
@@ -82,7 +82,7 @@ namespace QuanLyShopGiay.ViewModels // SỬA: Đồng bộ lại namespace chu�
         }
 
         // --- CONSTRUCTOR ---
-        public PhieuNhapViewModel()
+        public HoaDonNhapViewModel()
         {
             LoadData();
             InitCommands();
@@ -105,7 +105,6 @@ namespace QuanLyShopGiay.ViewModels // SỬA: Đồng bộ lại namespace chu�
 
         private void InitCommands()
         {
-            // SỬA LỖI CS0308: Loại bỏ phần "p => { return true; }" bị thừa và sai cấu trúc Action của RelayCommand
 
             // Lệnh 1: Tạo mới phiếu nhập & Tự động sinh mã phiếu
             TaoPhieuCommand = new RelayCommand(o=>

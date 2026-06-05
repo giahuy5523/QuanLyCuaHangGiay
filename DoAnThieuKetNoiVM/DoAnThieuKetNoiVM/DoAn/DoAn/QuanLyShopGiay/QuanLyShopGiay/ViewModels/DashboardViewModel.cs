@@ -23,25 +23,25 @@ namespace QuanLyShopGiay.ViewModels
 
         private void LoadData()
         {
-            using (var db = new QLShopGiayEntities())
+            using (var db = new QLShopGiayEntities3())
             {
                 // 1. Doanh thu: Lấy tất cả đơn "Đã thanh toán" (không lọc ngày)
-                Revenue = string.Format("{0:N0} ₫", db.HOA_DON
+                Revenue = string.Format("{0:N0} ₫", db.HoaDon
                     .Where(x => x.TrangThai == "Đã thanh toán") // Chú ý chữ N nếu DB là nvarchar
                     .Sum(x => (decimal?)x.TongTien) ?? 0);
 
                 // 2. Tổng đơn hàng: Đếm tất cả hóa đơn
-                OrderCount = db.HOA_DON.Count().ToString();
+                OrderCount = db.HoaDon.Count().ToString();
 
                 // 3. Sản phẩm: Đếm tổng số sản phẩm trong bảng SAN_PHAM
-                ProductCount = db.SAN_PHAM.Count().ToString();
+                ProductCount = db.SanPham.Count().ToString();
 
                 // 4. Đơn xử lý: Đếm các đơn không phải "Đã thanh toán"
-                ProcessingCount = db.HOA_DON.Count(x => x.TrangThai != "Đã thanh toán").ToString();
+                ProcessingCount = db.HoaDon.Count(x => x.TrangThai != "Đã thanh toán").ToString();
 
                 // 5. Danh sách đơn gần nhất: Giữ nguyên logic lấy 10 đơn mới nhất
-                RecentOrders = new ObservableCollection<object>((from h in db.HOA_DON
-                                                                 join k in db.KHACH_HANG on h.MaKH equals k.MaKH into customers
+                RecentOrders = new ObservableCollection<object>((from h in db.HoaDon
+                                                                 join k in db.KhachHang on h.MaKH equals k.MaKH into customers
                                                                  from k in customers.DefaultIfEmpty()
                                                                  orderby h.NgayLap descending
                                                                  select new

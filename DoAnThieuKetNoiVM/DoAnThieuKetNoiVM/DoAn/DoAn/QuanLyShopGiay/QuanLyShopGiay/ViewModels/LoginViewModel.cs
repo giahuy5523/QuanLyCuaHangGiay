@@ -11,7 +11,7 @@ using System.Text;
 
 namespace  QuanLyShopGiay.ViewModels
 {
-    class Login_ModelView : BaseViewModel
+    class LoginModelView : BaseViewModel
     {
         private byte[] ToMD5ByteArray(string plaintext)
         {
@@ -48,7 +48,7 @@ namespace  QuanLyShopGiay.ViewModels
 
         public RelayCommand LoginCommand { get; set; }
 
-        public Login_ModelView()
+        public LoginModelView()
         {
             LoginCommand = new RelayCommand(o =>
             {

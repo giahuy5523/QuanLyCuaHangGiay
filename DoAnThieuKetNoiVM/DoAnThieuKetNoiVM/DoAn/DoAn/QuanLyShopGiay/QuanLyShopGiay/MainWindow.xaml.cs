@@ -31,15 +31,15 @@ namespace QuanLyShopGiay
                     case "HoaDon":
                         MainFrame.Navigate(new Views.Pages.HoaDonPage());
                         break;
-                    case "KhoHang":
-                        MainFrame.Navigate(new Views.Pages.KhoHangPage());
-                        break;
+                    //case "KhoHang":
+                    //    MainFrame.Navigate(new Views.Pages.KhoHangPage());
+                    //    break;
                     case "NhanVien":
                         MainFrame.Navigate(new Views.Pages.NhanVienPage());
                         break;
-                    case "TaiKhoan":
-                        MainFrame.Navigate(new Views.Pages.TaiKhoanPage());
-                        break;
+                    //case "TaiKhoan":
+                    //    MainFrame.Navigate(new Views.Pages.TaiKhoanPage());
+                    //    break;
                 }
             };
 

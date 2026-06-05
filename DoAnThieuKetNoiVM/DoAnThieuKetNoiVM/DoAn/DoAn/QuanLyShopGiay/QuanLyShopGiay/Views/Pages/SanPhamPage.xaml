@@ -9,9 +9,9 @@
       Title="SanPhamPage"
       Background="White">
 
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <local:SanPhamViewModel/>
-    </Page.DataContext>
+    </Page.DataContext>-->
 
     <Grid Margin="24">
         <Grid.ColumnDefinitions>

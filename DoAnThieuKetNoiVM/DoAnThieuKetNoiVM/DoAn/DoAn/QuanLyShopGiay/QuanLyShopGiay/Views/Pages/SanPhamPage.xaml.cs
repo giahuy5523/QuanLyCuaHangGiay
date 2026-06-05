@@ -6,8 +6,7 @@ namespace QuanLyShopGiay.Views.Pages
 {
     public partial class SanPhamPage : Page
     {
-        private readonly SanPhamViewModel _vm;
-
+        
         public SanPhamPage()
         {
             InitializeComponent();
