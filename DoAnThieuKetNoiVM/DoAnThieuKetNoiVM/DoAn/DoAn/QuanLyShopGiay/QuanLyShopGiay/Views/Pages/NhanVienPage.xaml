@@ -8,9 +8,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="NhanVienPage"
       Background="White">
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <local:NhanVienViewModel/>
-    </Page.DataContext>
+    </Page.DataContext>-->
     <Grid Margin="24">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

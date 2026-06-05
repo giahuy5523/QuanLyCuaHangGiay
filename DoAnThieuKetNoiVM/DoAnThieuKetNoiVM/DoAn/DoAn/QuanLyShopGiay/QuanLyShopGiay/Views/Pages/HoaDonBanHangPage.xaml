@@ -7,7 +7,7 @@
       Background="#F5F5F5"
       Title="HoaDonPage">
 
-    <!--<Grid Margin="20">
+    <Grid Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="380"/>
@@ -177,5 +177,5 @@
                 </StackPanel>
             </Grid>
         </Border>
-    </Grid>-->
+    </Grid>
 </Page>
