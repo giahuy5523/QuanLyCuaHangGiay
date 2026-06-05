@@ -20,10 +20,10 @@ namespace QuanLyShopGiay.Models
             this.HoaDon = new HashSet<HoaDon>();
         }
     
-        public string MaKH { get; set; }
-        public string TenKH { get; set; }
-        public string SDT { get; set; }
-        public string DiaChi { get; set; }
+        public string MaKhachHang { get; set; }
+        public string TenKhachHang { get; set; }
+        public string DienThoai { get; set; }
+        public Nullable<int> Diem { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDon { get; set; }
