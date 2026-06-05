@@ -13,13 +13,7 @@ namespace  QuanLyShopGiay.ViewModels
 {
     class LoginModelView : BaseViewModel
     {
-        private byte[] ToMD5ByteArray(string plaintext)
-        {
-            using (MD5 md5 = MD5.Create())
-            {
-                return md5.ComputeHash(Encoding.UTF8.GetBytes(plaintext));
-            }
-        }
+        
         private string _maNV;
 
         public string MaNV
@@ -60,18 +54,15 @@ namespace  QuanLyShopGiay.ViewModels
                 }
 
                 // 1. Mã hóa mật khẩu người dùng nhập sang dạng mảng byte đã băm MD5
-                byte[] hashedMatKhau = ToMD5ByteArray(MatKhau);
-
-                // 2. Tìm kiếm nhân viên trong Database
-                var user = db.NhanVien.AsEnumerable().FirstOrDefault(x =>
-                    x.MaNV.Trim() == MaNV.Trim() &&
-                    x.MatKhau.SequenceEqual(hashedMatKhau)); // SỬA: Dùng SequenceEqual để so sánh 2 mảng byte với nhau
+                var user = db.NhanVien.FirstOrDefault(x =>
+                     x.MaNhanVien == MaNV &&
+                     x.MatKhau == MatKhau);
 
                 if (user != null)
                 {
                     // Lưu session
-                    UserSession.MaNV = user.MaNV;
-                    UserSession.TenNV = user.HoTen;
+                    UserSession.MaNV = user.MaNhanVien;
+                    UserSession.TenNV = user.TenNhanVien;
 
                     // Mở MainWindow
                     MainWindow mainWindow = new MainWindow();

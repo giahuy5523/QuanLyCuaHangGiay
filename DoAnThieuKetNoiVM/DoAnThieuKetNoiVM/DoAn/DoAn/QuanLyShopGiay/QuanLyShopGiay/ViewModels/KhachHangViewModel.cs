@@ -106,7 +106,7 @@ namespace QuanLyShopGiay.ViewModels
                 }
 
                 ListKhachHang = new ObservableCollection<KhachHangDisplayModel>(query.ToList().Select(kh => {
-                    decimal tongChiTieu = _db.HoaDon.Where(hd => hd.MaKhachHang == kh.MaKhachHang && hd.TrangThai == "Đã thanh toán").Sum(hd => (decimal?)hd.TongTien) ?? 0;
+                    decimal tongChiTieu = _db.HoaDon.Where(hd => hd.MaKH == kh.MaKhachHang && hd.TrangThai == "Đã thanh toán").Sum(hd => (decimal?)hd.TongTien) ?? 0;
                     return new KhachHangDisplayModel
                     {
                         MaKhachHang = kh.MaKhachHang,
@@ -192,7 +192,7 @@ namespace QuanLyShopGiay.ViewModels
                     var kh = _db.KhachHang.FirstOrDefault(x => x.MaKhachHang == SelectedItem.MaKhachHang);
                     if (kh != null)
                     {
-                        var hds = _db.HoaDon.Where(h => h.MaKhachHang == kh.MaKhachHang).ToList();
+                        var hds = _db.HoaDon.Where(h => h.MaKH == kh.MaKhachHang).ToList();
                         foreach (var hd in hds)
                         {
                             var cthds = _db.ChiTietHoaDon.Where(c => c.MaHD == hd.MaHD);

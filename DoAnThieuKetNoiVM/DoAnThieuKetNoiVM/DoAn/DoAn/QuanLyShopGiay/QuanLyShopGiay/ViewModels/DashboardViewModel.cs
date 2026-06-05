@@ -41,13 +41,13 @@ namespace QuanLyShopGiay.ViewModels
 
                 // 5. Danh sách đơn gần nhất: Giữ nguyên logic lấy 10 đơn mới nhất
                 RecentOrders = new ObservableCollection<object>((from h in db.HoaDon
-                                                                 join k in db.KhachHang on h.MaKH equals k.MaKH into customers
+                                                                 join k in db.KhachHang on h.MaKH equals k.MaKhachHang into customers
                                                                  from k in customers.DefaultIfEmpty()
                                                                  orderby h.NgayLap descending
                                                                  select new
                                                                  {
                                                                      h.MaHD,
-                                                                     TenKH = k == null ? "Khách lẻ" : k.TenKH,
+                                                                     TenKH = k == null ? "Khách lẻ" : k.TenKhachHang,
                                                                      h.NgayLap,
                                                                      TongTien = h.TongTien ?? 0,
                                                                      h.TrangThai
