@@ -81,11 +81,11 @@ namespace QuanLyShopGiay.ViewModels
                 MessageBox.Show("Không thể kết nối cơ sở dữ liệu: " + ex.Message);
             }
 
-            SearchCommand = new RelayCommand<object>(_ => true, _ => LoadData());
-            AddCommand = new RelayCommand<object>(_ => CanExecuteSave(), _ => ExecuteAdd());
-            EditCommand = new RelayCommand<object>(_ => SelectedItem != null && CanExecuteSave(), _ => ExecuteEdit());
-            DeleteCommand = new RelayCommand<object>(_ => SelectedItem != null, _ => ExecuteDelete());
-            ClearCommand = new RelayCommand<object>(_ => true, _ => ClearInputs());
+            //SearchCommand = new RelayCommand<object>(_ => true, _ => LoadData());
+            //AddCommand = new RelayCommand<object>(_ => CanExecuteSave(), _ => ExecuteAdd());
+            //EditCommand = new RelayCommand<object>(_ => SelectedItem != null && CanExecuteSave(), _ => ExecuteEdit());
+            //DeleteCommand = new RelayCommand<object>(_ => SelectedItem != null, _ => ExecuteDelete());
+            //ClearCommand = new RelayCommand<object>(_ => true, _ => ClearInputs());
 
             LoadData();
         }
