@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -10,17 +10,17 @@ namespace QuanLyShopGiay.ViewModels
 {
     public class KhachHangDisplayModel
     {
-        public string MaKH { get; set; }
-        public string TenKH { get; set; }
-        public string SDT { get; set; }
-        public string DiaChi { get; set; }
+        public string MaKhachHang { get; set; }
+        public string TenKhachHang { get; set; }
+        public string DienThoai { get; set; }
+        public int Diem { get; set; }
         public decimal TongChiTieu { get; set; }
         public string HangThanhVien { get; set; }
     }
 
     public class KhachHangViewModel : BaseViewModel
     {
-        private readonly QLShopGiayEntities3 _db; // Khớp chuẩn xác tên DbContext của bạn
+        private readonly QLShopGiayEntities3 _db;
 
         private ObservableCollection<KhachHangDisplayModel> _listKhachHang;
         public ObservableCollection<KhachHangDisplayModel> ListKhachHang
@@ -37,220 +37,86 @@ namespace QuanLyShopGiay.ViewModels
             {
                 if (SetProperty(ref _selectedItem, value) && value != null)
                 {
-                    MaKH = value.MaKH;
-                    TenKH = value.TenKH;
-                    SDT = value.SDT;
-                    DiaChi = value.DiaChi;
-
+                    MaKhachHang = value.MaKhachHang;
+                    TenKhachHang = value.TenKhachHang;
+                    DienThoai = value.DienThoai;
+                    Diem = value.Diem;
                     TongMuaText = string.Format("{0:N0} ₫", value.TongChiTieu);
-                    HangHienTaiText = value.HangThanhVien;
-
-                    IsMaKHEnabled = false; // Khi chọn khách hàng cũ từ bảng, KHÓA ô nhập mã lại để tránh lỗi Primary Key
                 }
             }
         }
 
-        #region Properties Binding
-        private string _maKH;
-        public string MaKH
-        {
-            get => _maKH;
-            set => SetProperty(ref _maKH, value);
-        }
+        private string _maKhachHang;
+        public string MaKhachHang { get => _maKhachHang; set => SetProperty(ref _maKhachHang, value); }
 
-        private string _tenKH;
-        public string TenKH
-        {
-            get => _tenKH;
-            set => SetProperty(ref _tenKH, value);
-        }
+        private string _tenKhachHang;
+        public string TenKhachHang { get => _tenKhachHang; set => SetProperty(ref _tenKhachHang, value); }
 
-        private string _sdt;
-        public string SDT
-        {
-            get => _sdt;
-            set => SetProperty(ref _sdt, value);
-        }
+        private string _dienThoai;
+        public string DienThoai { get => _dienThoai; set => SetProperty(ref _dienThoai, value); }
 
-        private string _diaChi;
-        public string DiaChi
-        {
-            get => _diaChi;
-            set => SetProperty(ref _diaChi, value);
-        }
-
-        private bool _isMaKHEnabled = true;
-        public bool IsMaKHEnabled
-        {
-            get => _isMaKHEnabled;
-            set => SetProperty(ref _isMaKHEnabled, value);
-        }
-
-        private string _searchText;
-        public string SearchText
-        {
-            get => _searchText;
-            set { if (SetProperty(ref _searchText, value)) LoadData(); }
-        }
+        private int _diem;
+        public int Diem { get => _diem; set => SetProperty(ref _diem, value); }
 
         private string _tongMuaText = "0 ₫";
-        public string TongMuaText
-        {
-            get => _tongMuaText;
-            set => SetProperty(ref _tongMuaText, value);
-        }
+        public string TongMuaText { get => _tongMuaText; set => SetProperty(ref _tongMuaText, value); }
 
-        private string _hangHienTaiText = "Thành viên mới 🌱";
-        public string HangHienTaiText
-        {
-            get => _hangHienTaiText;
-            set => SetProperty(ref _hangHienTaiText, value);
-        }
-        #endregion
+        private string _searchKeyword;
+        public string SearchKeyword { get => _searchKeyword; set => SetProperty(ref _searchKeyword, value); }
 
-        public ICommand AddCommand { get; set; }
-        public ICommand SaveCommand { get; set; }
-        public ICommand DeleteCommand { get; set; }
-        public ICommand ClearCommand { get; set; }
-        public ICommand HistoryCommand { get; set; }
+        public ICommand SearchCommand { get; }
+        public ICommand AddCommand { get; }
+        public ICommand EditCommand { get; }
+        public ICommand DeleteCommand { get; }
+        public ICommand ClearCommand { get; }
 
         public KhachHangViewModel()
         {
-            _db = new QLShopGiayEntities3();
+            try
+            {
+                _db = new QLShopGiayEntities3();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể kết nối cơ sở dữ liệu: " + ex.Message);
+            }
+
+            SearchCommand = new RelayCommand<object>(_ => true, _ => LoadData());
+            AddCommand = new RelayCommand<object>(_ => CanExecuteSave(), _ => ExecuteAdd());
+            EditCommand = new RelayCommand<object>(_ => SelectedItem != null && CanExecuteSave(), _ => ExecuteEdit());
+            DeleteCommand = new RelayCommand<object>(_ => SelectedItem != null, _ => ExecuteDelete());
+            ClearCommand = new RelayCommand<object>(_ => true, _ => ClearInputs());
+
             LoadData();
-
-            AddCommand = new RelayCommand(
-                (p) => {
-                    try
-                    {
-                        string targetMaKH = MaKH?.Trim();
-                        string sdtInput = string.IsNullOrWhiteSpace(SDT) ? null : SDT.Trim();
-
-                        // Kiểm tra ràng buộc định dạng CHECK số điện thoại từ SQL
-                        if (sdtInput != null && (sdtInput.Length < 10 || sdtInput.Length > 15 || !sdtInput.All(char.IsDigit)))
-                        {
-                            MessageBox.Show("Số điện thoại không hợp lệ! Phải là chữ số có độ dài từ 10 đến 15 ký tự.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                            return;
-                        }
-
-                        if (_db.KhachHang.Any(kh => kh.MaKH == targetMaKH))
-                        {
-                            MessageBox.Show($"Mã khách hàng '{targetMaKH}' đã tồn tại!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                            return;
-                        }
-
-                        var newKH = new KhachHang()
-                        {
-                            MaKH = targetMaKH,
-                            TenKH = TenKH.Trim(),
-                            SDT = sdtInput,
-                            DiaChi = string.IsNullOrWhiteSpace(DiaChi) ? null : DiaChi.Trim()
-                        };
-
-                        _db.KhachHang.Add(newKH);
-                        _db.SaveChanges();
-
-                        LoadData();
-                        ClearInputs();
-                        MessageBox.Show("Thêm mới khách hàng thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    catch (Exception ex) { MessageBox.Show("Lỗi: " + ex.Message); }
-                },
-                (p) => IsMaKHEnabled && !string.IsNullOrWhiteSpace(MaKH) && !string.IsNullOrWhiteSpace(TenKH)
-            );
-
-            SaveCommand = new RelayCommand(
-                (p) => {
-                    try
-                    {
-                        var khTarget = _db.KhachHang.FirstOrDefault(kh => kh.MaKH == SelectedItem.MaKH);
-                        if (khTarget != null)
-                        {
-                            string sdtInput = string.IsNullOrWhiteSpace(SDT) ? null : SDT.Trim();
-                            if (sdtInput != null && (sdtInput.Length < 10 || sdtInput.Length > 15 || !sdtInput.All(char.IsDigit)))
-                            {
-                                MessageBox.Show("Số điện thoại không hợp lệ (Phải từ 10-15 ký tự số).");
-                                return;
-                            }
-
-                            khTarget.TenKH = TenKH.Trim();
-                            khTarget.SDT = sdtInput;
-                            khTarget.DiaChi = string.IsNullOrWhiteSpace(DiaChi) ? null : DiaChi.Trim();
-
-                            _db.SaveChanges();
-                            LoadData();
-                            ClearInputs();
-                            MessageBox.Show("Cập nhật thông tin khách hàng thành công!");
-                        }
-                    }
-                    catch (Exception ex) { MessageBox.Show("Lỗi cập nhật: " + ex.Message); }
-                },
-                (p) => SelectedItem != null && !string.IsNullOrWhiteSpace(TenKH)
-            );
-
-            DeleteCommand = new RelayCommand(
-                (p) => {
-                    try
-                    {
-                        var result = MessageBox.Show($"Bạn có chắc chắn muốn xóa khách hàng '{SelectedItem.TenKH}'?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                        if (result == MessageBoxResult.Yes)
-                        {
-                            string targetMaKH = SelectedItem.MaKH;
-
-                            // Kiểm tra ràng buộc khóa ngoại thực tế từ file SQL của bảng HoaDon
-                            if (_db.HoaDon.Any(hd => hd.MaKH == targetMaKH))
-                            {
-                                MessageBox.Show("Không thể xóa khách hàng này vì lịch sử hệ thống đang lưu giữ hóa đơn giao dịch của họ!", "Ràng buộc dữ liệu", MessageBoxButton.OK, MessageBoxImage.Stop);
-                                return;
-                            }
-
-                            var khTarget = _db.KhachHang.FirstOrDefault(kh => kh.MaKH == targetMaKH);
-                            if (khTarget != null)
-                            {
-                                _db.KhachHang.Remove(khTarget);
-                                _db.SaveChanges();
-                                LoadData();
-                                ClearInputs();
-                                MessageBox.Show("Xóa dữ liệu khách hàng thành công!");
-                            }
-                        }
-                    }
-                    catch (Exception ex) { MessageBox.Show("Lỗi hệ thống: " + ex.Message); }
-                },
-                (p) => SelectedItem != null
-            );
-
-            ClearCommand = new RelayCommand((p) => { ClearInputs(); }, (p) => true);
-
-            HistoryCommand = new RelayCommand(
-                (p) => MessageBox.Show($"Đang kết nối xem lịch sử giao dịch hóa đơn của: {SelectedItem?.TenKH}"),
-                (p) => SelectedItem != null
-            );
         }
 
         private void LoadData()
         {
+            if (_db == null) return;
             try
             {
                 var query = _db.KhachHang.AsQueryable();
-                if (!string.IsNullOrWhiteSpace(SearchText))
+
+                if (!string.IsNullOrWhiteSpace(SearchKeyword))
                 {
-                    string keyword = SearchText.Trim().ToLower();
-                    query = query.Where(kh => kh.TenKH.ToLower().Contains(keyword) || kh.MaKH.ToLower().Contains(keyword) || (kh.SDT != null && kh.SDT.Contains(keyword)));
+                    string keyword = SearchKeyword.Trim().ToLower();
+                    query = query.Where(kh => kh.TenKhachHang.ToLower().Contains(keyword) || 
+                                              kh.MaKhachHang.ToLower().Contains(keyword) || 
+                                              (kh.DienThoai != null && kh.DienThoai.Contains(keyword)));
                 }
 
                 ListKhachHang = new ObservableCollection<KhachHangDisplayModel>(query.ToList().Select(kh => {
-                    decimal tongChiTieu = _db.HoaDon.Where(hd => hd.MaKH == kh.MaKH && hd.TrangThai == "Đã thanh toán").Sum(hd => (decimal?)hd.TongTien) ?? 0;
+                    decimal tongChiTieu = _db.HoaDon.Where(hd => hd.MaKhachHang == kh.MaKhachHang && hd.TrangThai == "Đã thanh toán").Sum(hd => (decimal?)hd.TongTien) ?? 0;
                     return new KhachHangDisplayModel
                     {
-                        MaKH = kh.MaKH,
-                        TenKH = kh.TenKH,
-                        SDT = kh.SDT,
-                        DiaChi = kh.DiaChi,
+                        MaKhachHang = kh.MaKhachHang,
+                        TenKhachHang = kh.TenKhachHang,
+                        DienThoai = kh.DienThoai,
+                        Diem = kh.Diem ?? 0,
                         TongChiTieu = tongChiTieu,
                         HangThanhVien = GetRankName(tongChiTieu)
                     };
-                }).OrderBy(x => x.MaKH).ToList());
+                }).OrderBy(x => x.MaKhachHang).ToList());
             }
             catch (Exception ex) { MessageBox.Show("Lỗi nạp dữ liệu: " + ex.Message); }
         }
@@ -265,9 +131,96 @@ namespace QuanLyShopGiay.ViewModels
 
         private void ClearInputs()
         {
-            _selectedItem = null; OnPropertyChanged(nameof(SelectedItem));
-            MaKH = TenKH = SDT = DiaChi = string.Empty;
-            TongMuaText = "0 ₫"; HangHienTaiText = "Thành viên mới 🌱"; IsMaKHEnabled = true;
+            _selectedItem = null; 
+            OnPropertyChanged(nameof(SelectedItem));
+            MaKhachHang = TenKhachHang = DienThoai = string.Empty;
+            Diem = 0;
+            TongMuaText = "0 ₫";
+        }
+
+        private bool CanExecuteSave()
+        {
+            return !string.IsNullOrWhiteSpace(TenKhachHang) && !string.IsNullOrWhiteSpace(DienThoai);
+        }
+
+        private void ExecuteAdd()
+        {
+            try
+            {
+                string newId = GenerateNextId();
+                var kh = new KhachHang
+                {
+                    MaKhachHang = newId,
+                    TenKhachHang = TenKhachHang.Trim(),
+                    DienThoai = DienThoai.Trim(),
+                    Diem = Diem
+                };
+
+                _db.KhachHang.Add(kh);
+                _db.SaveChanges();
+                LoadData();
+                ClearInputs();
+            }
+            catch (Exception ex) { MessageBox.Show("Lỗi thêm mới: " + ex.Message); }
+        }
+
+        private void ExecuteEdit()
+        {
+            try
+            {
+                var kh = _db.KhachHang.FirstOrDefault(x => x.MaKhachHang == SelectedItem.MaKhachHang);
+                if (kh != null)
+                {
+                    kh.TenKhachHang = TenKhachHang.Trim();
+                    kh.DienThoai = DienThoai.Trim();
+                    kh.Diem = Diem;
+
+                    _db.SaveChanges();
+                    LoadData();
+                    ClearInputs();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Lỗi cập nhật: " + ex.Message); }
+        }
+
+        private void ExecuteDelete()
+        {
+            if (MessageBox.Show("Xóa khách hàng này và toàn bộ dữ liệu liên quan?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    var kh = _db.KhachHang.FirstOrDefault(x => x.MaKhachHang == SelectedItem.MaKhachHang);
+                    if (kh != null)
+                    {
+                        var hds = _db.HoaDon.Where(h => h.MaKhachHang == kh.MaKhachHang).ToList();
+                        foreach (var hd in hds)
+                        {
+                            var cthds = _db.ChiTietHoaDon.Where(c => c.MaHD == hd.MaHD);
+                            _db.ChiTietHoaDon.RemoveRange(cthds);
+                        }
+                        _db.HoaDon.RemoveRange(hds);
+
+                        _db.KhachHang.Remove(kh);
+                        _db.SaveChanges();
+                        LoadData();
+                        ClearInputs();
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show("Lỗi khi xóa: " + ex.Message); }
+            }
+        }
+
+        private string GenerateNextId()
+        {
+            var maxId = _db.KhachHang
+                .Select(x => x.MaKhachHang)
+                .ToList()
+                .Where(x => x.StartsWith("KH") && x.Length > 2)
+                .Select(x => int.TryParse(x.Substring(2), out int id) ? id : 0)
+                .DefaultIfEmpty(0)
+                .Max();
+
+            return string.Format("KH{0:D2}", maxId + 1);
         }
     }
 }
