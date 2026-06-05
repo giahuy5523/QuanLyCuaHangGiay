@@ -19,24 +19,21 @@ namespace QuanLyShopGiay.Models
         {
             this.HoaDon = new HashSet<HoaDon>();
             this.HoaDonNhap = new HashSet<HoaDonNhap>();
-            this.VaiTro = new HashSet<VaiTro>();
         }
     
-        public string MaNV { get; set; }
-        public string HoTen { get; set; }
+        public string MaNhanVien { get; set; }
+        public string TenNhanVien { get; set; }
+        public string GioiTinh { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
-        public string SDT { get; set; }
-        public string Email { get; set; }
-        public string ChucVu { get; set; }
-        public byte[] MatKhau { get; set; }
-        public Nullable<System.Guid> Salt { get; set; }
-        public Nullable<bool> TrangThai { get; set; }
+        public string DiaChi { get; set; }
+        public string SoDienThoai { get; set; }
+        public string TenDangNhap { get; set; }
+        public string MatKhau { get; set; }
+        public string Quyen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDon { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDonNhap> HoaDonNhap { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VaiTro> VaiTro { get; set; }
     }
 }
