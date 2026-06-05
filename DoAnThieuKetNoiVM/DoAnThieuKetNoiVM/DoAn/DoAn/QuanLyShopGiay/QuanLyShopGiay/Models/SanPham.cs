@@ -30,6 +30,7 @@ namespace QuanLyShopGiay.Models
         public Nullable<decimal> GiaNhap { get; set; }
         public Nullable<decimal> GiaBan { get; set; }
         public Nullable<int> SoLuongTon { get; set; }
+        public string GhiChu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDon { get; set; }
