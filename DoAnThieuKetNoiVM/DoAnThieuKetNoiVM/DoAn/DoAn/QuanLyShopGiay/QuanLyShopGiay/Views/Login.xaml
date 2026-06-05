@@ -58,7 +58,7 @@
 
                     <TextBox x:Name="txtUsername" 
                              Grid.Row="2"
-                             Text="{Binding MaNV, UpdateSourceTrigger=PropertyChanged}" 
+                             Text="{Binding TenDangNhap, UpdateSourceTrigger=PropertyChanged}" 
                              VerticalContentAlignment="Center"
                              Padding="5,0,5,0"
                              Height="35" 

@@ -13,15 +13,14 @@ namespace  QuanLyShopGiay.ViewModels
 {
     class LoginModelView : BaseViewModel
     {
-        
-        private string _maNV;
+        private string _tenDangNhap;
 
-        public string MaNV
+        public string TenDangNhap
         {
-            get => _maNV;
+            get => _tenDangNhap;
             set
             {
-                _maNV = value;
+                _tenDangNhap = value;
                 OnPropertyChanged();
             }
         }
@@ -47,7 +46,7 @@ namespace  QuanLyShopGiay.ViewModels
             LoginCommand = new RelayCommand(o =>
             {
                 // Kiểm tra input
-                if (string.IsNullOrWhiteSpace(MaNV) || string.IsNullOrWhiteSpace(MatKhau))
+                if (string.IsNullOrWhiteSpace(TenDangNhap) ||string.IsNullOrWhiteSpace(MatKhau))
                 {
                     MessageBox.Show("Tên đăng nhập và mật khẩu không được để trống!", "Thông báo");
                     return;
@@ -55,8 +54,8 @@ namespace  QuanLyShopGiay.ViewModels
 
                 // 1. Mã hóa mật khẩu người dùng nhập sang dạng mảng byte đã băm MD5
                 var user = db.NhanViens.FirstOrDefault(x =>
-                     x.MaNhanVien == MaNV &&
-                     x.MatKhau == MatKhau);
+                          x.TenDangNhap == TenDangNhap &&
+                          x.MatKhau == MatKhau);
 
                 if (user != null)
                 {

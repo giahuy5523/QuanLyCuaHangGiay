@@ -37,9 +37,9 @@ namespace QuanLyShopGiay
                     case "NhanVien":
                         MainFrame.Navigate(new Views.Pages.NhanVienPage());
                         break;
-                    //case "TaiKhoan":
-                    //    MainFrame.Navigate(new Views.Pages.TaiKhoanPage());
-                    //    break;
+                    case "TaiKhoan":
+                        MainFrame.Navigate(new Views.Pages.TaiKhoanPage());
+                        break;
                 }
             };
 

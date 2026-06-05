@@ -35,3 +35,6 @@ C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKe
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLySh.C4D866E7.Up2Date
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.exe
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.pdb
+C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\TaiKhoanPage.g.cs
+C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\TimKiemPage.g.cs
+C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\NhanVienHeaderPage.g.cs

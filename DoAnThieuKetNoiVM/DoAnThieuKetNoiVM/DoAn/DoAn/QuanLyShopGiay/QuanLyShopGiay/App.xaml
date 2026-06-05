@@ -6,16 +6,10 @@
              ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
 
-        <!-- Converter 1: chuỗi rỗng → Collapsed | có nội dung → Visible -->
-        <!-- Dùng: hiện/ẩn TextBlock thông báo lỗi ở Login, SignUp -->
         <helpers:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
 
-        <!-- Converter 2: bool → Visibility -->
-        <!-- Dùng: ẩn/hiện nút theo phân quyền (Visibility) -->
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
 
-        <!-- Converter 3: bool → Opacity (1.0 / 0.4) -->
-        <!-- Dùng: mờ nút sidebar khi không có quyền -->
         <helpers:BoolToOpacityConverter x:Key="BoolToOpacityConverter"/>
 
         <Style x:Key="SidebarButton" TargetType="Button">

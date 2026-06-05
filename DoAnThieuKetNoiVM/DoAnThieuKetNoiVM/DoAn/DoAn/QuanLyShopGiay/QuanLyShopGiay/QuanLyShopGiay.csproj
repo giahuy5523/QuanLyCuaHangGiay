@@ -128,9 +128,12 @@
     <Compile Include="ViewModels\KhoHangViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\NhanVienHeaderViewModel.cs" />
     <Compile Include="ViewModels\NhanVienViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\SanPhamViewModel.cs" />
+    <Compile Include="ViewModels\TaiKhoanViewModel.cs" />
+    <Compile Include="ViewModels\TimKiemViewModel.cs" />
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -146,11 +149,20 @@
     <Compile Include="Views\Pages\KhachHangPage.xaml.cs">
       <DependentUpon>KhachHangPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\NhanVienHeaderPage.xaml.cs">
+      <DependentUpon>NhanVienHeaderPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\NhanVienPage.xaml.cs">
       <DependentUpon>NhanVienPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\SanPhamPage.xaml.cs">
       <DependentUpon>SanPhamPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\TaiKhoanPage.xaml.cs">
+      <DependentUpon>TaiKhoanPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\TimKiemPage.xaml.cs">
+      <DependentUpon>TimKiemPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -184,11 +196,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pages\NhanVienHeaderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\NhanVienPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\SanPhamPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\TaiKhoanPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\TimKiemPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
