@@ -96,7 +96,7 @@ namespace QuanLyShopGiay.ViewModels
             if (_db == null) return;
             try
             {
-                var query = _db.KhachHang.AsQueryable();
+                var query = _db.KhachHangs.AsQueryable();
 
                 if (!string.IsNullOrWhiteSpace(SearchKeyword))
                 {
@@ -107,7 +107,7 @@ namespace QuanLyShopGiay.ViewModels
                 }
 
                 ListKhachHang = new ObservableCollection<KhachHangDisplayModel>(query.ToList().Select(kh => {
-                    decimal tongChiTieu = _db.HoaDon.Where(hd => hd.MaKH == kh.MaKhachHang && hd.TrangThai == "Đã thanh toán").Sum(hd => (decimal?)hd.TongTien) ?? 0;
+                    decimal tongChiTieu = _db.HoaDons.Where(hd => hd.MaKhachHang == kh.MaKhachHang && hd.TrangThai == "Đã thanh toán").Sum(hd => (decimal?)hd.TongTien) ?? 0;
                     return new KhachHangDisplayModel
                     {
                         MaKhachHang = kh.MaKhachHang,
@@ -157,7 +157,7 @@ namespace QuanLyShopGiay.ViewModels
                     Diem = Diem
                 };
 
-                _db.KhachHang.Add(kh);
+                _db.KhachHangs.Add(kh);
                 _db.SaveChanges();
                 LoadData();
                 ClearInputs();
@@ -169,7 +169,7 @@ namespace QuanLyShopGiay.ViewModels
         {
             try
             {
-                var kh = _db.KhachHang.FirstOrDefault(x => x.MaKhachHang == SelectedItem.MaKhachHang);
+                var kh = _db.KhachHangs.FirstOrDefault(x => x.MaKhachHang == SelectedItem.MaKhachHang);
                 if (kh != null)
                 {
                     kh.TenKhachHang = TenKhachHang.Trim();
@@ -190,18 +190,18 @@ namespace QuanLyShopGiay.ViewModels
             {
                 try
                 {
-                    var kh = _db.KhachHang.FirstOrDefault(x => x.MaKhachHang == SelectedItem.MaKhachHang);
+                    var kh = _db.KhachHangs.FirstOrDefault(x => x.MaKhachHang == SelectedItem.MaKhachHang);
                     if (kh != null)
                     {
-                        var hds = _db.HoaDon.Where(h => h.MaKH == kh.MaKhachHang).ToList();
+                        var hds = _db.HoaDons.Where(h => h.MaKhachHang == kh.MaKhachHang).ToList();
                         foreach (var hd in hds)
                         {
-                            var cthds = _db.ChiTietHoaDon.Where(c => c.MaHD == hd.MaHD);
-                            _db.ChiTietHoaDon.RemoveRange(cthds);
+                            var cthds = _db.ChiTietHoaDons.Where(c => c.MaHD == hd.MaHD);
+                            _db.ChiTietHoaDons.RemoveRange(cthds);
                         }
-                        _db.HoaDon.RemoveRange(hds);
+                        _db.HoaDons.RemoveRange(hds);
 
-                        _db.KhachHang.Remove(kh);
+                        _db.KhachHangs.Remove(kh);
                         _db.SaveChanges();
                         LoadData();
                         ClearInputs();
@@ -213,7 +213,7 @@ namespace QuanLyShopGiay.ViewModels
 
         private string GenerateNextId()
         {
-            var maxId = _db.KhachHang
+            var maxId = _db.KhachHangs
                 .Select(x => x.MaKhachHang)
                 .ToList()
                 .Where(x => x.StartsWith("KH") && x.Length > 2)

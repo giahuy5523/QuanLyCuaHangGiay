@@ -92,8 +92,8 @@ namespace QuanLyShopGiay.ViewModels
         {
             try
             {
-                DsSanPham = new ObservableCollection<SanPham>(db.SanPham.ToList());
-                DsNCC = new ObservableCollection<NhaCungCap>(db.NhaCungCap.ToList());
+                DsSanPham = new ObservableCollection<SanPham>(db.SanPhams.ToList());
+                DsNCC = new ObservableCollection<NhaCungCap>(db.NhaCungCaps.ToList());
                 DsChiTiet = new ObservableCollection<ChiTietPhieuNhapDisplay>();
                 TongTien = 0;
             }
@@ -109,7 +109,7 @@ namespace QuanLyShopGiay.ViewModels
             // Lệnh 1: Tạo mới phiếu nhập & Tự động sinh mã phiếu
             TaoPhieuCommand = new RelayCommand(o=>
             {
-                var lastPhieu = db.HoaDonNhap
+                var lastPhieu = db.HoaDonNhaps
                     .OrderByDescending(x => x.MaHDN)
                     .FirstOrDefault();
 
@@ -203,10 +203,10 @@ namespace QuanLyShopGiay.ViewModels
                         MaHDN = MaPhieuNhap,
                         NgayNhap = NgayNhap,
                         TongTien = TongTien,
-                        MaNV = "NV01" // Đảm bảo mã này tồn tại trong bảng NhanVien của bạn
+                        MaNhanVien = "NV01" // Đảm bảo mã này tồn tại trong bảng NhanVien của bạn
                     };
 
-                    db.HoaDonNhap.Add(hoaDonNhap);
+                    db.HoaDonNhaps.Add(hoaDonNhap);
                     db.SaveChanges();
 
                     foreach (var ct in DsChiTiet)
@@ -218,7 +218,7 @@ namespace QuanLyShopGiay.ViewModels
                             SoLuong = ct.SoLuong,
                             GiaNhap = ct.DonGiaNhap
                         };
-                        db.ChiTietHoaDonNhap.Add(chiTiet);
+                        db.ChiTietHoaDonNhaps.Add(chiTiet);
                     }
 
                     db.SaveChanges();

@@ -29,7 +29,7 @@ namespace QuanLyShopGiay
                         MainFrame.Navigate(new Views.Pages.KhachHangPage());
                         break;
                     case "HoaDon":
-                        MainFrame.Navigate(new Views.Pages.HoaDonPage());
+                        MainFrame.Navigate(new Views.Pages.HoaDonBanHangPage());
                         break;
                     //case "KhoHang":
                     //    MainFrame.Navigate(new Views.Pages.KhoHangPage());

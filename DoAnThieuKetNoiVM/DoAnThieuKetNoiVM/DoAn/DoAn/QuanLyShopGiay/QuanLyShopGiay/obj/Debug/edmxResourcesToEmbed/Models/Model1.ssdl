@@ -26,8 +26,8 @@
     </Key>
     <Property Name="MaHD" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="NgayLap" Type="datetime" />
-    <Property Name="MaKH" Type="varchar" MaxLength="20" />
-    <Property Name="MaNV" Type="varchar" MaxLength="20" />
+    <Property Name="MaKhachHang" Type="varchar" MaxLength="20" />
+    <Property Name="MaNhanVien" Type="varchar" MaxLength="20" />
     <Property Name="TongTien" Type="decimal" Precision="18" Scale="2" />
     <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
   </EntityType>
@@ -38,17 +38,17 @@
     <Property Name="MaHDN" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="NgayNhap" Type="datetime" />
     <Property Name="MaNCC" Type="varchar" MaxLength="10" />
-    <Property Name="MaNV" Type="varchar" MaxLength="20" />
+    <Property Name="MaNhanVien" Type="varchar" MaxLength="20" />
     <Property Name="TongTien" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="KhachHang">
     <Key>
-      <PropertyRef Name="MaKH" />
+      <PropertyRef Name="MaKhachHang" />
     </Key>
-    <Property Name="MaKH" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="TenKH" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="SDT" Type="varchar" MaxLength="15" />
-    <Property Name="DiaChi" Type="nvarchar(max)" />
+    <Property Name="MaKhachHang" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenKhachHang" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DienThoai" Type="varchar" MaxLength="15" />
+    <Property Name="Diem" Type="int" />
   </EntityType>
   <EntityType Name="LoaiSanPham">
     <Key>
@@ -68,25 +68,17 @@
   </EntityType>
   <EntityType Name="NhanVien">
     <Key>
-      <PropertyRef Name="MaNV" />
+      <PropertyRef Name="MaNhanVien" />
     </Key>
-    <Property Name="MaNV" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="HoTen" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MaNhanVien" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenNhanVien" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
     <Property Name="NgaySinh" Type="date" />
-    <Property Name="SDT" Type="varchar" MaxLength="15" />
-    <Property Name="Email" Type="varchar" MaxLength="100" />
-    <Property Name="ChucVu" Type="nvarchar" MaxLength="50" />
-    <Property Name="MatKhau" Type="varbinary(max)" />
-    <Property Name="Salt" Type="uniqueidentifier" />
-    <Property Name="TrangThai" Type="bit" />
-  </EntityType>
-  <EntityType Name="NhanVien_VaiTro">
-    <Key>
-      <PropertyRef Name="MaNV" />
-      <PropertyRef Name="MaVaiTro" />
-    </Key>
-    <Property Name="MaNV" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="MaVaiTro" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
+    <Property Name="SoDienThoai" Type="varchar" MaxLength="15" />
+    <Property Name="TenDangNhap" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Quyen" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="SanPham">
     <Key>
@@ -101,14 +93,7 @@
     <Property Name="GiaNhap" Type="decimal" Precision="18" Scale="2" />
     <Property Name="GiaBan" Type="decimal" Precision="18" Scale="2" />
     <Property Name="SoLuongTon" Type="int" />
-  </EntityType>
-  <EntityType Name="VaiTro">
-    <Key>
-      <PropertyRef Name="MaVaiTro" />
-    </Key>
-    <Property Name="MaVaiTro" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="TenVaiTro" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
@@ -119,7 +104,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
           <Property Name="TongSanPhamDaBan" Type="int" />
           <Property Name="TongDoanhThu" Type="decimal" Precision="38" Scale="2" />
         </EntityType>-->
-  <Association Name="FK__ChiTietHo__MaHDN__70DDC3D8">
+  <Association Name="FK__ChiTietHo__MaHDN__571DF1D5">
     <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="1" />
     <End Role="ChiTietHoaDonNhap" Type="Self.ChiTietHoaDonNhap" Multiplicity="*" />
     <ReferentialConstraint>
@@ -131,7 +116,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietHoa__MaHD__7E37BEF6">
+  <Association Name="FK__ChiTietHoa__MaHD__6477ECF3">
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
     <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -143,7 +128,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietHoa__MaSP__71D1E811">
+  <Association Name="FK__ChiTietHoa__MaSP__5812160E">
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
     <End Role="ChiTietHoaDonNhap" Type="Self.ChiTietHoaDonNhap" Multiplicity="*" />
     <ReferentialConstraint>
@@ -155,7 +140,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChiTietHoa__MaSP__7F2BE32F">
+  <Association Name="FK__ChiTietHoa__MaSP__656C112C">
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
     <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -167,31 +152,31 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HoaDon__MaKH__787EE5A0">
+  <Association Name="FK__HoaDon__MaKhachH__5EBF139D">
     <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="KhachHang">
-        <PropertyRef Name="MaKH" />
+        <PropertyRef Name="MaKhachHang" />
       </Principal>
       <Dependent Role="HoaDon">
-        <PropertyRef Name="MaKH" />
+        <PropertyRef Name="MaKhachHang" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HoaDon__MaNV__797309D9">
+  <Association Name="FK__HoaDon__MaNhanVi__5FB337D6">
     <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="NhanVien">
-        <PropertyRef Name="MaNV" />
+        <PropertyRef Name="MaNhanVien" />
       </Principal>
       <Dependent Role="HoaDon">
-        <PropertyRef Name="MaNV" />
+        <PropertyRef Name="MaNhanVien" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HoaDonNha__MaNCC__6B24EA82">
+  <Association Name="FK__HoaDonNha__MaNCC__5165187F">
     <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
     <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
     <ReferentialConstraint>
@@ -203,47 +188,19 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HoaDonNhap__MaNV__6C190EBB">
+  <Association Name="FK__HoaDonNha__MaNha__52593CB8">
     <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
     <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="NhanVien">
-        <PropertyRef Name="MaNV" />
+        <PropertyRef Name="MaNhanVien" />
       </Principal>
       <Dependent Role="HoaDonNhap">
-        <PropertyRef Name="MaNV" />
+        <PropertyRef Name="MaNhanVien" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__NhanVien___MaVai__59FA5E80">
-    <End Role="VaiTro" Type="Self.VaiTro" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="NhanVien_VaiTro" Type="Self.NhanVien_VaiTro" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="VaiTro">
-        <PropertyRef Name="MaVaiTro" />
-      </Principal>
-      <Dependent Role="NhanVien_VaiTro">
-        <PropertyRef Name="MaVaiTro" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__NhanVien_V__MaNV__59063A47">
-    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="NhanVien_VaiTro" Type="Self.NhanVien_VaiTro" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NhanVien">
-        <PropertyRef Name="MaNV" />
-      </Principal>
-      <Dependent Role="NhanVien_VaiTro">
-        <PropertyRef Name="MaNV" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__SanPham__MaLoai__656C112C">
+  <Association Name="FK__SanPham__MaLoai__4BAC3F29">
     <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="0..1" />
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
     <ReferentialConstraint>
@@ -255,7 +212,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SanPham__MaNCC__66603565">
+  <Association Name="FK__SanPham__MaNCC__4CA06362">
     <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
     <ReferentialConstraint>
@@ -280,54 +237,44 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
     <EntitySet Name="LoaiSanPham" EntityType="Self.LoaiSanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NhaCungCap" EntityType="Self.NhaCungCap" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="NhanVien_VaiTro" EntityType="Self.NhanVien_VaiTro" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="VaiTro" EntityType="Self.VaiTro" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__ChiTietHo__MaHDN__70DDC3D8" Association="Self.FK__ChiTietHo__MaHDN__70DDC3D8">
+    <AssociationSet Name="FK__ChiTietHo__MaHDN__571DF1D5" Association="Self.FK__ChiTietHo__MaHDN__571DF1D5">
       <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
       <End Role="ChiTietHoaDonNhap" EntitySet="ChiTietHoaDonNhap" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietHoa__MaHD__7E37BEF6" Association="Self.FK__ChiTietHoa__MaHD__7E37BEF6">
+    <AssociationSet Name="FK__ChiTietHoa__MaHD__6477ECF3" Association="Self.FK__ChiTietHoa__MaHD__6477ECF3">
       <End Role="HoaDon" EntitySet="HoaDon" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietHoa__MaSP__71D1E811" Association="Self.FK__ChiTietHoa__MaSP__71D1E811">
+    <AssociationSet Name="FK__ChiTietHoa__MaSP__5812160E" Association="Self.FK__ChiTietHoa__MaSP__5812160E">
       <End Role="SanPham" EntitySet="SanPham" />
       <End Role="ChiTietHoaDonNhap" EntitySet="ChiTietHoaDonNhap" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChiTietHoa__MaSP__7F2BE32F" Association="Self.FK__ChiTietHoa__MaSP__7F2BE32F">
+    <AssociationSet Name="FK__ChiTietHoa__MaSP__656C112C" Association="Self.FK__ChiTietHoa__MaSP__656C112C">
       <End Role="SanPham" EntitySet="SanPham" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
     </AssociationSet>
-    <AssociationSet Name="FK__HoaDon__MaKH__787EE5A0" Association="Self.FK__HoaDon__MaKH__787EE5A0">
+    <AssociationSet Name="FK__HoaDon__MaKhachH__5EBF139D" Association="Self.FK__HoaDon__MaKhachH__5EBF139D">
       <End Role="KhachHang" EntitySet="KhachHang" />
       <End Role="HoaDon" EntitySet="HoaDon" />
     </AssociationSet>
-    <AssociationSet Name="FK__HoaDon__MaNV__797309D9" Association="Self.FK__HoaDon__MaNV__797309D9">
+    <AssociationSet Name="FK__HoaDon__MaNhanVi__5FB337D6" Association="Self.FK__HoaDon__MaNhanVi__5FB337D6">
       <End Role="NhanVien" EntitySet="NhanVien" />
       <End Role="HoaDon" EntitySet="HoaDon" />
     </AssociationSet>
-    <AssociationSet Name="FK__HoaDonNha__MaNCC__6B24EA82" Association="Self.FK__HoaDonNha__MaNCC__6B24EA82">
+    <AssociationSet Name="FK__HoaDonNha__MaNCC__5165187F" Association="Self.FK__HoaDonNha__MaNCC__5165187F">
       <End Role="NhaCungCap" EntitySet="NhaCungCap" />
       <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
     </AssociationSet>
-    <AssociationSet Name="FK__HoaDonNhap__MaNV__6C190EBB" Association="Self.FK__HoaDonNhap__MaNV__6C190EBB">
+    <AssociationSet Name="FK__HoaDonNha__MaNha__52593CB8" Association="Self.FK__HoaDonNha__MaNha__52593CB8">
       <End Role="NhanVien" EntitySet="NhanVien" />
       <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
     </AssociationSet>
-    <AssociationSet Name="FK__NhanVien___MaVai__59FA5E80" Association="Self.FK__NhanVien___MaVai__59FA5E80">
-      <End Role="VaiTro" EntitySet="VaiTro" />
-      <End Role="NhanVien_VaiTro" EntitySet="NhanVien_VaiTro" />
-    </AssociationSet>
-    <AssociationSet Name="FK__NhanVien_V__MaNV__59063A47" Association="Self.FK__NhanVien_V__MaNV__59063A47">
-      <End Role="NhanVien" EntitySet="NhanVien" />
-      <End Role="NhanVien_VaiTro" EntitySet="NhanVien_VaiTro" />
-    </AssociationSet>
-    <AssociationSet Name="FK__SanPham__MaLoai__656C112C" Association="Self.FK__SanPham__MaLoai__656C112C">
+    <AssociationSet Name="FK__SanPham__MaLoai__4BAC3F29" Association="Self.FK__SanPham__MaLoai__4BAC3F29">
       <End Role="LoaiSanPham" EntitySet="LoaiSanPham" />
       <End Role="SanPham" EntitySet="SanPham" />
     </AssociationSet>
-    <AssociationSet Name="FK__SanPham__MaNCC__66603565" Association="Self.FK__SanPham__MaNCC__66603565">
+    <AssociationSet Name="FK__SanPham__MaNCC__4CA06362" Association="Self.FK__SanPham__MaNCC__4CA06362">
       <End Role="NhaCungCap" EntitySet="NhaCungCap" />
       <End Role="SanPham" EntitySet="SanPham" />
     </AssociationSet>

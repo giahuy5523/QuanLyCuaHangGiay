@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="QLShopGiayModelStoreContainer" CdmEntityContainer="QLShopGiayEntities3">
-    <EntitySetMapping Name="ChiTietHoaDon">
+    <EntitySetMapping Name="ChiTietHoaDons">
       <EntityTypeMapping TypeName="QLShopGiayModel.ChiTietHoaDon">
         <MappingFragment StoreEntitySet="ChiTietHoaDon">
           <ScalarProperty Name="MaHD" ColumnName="MaHD" />
@@ -11,7 +11,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ChiTietHoaDonNhap">
+    <EntitySetMapping Name="ChiTietHoaDonNhaps">
       <EntityTypeMapping TypeName="QLShopGiayModel.ChiTietHoaDonNhap">
         <MappingFragment StoreEntitySet="ChiTietHoaDonNhap">
           <ScalarProperty Name="MaHDN" ColumnName="MaHDN" />
@@ -21,40 +21,40 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="HoaDon">
+    <EntitySetMapping Name="HoaDons">
       <EntityTypeMapping TypeName="QLShopGiayModel.HoaDon">
         <MappingFragment StoreEntitySet="HoaDon">
           <ScalarProperty Name="MaHD" ColumnName="MaHD" />
           <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
-          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-          <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+          <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
+          <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
           <ScalarProperty Name="TongTien" ColumnName="TongTien" />
           <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="HoaDonNhap">
+    <EntitySetMapping Name="HoaDonNhaps">
       <EntityTypeMapping TypeName="QLShopGiayModel.HoaDonNhap">
         <MappingFragment StoreEntitySet="HoaDonNhap">
           <ScalarProperty Name="MaHDN" ColumnName="MaHDN" />
           <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
           <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
-          <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+          <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
           <ScalarProperty Name="TongTien" ColumnName="TongTien" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="KhachHang">
+    <EntitySetMapping Name="KhachHangs">
       <EntityTypeMapping TypeName="QLShopGiayModel.KhachHang">
         <MappingFragment StoreEntitySet="KhachHang">
-          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
-          <ScalarProperty Name="TenKH" ColumnName="TenKH" />
-          <ScalarProperty Name="SDT" ColumnName="SDT" />
-          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
+          <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
+          <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+          <ScalarProperty Name="Diem" ColumnName="Diem" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="LoaiSanPham">
+    <EntitySetMapping Name="LoaiSanPhams">
       <EntityTypeMapping TypeName="QLShopGiayModel.LoaiSanPham">
         <MappingFragment StoreEntitySet="LoaiSanPham">
           <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
@@ -62,7 +62,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NhaCungCap">
+    <EntitySetMapping Name="NhaCungCaps">
       <EntityTypeMapping TypeName="QLShopGiayModel.NhaCungCap">
         <MappingFragment StoreEntitySet="NhaCungCap">
           <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
@@ -72,22 +72,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NhanVien">
+    <EntitySetMapping Name="NhanViens">
       <EntityTypeMapping TypeName="QLShopGiayModel.NhanVien">
         <MappingFragment StoreEntitySet="NhanVien">
-          <ScalarProperty Name="MaNV" ColumnName="MaNV" />
-          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+          <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
           <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
-          <ScalarProperty Name="SDT" ColumnName="SDT" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
           <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
-          <ScalarProperty Name="Salt" ColumnName="Salt" />
-          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="Quyen" ColumnName="Quyen" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SanPham">
+    <EntitySetMapping Name="SanPhams">
       <EntityTypeMapping TypeName="QLShopGiayModel.SanPham">
         <MappingFragment StoreEntitySet="SanPham">
           <ScalarProperty Name="MaSP" ColumnName="MaSP" />
@@ -99,26 +99,10 @@
           <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
           <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
           <ScalarProperty Name="SoLuongTon" ColumnName="SoLuongTon" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="VaiTro">
-      <EntityTypeMapping TypeName="QLShopGiayModel.VaiTro">
-        <MappingFragment StoreEntitySet="VaiTro">
-          <ScalarProperty Name="MaVaiTro" ColumnName="MaVaiTro" />
-          <ScalarProperty Name="TenVaiTro" ColumnName="TenVaiTro" />
-          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="NhanVien_VaiTro" TypeName="QLShopGiayModel.NhanVien_VaiTro" StoreEntitySet="NhanVien_VaiTro">
-      <EndProperty Name="VaiTro">
-        <ScalarProperty Name="MaVaiTro" ColumnName="MaVaiTro" />
-      </EndProperty>
-      <EndProperty Name="NhanVien">
-        <ScalarProperty Name="MaNV" ColumnName="MaNV" />
-      </EndProperty>
-    </AssociationSetMapping>
     <FunctionImportMapping FunctionImportName="sp_ThongKeDoanhThuTheoSanPham" FunctionName="QLShopGiayModel.Store.sp_ThongKeDoanhThuTheoSanPham">
       <ResultMapping>
         <ComplexTypeMapping TypeName="QLShopGiayModel.sp_ThongKeDoanhThuTheoSanPham_Result">

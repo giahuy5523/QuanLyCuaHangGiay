@@ -17,8 +17,8 @@ namespace QuanLyShopGiay.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NhaCungCap()
         {
-            this.HoaDonNhap = new HashSet<HoaDonNhap>();
-            this.SanPham = new HashSet<SanPham>();
+            this.HoaDonNhaps = new HashSet<HoaDonNhap>();
+            this.SanPhams = new HashSet<SanPham>();
         }
     
         public string MaNCC { get; set; }
@@ -27,8 +27,8 @@ namespace QuanLyShopGiay.Models
         public string SDT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDonNhap> HoaDonNhap { get; set; }
+        public virtual ICollection<HoaDonNhap> HoaDonNhaps { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SanPham> SanPham { get; set; }
+        public virtual ICollection<SanPham> SanPhams { get; set; }
     }
 }

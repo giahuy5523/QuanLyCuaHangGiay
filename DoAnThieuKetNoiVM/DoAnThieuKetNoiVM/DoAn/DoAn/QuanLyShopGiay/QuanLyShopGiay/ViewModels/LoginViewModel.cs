@@ -54,7 +54,7 @@ namespace  QuanLyShopGiay.ViewModels
                 }
 
                 // 1. Mã hóa mật khẩu người dùng nhập sang dạng mảng byte đã băm MD5
-                var user = db.NhanVien.FirstOrDefault(x =>
+                var user = db.NhanViens.FirstOrDefault(x =>
                      x.MaNhanVien == MaNV &&
                      x.MatKhau == MatKhau);
 

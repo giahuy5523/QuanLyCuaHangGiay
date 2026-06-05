@@ -1,350 +1,435 @@
 ﻿using QuanLyShopGiay.Helpers;
 using QuanLyShopGiay.Models;
+using QuanLyShopGiay.ViewModels;
 using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Input;
 
 namespace QuanLyShopGiay.ViewModels
 {
-    // ════════════════════════════════════════════════════════════════════
-    // GioHangItem — item trong giỏ hàng, không phải HoaDonViewModel
-    // ════════════════════════════════════════════════════════════════════
-    public class GioHangItem : BaseViewModel
+    public class HoaDonBanHangViewModel : BaseViewModel
+    {
+        private QLShopGiayEntities3 db = new QLShopGiayEntities3();
+
+        // ===== HÓA ĐƠN =====
+        private string _maHD;
+        private string _maKhachHang;
+        private DateTime _ngayLap = DateTime.Now;
+        private string _trangThai = "Chưa thanh toán";
+        private decimal _tongTien;
+
+        // ===== CHI TIẾT NHẬP LIỆU =====
+        private ChiTietHoaDon _chiTietHoaDon = new ChiTietHoaDon();
+        private ObservableCollection<ChiTietHoaDonBanDisplay> _dsChiTiet;
+        private ObservableCollection<SanPham> _dsSanPham;
+        private ObservableCollection<KhachHang> _dsKhachHang;
+        private SanPham _selectedSanPham;
+
+        // ===== PROPERTIES =====
+        public string MaHD
+        {
+            get => _maHD;
+            set { _maHD = value; OnPropertyChanged(); }
+        }
+
+        public string MaKhachHang
+        {
+            get => _maKhachHang;
+            set { _maKhachHang = value; OnPropertyChanged(); }
+        }
+
+        public DateTime NgayLap
+        {
+            get => _ngayLap;
+            set { _ngayLap = value; OnPropertyChanged(); }
+        }
+
+        public string TrangThai
+        {
+            get => _trangThai;
+            set { _trangThai = value; OnPropertyChanged(); }
+        }
+
+        public decimal TongTien
+        {
+            get => _tongTien;
+            set { _tongTien = value; OnPropertyChanged(); }
+        }
+
+        public ChiTietHoaDon ChiTietHoaDon
+        {
+            get => _chiTietHoaDon;
+            set { _chiTietHoaDon = value; OnPropertyChanged(); }
+        }
+
+        public ObservableCollection<ChiTietHoaDonBanDisplay> DsChiTiet
+        {
+            get => _dsChiTiet;
+            set { _dsChiTiet = value; OnPropertyChanged(); }
+        }
+
+        public ObservableCollection<SanPham> DsSanPham
+        {
+            get => _dsSanPham;
+            set { _dsSanPham = value; OnPropertyChanged(); }
+        }
+
+        public ObservableCollection<KhachHang> DsKhachHang
+        {
+            get => _dsKhachHang;
+            set { _dsKhachHang = value; OnPropertyChanged(); }
+        }
+
+        public SanPham SelectedSanPham
+        {
+            get => _selectedSanPham;
+            set
+            {
+                if (_selectedSanPham == value) return;
+                _selectedSanPham = value;
+
+                if (value != null)
+                {
+                    ChiTietHoaDon.GiaBan = value.GiaBan ?? 0;
+                    ChiTietHoaDon.MaSP = value.MaSP;
+                }
+                OnPropertyChanged();
+            }
+        }
+
+        // ===== COMMANDS =====
+        public RelayCommand TaoHoaDonCommand { get; set; }
+        public RelayCommand ThemSanPhamCommand { get; set; }
+        public RelayCommand XoaChiTietCommand { get; set; }
+        public RelayCommand LuuHoaDonCommand { get; set; }
+        public RelayCommand ThanhToanCommand { get; set; }
+        public RelayCommand HuyCommand { get; set; }
+
+        public HoaDonBanHangViewModel()
+        {
+            LoadData();
+            InitCommands();
+        }
+
+        private void LoadData()
+        {
+            db?.Dispose();
+            db = new QLShopGiayEntities3();
+
+            DsSanPham = new ObservableCollection<SanPham>(
+                db.SanPhams.Include("LoaiSanPham").Include("NhaCungCap").ToList()
+            );
+
+            DsKhachHang = new ObservableCollection<KhachHang>(
+                db.KhachHangs.ToList()
+            );
+
+            if (DsChiTiet == null)
+            {
+                DsChiTiet = new ObservableCollection<ChiTietHoaDonBanDisplay>();
+            }
+            TongTien = 0;
+        }
+
+        private void InitCommands()
+        {
+            // ===== TẠO HÓA ĐƠN MỚI =====
+            TaoHoaDonCommand = new RelayCommand(o =>
+            {
+                try
+                {
+                    var lastHD = db.HoaDons.OrderByDescending(h => h.MaHD).FirstOrDefault();
+                    int nextNum = 1;
+                    string datePrefix = DateTime.Now.ToString("yyyyMMdd");
+                    string expectedPrefix = "HD" + datePrefix;
+
+                    if (lastHD != null && lastHD.MaHD.StartsWith(expectedPrefix))
+                    {
+                        if (int.TryParse(lastHD.MaHD.Substring(10), out int num))
+                            nextNum = num + 1;
+                    }
+
+                    MaHD = "HD" + datePrefix + nextNum.ToString("D4");
+                    NgayLap = DateTime.Now;
+                    MaKhachHang = null;
+                    TrangThai = "Chưa thanh toán";
+                    DsChiTiet.Clear();
+                    TongTien = 0;
+                    ResetChiTiet();
+
+                    MessageBox.Show($"Tạo hóa đơn {MaHD} thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi tạo mã hóa đơn: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            });
+
+            // ===== THÊM SẢN PHẨM VÀO GIỎ =====
+            ThemSanPhamCommand = new RelayCommand(o =>
+            {
+                // Ép kiểu chống lỗi null ngầm định
+                int hienTaiSoLuong = ChiTietHoaDon.SoLuong ?? 0;
+                decimal hienTaiGiaBan = ChiTietHoaDon.GiaBan ?? 0;
+
+                if (hienTaiSoLuong <= 0 || hienTaiGiaBan < 0 || string.IsNullOrEmpty(ChiTietHoaDon.MaSP))
+                {
+                    MessageBox.Show("Vui lòng chọn sản phẩm và nhập số lượng hợp lệ!", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                var sanPham = DsSanPham.FirstOrDefault(sp => sp.MaSP == ChiTietHoaDon.MaSP);
+                if (sanPham == null)
+                {
+                    MessageBox.Show("Sản phẩm không tồn tại trong hệ thống!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                // Sửa lỗi dòng 244 cũ (so sánh an toàn int? với int)
+                if ((sanPham.SoLuongTon ?? 0) < hienTaiSoLuong)
+                {
+                    MessageBox.Show($"Tồn kho không đủ!\nCòn: {sanPham.SoLuongTon ?? 0} cái\nYêu cầu: {hienTaiSoLuong} cái", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                var existing = DsChiTiet.FirstOrDefault(ct => ct.MaSP == ChiTietHoaDon.MaSP);
+
+                if (existing != null)
+                {
+                    int newQuantity = existing.SoLuong + hienTaiSoLuong;
+                    if (newQuantity > (sanPham.SoLuongTon ?? 0))
+                    {
+                        MessageBox.Show($"Tồn kho không đủ cho tổng số lượng này!\nTồn hiện tại: {sanPham.SoLuongTon ?? 0}, Giỏ hàng đã có: {existing.SoLuong}, Thêm: {hienTaiSoLuong}", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    existing.SoLuong = newQuantity;
+                    existing.ThanhTien = existing.SoLuong * existing.GiaBan;
+                }
+                else
+                {
+                    // Sửa lỗi các dòng 262, 263, 264 cũ (Sử dụng toán tử ?? để ép kiểu sạch từ Nullable về gốc)
+                    DsChiTiet.Add(new ChiTietHoaDonBanDisplay
+                    {
+                        MaSP = sanPham.MaSP,
+                        TenSP = sanPham.TenSP,
+                        Size = sanPham.Size ?? "",
+                        MauSac = sanPham.MauSac ?? "",
+                        SoLuong = hienTaiSoLuong,
+                        GiaBan = hienTaiGiaBan,
+                        ThanhTien = (decimal)(hienTaiSoLuong * hienTaiGiaBan)
+                    });
+                }
+
+                UpdateTongTien();
+                ResetChiTiet();
+            });
+
+            // ===== XÓA CHI TIẾT KHỎI GIỎ =====
+            XoaChiTietCommand = new RelayCommand(o =>
+            {
+                if (o is ChiTietHoaDonBanDisplay chiTiet)
+                {
+                    var result = MessageBox.Show($"Xóa sản phẩm {chiTiet.TenSP} khỏi danh sách?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        DsChiTiet.Remove(chiTiet);
+                        UpdateTongTien();
+                    }
+                }
+            });
+
+            // ===== LƯU HÓA ĐƠN XUỐNG DB =====
+            LuuHoaDonCommand = new RelayCommand(o =>
+            {
+                if (string.IsNullOrWhiteSpace(MaHD))
+                {
+                    MessageBox.Show("Vui lòng nhấn 'Tạo hóa đơn' trước khi lưu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(MaKhachHang))
+                {
+                    MessageBox.Show("Vui lòng chọn khách hàng!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                if (DsChiTiet.Count == 0)
+                {
+                    MessageBox.Show("Hóa đơn phải có ít nhất 1 sản phẩm!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                try
+                {
+                    var existingHD = db.HoaDons.FirstOrDefault(h => h.MaHD == MaHD);
+                    if (existingHD != null)
+                    {
+                        MessageBox.Show("Hóa đơn này đã được lưu trước đó!", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    var hoaDon = new HoaDon
+                    {
+                        MaHD = MaHD,
+                        NgayLap = NgayLap,
+                        MaKhachHang = MaKhachHang,
+                        MaNhanVien = UserSession.MaNV,
+                        TongTien = TongTien,
+                        TrangThai = TrangThai
+                    };
+
+                    db.HoaDons.Add(hoaDon);
+                    db.SaveChanges();
+
+                    foreach (var ct in DsChiTiet)
+                    {
+                        var chiTiet = new ChiTietHoaDon
+                        {
+                            MaHD = MaHD,
+                            MaSP = ct.MaSP,
+                            SoLuong = ct.SoLuong,
+                            GiaBan = ct.GiaBan
+                        };
+                        db.ChiTietHoaDons.Add(chiTiet);
+                    }
+
+                    db.SaveChanges();
+                    MessageBox.Show($"Lưu hóa đơn {MaHD} thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    LoadData();
+                    ResetForm();
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+                {
+                    var errorMessage = string.Join("\n", ex.EntityValidationErrors.SelectMany(e => e.ValidationErrors.Select(v => v.ErrorMessage)));
+                    MessageBox.Show($"Lỗi dữ liệu: {errorMessage}", "Lỗi dữ liệu hệ thống", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi lưu hóa đơn: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            });
+
+            // ===== THANH TOÁN HÓA ĐƠN =====
+            ThanhToanCommand = new RelayCommand(o =>
+            {
+                if (string.IsNullOrWhiteSpace(MaHD))
+                {
+                    MessageBox.Show("Chưa có hóa đơn hợp lệ để thanh toán!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                if (TrangThai == "Đã thanh toán")
+                {
+                    MessageBox.Show("Hóa đơn này đã được thanh toán rồi!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+
+                var result = MessageBox.Show($"Thanh toán hóa đơn {MaHD}?\nTổng số tiền: {TongTien:#,##0} đ", "Xác nhận thanh toán", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        var hoaDon = db.HoaDons.FirstOrDefault(h => h.MaHD == MaHD);
+                        if (hoaDon == null)
+                        {
+                            MessageBox.Show("Hóa đơn này chưa được lưu! Vui lòng nhấn nút 'Lưu hóa đơn' trước khi thanh toán.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            return;
+                        }
+
+                        hoaDon.TrangThai = "Đã thanh toán";
+                        db.SaveChanges();
+
+                        TrangThai = "Đã thanh toán";
+                        MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Lỗi xử lý thanh toán: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            });
+
+            // ===== HỦY HÓA ĐƠN =====
+            HuyCommand = new RelayCommand(o =>
+            {
+                if (string.IsNullOrWhiteSpace(MaHD))
+                {
+                    MessageBox.Show("Chưa chọn hóa đơn để hủy!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                var result = MessageBox.Show($"Bạn chắc chắn muốn hủy hóa đơn {MaHD}?", "Xác nhận hủy", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        var hoaDon = db.HoaDons.FirstOrDefault(h => h.MaHD == MaHD);
+                        if (hoaDon != null)
+                        {
+                            hoaDon.TrangThai = "Đã hủy";
+                            db.SaveChanges();
+                            LoadData();
+                            MessageBox.Show("Hóa đơn đã được hủy trên hệ thống!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Đã hủy bỏ hóa đơn nháp thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        ResetForm();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Lỗi khi hủy hóa đơn: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            });
+        }
+
+        private void UpdateTongTien()
+        {
+            TongTien = DsChiTiet != null && DsChiTiet.Count > 0 ? DsChiTiet.Sum(ct => ct.ThanhTien) : 0;
+        }
+
+        private void ResetChiTiet()
+        {
+            ChiTietHoaDon = new ChiTietHoaDon();
+            SelectedSanPham = null;
+        }
+
+        private void ResetForm()
+        {
+            MaHD = string.Empty;
+            MaKhachHang = null;
+            NgayLap = DateTime.Now;
+            TrangThai = "Chưa thanh toán";
+            DsChiTiet?.Clear();
+            TongTien = 0;
+            ResetChiTiet();
+        }
+    }
+
+    public class ChiTietHoaDonBanDisplay : BaseViewModel
     {
         private int _soLuong;
+        private decimal _thanhTien;
 
-        public int MaBienThe { get; set; }
         public string MaSP { get; set; }
         public string TenSP { get; set; }
-        public string TenBienThe { get; set; }
-        public decimal DonGia { get; set; }
+        public string Size { get; set; }
+        public string MauSac { get; set; }
+        public decimal GiaBan { get; set; }
 
         public int SoLuong
         {
             get => _soLuong;
-            set { _soLuong = value; OnPropertyChanged(); OnPropertyChanged(nameof(ThanhTien)); }
+            set { _soLuong = value; OnPropertyChanged(); }
         }
 
-        public decimal ThanhTien => DonGia * SoLuong;
-    }
-
-    // ════════════════════════════════════════════════════════════════════
-    // HoaDonViewModel — ViewModel chính
-    // ════════════════════════════════════════════════════════════════════
-    public class HoaDonViewModel : BaseViewModel
-    {
-        private readonly QLShopGiayEntities _db = new QLShopGiayEntities();
-        private decimal _tongThanhToan;
-        private KHACH_HANG _khachHangDangChon;
-        private PHUONG_THUC_TT _phuongThucDangChon;
-
-        // ─── PROPERTIES ───────────────────────────────────────────────
-        public ObservableCollection<SAN_PHAM> ListSanPham { get; set; }
-            = new ObservableCollection<SAN_PHAM>();
-
-        public ObservableCollection<GioHangItem> GioHang { get; set; }
-            = new ObservableCollection<GioHangItem>();
-
-        public ObservableCollection<KHACH_HANG> ListKhachHang { get; set; }
-            = new ObservableCollection<KHACH_HANG>();
-
-        public ObservableCollection<PHUONG_THUC_TT> ListPhuongThuc { get; set; }
-            = new ObservableCollection<PHUONG_THUC_TT>();
-
-        public ObservableCollection<LOAI_HANG> ListLoaiHang { get; set; }
-            = new ObservableCollection<LOAI_HANG>();
-
-        public decimal TongThanhToan
+        public decimal ThanhTien
         {
-            get => _tongThanhToan;
-            set { _tongThanhToan = value; OnPropertyChanged(); }
-        }
-
-        public KHACH_HANG KhachHangDangChon
-        {
-            get => _khachHangDangChon;
-            set { _khachHangDangChon = value; OnPropertyChanged(); }
-        }
-
-        public PHUONG_THUC_TT PhuongThucDangChon
-        {
-            get => _phuongThucDangChon;
-            set { _phuongThucDangChon = value; OnPropertyChanged(); }
-        }
-
-        // ─── COMMANDS ──────────────────────────────────────────────────
-        public ICommand ThemVaoGioCommand { get; set; }
-        public ICommand ThanhToanCommand { get; set; }
-        public ICommand XoaItemCommand { get; set; }
-        public ICommand XoaTatCaCommand { get; set; }
-
-        // ────────────────────────────────────────────────────────────────
-        public HoaDonViewModel()
-        {
-            // Load dữ liệu ban đầu
-            LoadSanPham();
-            LoadKhachHang();
-            LoadPhuongThuc();
-            LoadLoaiHang();
-
-            // Khởi tạo commands — sử dụng explicit constructor
-            ThemVaoGioCommand = new RelayCommand(
-                execute: p => ThemVaoGio((SAN_PHAM)p),
-                canExecute: p => p is SAN_PHAM);
-
-            ThanhToanCommand = new RelayCommand(
-                execute: p => ThanhToan(),
-                canExecute: p => GioHang.Count > 0);
-
-            XoaItemCommand = new RelayCommand(
-                execute: p => XoaItem((GioHangItem)p),
-                canExecute: p => p is GioHangItem);
-
-            XoaTatCaCommand = new RelayCommand(
-                execute: p => XoaTatCa(),
-                canExecute: p => GioHang.Count > 0);
-
-            // Subscribe thay đổi giỏ hàng
-            GioHang.CollectionChanged += (s, e) => TinhTongTien();
-        }
-
-        // ════════════════════════════════════════════════════════════════
-        // LOAD DỮ LIỆU
-        // ════════════════════════════════════════════════════════════════
-
-        private void LoadSanPham(string keyword = "", string maLoai = "")
-        {
-            ListSanPham.Clear();
-            var ds = _db.SAN_PHAM
-                .Include("ANH_SP")
-                .Where(sp => sp.IsDeleted == false
-                          && sp.TenSP.Contains(keyword)
-                          && (string.IsNullOrEmpty(maLoai) || sp.MaLoai == maLoai))
-                .OrderBy(sp => sp.TenSP)
-                .ToList();
-
-            foreach (var sp in ds)
-                ListSanPham.Add(sp);
-        }
-
-        private void LoadKhachHang()
-        {
-            ListKhachHang.Clear();
-            var ds = _db.KHACH_HANG.OrderBy(kh => kh.TenKH).ToList();
-            foreach (var kh in ds)
-                ListKhachHang.Add(kh);
-        }
-
-        private void LoadPhuongThuc()
-        {
-            ListPhuongThuc.Clear();
-            var ds = _db.PHUONG_THUC_TT.OrderBy(pt => pt.TenPT).ToList();
-            foreach (var pt in ds)
-                ListPhuongThuc.Add(pt);
-        }
-
-        private void LoadLoaiHang()
-        {
-            ListLoaiHang.Clear();
-            var loai = new LOAI_HANG { MaLoai = "", TenLoai = "Tất cả" };
-            ListLoaiHang.Add(loai);
-
-            var ds = _db.LOAI_HANG.OrderBy(lh => lh.TenLoai).ToList();
-            foreach (var lh in ds)
-                ListLoaiHang.Add(lh);
-        }
-
-        // ════════════════════════════════════════════════════════════════
-        // THÊM VÀO GIỎ
-        // ════════════════════════════════════════════════════════════════
-
-        private void ThemVaoGio(SAN_PHAM sp)
-        {
-            if (sp == null) return;
-
-            try
-            {
-                // Lấy biến thể đầu tiên còn hàng
-                var bienThe = _db.BIEN_THE_SP
-                    .Include("SIZE_GIAY")
-                    .Include("MAU_SAC")
-                    .Include("TON_KHO")
-                    .Where(bt => bt.MaSP == sp.MaSP
-                              && bt.IsDeleted == false
-                              && bt.TON_KHO.Any(tk => tk.SoLuongTon > 0))
-                    .FirstOrDefault();
-
-                if (bienThe == null)
-                {
-                    MessageBox.Show("Sản phẩm này đã hết hàng!",
-                        "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
-                string tenBienThe = $"{bienThe.SIZE_GIAY.TenSize} - {bienThe.MAU_SAC.TenMau}";
-
-                // Kiểm tra đã có trong giỏ chưa
-                var existItem = GioHang.FirstOrDefault(x => x.MaBienThe == bienThe.MaBienThe);
-                if (existItem != null)
-                {
-                    existItem.SoLuong++;
-                }
-                else
-                {
-                    GioHang.Add(new GioHangItem
-                    {
-                        MaBienThe = bienThe.MaBienThe,
-                        MaSP = sp.MaSP,
-                        TenSP = sp.TenSP,
-                        TenBienThe = tenBienThe,
-                        DonGia = sp.GiaBan ?? 0,
-                        SoLuong = 1
-                    });
-                }
-
-                TinhTongTien();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi thêm vào giỏ: " + ex.Message,
-                    "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        // ════════════════════════════════════════════════════════════════
-        // XOÁ ITEM
-        // ════════════════════════════════════════════════════════════════
-
-        private void XoaItem(GioHangItem item)
-        {
-            if (item == null) return;
-            GioHang.Remove(item);
-            TinhTongTien();
-        }
-
-        private void XoaTatCa()
-        {
-            GioHang.Clear();
-            TinhTongTien();
-        }
-
-        // ════════════════════════════════════════════════════════════════
-        // TÍNH TỔNG TIỀN
-        // ════════════════════════════════════════════════════════════════
-
-        private void TinhTongTien()
-        {
-            TongThanhToan = GioHang.Sum(item => item.ThanhTien);
-        }
-
-        // ════════════════════════════════════════════════════════════════
-        // THANH TOÁN
-        // ════════════════════════════════════════════════════════════════
-
-        private void ThanhToan()
-        {
-            if (GioHang.Count == 0)
-            {
-                MessageBox.Show("Giỏ hàng trống!",
-                    "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            if (KhachHangDangChon == null)
-            {
-                MessageBox.Show("Vui lòng chọn khách hàng!",
-                    "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            if (PhuongThucDangChon == null)
-            {
-                MessageBox.Show("Vui lòng chọn phương thức thanh toán!",
-                    "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(SessionManager.MaTK))
-            {
-                MessageBox.Show("Chưa đăng nhập!",
-                    "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            // Kiểm tra session
-            try
-            {
-                using (var transaction = _db.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        // Tạo hóa đơn
-                        string maHD = "HD" + DateTime.Now.ToString("yyMMddHHmmss");
-                        var hoaDon = new HOA_DON
-                        {
-                            MaHD = maHD,
-                            MaTK = SessionManager.MaTK,
-                            MaKH = KhachHangDangChon.MaKH,
-                            MaKho = "K01",
-                            MaPT = PhuongThucDangChon.MaPT,
-                            TrangThai = "Đã thanh toán"
-                        };
-                        _db.HOA_DON.Add(hoaDon);
-                        _db.SaveChanges();
-
-                        // Thêm chi tiết hóa đơn
-                        foreach (var item in GioHang)
-                        {
-                            _db.CT_HOA_DON.Add(new CT_HOA_DON
-                            {
-                                MaHD = maHD,
-                                MaBienThe = item.MaBienThe,
-                                SoLuong = item.SoLuong,
-                                GiaBan = item.DonGia
-                            });
-                        }
-                        _db.SaveChanges();
-
-                        // Trigger TRG_UpdateKho_Xuat sẽ tự trừ TON_KHO
-                        transaction.Commit();
-
-                        MessageBox.Show(
-                            $"Thanh toán thành công!\n\nMã hóa đơn: {maHD}\nTổng tiền: {TongThanhToan:N0} ₫",
-                            "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                        // Reset form
-                        GioHang.Clear();
-                        TongThanhToan = 0;
-                        KhachHangDangChon = null;
-                        PhuongThucDangChon = null;
-                        LoadSanPham();
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        MessageBox.Show("Lỗi thanh toán: " + ex.Message,
-                            "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message,
-                    "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        // ════════════════════════════════════════════════════════════════
-        // LỌC SẢN PHẨM
-        // ════════════════════════════════════════════════════════════════
-
-        public void LocSanPham(string keyword, string maLoai)
-        {
-            LoadSanPham(keyword, maLoai);
+            get => _thanhTien;
+            set { _thanhTien = value; OnPropertyChanged(); }
         }
     }
 }

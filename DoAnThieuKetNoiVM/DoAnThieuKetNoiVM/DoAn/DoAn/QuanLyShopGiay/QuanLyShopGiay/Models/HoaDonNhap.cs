@@ -17,17 +17,17 @@ namespace QuanLyShopGiay.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HoaDonNhap()
         {
-            this.ChiTietHoaDonNhap = new HashSet<ChiTietHoaDonNhap>();
+            this.ChiTietHoaDonNhaps = new HashSet<ChiTietHoaDonNhap>();
         }
     
         public string MaHDN { get; set; }
         public Nullable<System.DateTime> NgayNhap { get; set; }
         public string MaNCC { get; set; }
-        public string MaNV { get; set; }
+        public string MaNhanVien { get; set; }
         public Nullable<decimal> TongTien { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHoaDonNhap> ChiTietHoaDonNhap { get; set; }
+        public virtual ICollection<ChiTietHoaDonNhap> ChiTietHoaDonNhaps { get; set; }
         public virtual NhaCungCap NhaCungCap { get; set; }
         public virtual NhanVien NhanVien { get; set; }
     }

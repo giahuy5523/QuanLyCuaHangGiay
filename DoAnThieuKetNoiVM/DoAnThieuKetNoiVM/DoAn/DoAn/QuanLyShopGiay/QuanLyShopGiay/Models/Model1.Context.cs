@@ -27,16 +27,15 @@ namespace QuanLyShopGiay.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ChiTietHoaDon> ChiTietHoaDon { get; set; }
-        public virtual DbSet<ChiTietHoaDonNhap> ChiTietHoaDonNhap { get; set; }
-        public virtual DbSet<HoaDon> HoaDon { get; set; }
-        public virtual DbSet<HoaDonNhap> HoaDonNhap { get; set; }
-        public virtual DbSet<KhachHang> KhachHang { get; set; }
-        public virtual DbSet<LoaiSanPham> LoaiSanPham { get; set; }
-        public virtual DbSet<NhaCungCap> NhaCungCap { get; set; }
-        public virtual DbSet<NhanVien> NhanVien { get; set; }
-        public virtual DbSet<SanPham> SanPham { get; set; }
-        public virtual DbSet<VaiTro> VaiTro { get; set; }
+        public virtual DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
+        public virtual DbSet<ChiTietHoaDonNhap> ChiTietHoaDonNhaps { get; set; }
+        public virtual DbSet<HoaDon> HoaDons { get; set; }
+        public virtual DbSet<HoaDonNhap> HoaDonNhaps { get; set; }
+        public virtual DbSet<KhachHang> KhachHangs { get; set; }
+        public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
+        public virtual DbSet<NhaCungCap> NhaCungCaps { get; set; }
+        public virtual DbSet<NhanVien> NhanViens { get; set; }
+        public virtual DbSet<SanPham> SanPhams { get; set; }
     
         public virtual ObjectResult<sp_ThongKeDoanhThuTheoSanPham_Result> sp_ThongKeDoanhThuTheoSanPham(Nullable<System.DateTime> tuNgay, Nullable<System.DateTime> denNgay)
         {
