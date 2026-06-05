@@ -1,6 +1,7 @@
 USE master;
 GO
 
+-- 1. XÓA CƠ SỞ DỮ LIỆU CŨ NẾU ĐÃ TỒN TẠI
 IF EXISTS (SELECT * FROM sys.databases WHERE name = N'QLShopGiay')
 BEGIN
     ALTER DATABASE QLShopGiay SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
@@ -8,10 +9,15 @@ BEGIN
 END
 GO
 
+-- 2. KHỞI TẠO CƠ SỞ DỮ LIỆU MỚI
 CREATE DATABASE QLShopGiay;
 GO
 USE QLShopGiay;
 GO
+
+-- =========================================================
+-- 3. KHỞI TẠO CÁC BẢNG DỮ LIỆU (TABLES)
+-- =========================================================
 
 CREATE TABLE LoaiSanPham (
     MaLoai VARCHAR(10) PRIMARY KEY,
@@ -110,6 +116,11 @@ CREATE TABLE ChiTietHoaDon (
 );
 GO
 
+-- =========================================================
+-- 4. KHỞI TẠO CÁC TRIGGER TỰ ĐỘNG TÍNH TOÁN VÀ QUẢN LÝ KHO
+-- =========================================================
+
+-- Trigger cộng kho khi nhập hàng
 CREATE TRIGGER TRG_UpdateKho_KhiNhapHang ON ChiTietHoaDonNhap AFTER INSERT AS
 BEGIN
     SET NOCOUNT ON;
@@ -125,10 +136,12 @@ BEGIN
 END;
 GO
 
+-- Trigger trừ kho khi thêm/sửa/xóa chi tiết hóa đơn bán hàng
 CREATE TRIGGER TRG_ChiTietHoaDon_AllActions ON ChiTietHoaDon AFTER INSERT, UPDATE, DELETE AS
 BEGIN
     SET NOCOUNT ON;
 
+    -- Hoàn lại kho số lượng cũ khi sửa hoặc xóa sản phẩm trong giỏ
     IF EXISTS (SELECT 1 FROM deleted)
     BEGIN
         UPDATE sp
@@ -139,8 +152,10 @@ BEGIN
         WHERE hd.TrangThai <> N'Đã hủy';
     END
 
+    -- Trừ kho theo số lượng mới khi thêm mới hoặc sửa số lượng tăng lên
     IF EXISTS (SELECT 1 FROM inserted)
     BEGIN
+        -- Bẫy lỗi nếu kho không đủ hàng
         IF EXISTS (
             SELECT 1 FROM inserted i
             JOIN SanPham sp ON sp.MaSP = i.MaSP
@@ -148,7 +163,7 @@ BEGIN
             WHERE sp.SoLuongTon < i.SoLuong AND hd.TrangThai <> N'Đã hủy'
         )
         BEGIN
-            RAISERROR(N'Lỗi: Số lượng hàng tồn kho không đủ!', 16, 1);
+            RAISERROR(N'Lỗi: Số lượng hàng tồn kho không đủ để thực hiện giao dịch!', 16, 1);
             ROLLBACK TRANSACTION;
             RETURN;
         END
@@ -161,12 +176,39 @@ BEGIN
         WHERE hd.TrangThai <> N'Đã hủy';
     END
 
+    -- Cập nhật lại tổng tiền hóa đơn bán
     UPDATE hd
     SET hd.TongTien = (SELECT COALESCE(SUM(SoLuong * GiaBan), 0) FROM ChiTietHoaDon WHERE MaHD = hd.MaHD)
     FROM HoaDon hd
     WHERE hd.MaHD IN (SELECT MaHD FROM inserted UNION SELECT MaHD FROM deleted);
 END;
 GO
+
+-- Trigger tự động hoàn kho khi cập nhật trạng thái hóa đơn thành 'Đã hủy' từ Code C#
+CREATE TRIGGER TRG_HoaDon_UpdateTrangThai ON HoaDon AFTER UPDATE AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF EXISTS (
+        SELECT 1 FROM inserted i 
+        JOIN deleted d ON i.MaHD = d.MaHD 
+        WHERE i.TrangThai = N'Đã hủy' AND d.TrangThai <> N'Đã hủy'
+    )
+    BEGIN
+        UPDATE sp
+        SET sp.SoLuongTon = sp.SoLuongTon + ct.SoLuong
+        FROM SanPham sp
+        JOIN ChiTietHoaDon ct ON sp.MaSP = ct.MaSP
+        JOIN inserted i ON ct.MaHD = i.MaHD
+        JOIN deleted d ON i.MaHD = d.MaHD
+        WHERE i.TrangThai = N'Đã hủy' AND d.TrangThai <> N'Đã hủy';
+    END
+END;
+GO
+
+-- =========================================================
+-- 5. KHỞI TẠO VIEW VÀ STORED PROCEDURE
+-- =========================================================
 
 CREATE VIEW v_DoanhThuTheoThang AS
 SELECT 
@@ -207,6 +249,10 @@ BEGIN
 END;
 GO
 
+-- =========================================================
+-- 6. CHÈN DỮ LIỆU MẪU (SEED DATA) - ĐÃ FIX CHUỖI NHÁY ĐƠN TRÁNH LỖI MSG 105
+-- =========================================================
+
 INSERT INTO LoaiSanPham (MaLoai, TenLoai) VALUES 
 ('LH01', N'Sneaker Thể Thao'), 
 ('LH02', N'Giày Tây Công Sở'), 
@@ -233,6 +279,7 @@ INSERT INTO KhachHang (MaKhachHang, TenKhachHang, DienThoai, Diem) VALUES
 ('KH04', N'Phạm Hồng Phúc', '0911223344', 85),
 ('KH05', N'Vũ Hoàng Long', '0933445566', 200);
 
+-- Lưu ý: Tên thương hiệu Biti''s đã sử dụng cặp nháy đơn chuẩn của T-SQL
 INSERT INTO SanPham (MaSP, TenSP, MaLoai, MaNCC, Size, MauSac, GiaNhap, GiaBan, SoLuongTon, GhiChu) VALUES 
 ('SP01', N'Nike Air Force 1 All White', 'LH01', 'NCC01', '40', N'Trắng', 1600000, 2800000, 0, N'Hàng bán chạy'),
 ('SP02', N'Nike Air Force 1 All White', 'LH01', 'NCC01', '41', N'Trắng', 1600000, 2800000, 0, NULL),
@@ -245,6 +292,7 @@ INSERT INTO SanPham (MaSP, TenSP, MaLoai, MaNCC, Size, MauSac, GiaNhap, GiaBan, 
 ('SP09', N'Biti''s Hunter X Dune', 'LH01', 'NCC04', '40', N'Xanh Rêu', 650000, 1100000, 0, NULL),
 ('SP10', N'Giày Tây Oxford Premium', 'LH02', 'NCC04', '41', N'Nâu Đất', 900000, 1500000, 0, NULL);
 
+-- Thực hiện Nhập hàng (Số lượng tồn kho tự tăng lên thông qua trigger)
 INSERT INTO HoaDonNhap (MaHDN, NgayNhap, MaNCC, MaNhanVien) VALUES ('HDN01', '2026-05-01 09:00:00', 'NCC01', 'NV04');
 INSERT INTO ChiTietHoaDonNhap (MaHDN, MaSP, SoLuong, GiaNhap) VALUES 
 ('HDN01', 'SP01', 50, 1600000),
@@ -263,6 +311,7 @@ INSERT INTO ChiTietHoaDonNhap (MaHDN, MaSP, SoLuong, GiaNhap) VALUES
 ('HDN03', 'SP09', 60, 650000),
 ('HDN03', 'SP10', 30, 900000);
 
+-- Thực hiện bán hàng (Kho tự trừ đi lượng tương ứng qua trigger)
 INSERT INTO HoaDon (MaHD, NgayLap, MaKhachHang, MaNhanVien, TrangThai) VALUES ('HD01', '2026-05-12 11:00:00', 'KH01', 'NV02', N'Đã thanh toán');
 INSERT INTO ChiTietHoaDon (MaHD, MaSP, SoLuong, GiaBan) VALUES 
 ('HD01', 'SP01', 2, 2800000),
@@ -279,11 +328,15 @@ INSERT INTO ChiTietHoaDon (MaHD, MaSP, SoLuong, GiaBan) VALUES
 ('HD03', 'SP02', 1, 2800000),
 ('HD03', 'SP09', 4, 1100000);
 
-INSERT INTO HoaDon (MaHD, NgayLap, MaKhachHang, MaNhanVien, TrangThai) VALUES ('HD04', '2026-05-20 15:00:00', 'KH03', 'NV02', N'Đã hủy');
-INSERT INTO ChiTietHoaDon (MaHD, MaSP, SoLuong, GiaBan) VALUES 
-('HD04', 'SP03', 5, 2850000);
+-- Thử nghiệm đơn hàng nháp sau đó hủy (Đơn HD04 được tạo -> kho trừ 5 -> sau đó cập nhật Hủy -> kho được hoàn lại 5 cái)
+INSERT INTO HoaDon (MaHD, NgayLap, MaKhachHang, MaNhanVien, TrangThai) VALUES ('HD04', '2026-05-20 15:00:00', 'KH03', 'NV02', N'Chưa thanh toán');
+INSERT INTO ChiTietHoaDon (MaHD, MaSP, SoLuong, GiaBan) VALUES ('HD04', 'SP03', 5, 2850000);
+UPDATE HoaDon SET TrangThai = N'Đã hủy' WHERE MaHD = 'HD04';
 GO
 
+-- =========================================================
+-- 7. TRUY VẤN KIỂM TRA DỮ LIỆU ĐẦU RA 
+-- =========================================================
 SELECT * FROM SanPham;
 SELECT * FROM KhachHang;
 SELECT * FROM NhanVien;
