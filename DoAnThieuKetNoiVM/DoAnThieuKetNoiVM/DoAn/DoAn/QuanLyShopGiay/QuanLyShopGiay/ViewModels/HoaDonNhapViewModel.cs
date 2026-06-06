@@ -1,4 +1,6 @@
 ﻿using QuanLyShopGiay.Models;
+using QuanLyShopGiay.Helpers;
+using QuanLyShopGiay.Command;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;

@@ -45,34 +45,27 @@ namespace  QuanLyShopGiay.ViewModels
         {
             LoginCommand = new RelayCommand(o =>
             {
-                // Kiểm tra input
-                if (string.IsNullOrWhiteSpace(TenDangNhap) ||string.IsNullOrWhiteSpace(MatKhau))
+                if (string.IsNullOrWhiteSpace(TenDangNhap) || string.IsNullOrWhiteSpace(MatKhau))
                 {
                     MessageBox.Show("Tên đăng nhập và mật khẩu không được để trống!", "Thông báo");
                     return;
                 }
 
-                // 1. Mã hóa mật khẩu người dùng nhập sang dạng mảng byte đã băm MD5
                 var user = db.NhanViens.FirstOrDefault(x =>
                           x.TenDangNhap == TenDangNhap &&
                           x.MatKhau == MatKhau);
 
                 if (user != null)
                 {
-                    // Lưu session
                     UserSession.MaNV = user.MaNhanVien;
                     UserSession.TenNV = user.TenNhanVien;
                     UserSession.Quyen = user.Quyen;
 
-                    // Mở MainWindow
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
-
-                    // Đóng Login Window
-                    Application.Current.Windows
-                        .OfType<Window>()
-                        .SingleOrDefault(x => x is Login)
-                        ?.Close();
+                    var loginWindow = Application.Current.Windows.OfType<Login>().FirstOrDefault();
+                    if (loginWindow != null)
+                    {
+                        loginWindow.DialogResult = true;
+                    }
                 }
                 else
                 {

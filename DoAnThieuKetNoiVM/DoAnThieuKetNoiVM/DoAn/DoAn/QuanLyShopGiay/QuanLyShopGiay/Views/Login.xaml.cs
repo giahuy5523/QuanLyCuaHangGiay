@@ -8,8 +8,6 @@ namespace QuanLyShopGiay.Views
         {
             InitializeComponent();
 
-            // Focus vào textbox tên đăng nhập khi load
-            this.Loaded += (s, e) => TxtTenDangNhap.Focus();
         }
     }
 }

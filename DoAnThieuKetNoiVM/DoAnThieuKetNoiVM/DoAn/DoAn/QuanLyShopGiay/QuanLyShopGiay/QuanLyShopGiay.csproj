@@ -130,10 +130,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\NhanVienHeaderViewModel.cs" />
-    <Compile Include="ViewModels\NhanVienViewModel.cs" />
-    <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\SanPhamViewModel.cs" />
-    <Compile Include="ViewModels\TaiKhoanViewModel.cs" />
     <Compile Include="ViewModels\ucTimKiemViewModel.cs" />
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
