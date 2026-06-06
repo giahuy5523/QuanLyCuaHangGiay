@@ -27,7 +27,7 @@ namespace QuanLyShopGiay.ViewModels
 
         public ICommand NavDashboardCommand { get; }
         public ICommand NavSanPhamCommand { get; }
-        public ICommand NavKhachHangCommand { get; } // FIX: Thêm command còn thiếu
+        public ICommand NavKhachHangCommand { get; }
         public ICommand NavHoaDonBanHangCommand { get; }
         public ICommand NavHoaDonNhapHangCommand { get; }
         public ICommand NavNhanVienCommand { get; }
