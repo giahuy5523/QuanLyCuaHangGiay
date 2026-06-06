@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|c:\\users\\lenovo\\documents\\github\\quanlycuahanggiay\\doanthieuketnoivm\\doanthieuketnoivm\\doan\\doan\\quanlyshopgiay\\quanlyshopgiay\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\sanphamviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\sanphamviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\pages\\khachhangpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -325,7 +325,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -337,18 +337,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\MainWindow.xaml",
               "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml",
               "RelativeToolTip": "QuanLyShopGiay\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-23T10:18:19.673Z"
+              "WhenOpened": "2026-04-23T10:18:19.673Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
@@ -361,7 +362,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\MainWindow.xaml.cs",
@@ -373,7 +374,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "SanPhamViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\SanPhamViewModel.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\SanPhamViewModel.cs",
@@ -396,7 +397,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "helper_pass.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\helper_pass.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Helpers\\helper_pass.cs",
@@ -473,7 +474,8 @@
               "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\App.xaml",
               "RelativeToolTip": "QuanLyShopGiay\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-06-02T22:40:58.243Z"
+              "WhenOpened": "2026-06-02T22:40:58.243Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
