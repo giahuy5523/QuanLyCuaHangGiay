@@ -1,188 +1,188 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\",
+  "WorkspaceRootPath": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|c:\\users\\lenovo\\documents\\github\\quanlycuahanggiay\\doanthieuketnoivm\\doanthieuketnoivm\\doan\\doan\\quanlyshopgiay\\quanlyshopgiay\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\helpers\\helper_pass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\helpers\\helper_pass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\sanphamviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\sanphamviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\pages\\khachhangpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|d:\\new folder (2)\\doanthieuketnoivm\\doanthieuketnoivm\\doan\\doan\\quanlyshopgiay\\quanlyshopgiay\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\helpers\\helper_pass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\helpers\\helper_pass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\sanphamviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\sanphamviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\pages\\khachhangpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\views\\pages\\khachhangpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|QuanLyShopGiay||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\uctimkiemviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\uctimkiemviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\uctimkiemviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\hoadonnhapviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\hoadonnhapviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\hoadonnhapviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\hoadonbanhangviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\hoadonbanhangviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\hoadonbanhangviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\Views\\Login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\helpers\\initializepasswordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\helpers\\initializepasswordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\helpers\\initializepasswordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\helpers\\inversebooltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\helpers\\inversebooltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\helpers\\inversebooltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\models\\model1.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\models\\model1.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\models\\model1.context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\khachhangviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\khachhangviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\khachhangviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\pages\\nhanvienpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\pages\\nhanvienpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\views\\pages\\nhanvienpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\views\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\pages\\donnhaphangpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\pages\\donnhaphangpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\views\\pages\\donnhaphangpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\dashboardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\dashboardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\dashboardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\models\\nhanvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\models\\nhanvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\models\\nhanvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\models\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\models\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\models\\khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\.NET\\06_NguyenHoangGiaHuy_12\\06_NguyenHoangGiaHuy\\06_NguyenHoangGiaHuy_Tuan12\\06_NguyenHoangGiaHuy_Tuan12\\ViewModels\\Login_ViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\obj\\Release\\Views\\Pages\\DonNhapHangPage.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\obj\\Release\\Views\\Pages\\DonNhapHangPage.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QuanLyShopGiay\\obj\\Release\\Views\\Pages\\DonNhapHangPage.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\login.xaml||{CD07C22A-D51F-4064-AFDB-10CD01D91020}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\login.xaml||{CD07C22A-D51F-4064-AFDB-10CD01D91020}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\views\\login.xaml||{CD07C22A-D51F-4064-AFDB-10CD01D91020}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\models\\chitiethoadonnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\models\\chitiethoadonnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\models\\chitiethoadonnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\pages\\donnhaphangpage.xaml||{CD07C22A-D51F-4064-AFDB-10CD01D91020}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\pages\\donnhaphangpage.xaml||{CD07C22A-D51F-4064-AFDB-10CD01D91020}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\views\\pages\\donnhaphangpage.xaml||{CD07C22A-D51F-4064-AFDB-10CD01D91020}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\pages\\khachhangpage.xaml||{CD07C22A-D51F-4064-AFDB-10CD01D91020}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\pages\\khachhangpage.xaml||{CD07C22A-D51F-4064-AFDB-10CD01D91020}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\views\\pages\\khachhangpage.xaml||{CD07C22A-D51F-4064-AFDB-10CD01D91020}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\PasswordHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\PasswordHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\Helpers\\PasswordHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\helpers\\stringtovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\helpers\\stringtovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\helpers\\stringtovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\HI\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\khohangviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\viewmodels\\khohangviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\viewmodels\\khohangviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DashboardPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DashboardPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\Views\\Pages\\DashboardPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\pages\\khachhangpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\views\\pages\\khachhangpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\views\\pages\\khachhangpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\command\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\quanlyshopgiay\\command\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:quanlyshopgiay\\command\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\AppData\\Local\\Temp\\.vsdbgsrc\\ca3d2d2b89ce74d54b8d6000416fca346db7ede2977a671244092f92c8f8deb6\\FrameworkTemplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\SessionManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\SessionManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\Helpers\\SessionManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -270,52 +270,42 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\LOAI_HANG.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\SignUpViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QuanLyShopGiay\\ViewModels\\SignUpViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\SignUpViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\StartApp.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QuanLyShopGiay\\Views\\StartApp.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\StartApp.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\StartApp.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QuanLyShopGiay\\Views\\StartApp.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\StartApp.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\HoaDonViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QuanLyShopGiay\\ViewModels\\HoaDonViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\HoaDonViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{286CBEE6-7D9D-46EA-82A7-C955B308C006}|QuanLyShopGiay\\QuanLyShopGiay.csproj|solutionrelative:QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TimKiemPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QuanLyShopGiay\\Views\\Pages\\TimKiemPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TimKiemPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienHeaderPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QuanLyShopGiay\\Views\\Pages\\NhanVienHeaderPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienHeaderPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\TimKiemViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QuanLyShopGiay\\ViewModels\\TimKiemViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\TimKiemViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\NhanVienHeaderViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:QuanLyShopGiay\\ViewModels\\NhanVienHeaderViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\NhanVienHeaderViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -325,7 +315,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -337,47 +327,61 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml",
-              "RelativeToolTip": "QuanLyShopGiay\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-23T10:18:19.673Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "MainViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
               "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAswCsAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAYwDIAAABlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-02T15:11:08.387Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml.cs",
-              "RelativeToolTip": "QuanLyShopGiay\\MainWindow.xaml.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwFwAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T08:53:30.795Z"
+              "DocumentIndex": 3,
+              "Title": "SanPhamPage.xaml",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml",
+              "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml",
+              "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-12T07:35:43.064Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "QuanLyShopGiay\\MainWindow.xaml",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml",
+              "RelativeToolTip": "QuanLyShopGiay\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-23T10:18:19.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "QuanLyShopGiay\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml.cs",
+              "RelativeToolTip": "QuanLyShopGiay\\MainWindow.xaml.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAQwDgAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T08:53:30.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "SanPhamViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\SanPhamViewModel.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\SanPhamViewModel.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\SanPhamViewModel.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\SanPhamViewModel.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\SanPhamViewModel.cs",
               "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\SanPhamViewModel.cs",
               "ViewState": "AgIAAGYAAAAAAAAAAAAkwHEAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -385,22 +389,22 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "KhachHangPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml",
               "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-06-06T15:43:40.997Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "helper_pass.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\helper_pass.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\helper_pass.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Helpers\\helper_pass.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\helper_pass.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\helper_pass.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Helpers\\helper_pass.cs",
               "ViewState": "AgIAAGQAAAAAAAAAAADwv4IAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -408,33 +412,87 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "QuanLyShopGiay",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\QuanLyShopGiay.csproj",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\QuanLyShopGiay.csproj",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\QuanLyShopGiay.csproj",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\QuanLyShopGiay.csproj",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\QuanLyShopGiay.csproj",
               "RelativeToolTip": "QuanLyShopGiay\\QuanLyShopGiay.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2026-06-06T14:21:50.999Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Model1.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\Model1.edmx",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\Model1.edmx",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Models\\Model1.edmx",
               "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\Model1.edmx [Diagram1]",
-              "RelativeToolTip": "QuanLyShopGiay\\Models\\Model1.edmx [Diagram1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
               "WhenOpened": "2026-06-06T14:49:53.158Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 25,
+              "Title": "Login.xaml",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml",
+              "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Login.xaml",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml",
+              "RelativeToolTip": "QuanLyShopGiay\\Views\\Login.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-06-05T11:48:45.619Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "NhanVien.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\NhanVien.cs",
+              "RelativeDocumentMoniker": "QuanLyShopGiay\\Models\\NhanVien.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\NhanVien.cs",
+              "RelativeToolTip": "QuanLyShopGiay\\Models\\NhanVien.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAA5wA4AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-04T19:00:41.249Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "DonNhapHangPage.xaml",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
+              "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
+              "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-06-05T02:56:08.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "ServiceResult.cs",
+              "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\ServiceResult.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\ServiceResult.cs",
+              "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\ServiceResult.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\ServiceResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T07:39:56.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "StartApp.xaml",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\StartApp.xaml",
+              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\StartApp.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-27T08:59:09.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "HoaDonNhapViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\HoaDonNhapViewModel.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\HoaDonNhapViewModel.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\HoaDonNhapViewModel.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\HoaDonNhapViewModel.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\HoaDonNhapViewModel.cs",
               "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\HoaDonNhapViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -442,11 +500,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "InverseBooltovisibilityconverter.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\InverseBooltovisibilityconverter.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\InverseBooltovisibilityconverter.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Helpers\\InverseBooltovisibilityconverter.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\InverseBooltovisibilityconverter.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\InverseBooltovisibilityconverter.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Helpers\\InverseBooltovisibilityconverter.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAUwAsAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -454,11 +512,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "App.config",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\App.config",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\App.config",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\App.config",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\App.config",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\App.config",
               "RelativeToolTip": "QuanLyShopGiay\\App.config",
               "ViewState": "AgIAAAEAAAAAAAAAAAAAAAEAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
@@ -466,22 +524,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\App.xaml",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\App.xaml",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\App.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\App.xaml",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\App.xaml",
               "RelativeToolTip": "QuanLyShopGiay\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-06-02T22:40:58.243Z"
+              "WhenOpened": "2026-06-02T22:40:58.243Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "packages.config",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\packages.config",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\packages.config",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\packages.config",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\packages.config",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\packages.config",
               "RelativeToolTip": "QuanLyShopGiay\\packages.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
@@ -489,23 +548,21 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "ResourcePart.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs",
               "ToolTip": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs",
               "ViewState": "AgIAAB0AAAAAAAAAAAAuwCsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T16:39:14.768Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\App.xaml.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\App.xaml.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\App.xaml.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\App.xaml.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\App.xaml.cs",
               "RelativeToolTip": "QuanLyShopGiay\\App.xaml.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAYwBMAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -513,11 +570,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ucTimKiemViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\ucTimKiemViewModel.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\ucTimKiemViewModel.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\ucTimKiemViewModel.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\ucTimKiemViewModel.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\ucTimKiemViewModel.cs",
               "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\ucTimKiemViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -525,11 +582,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "HoaDonBanHangViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\HoaDonBanHangViewModel.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\HoaDonBanHangViewModel.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\HoaDonBanHangViewModel.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\HoaDonBanHangViewModel.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\HoaDonBanHangViewModel.cs",
               "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\HoaDonBanHangViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -537,11 +594,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\LoginViewModel.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\LoginViewModel.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\LoginViewModel.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\LoginViewModel.cs",
               "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\LoginViewModel.cs",
               "ViewState": "AgIAADwAAAAAAAAAAAAmwE0AAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -549,11 +606,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Login.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Login.xaml.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Views\\Login.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -561,11 +618,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Initializepasswordhelper.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\Initializepasswordhelper.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\Initializepasswordhelper.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Helpers\\Initializepasswordhelper.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\Initializepasswordhelper.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\Initializepasswordhelper.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Helpers\\Initializepasswordhelper.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAQwBgAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -576,19 +633,17 @@
               "DocumentIndex": 83,
               "Title": "TimKiemPage.xaml",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TimKiemPage.xaml",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\TimKiemPage.xaml",
               "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TimKiemPage.xaml",
-              "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\TimKiemPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-06-05T17:15:50.48Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "BaseViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\BaseViewModel.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\BaseViewModel.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\BaseViewModel.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\BaseViewModel.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\BaseViewModel.cs",
               "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\BaseViewModel.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAQwCEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -599,9 +654,7 @@
               "DocumentIndex": 85,
               "Title": "TimKiemViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\TimKiemViewModel.cs",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\TimKiemViewModel.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\TimKiemViewModel.cs",
-              "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\TimKiemViewModel.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAQwD8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-05T17:20:23.066Z"
@@ -611,9 +664,7 @@
               "DocumentIndex": 86,
               "Title": "NhanVienHeaderViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\NhanVienHeaderViewModel.cs",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\NhanVienHeaderViewModel.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\NhanVienHeaderViewModel.cs",
-              "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\NhanVienHeaderViewModel.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAA3wC8AAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-05T17:17:05.726Z"
@@ -623,19 +674,17 @@
               "DocumentIndex": 84,
               "Title": "NhanVienHeaderPage.xaml",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienHeaderPage.xaml",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\NhanVienHeaderPage.xaml",
               "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienHeaderPage.xaml",
-              "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\NhanVienHeaderPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-06-05T17:16:45.045Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "Model1.Context.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\Model1.Context.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\Model1.Context.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Models\\Model1.Context.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\Model1.Context.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\Model1.Context.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Models\\Model1.Context.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAxwDUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -643,11 +692,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "DashboardViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\DashboardViewModel.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\DashboardViewModel.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\DashboardViewModel.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\DashboardViewModel.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\DashboardViewModel.cs",
               "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\DashboardViewModel.cs",
               "ViewState": "AgIAACsAAAAAAAAAAAAgwDEAAAB0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -658,19 +707,17 @@
               "DocumentIndex": 78,
               "Title": "HoaDonPage.xaml",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml",
               "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml",
-              "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-05-12T08:03:12.093Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "KhachHangViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\KhachHangViewModel.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\KhachHangViewModel.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\KhachHangViewModel.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\KhachHangViewModel.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\KhachHangViewModel.cs",
               "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\KhachHangViewModel.cs",
               "ViewState": "AgIAAE0AAAAAAAAAAAAhwFkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -681,9 +728,7 @@
               "DocumentIndex": 75,
               "Title": "SignUpViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\SignUpViewModel.cs",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\SignUpViewModel.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\SignUpViewModel.cs",
-              "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\SignUpViewModel.cs",
               "ViewState": "AgIAALEAAAAAAAAAAAAcwM8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-02T15:33:37.157Z"
@@ -693,7 +738,9 @@
               "DocumentIndex": 47,
               "Title": "TaiKhoanService.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\TaiKhoanService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\TaiKhoanService.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\TaiKhoanService.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\TaiKhoanService.cs",
               "ViewState": "AgIAAFMAAAAAAAAAAAAQwF0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:40:28.744Z"
@@ -702,9 +749,9 @@
               "$type": "Document",
               "DocumentIndex": 81,
               "Title": "TaiKhoanPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -712,99 +759,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "NhanVienPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml",
               "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-06-02T21:42:54.788Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Login.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Login.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml",
-              "RelativeToolTip": "QuanLyShopGiay\\Views\\Login.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-06-05T11:48:45.619Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "NhanVien.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\NhanVien.cs",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\Models\\NhanVien.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\NhanVien.cs",
-              "RelativeToolTip": "QuanLyShopGiay\\Models\\NhanVien.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAA5wA4AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-04T19:00:41.249Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "DonNhapHangPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
-              "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-06-05T02:56:08.056Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "ServiceResult.cs",
-              "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\ServiceResult.cs",
-              "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\ServiceResult.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T07:39:56.537Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 76,
-              "Title": "StartApp.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\StartApp.xaml",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\StartApp.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\StartApp.xaml",
-              "RelativeToolTip": "QuanLyShopGiay\\Views\\StartApp.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-27T08:59:09.608Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 38,
-              "Title": "SanPhamPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml",
-              "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-05-12T07:35:43.064Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
               "Title": "ResourcePart.cs",
               "DocumentMoniker": "C:\\Users\\HI\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\..\\HI\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs",
               "ToolTip": "C:\\Users\\HI\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\..\\HI\\AppData\\Local\\Temp\\.vsdbgsrc\\3714f74b82eacc6cf8dcf1e32980b0908d4f8b447d25d4eb08ff1424a7b57c02\\ResourcePart.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-02T15:05:51.752Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "PasswordHelper.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\PasswordHelper.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\PasswordHelper.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Helpers\\PasswordHelper.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\PasswordHelper.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\PasswordHelper.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Helpers\\PasswordHelper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -812,11 +791,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "StringToVisibilityConverter.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\StringToVisibilityConverter.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\StringToVisibilityConverter.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Helpers\\StringToVisibilityConverter.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\StringToVisibilityConverter.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\StringToVisibilityConverter.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Helpers\\StringToVisibilityConverter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -824,11 +803,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "KhachHang.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\KhachHang.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\KhachHang.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Models\\KhachHang.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\KhachHang.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\KhachHang.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Models\\KhachHang.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -836,21 +815,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "DonNhapHangPage.g.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\obj\\Release\\Views\\Pages\\DonNhapHangPage.g.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\obj\\Release\\Views\\Pages\\DonNhapHangPage.g.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\obj\\Release\\Views\\Pages\\DonNhapHangPage.g.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\obj\\Release\\Views\\Pages\\DonNhapHangPage.g.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\obj\\Release\\Views\\Pages\\DonNhapHangPage.g.cs",
               "RelativeToolTip": "QuanLyShopGiay\\obj\\Release\\Views\\Pages\\DonNhapHangPage.g.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-04T19:07:46.593Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "Login_ViewModel.cs",
               "DocumentMoniker": "D:\\.NET\\06_NguyenHoangGiaHuy_12\\06_NguyenHoangGiaHuy\\06_NguyenHoangGiaHuy_Tuan12\\06_NguyenHoangGiaHuy_Tuan12\\ViewModels\\Login_ViewModel.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\.NET\\06_NguyenHoangGiaHuy_12\\06_NguyenHoangGiaHuy\\06_NguyenHoangGiaHuy_Tuan12\\06_NguyenHoangGiaHuy_Tuan12\\ViewModels\\Login_ViewModel.cs",
               "ToolTip": "D:\\.NET\\06_NguyenHoangGiaHuy_12\\06_NguyenHoangGiaHuy\\06_NguyenHoangGiaHuy_Tuan12\\06_NguyenHoangGiaHuy_Tuan12\\ViewModels\\Login_ViewModel.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\.NET\\06_NguyenHoangGiaHuy_12\\06_NguyenHoangGiaHuy\\06_NguyenHoangGiaHuy_Tuan12\\06_NguyenHoangGiaHuy_Tuan12\\ViewModels\\Login_ViewModel.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAAwFEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-04T19:16:02.266Z"
@@ -860,20 +841,18 @@
               "DocumentIndex": 79,
               "Title": "HoaDonViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\HoaDonViewModel.cs",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\HoaDonViewModel.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\HoaDonViewModel.cs",
-              "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\HoaDonViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-05T02:55:51.518Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "ChiTietHoaDonNhap.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\ChiTietHoaDonNhap.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\ChiTietHoaDonNhap.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Models\\ChiTietHoaDonNhap.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\ChiTietHoaDonNhap.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\ChiTietHoaDonNhap.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Models\\ChiTietHoaDonNhap.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAYwA4AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -881,33 +860,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "Login.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Login.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Login.xaml",
               "RelativeToolTip": "QuanLyShopGiay\\Views\\Login.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-06-04T18:51:00.239Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "DonNhapHangPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
               "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\DonNhapHangPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-06-04T18:07:07.839Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "KhachHangPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml",
               "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-06-04T18:05:22.267Z"
@@ -916,9 +895,9 @@
               "$type": "Document",
               "DocumentIndex": 82,
               "Title": "TaiKhoanPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml",
               "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\TaiKhoanPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-05-13T08:26:06.51Z"
@@ -928,7 +907,9 @@
               "DocumentIndex": 49,
               "Title": "SanPhamService.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\SanPhamService.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\SanPhamService.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\SanPhamService.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Services\\SanPhamService.cs",
               "ViewState": "AgIAAGQAAAAAAAAAAAAmwG0AAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-02T23:14:28.243Z"
@@ -937,9 +918,9 @@
               "$type": "Document",
               "DocumentIndex": 39,
               "Title": "KhoHangViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\KhoHangViewModel.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\KhoHangViewModel.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\KhoHangViewModel.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\KhoHangViewModel.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\KhoHangViewModel.cs",
               "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\KhoHangViewModel.cs",
               "ViewState": "AgIAAN4AAAAAAAAAAAAcwBUBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -950,9 +931,7 @@
               "DocumentIndex": 80,
               "Title": "HoaDonPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml.cs",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml.cs",
-              "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\HoaDonPage.xaml.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAiwEEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-12T08:05:08.525Z"
@@ -962,7 +941,9 @@
               "DocumentIndex": 50,
               "Title": "QLShopGiay.Context.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.Context.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.Context.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.Context.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.Context.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAUwAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:39:49.595Z"
@@ -972,7 +953,9 @@
               "DocumentIndex": 51,
               "Title": "PhieuNhap.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\PhieuNhap.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\PhieuNhap.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\PhieuNhap.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\PhieuNhap.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-02T22:11:37.883Z"
@@ -982,7 +965,9 @@
               "DocumentIndex": 52,
               "Title": "GioHangItemModel.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\GioHangItemModel.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\GioHangItemModel.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\GioHangItemModel.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\GioHangItemModel.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAUwBcAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-02T14:42:06.88Z"
@@ -992,7 +977,9 @@
               "DocumentIndex": 53,
               "Title": "QLShopGiay.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-02T22:12:32.392Z"
@@ -1002,7 +989,9 @@
               "DocumentIndex": 54,
               "Title": "BienTheHienThiModel.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\BienTheHienThiModel.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\BienTheHienThiModel.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\BienTheHienThiModel.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\BienTheHienThiModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-02T14:41:06.427Z"
@@ -1012,7 +1001,9 @@
               "DocumentIndex": 55,
               "Title": "ANH_SP.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\ANH_SP.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\ANH_SP.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\ANH_SP.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\ANH_SP.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:38:45.663Z"
@@ -1022,7 +1013,9 @@
               "DocumentIndex": 56,
               "Title": "CT_HOA_DON.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\CT_HOA_DON.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\CT_HOA_DON.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\CT_HOA_DON.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\CT_HOA_DON.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:38:47.998Z"
@@ -1032,7 +1025,9 @@
               "DocumentIndex": 57,
               "Title": "BIEN_THE_SP.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\BIEN_THE_SP.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\BIEN_THE_SP.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\BIEN_THE_SP.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\BIEN_THE_SP.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:38:47.337Z"
@@ -1041,9 +1036,9 @@
               "$type": "Document",
               "DocumentIndex": 40,
               "Title": "DashboardPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DashboardPage.xaml.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DashboardPage.xaml.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\DashboardPage.xaml.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DashboardPage.xaml.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\DashboardPage.xaml.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\DashboardPage.xaml.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAqwBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1053,9 +1048,9 @@
               "$type": "Document",
               "DocumentIndex": 44,
               "Title": "RelayCommand.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Command\\RelayCommand.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Command\\RelayCommand.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Command\\RelayCommand.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Command\\RelayCommand.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Command\\RelayCommand.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Command\\RelayCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1066,7 +1061,9 @@
               "DocumentIndex": 58,
               "Title": "QLShopGiay.Context1.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.Context1.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.Context1.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.Context1.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.Context1.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAuwCwAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-15T14:47:50.085Z"
@@ -1075,9 +1072,9 @@
               "$type": "Document",
               "DocumentIndex": 41,
               "Title": "SanPhamPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\SanPhamPage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1088,7 +1085,9 @@
               "DocumentIndex": 59,
               "Title": "CT_PHIEU_NHAP.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\CT_PHIEU_NHAP.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\CT_PHIEU_NHAP.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\CT_PHIEU_NHAP.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\CT_PHIEU_NHAP.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:38:48.927Z"
@@ -1097,9 +1096,9 @@
               "$type": "Document",
               "DocumentIndex": 46,
               "Title": "SessionManager.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\SessionManager.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\SessionManager.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Helpers\\SessionManager.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\SessionManager.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Helpers\\SessionManager.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Helpers\\SessionManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1110,7 +1109,9 @@
               "DocumentIndex": 60,
               "Title": "YEU_CAU_DANG_KY.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\YEU_CAU_DANG_KY.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\YEU_CAU_DANG_KY.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\YEU_CAU_DANG_KY.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\YEU_CAU_DANG_KY.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T10:45:09.374Z"
@@ -1119,9 +1120,9 @@
               "$type": "Document",
               "DocumentIndex": 42,
               "Title": "NhanVienPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\NhanVienPage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1132,9 +1133,7 @@
               "DocumentIndex": 77,
               "Title": "StartApp.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\StartApp.xaml.cs",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\StartApp.xaml.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\StartApp.xaml.cs",
-              "RelativeToolTip": "QuanLyShopGiay\\Views\\StartApp.xaml.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAjwB0AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-27T08:35:49.455Z"
@@ -1143,9 +1142,9 @@
               "$type": "Document",
               "DocumentIndex": 43,
               "Title": "KhachHangPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml.cs",
               "RelativeDocumentMoniker": "QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml.cs",
+              "ToolTip": "D:\\New folder (2)\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml.cs",
               "RelativeToolTip": "QuanLyShopGiay\\Views\\Pages\\KhachHangPage.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1156,9 +1155,7 @@
               "DocumentIndex": 45,
               "Title": "FrameworkTemplate.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\.vsdbgsrc\\ca3d2d2b89ce74d54b8d6000416fca346db7ede2977a671244092f92c8f8deb6\\FrameworkTemplate.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\ca3d2d2b89ce74d54b8d6000416fca346db7ede2977a671244092f92c8f8deb6\\FrameworkTemplate.cs",
               "ToolTip": "C:\\Users\\Lenovo\\AppData\\Local\\Temp\\.vsdbgsrc\\ca3d2d2b89ce74d54b8d6000416fca346db7ede2977a671244092f92c8f8deb6\\FrameworkTemplate.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\ca3d2d2b89ce74d54b8d6000416fca346db7ede2977a671244092f92c8f8deb6\\FrameworkTemplate.cs",
               "ViewState": "AgIAAL4CAAAAAAAAAAAMwBwDAAAAAAAAAQAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-12T07:44:10.627Z"
@@ -1168,7 +1165,9 @@
               "DocumentIndex": 61,
               "Title": "KHACH_HANG.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\KHACH_HANG.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\KHACH_HANG.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\KHACH_HANG.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\KHACH_HANG.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:38:51.684Z"
@@ -1178,7 +1177,9 @@
               "DocumentIndex": 62,
               "Title": "HOA_DON.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\HOA_DON.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\HOA_DON.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\HOA_DON.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\HOA_DON.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAQwCEAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:38:50.634Z"
@@ -1188,7 +1189,9 @@
               "DocumentIndex": 63,
               "Title": "DON_VI_TINH.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\DON_VI_TINH.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\DON_VI_TINH.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\DON_VI_TINH.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\DON_VI_TINH.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:38:49.804Z"
@@ -1198,7 +1201,9 @@
               "DocumentIndex": 64,
               "Title": "QLShopGiay.edmx",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.edmx",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.edmx",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.edmx",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.edmx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
               "WhenOpened": "2026-05-13T11:11:42.371Z"
             },
@@ -1207,7 +1212,9 @@
               "DocumentIndex": 65,
               "Title": "NHAN_VIEN.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\NHAN_VIEN.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\NHAN_VIEN.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\NHAN_VIEN.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\NHAN_VIEN.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:39:47.774Z"
@@ -1217,7 +1224,9 @@
               "DocumentIndex": 66,
               "Title": "QLShopGiay.tt",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.tt",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.tt",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.tt",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.tt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2026-05-13T10:47:19.29Z"
@@ -1227,7 +1236,9 @@
               "DocumentIndex": 67,
               "Title": "QLShopGiay.Context.tt",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.Context.tt",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.Context.tt",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.Context.tt",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\QLShopGiay.Context.tt",
               "ViewState": "AgIAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2026-05-13T10:46:56.088Z"
@@ -1237,7 +1248,9 @@
               "DocumentIndex": 68,
               "Title": "TON_KHO.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\TON_KHO.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\TON_KHO.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\TON_KHO.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\TON_KHO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:39:54.158Z"
@@ -1247,7 +1260,9 @@
               "DocumentIndex": 69,
               "Title": "TAI_KHOAN.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\TAI_KHOAN.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\TAI_KHOAN.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\TAI_KHOAN.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\TAI_KHOAN.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:39:53.553Z"
@@ -1257,7 +1272,9 @@
               "DocumentIndex": 70,
               "Title": "SAN_PHAM.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\SAN_PHAM.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\SAN_PHAM.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\SAN_PHAM.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\SAN_PHAM.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:39:51.809Z"
@@ -1267,7 +1284,9 @@
               "DocumentIndex": 71,
               "Title": "PHUONG_THUC_TT.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\PHUONG_THUC_TT.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\PHUONG_THUC_TT.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\PHUONG_THUC_TT.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\PHUONG_THUC_TT.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:39:49.074Z"
@@ -1277,7 +1296,9 @@
               "DocumentIndex": 72,
               "Title": "PHIEU_NHAP.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\PHIEU_NHAP.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\PHIEU_NHAP.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\PHIEU_NHAP.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\PHIEU_NHAP.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:39:48.53Z"
@@ -1287,7 +1308,9 @@
               "DocumentIndex": 73,
               "Title": "NHA_SAN_XUAT.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\NHA_SAN_XUAT.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\NHA_SAN_XUAT.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\NHA_SAN_XUAT.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\NHA_SAN_XUAT.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:39:45.53Z"
@@ -1297,7 +1320,9 @@
               "DocumentIndex": 74,
               "Title": "LOAI_HANG.cs",
               "DocumentMoniker": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\LOAI_HANG.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\LOAI_HANG.cs",
               "ToolTip": "D:\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\LOAI_HANG.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\Models\\LOAI_HANG.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T07:39:42.391Z"

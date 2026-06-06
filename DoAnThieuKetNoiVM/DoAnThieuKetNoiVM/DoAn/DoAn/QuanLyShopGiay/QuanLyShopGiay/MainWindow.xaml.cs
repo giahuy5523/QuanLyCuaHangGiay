@@ -29,6 +29,9 @@ namespace QuanLyShopGiay
                     case "SanPham":
                         MainFrame.Navigate(new Views.Pages.SanPhamPage());
                         break;
+                    case "LoaiSanPham":
+                        MainFrame.Navigate(new Views.Pages.LoaiSanPhamPage());
+                        break;
                     case "KhachHang":
                         MainFrame.Navigate(new Views.Pages.KhachHangPage());
                         break;
