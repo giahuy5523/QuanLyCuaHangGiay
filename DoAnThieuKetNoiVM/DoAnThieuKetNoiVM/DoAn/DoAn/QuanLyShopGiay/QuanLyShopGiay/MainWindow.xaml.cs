@@ -47,6 +47,9 @@ namespace QuanLyShopGiay
                     case "TaiKhoan":
                         MainFrame.Navigate(new Views.Pages.TaiKhoanPage());
                         break;
+                    case "NhaCungCap":
+                        MainFrame.Navigate(new Views.Pages.NhaCungCapPage());
+                        break;
                 }
             };
 
