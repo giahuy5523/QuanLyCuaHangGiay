@@ -26,10 +26,12 @@ namespace QuanLyShopGiay.Models
         public string MaNhanVien { get; set; }
         public Nullable<decimal> TongTien { get; set; }
         public string TrangThai { get; set; }
+        public string MaPhuongThuc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual KhachHang KhachHang { get; set; }
         public virtual NhanVien NhanVien { get; set; }
+        public virtual PhuongThucThanhToan PhuongThucThanhToan { get; set; }
     }
 }

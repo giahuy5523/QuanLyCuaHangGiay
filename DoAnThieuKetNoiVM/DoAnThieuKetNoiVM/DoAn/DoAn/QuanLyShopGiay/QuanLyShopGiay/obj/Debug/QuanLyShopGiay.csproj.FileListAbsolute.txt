@@ -37,8 +37,6 @@ C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKe
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.csproj.GenerateResource.cache
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.csproj.CoreCompileInputs.cache
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLySh.C4D866E7.Up2Date
-C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\ucTimKiem.g.cs
-C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\ucTimKiem.baml
 D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\bin\Debug\QuanLyShopGiay.exe.config
 D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\bin\Debug\QuanLyShopGiay.exe
 D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\bin\Debug\QuanLyShopGiay.pdb
@@ -82,3 +80,7 @@ D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\Q
 D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLySh.C4D866E7.Up2Date
 D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.exe
 D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.pdb
+C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\LoaiSanPhamPage.g.cs
+C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\LoaiSanPhamPage.baml
+C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\ChonBienTheDialog.baml
+C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\ChonBienTheDialog.g.cs

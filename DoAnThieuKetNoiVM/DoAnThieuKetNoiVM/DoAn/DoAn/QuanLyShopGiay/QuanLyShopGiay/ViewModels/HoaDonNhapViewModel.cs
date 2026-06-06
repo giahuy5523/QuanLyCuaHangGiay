@@ -205,7 +205,8 @@ namespace QuanLyShopGiay.ViewModels
                         MaHDN = MaPhieuNhap,
                         NgayNhap = NgayNhap,
                         TongTien = TongTien,
-                        MaNhanVien = "NV01" // Đảm bảo mã này tồn tại trong bảng NhanVien của bạn
+                        MaNCC = MaNCC,        
+                        MaNhanVien = SessionHelper.MaNhanVienHienTai
                     };
 
                     db.HoaDonNhaps.Add(hoaDonNhap);

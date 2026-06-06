@@ -7,11 +7,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
       Title="DonNhapHangPage">
+
     <Page.DataContext>
         <local:HoaDonNhapViewModel/>
     </Page.DataContext>
+
     <Grid Background="#F5F5F5">
         <StackPanel Margin="20">
+
             <!-- THÔNG TIN PHIẾU NHẬP -->
             <GroupBox Header="THÔNG TIN PHIẾU NHẬP" Padding="15" Margin="0,0,0,15">
                 <Grid>
@@ -28,13 +31,14 @@
                                  IsEnabled="False" Height="35" Padding="10"/>
                     </StackPanel>
 
-                    <!-- Mã Cung Cấp -->
+                    <!-- FIX 1: DisplayMemberPath và SelectedValuePath sai tên DB
+                         NhaCungCap có MaNCC và TenNCC, không phải MaKhachHang/TenKhachHang -->
                     <StackPanel Grid.Column="1" Margin="0,0,10,0">
-                        <Label Content="Mã Cung Cấp:" FontWeight="Bold"/>
+                        <Label Content="Nhà cung cấp:" FontWeight="Bold"/>
                         <ComboBox ItemsSource="{Binding DsNCC}" 
                                   SelectedValue="{Binding MaNCC}"
-                                  DisplayMemberPath="TenKhachHang"
-                                  SelectedValuePath="MaKhachHang"
+                                  DisplayMemberPath="TenNCC"
+                                  SelectedValuePath="MaNCC"
                                   Height="35" Padding="10"/>
                     </StackPanel>
 
@@ -61,40 +65,42 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <!-- Mã Sản Phẩm -->
+                    <!-- FIX 2: DisplayMemberPath và SelectedValuePath sai tên DB
+                         SanPham có MaSP và TenSP, không phải MaSanPham/TenSanPham -->
                     <StackPanel Grid.Column="0" Margin="0,0,10,0">
-                        <Label Content="Mã sản phẩm:" FontWeight="Bold"/>
+                        <Label Content="Sản phẩm:" FontWeight="Bold"/>
                         <ComboBox ItemsSource="{Binding DsSanPham}"
                                   SelectedValue="{Binding ChiTietInput.MaSP}"
-                                  DisplayMemberPath="TenSanPham"
-                                  SelectedValuePath="MaSanPham"
+                                  DisplayMemberPath="TenSP"
+                                  SelectedValuePath="MaSP"
                                   Height="35" Padding="10"/>
                     </StackPanel>
 
-                    <!-- Đơn Giá -->
+                    <!-- FIX 3: GiaNhap không nên IsEnabled=False 
+                         vì người dùng cần nhập giá nhập thực tế -->
                     <StackPanel Grid.Column="1" Margin="0,0,10,0">
-                        <Label Content="Đơn giá:" FontWeight="Bold"/>
-                        <TextBox Text="{Binding ChiTietInput.GiaNhap}"
-                                 IsEnabled="False" Height="35" Padding="10"/>
+                        <Label Content="Đơn giá nhập:" FontWeight="Bold"/>
+                        <TextBox Text="{Binding ChiTietInput.GiaNhap, UpdateSourceTrigger=PropertyChanged}"
+                                 Height="35" Padding="10"/>
                     </StackPanel>
 
                     <!-- Số Lượng -->
                     <StackPanel Grid.Column="2" Margin="0,0,10,0">
                         <Label Content="Số lượng:" FontWeight="Bold"/>
-                        <TextBox Text="{Binding ChiTietInput.SoLuong}"
+                        <TextBox Text="{Binding ChiTietInput.SoLuong, UpdateSourceTrigger=PropertyChanged}"
                                  Height="35" Padding="10"/>
                     </StackPanel>
 
                     <!-- Nút Thêm -->
                     <Button Grid.Column="3" Grid.Row="0" 
-                            Content="Thêm Sản Phẩm" 
+                            Content="Thêm SP" 
                             Command="{Binding ThemSanPhamCommand}"
                             Background="#007BFF" Foreground="White" 
-                            Width="120" Height="35" VerticalAlignment="Bottom"/>
+                            Width="100" Height="35" VerticalAlignment="Bottom"/>
 
                     <!-- Nút Tạo Phiếu -->
                     <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4"
-                            Content="Tạo Phiếu Nhập"
+                            Content="➕ Tạo Phiếu Nhập Mới"
                             Command="{Binding TaoPhieuCommand}"
                             Background="#28A745" Foreground="White"
                             Height="35" Margin="0,10,0,0"/>
@@ -105,43 +111,45 @@
             <GroupBox Header="DANH SÁCH CHI TIẾT PHIẾU" Padding="15" Margin="0,0,0,15">
                 <DataGrid ItemsSource="{Binding DsChiTiet}"
                           AutoGenerateColumns="False"
+                          CanUserAddRows="False"
                           Height="200">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Mã sản phẩm" 
+                        <DataGridTextColumn Header="Mã SP" 
                                             Binding="{Binding MaSanPham}" Width="100"/>
                         <DataGridTextColumn Header="Tên sản phẩm" 
                                             Binding="{Binding TenSanPham}" Width="*"/>
                         <DataGridTextColumn Header="Số lượng" 
                                             Binding="{Binding SoLuong}" Width="80"/>
                         <DataGridTextColumn Header="Đơn giá" 
-                                            Binding="{Binding DonGiaNhap}" Width="100"/>
+                                            Binding="{Binding DonGiaNhap, StringFormat={}{0:N0} ₫}" Width="120"/>
                         <DataGridTextColumn Header="Thành tiền" 
-                                            Binding="{Binding ThanhTien}" Width="100"/>
+                                            Binding="{Binding ThanhTien, StringFormat={}{0:N0} ₫}" Width="120"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>
 
             <!-- TỔNG TIỀN & NÚT -->
-            <StackPanel Orientation="Horizontal" 
-                        HorizontalAlignment="Right" 
-                        Margin="0,10,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
 
-                <StackPanel Margin="0,0,20,0">
-                    <Label Content="Tổng tiền phiếu nhập:" FontWeight="Bold"/>
-                    <TextBox Text="{Binding TongTien, StringFormat='0 VND'}"
-                             IsEnabled="False" Width="150" Height="35" Padding="10"/>
+                <StackPanel Margin="0,0,20,0" VerticalAlignment="Center">
+                    <Label Content="Tổng tiền:" FontWeight="Bold"/>
+                    <!-- FIX 4: StringFormat đúng cú pháp WPF -->
+                    <TextBox Text="{Binding TongTien, StringFormat={}{0:N0} ₫}"
+                             IsEnabled="False" Width="160" Height="35" Padding="10"
+                             FontWeight="Bold" Foreground="#28A745"/>
                 </StackPanel>
 
-                <Button Content="Lưu Phiếu"
+                <Button Content="💾 Lưu Phiếu"
                         Command="{Binding LuuPhieuCommand}"
                         Background="#28A745" Foreground="White"
-                        Width="100" Height="35"/>
+                        Width="110" Height="35"/>
 
-                <Button Content="Hủy"
+                <Button Content="🚫 Hủy"
                         Command="{Binding HuyCommand}"
                         Background="#DC3545" Foreground="White"
                         Width="100" Height="35" Margin="10,0,0,0"/>
             </StackPanel>
+
         </StackPanel>
     </Grid>
 </Page>

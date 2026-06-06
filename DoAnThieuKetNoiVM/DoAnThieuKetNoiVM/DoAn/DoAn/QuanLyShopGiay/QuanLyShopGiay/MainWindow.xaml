@@ -93,11 +93,6 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <views:ucTimKiem x:Name="SearchPage" 
-                         Grid.Column="0"
-                         DataContext="{Binding TimKiemVM}" 
-                         HorizontalAlignment="Left" 
-                         VerticalAlignment="Center"/>
 
                     <TextBlock Grid.Column="1"
            Text="{Binding TieuDe}"

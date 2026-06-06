@@ -74,6 +74,7 @@
     <Compile Include="Helpers\Initializepasswordhelper.cs" />
     <Compile Include="Helpers\InverseBooltovisibilityconverter.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
+    <Compile Include="Helpers\SessionHelper.cs" />
     <Compile Include="Helpers\SessionManager.cs" />
     <Compile Include="Helpers\StringToVisibilityConverter.cs" />
     <Compile Include="Models\ChiTietHoaDon.cs">
@@ -115,10 +116,16 @@
     <Compile Include="Models\NhanVien.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PhuongThucThanhToan.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SanPham.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_ThongKeDoanhThuTheoSanPham_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\v_DoanhThuPhuongThucTheoThang.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -131,7 +138,9 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SanPhamViewModel.cs" />
-    <Compile Include="ViewModels\ucTimKiemViewModel.cs" />
+    <Compile Include="Views\ChonBienTheDialog.xaml.cs">
+      <DependentUpon>ChonBienTheDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -159,9 +168,6 @@
     <Compile Include="Views\Pages\TaiKhoanPage.xaml.cs">
       <DependentUpon>TaiKhoanPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ucTimKiem.xaml.cs">
-      <DependentUpon>ucTimKiem.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -174,6 +180,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ChonBienTheDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -207,10 +217,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\TaiKhoanPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ucTimKiem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

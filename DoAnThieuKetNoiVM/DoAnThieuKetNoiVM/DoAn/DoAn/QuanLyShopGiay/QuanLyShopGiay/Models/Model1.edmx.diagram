@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="770115fe732f47f1aab8ca1a03303154" Name="Diagram1">
+      <Diagram DiagramId="770115fe732f47f1aab8ca1a03303154" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="QLShopGiayModel.ChiTietHoaDon" Width="1.5" PointX="8.25" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLShopGiayModel.ChiTietHoaDonNhap" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLShopGiayModel.HoaDon" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
@@ -24,6 +24,9 @@
         <AssociationConnector Association="QLShopGiayModel.FK__HoaDonNha__MaNha__52593CB8" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopGiayModel.FK__SanPham__MaLoai__4BAC3F29" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopGiayModel.FK__SanPham__MaNCC__4CA06362" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLShopGiayModel.PhuongThucThanhToan" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="QLShopGiayModel.v_DoanhThuPhuongThucTheoThang" Width="1.5" PointX="8.75" PointY="8.75" />
+        <AssociationConnector Association="QLShopGiayModel.FK_HoaDon_PhuongThuc" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

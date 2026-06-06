@@ -36,6 +36,8 @@ namespace QuanLyShopGiay.Models
         public virtual DbSet<NhaCungCap> NhaCungCaps { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
+        public virtual DbSet<PhuongThucThanhToan> PhuongThucThanhToans { get; set; }
+        public virtual DbSet<v_DoanhThuPhuongThucTheoThang> v_DoanhThuPhuongThucTheoThang { get; set; }
     
         public virtual ObjectResult<sp_ThongKeDoanhThuTheoSanPham_Result> sp_ThongKeDoanhThuTheoSanPham(Nullable<System.DateTime> tuNgay, Nullable<System.DateTime> denNgay)
         {

@@ -30,6 +30,7 @@
     <Property Name="MaNhanVien" Type="varchar" MaxLength="20" />
     <Property Name="TongTien" Type="decimal" Precision="18" Scale="2" />
     <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaPhuongThuc" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="HoaDonNhap">
     <Key>
@@ -80,6 +81,15 @@
     <Property Name="MatKhau" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Quyen" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="PhuongThucThanhToan">
+    <Key>
+      <PropertyRef Name="MaPhuongThuc" />
+    </Key>
+    <Property Name="MaPhuongThuc" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="TenPhuongThuc" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MoTa" Type="nvarchar(max)" />
+    <Property Name="TrangThai" Type="bit" />
+  </EntityType>
   <EntityType Name="SanPham">
     <Key>
       <PropertyRef Name="MaSP" />
@@ -94,6 +104,18 @@
     <Property Name="GiaBan" Type="decimal" Precision="18" Scale="2" />
     <Property Name="SoLuongTon" Type="int" />
     <Property Name="GhiChu" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'QLShopGiay.dbo.v_DoanhThuPhuongThucTheoThang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_DoanhThuPhuongThucTheoThang">
+    <Key>
+      <PropertyRef Name="TenPhuongThuc" />
+    </Key>
+    <Property Name="Nam" Type="int" />
+    <Property Name="Thang" Type="int" />
+    <Property Name="TenPhuongThuc" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SoLuongHoaDon" Type="int" />
+    <Property Name="TongDoanhThu" Type="decimal" Precision="38" Scale="2" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
@@ -224,6 +246,18 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_HoaDon_PhuongThuc">
+    <End Role="PhuongThucThanhToan" Type="Self.PhuongThucThanhToan" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhuongThucThanhToan">
+        <PropertyRef Name="MaPhuongThuc" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaPhuongThuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Function Name="sp_ThongKeDoanhThuTheoSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="TuNgay" Type="datetime" Mode="In" />
     <Parameter Name="DenNgay" Type="datetime" Mode="In" />
@@ -237,7 +271,17 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
     <EntitySet Name="LoaiSanPham" EntityType="Self.LoaiSanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NhaCungCap" EntityType="Self.NhaCungCap" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhuongThucThanhToan" EntityType="Self.PhuongThucThanhToan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="v_DoanhThuPhuongThucTheoThang" EntityType="Self.v_DoanhThuPhuongThucTheoThang" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_DoanhThuPhuongThucTheoThang].[Nam] AS [Nam], 
+    [v_DoanhThuPhuongThucTheoThang].[Thang] AS [Thang], 
+    [v_DoanhThuPhuongThucTheoThang].[TenPhuongThuc] AS [TenPhuongThuc], 
+    [v_DoanhThuPhuongThucTheoThang].[SoLuongHoaDon] AS [SoLuongHoaDon], 
+    [v_DoanhThuPhuongThucTheoThang].[TongDoanhThu] AS [TongDoanhThu]
+    FROM [dbo].[v_DoanhThuPhuongThucTheoThang] AS [v_DoanhThuPhuongThucTheoThang]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK__ChiTietHo__MaHDN__571DF1D5" Association="Self.FK__ChiTietHo__MaHDN__571DF1D5">
       <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
       <End Role="ChiTietHoaDonNhap" EntitySet="ChiTietHoaDonNhap" />
@@ -277,6 +321,10 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
     <AssociationSet Name="FK__SanPham__MaNCC__4CA06362" Association="Self.FK__SanPham__MaNCC__4CA06362">
       <End Role="NhaCungCap" EntitySet="NhaCungCap" />
       <End Role="SanPham" EntitySet="SanPham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HoaDon_PhuongThuc" Association="Self.FK_HoaDon_PhuongThuc">
+      <End Role="PhuongThucThanhToan" EntitySet="PhuongThucThanhToan" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

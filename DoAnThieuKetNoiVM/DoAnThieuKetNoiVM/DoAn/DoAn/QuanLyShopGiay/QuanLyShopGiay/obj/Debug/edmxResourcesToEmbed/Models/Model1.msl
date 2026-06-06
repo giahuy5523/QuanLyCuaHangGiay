@@ -24,6 +24,7 @@
     <EntitySetMapping Name="HoaDons">
       <EntityTypeMapping TypeName="QLShopGiayModel.HoaDon">
         <MappingFragment StoreEntitySet="HoaDon">
+          <ScalarProperty Name="MaPhuongThuc" ColumnName="MaPhuongThuc" />
           <ScalarProperty Name="MaHD" ColumnName="MaHD" />
           <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
           <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
@@ -116,5 +117,26 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="PhuongThucThanhToans">
+      <EntityTypeMapping TypeName="QLShopGiayModel.PhuongThucThanhToan">
+        <MappingFragment StoreEntitySet="PhuongThucThanhToan">
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="TenPhuongThuc" ColumnName="TenPhuongThuc" />
+          <ScalarProperty Name="MaPhuongThuc" ColumnName="MaPhuongThuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_DoanhThuPhuongThucTheoThang">
+      <EntityTypeMapping TypeName="QLShopGiayModel.v_DoanhThuPhuongThucTheoThang">
+        <MappingFragment StoreEntitySet="v_DoanhThuPhuongThucTheoThang">
+          <ScalarProperty Name="TongDoanhThu" ColumnName="TongDoanhThu" />
+          <ScalarProperty Name="SoLuongHoaDon" ColumnName="SoLuongHoaDon" />
+          <ScalarProperty Name="TenPhuongThuc" ColumnName="TenPhuongThuc" />
+          <ScalarProperty Name="Thang" ColumnName="Thang" />
+          <ScalarProperty Name="Nam" ColumnName="Nam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
