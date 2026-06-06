@@ -1,29 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
-using QuanLyShopGiay.Views;
-using QuanLyShopGiay.Helpers;
 
 namespace QuanLyShopGiay
 {
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// </summary>
     public partial class App : Application
     {
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
-            // Mở Login trước
-            Login loginWindow = new Login();
-            if (loginWindow.ShowDialog() == true)
-            {
-                // Đăng nhập thành công
-                MainWindow = new MainWindow();
-                MainWindow.Show();
-            }
-            else
-            {
-                // Hủy đăng nhập
-                this.Shutdown();
-            }
         }
     }
 }

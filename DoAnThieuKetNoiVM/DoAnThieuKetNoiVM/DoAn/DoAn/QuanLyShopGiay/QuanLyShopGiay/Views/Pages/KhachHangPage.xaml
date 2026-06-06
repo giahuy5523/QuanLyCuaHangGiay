@@ -19,19 +19,7 @@
     </Grid.RowDefinitions>
 
     <Grid Grid.Row="0" Margin="0,0,0,16">
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-            <ComboBox Width="130" Height="34" SelectedIndex="1" VerticalContentAlignment="Center" Margin="0,0,8,0">
-                <ComboBoxItem Content="Sản phẩm"/>
-                <ComboBoxItem Content="Khách hàng"/>
-            </ComboBox>
-            <TextBox Width="280" Height="34" Padding="8,0" VerticalContentAlignment="Center" Margin="0,0,8,0"
-                     Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}">
-                <TextBox.InputBindings>
-                    <KeyBinding Key="Enter" Command="{Binding SearchCommand}"/>
-                </TextBox.InputBindings>
-            </TextBox>
-            <Button Content="Tìm kiếm" Width="90" Height="34" Command="{Binding SearchCommand}"/>
-        </StackPanel>
+       
     </Grid>
 
     <Border Grid.Row="1" Background="#F8F9FA" CornerRadius="8" Padding="16" Margin="0,0,0,16" BorderBrush="#FFE0E0E0" BorderThickness="1">

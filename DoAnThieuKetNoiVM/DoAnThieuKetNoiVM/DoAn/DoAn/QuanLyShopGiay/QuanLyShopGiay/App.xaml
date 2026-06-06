@@ -2,10 +2,20 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:helpers="clr-namespace:QuanLyShopGiay.Helpers"
+             StartupUri="MainWindow.xaml"
              ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
+
+        <!-- Converter 1: chuỗi rỗng → Collapsed | có nội dung → Visible -->
+        <!-- Dùng: hiện/ẩn TextBlock thông báo lỗi ở Login, SignUp -->
         <helpers:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
+
+        <!-- Converter 2: bool → Visibility -->
+        <!-- Dùng: ẩn/hiện nút theo phân quyền (Visibility) -->
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+
+        <!-- Converter 3: bool → Opacity (1.0 / 0.4) -->
+        <!-- Dùng: mờ nút sidebar khi không có quyền -->
         <helpers:BoolToOpacityConverter x:Key="BoolToOpacityConverter"/>
 
         <Style x:Key="SidebarButton" TargetType="Button">
@@ -20,7 +30,9 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}">
                             <ContentPresenter VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -35,5 +47,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
     </Application.Resources>
 </Application>

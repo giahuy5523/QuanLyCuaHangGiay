@@ -9,7 +9,7 @@
         Title="Login" Height="450" Width="800"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <local:LoginModelView/>
+        <local:LoginViewModel/>
     </Window.DataContext>
 
     <Grid>

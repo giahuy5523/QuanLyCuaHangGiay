@@ -18,6 +18,7 @@ namespace QuanLyShopGiay
 
             _vm = new MainViewModel();
 
+            // ĐIỀU HƯỚNG TRANG
             _vm.Navigate = (pageName) =>
             {
                 switch (pageName)
@@ -28,11 +29,10 @@ namespace QuanLyShopGiay
                     case "SanPham":
                         MainFrame.Navigate(new Views.Pages.SanPhamPage());
                         break;
-                    // FIX: Thêm case KhachHang còn thiếu
                     case "KhachHang":
                         MainFrame.Navigate(new Views.Pages.KhachHangPage());
                         break;
-                    case "HoaDon":
+                    case "HoaDonBanHang":
                         MainFrame.Navigate(new Views.Pages.HoaDonBanHangPage());
                         break;
                     case "NhapHang":
@@ -47,6 +47,7 @@ namespace QuanLyShopGiay
                 }
             };
 
+            // ĐĂNG XUẤT QUAY VỀ LOGIN
             _vm.MoLoginView = () =>
             {
                 var login = new Views.Login();
@@ -55,8 +56,12 @@ namespace QuanLyShopGiay
                 this.Close();
             };
 
+            // GÁN DATACONTEXT ĐỂ KÍCH HOẠT BINDING
             DataContext = _vm;
 
+            
+
+            // TRANG MẶC ĐỊNH KHI MỞ APP
             MainFrame.Navigate(new Views.Pages.DashboardPage());
         }
     }

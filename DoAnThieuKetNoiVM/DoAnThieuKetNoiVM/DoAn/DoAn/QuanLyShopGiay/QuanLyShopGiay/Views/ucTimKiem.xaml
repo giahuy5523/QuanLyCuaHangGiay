@@ -5,30 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuanLyShopGiay.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="450">
+             d:DesignHeight="50" d:DesignWidth="550
+             
+             ">
     <UserControl.DataContext>
         <local:ucTimKiemViewModel/>
     </UserControl.DataContext>
-    <Border Background="White" CornerRadius="8" BorderBrush="#CCC" BorderThickness="1" Padding="5">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="110"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="90"/>
-            </Grid.ColumnDefinitions>
-
-            <ComboBox x:Name="cboLoaiTimKiem" Grid.Column="0" SelectedIndex="0" VerticalContentAlignment="Center" Margin="0,0,10,0">
-                <ComboBoxItem Content="Sản phẩm"/>
-
-            </ComboBox>
-
-            <TextBox x:Name="txtTuKhoa" Grid.Column="1" VerticalContentAlignment="Center" 
-               FontSize="14" Margin="0,0,10,0" Padding="5" />
-
-            <Border Grid.Column="2" CornerRadius="5" Background="#3B5998">
-                <Button x:Name="btnTimKiem" Content="Tìm kiếm"
-                  Background="Transparent" Foreground="White" FontWeight="Bold" BorderThickness="0"/>
-            </Border>
-        </Grid>
-    </Border>
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+        <ComboBox Width="130" Height="34" SelectedIndex="1" VerticalContentAlignment="Center" Margin="0,0,8,0">
+            <ComboBoxItem Content="Sản phẩm"/>
+            <ComboBoxItem Content="Khách hàng"/>
+        </ComboBox>
+        <TextBox Width="280" Height="34" Padding="8,0" VerticalContentAlignment="Center" Margin="0,0,8,0"
+              Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding SearchCommand}"/>
+            </TextBox.InputBindings>
+        </TextBox>
+        <Button Content="Tìm kiếm" Width="90" Height="34" Command="{Binding SearchCommand}"/>
+    </StackPanel>
 </UserControl>

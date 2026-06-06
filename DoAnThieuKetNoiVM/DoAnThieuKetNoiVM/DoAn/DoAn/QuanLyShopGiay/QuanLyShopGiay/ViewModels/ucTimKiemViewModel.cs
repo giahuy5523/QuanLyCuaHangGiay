@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace QuanLyShopGiay.ViewModels
 {
-    public class ucTimKiemViewModel : INotifyPropertyChanged
+    public class ucTimKiemViewModel : BaseViewModel
     {
         public class SuKienTimKiemArgs : EventArgs
         {
@@ -16,13 +16,15 @@ namespace QuanLyShopGiay.ViewModels
         }
         public event EventHandler<SuKienTimKiemArgs> XacNhanTimKiem;
 
-        private string _tuKhoa;
+        // ĐÃ SỬA: Đổi tên _tuKhoa thành _searchKeyword để khớp với XAML
+        private string _searchKeyword;
         private string _danhMucSelected = "Sản phẩm";
 
-        public string TuKhoa
+        // ĐÃ SỬA: Đổi tên thuộc tính thành SearchKeyword để Binding trong XAML nhận diện được
+        public string SearchKeyword
         {
-            get => _tuKhoa;
-            set { _tuKhoa = value; OnPropertyChanged(); }
+            get => _searchKeyword;
+            set { _searchKeyword = value; OnPropertyChanged(); }
         }
 
         public string DanhMucSelected
@@ -31,17 +33,18 @@ namespace QuanLyShopGiay.ViewModels
             set { _danhMucSelected = value; OnPropertyChanged(); }
         }
 
-        public ICommand TimKiemCommand { get; }
+        // ĐÃ SỬA: Đổi tên thành SearchCommand để khớp với XAML
+        public ICommand SearchCommand { get; }
 
         public ucTimKiemViewModel()
         {
-            // Nó sẽ tự động dùng RelayCommand có sẵn trong project của bạn
-            TimKiemCommand = new RelayCommand(ThucHienTimKiem);
+            // Gán lệnh vào đúng tên command mới
+            SearchCommand = new RelayCommand(ThucHienTimKiem);
         }
 
         private void ThucHienTimKiem(object parameter)
         {
-            string tuKhoaXuLy = TuKhoa?.Trim();
+            string tuKhoaXuLy = SearchKeyword?.Trim(); // Dùng SearchKeyword mới
 
             if (string.IsNullOrWhiteSpace(tuKhoaXuLy))
             {
@@ -56,13 +59,10 @@ namespace QuanLyShopGiay.ViewModels
             });
         }
 
-       
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
 }
-

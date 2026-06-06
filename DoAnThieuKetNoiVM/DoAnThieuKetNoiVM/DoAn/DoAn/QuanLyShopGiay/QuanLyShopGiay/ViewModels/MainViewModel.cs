@@ -10,20 +10,23 @@ namespace QuanLyShopGiay.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-
         private string _tieuDe = "Dashboard";
 
-        public string HoTenNV => SessionManager.HoTenNV ?? SessionManager.TenDangNhap;
-        public string TenVaiTro => SessionManager.TenVT ?? "N/A";
+        public string HoTenNV => !string.IsNullOrEmpty(UserSession.TenNV) ? UserSession.TenNV : "Chưa đăng nhập";
+        public string TenVaiTro => !string.IsNullOrEmpty(UserSession.Quyen) ? UserSession.Quyen : "N/A";
+
         public string NgayHienTai => DateTime.Now.ToString("dddd, dd/MM/yyyy");
 
         public string TieuDe
         {
             get => _tieuDe;
-            set => SetProperty(ref _tieuDe, value);
+            set
+            {
+                _tieuDe = value;
+                OnPropertyChanged();
+            }
         }
-
-        public bool CoQuyenAdmin => SessionManager.IsAdmin;
+        public bool CoQuyenAdmin => UserSession.Quyen == "Admin" || UserSession.Quyen == "Quản lý";
 
         public ICommand NavDashboardCommand { get; }
         public ICommand NavSanPhamCommand { get; }
@@ -42,7 +45,7 @@ namespace QuanLyShopGiay.ViewModels
             NavDashboardCommand = new RelayCommand(_ => ChangeNav("Dashboard", "Dashboard"));
             NavSanPhamCommand = new RelayCommand(_ => ChangeNav("SanPham", "Sản phẩm"));
             NavKhachHangCommand = new RelayCommand(_ => ChangeNav("KhachHang", "Khách hàng"));
-            NavHoaDonBanHangCommand = new RelayCommand(_ => ChangeNav("HoaDon", "Hóa đơn bán hàng"));
+            NavHoaDonBanHangCommand = new RelayCommand(_ => ChangeNav("HoaDonBanHang", "Hóa đơn bán hàng"));
             NavHoaDonNhapHangCommand = new RelayCommand(_ => ChangeNav("NhapHang", "Hóa đơn nhập hàng"));
             NavNhanVienCommand = new RelayCommand(_ => ChangeNav("NhanVien", "Nhân viên"));
             NavTaiKhoanCommand = new RelayCommand(_ => ChangeNav("TaiKhoan", "Tài khoản"));
@@ -61,7 +64,7 @@ namespace QuanLyShopGiay.ViewModels
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                SessionManager.DangXuat();
+                UserSession.Logout();
                 MoLoginView?.Invoke();
             }
         }
