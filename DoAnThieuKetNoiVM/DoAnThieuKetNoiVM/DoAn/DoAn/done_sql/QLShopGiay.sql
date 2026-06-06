@@ -361,8 +361,6 @@ WHERE MaNhanVien IN ('NV01', 'NV02', 'NV03', 'NV04');
 -- THÊM BẢNG PHƯƠNG THỨC THANH TOÁN
 -- =========================================================
 
-USE QLShopGiay;
-GO
 
 -- 1. TẠO BẢNG PHƯƠNG THỨC THANH TOÁN
 CREATE TABLE PhuongThucThanhToan (
