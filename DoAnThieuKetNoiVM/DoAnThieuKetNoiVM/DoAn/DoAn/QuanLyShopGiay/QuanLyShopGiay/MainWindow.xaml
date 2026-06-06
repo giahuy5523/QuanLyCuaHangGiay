@@ -51,11 +51,11 @@
 
                         <Button Content="🧾  Hóa đơn bán hàng"
                                 Style="{StaticResource SidebarButton}"
-                                Command="{Binding NavHoaDonCommand}"/>
+                                Command="{Binding NavHoaDonBanHangCommand}"/>
 
                         <Button Content="📦  Hóa đơn nhập hàng"
                                 Style="{StaticResource SidebarButton}"
-                                Command="{Binding NavKhoCommand}"/>
+                                Command="{Binding NavHoaDonNhapHangCommand}"/>
 
                         <Button Content="👤  Quản lý Nhân viên"
                                 Style="{StaticResource SidebarButton}"

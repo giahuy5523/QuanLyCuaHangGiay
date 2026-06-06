@@ -14,86 +14,50 @@ namespace QuanLyShopGiay
 
         public MainWindow()
         {
-            // 1. Khởi tạo UI component từ XAML trước
             InitializeComponent();
 
-            // 2. Lấy DataContext đã khai báo ở XAML để không bị đơ nút bấm (Khởi tạo kép)
-            _vm = this.DataContext as MainViewModel;
-            if (_vm == null)
-            {
-                _vm = new MainViewModel();
-                this.DataContext = _vm;
-            }
+            _vm = new MainViewModel();
 
-            // ĐỒNG BỘ: Ép dữ liệu từ UserSession đăng nhập trực tiếp vào ViewModel để Sidebar nhìn thấy
-            if (_vm != null)
-            {
-                _vm.TenNhanVien = UserSession.TenNV;
-                _vm.Quyen = UserSession.Quyen;
-            }
-
-            // 3. Định nghĩa callback chuyển trang cho Frame
             _vm.Navigate = (pageName) =>
             {
-                try
+                switch (pageName)
                 {
-                    switch (pageName)
-                    {
-                        case "Dashboard":
-                            MainFrame.Navigate(new DashboardPage());
-                            break;
-                        case "SanPham":
-                            MainFrame.Navigate(new SanPhamPage());
-                            break;
-                        case "KhachHang":
-                            MainFrame.Navigate(new KhachHangPage());
-                            break;
-                        case "HoaDon":
-                            MainFrame.Navigate(new HoaDonBanHangPage());
-                            break;
-                        case "NhanVien":
-                            MainFrame.Navigate(new NhanVienPage());
-                            break;
-                        case "TaiKhoan":
-                            MainFrame.Navigate(new TaiKhoanPage());
-                            break;
-                        default:
-                            MessageBox.Show($"Trang '{pageName}' không tồn tại!", "Cảnh báo");
-                            break;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Lỗi mở trang: {ex.Message}", "Lỗi");
+                    case "Dashboard":
+                        MainFrame.Navigate(new Views.Pages.DashboardPage());
+                        break;
+                    case "SanPham":
+                        MainFrame.Navigate(new Views.Pages.SanPhamPage());
+                        break;
+                    // FIX: Thêm case KhachHang còn thiếu
+                    case "KhachHang":
+                        MainFrame.Navigate(new Views.Pages.KhachHangPage());
+                        break;
+                    case "HoaDon":
+                        MainFrame.Navigate(new Views.Pages.HoaDonBanHangPage());
+                        break;
+                    case "NhapHang":
+                        MainFrame.Navigate(new Views.Pages.DonNhapHangPage());
+                        break;
+                    case "NhanVien":
+                        MainFrame.Navigate(new Views.Pages.NhanVienPage());
+                        break;
+                    case "TaiKhoan":
+                        MainFrame.Navigate(new Views.Pages.TaiKhoanPage());
+                        break;
                 }
             };
 
-            // 4. Định nghĩa callback đăng xuất
             _vm.MoLoginView = () =>
             {
-                try
-                {
-                    // Xóa dữ liệu phiên làm việc tĩnh
-                    UserSession.Logout();
-
-                    // Mở Login mới dạng thường
-                    var login = new Login();
-                    login.Show();
-
-                    // Đóng MainWindow an toàn
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Lỗi đăng xuất: {ex.Message}", "Lỗi");
-                }
+                var login = new Views.Login();
+                login.WindowState = this.WindowState;
+                login.Show();
+                this.Close();
             };
 
-            // 5. Hiển thị trang Dashboard mặc định khi vừa vào app
-            MainFrame.Navigate(new DashboardPage());
+            DataContext = _vm;
 
-            // 6. Cập nhật title Window ăn theo dữ liệu tĩnh UserSession chuẩn chỉnh
-            Title = $"Quản Lý Shop Giày - {UserSession.TenNV} ({UserSession.Quyen})";
+            MainFrame.Navigate(new Views.Pages.DashboardPage());
         }
     }
 }
