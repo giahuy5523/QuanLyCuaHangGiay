@@ -1,274 +1,299 @@
-﻿//using QuanLyShopGiay.Helpers;
-//using QuanLyShopGiay.Models;
-//using QuanLyShopGiay.Services;
-//using System;
-//using System.Collections.ObjectModel;
-//using System.Linq;
-//using System.Windows;
-//using System.Windows.Input;
+﻿using Microsoft.Win32;
+using QuanLyShopGiay.Command;
+using QuanLyShopGiay.Models;
+using System;
+using System.Collections.ObjectModel;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
+using System.Data.Entity;
 
-//namespace QuanLyShopGiay.ViewModels
-//{
-//    public class SanPhamViewModel : BaseViewModel
-//    {
-//        private readonly SanPhamService _service = new SanPhamService();
+namespace QuanLyShopGiay.ViewModels
+{
+    public class SanPhamViewModel : BaseViewModel
+    {
+        private QLShopGiayEntities3 db = new QLShopGiayEntities3();
 
-//        // ══════════════════════════════════════════════════════════════════════
-//        // BINDING — DANH SÁCH & COMBOBOX
-//        // ══════════════════════════════════════════════════════════════════════
-//        private ObservableCollection<object> _danhSachSP;
-//        public ObservableCollection<object> DanhSachSP { get => _danhSachSP; set => SetProperty(ref _danhSachSP, value); }
+        private ObservableCollection<SanPham> _listSanPham;
+        public ObservableCollection<SanPham> ListSanPham
+        {
+            get => _listSanPham;
+            set => SetProperty(ref _listSanPham, value);
+        }
 
-//        public ObservableCollection<LOAI_HANG> DanhSachLoai { get; set; }
-//        public ObservableCollection<NHA_SAN_XUAT> DanhSachNSX { get; set; }
-//        public ObservableCollection<DON_VI_TINH> DanhSachDVT { get; set; }
+        public ObservableCollection<LoaiSanPham> ListLoaiSP { get; set; }
+        public ObservableCollection<NhaCungCap> ListNCC { get; set; }
 
-//        // ── Hàng đang chọn trên DataGrid (Thay thế cho sự kiện OnSelectionChanged) ──
-//        private object _selectedSP;
-//        public object SelectedSP
-//        {
-//            get => _selectedSP;
-//            set
-//            {
-//                if (SetProperty(ref _selectedSP, value))
-//                    DienVaoForm(value);
-//            }
-//        }
+        private SanPham _selectedSanPham;
+        public SanPham SelectedSanPham
+        {
+            get => _selectedSanPham;
+            set
+            {
+                if (SetProperty(ref _selectedSanPham, value) && value != null)
+                {
+                    MaSP = value.MaSP;
+                    TenSP = value.TenSP;
+                    Size = value.Size;
+                    MauSac = value.MauSac;
+                    GiaNhap = value.GiaNhap;
+                    GiaBan = value.GiaBan;
+                    SoLuongTon = value.SoLuongTon ?? 0;
+                    GhiChu = value.GhiChu;
 
-//        // ══════════════════════════════════════════════════════════════════════
-//        // BINDING — FORM FIELDS
-//        // ══════════════════════════════════════════════════════════════════════
-//        private string _maSP;
-//        private string _tenSP;
-//        private string _giaBanText;
-//        private string _maLoai;
-//        private string _maNSX;
-//        private string _maDVT;
-//        private string _tieuDeForm = "Thêm sản phẩm mới";
-//        private string _tenNutLuu = "Lưu mới";
-//        private bool _maSPReadOnly;
-//        private bool _coTheXoa;
-//        private bool _isEditing;
+                    SelectedLoai = ListLoaiSP.FirstOrDefault(x => x.MaLoai == value.MaLoai);
+                    SelectedNCC = ListNCC.FirstOrDefault(x => x.MaNCC == value.MaNCC);
 
-//        public string MaSP { get => _maSP; set => SetProperty(ref _maSP, value); }
-//        public string TenSP { get => _tenSP; set => SetProperty(ref _tenSP, value); }
-//        public string GiaBanText { get => _giaBanText; set => SetProperty(ref _giaBanText, value); }
-//        public string MaLoai { get => _maLoai; set => SetProperty(ref _maLoai, value); }
-//        public string MaNSX { get => _maNSX; set => SetProperty(ref _maNSX, value); }
-//        public string MaDVT { get => _maDVT; set => SetProperty(ref _maDVT, value); }
-//        public string TieuDeForm { get => _tieuDeForm; set => SetProperty(ref _tieuDeForm, value); }
-//        public string TenNutLuu { get => _tenNutLuu; set => SetProperty(ref _tenNutLuu, value); }
-//        public bool MaSPReadOnly { get => _maSPReadOnly; set => SetProperty(ref _maSPReadOnly, value); }
-//        public bool CoTheXoa { get => _coTheXoa; set => SetProperty(ref _coTheXoa, value); }
+                    IsEditMode = true;
+                }
+            }
+        }
 
-//        // ── Tìm kiếm ──
-//        private string _tuKhoa = "";
-//        public string TuKhoa
-//        {
-//            get => _tuKhoa;
-//            set { if (SetProperty(ref _tuKhoa, value)) LoadDanhSach(); }
-//        }
+        private bool _isEditMode;
+        public bool IsEditMode
+        {
+            get => _isEditMode;
+            set => SetProperty(ref _isEditMode, value);
+        }
 
-//        // ── Phân quyền (Để tạm true để kiểm thử dễ dàng, điều chỉnh lại khi ráp logic Session) ──
-//        public bool CoQuyenChinhSua => true; //SessionManager.IsAdmin;
+        private string _searchText;
+        public string SearchText
+        {
+            get => _searchText;
+            set
+            {
+                SetProperty(ref _searchText, value);
+                ExecuteSearch();
+            }
+        }
 
-//        // ══════════════════════════════════════════════════════════════════════
-//        // COMMANDS
-//        // ══════════════════════════════════════════════════════════════════════
-//        public ICommand ThemMoiCommand { get; }
-//        public ICommand LuuCommand { get; }
-//        public ICommand XoaCommand { get; }
-//        public ICommand HuyCommand { get; }
+        private string _maSP; public string MaSP { get => _maSP; set => SetProperty(ref _maSP, value); }
+        private string _tenSP; public string TenSP { get => _tenSP; set => SetProperty(ref _tenSP, value); }
+        private LoaiSanPham _selectedLoai; public LoaiSanPham SelectedLoai { get => _selectedLoai; set => SetProperty(ref _selectedLoai, value); }
+        private NhaCungCap _selectedNCC; public NhaCungCap SelectedNCC { get => _selectedNCC; set => SetProperty(ref _selectedNCC, value); }
+        private string _size; public string Size { get => _size; set => SetProperty(ref _size, value); }
+        private string _mauSac; public string MauSac { get => _mauSac; set => SetProperty(ref _mauSac, value); }
+        private string _ghiChu; public string GhiChu { get => _ghiChu; set => SetProperty(ref _ghiChu, value); }
 
-//        // ══════════════════════════════════════════════════════════════════════
-//        // CONSTRUCTOR
-//        // ══════════════════════════════════════════════════════════════════════
-//        public SanPhamViewModel()
-//        {
-//            // Command (Cho tham số CanExecute = true để test không bị mờ nút)
-//            ThemMoiCommand = new RelayCommand(_ => XuLyThemMoi(), _ => true);
-//            LuuCommand = new RelayCommand(_ => XuLyLuu(), _ => true);
-//            XoaCommand = new RelayCommand(_ => XuLyXoa(), _ => true);
-//            HuyCommand = new RelayCommand(_ => XuLyHuy(), _ => true);
+        private int? _soLuongTon;
+        public int? SoLuongTon
+        {
+            get => _soLuongTon;
+            set => SetProperty(ref _soLuongTon, value);
+        }
 
-//            LoadComboBoxes();
-//            LoadDanhSach();
-//            XoaForm();
-//        }
+        private decimal? _giaNhap;
+        public decimal? GiaNhap
+        {
+            get => _giaNhap;
+            set
+            {
+                if (SetProperty(ref _giaNhap, value))
+                {
+                    if (value.HasValue)
+                    {
+                        GiaBan = value.Value * 1.1m;
+                    }
+                    else
+                    {
+                        GiaBan = 0;
+                    }
+                }
+            }
+        }
 
-//        // ══════════════════════════════════════════════════════════════════════
-//        // LOAD DATA
-//        // ══════════════════════════════════════════════════════════════════════
-//        private void LoadDanhSach()
-//        {
-//            string kw = TuKhoa ?? "";
-//            using (var db = new QuanLyShopGiayEntities())
-//            {
-//                // BỎ ĐIỀU KIỆN '.Where(x => x.IsDeleted == false)' TRONG SERVICE
-//                // Hoặc load trực tiếp tất cả sản phẩm tại đây:
-//                var ds = db.SAN_PHAM
-//                            .Include("LOAI_HANG")
-//                            .Include("NHA_SAN_XUAT")
-//                            .Include("DON_VI_TINH")
-//                            .Where(sp => sp.TenSP.Contains(kw)) // Chỉ lọc theo từ khóa
-//                            .OrderBy(sp => sp.MaSP)
-//                            .Select(sp => new
-//                            {
-//                                sp.MaSP,
-//                                sp.TenSP,
-//                                TenLoai = sp.LOAI_HANG != null ? sp.LOAI_HANG.TenLoai : "",
-//                                TenNSX = sp.NHA_SAN_XUAT != null ? sp.NHA_SAN_XUAT.TenNSX : "",
-//                                TenDVT = sp.DON_VI_TINH != null ? sp.DON_VI_TINH.TenDVT : "",
-//                                sp.GiaBan,
-//                                sp.IsDeleted, // Đảm bảo lấy trường này để DataGrid hiển thị
-//                                sp.MaLoai,
-//                                sp.MaNSX,
-//                                sp.MaDVT
-//                            })
-//                            .ToList()
-//                            .Cast<object>();
+        private decimal? _giaBan;
+        public decimal? GiaBan
+        {
+            get => _giaBan;
+            set => SetProperty(ref _giaBan, value);
+        }
 
-//                DanhSachSP = new ObservableCollection<object>(ds);
-//            }
-//        }
+        public ICommand AddCommand { get; set; }
+        public ICommand EditCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+        public ICommand ResetCommand { get; set; }
+        public ICommand SearchCommand { get; set; }
 
-//        private void LoadComboBoxes()
-//        {
-//            using (var db = new QLShopGiayEntities())
-//            {
-//                DanhSachLoai = new ObservableCollection<LOAI_HANG>(db.LOAI_HANG.OrderBy(x => x.TenLoai).ToList());
-//                DanhSachNSX = new ObservableCollection<NHA_SAN_XUAT>(db.NHA_SAN_XUAT.OrderBy(x => x.TenNSX).ToList());
-//                DanhSachDVT = new ObservableCollection<DON_VI_TINH>(db.DON_VI_TINH.OrderBy(x => x.TenDVT).ToList());
-//            }
-//        }
+        public SanPhamViewModel()
+        {
+            LoadAllDataSources();
 
-//        // ══════════════════════════════════════════════════════════════════════
-//        // FORM HELPERS
-//        // ══════════════════════════════════════════════════════════════════════
-//        private void DienVaoForm(dynamic row)
-//        {
-//            if (row == null) { XoaForm(); return; }
+            SearchCommand = new RelayCommand(p => ExecuteSearch(), p => true);
+            ResetCommand = new RelayCommand(p => ResetForm(), p => true);
 
-//            TieuDeForm = "Chỉnh sửa sản phẩm";
-//            TenNutLuu = "Cập nhật";
-//            MaSP = row.MaSP;
-//            TenSP = row.TenSP;
-//            GiaBanText = row.GiaBan?.ToString("G0"); // Xóa số 0 thừa thập phân
-//            MaLoai = row.MaLoai;
-//            MaNSX = row.MaNSX;
-//            MaDVT = row.MaDVT;
-//            MaSPReadOnly = true;
-//            CoTheXoa = true;
-//            _isEditing = true;
-//        }
+            // 1. THÊM MỚI SẢN PHẨM
+            AddCommand = new RelayCommand(
+                execute: p => {
+                    if (string.IsNullOrWhiteSpace(MaSP) || string.IsNullOrWhiteSpace(TenSP) || SelectedLoai == null || SelectedNCC == null)
+                    {
+                        MessageBox.Show("Vui lòng điền các thông tin bắt buộc có dấu (*) !", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
 
-//        private void XoaForm()
-//        {
-//            TieuDeForm = "Thêm sản phẩm mới";
-//            TenNutLuu = "💾 Lưu mới";
-//            MaSP = "";
-//            TenSP = "";
-//            GiaBanText = "";
-//            MaLoai = null;
-//            MaNSX = null;
-//            MaDVT = null;
-//            MaSPReadOnly = false;
-//            CoTheXoa = false;
-//            _isEditing = false;
-//        }
+                    if (db.SanPhams.Any(x => x.MaSP == MaSP.Trim()))
+                    {
+                        MessageBox.Show("Mã sản phẩm này đã tồn tại trong cơ sở dữ liệu!", "Lỗi trùng mã", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
 
-//        // ══════════════════════════════════════════════════════════════════════
-//        // COMMAND HANDLERS
-//        // ══════════════════════════════════════════════════════════════════════
-//        private void XuLyThemMoi()
-//        {
-//            SelectedSP = null; // Tự kích hoạt trigger Xóa Form
-//        }
+                    if ((GiaBan ?? 0) < (GiaNhap ?? 0))
+                    {
+                        MessageBox.Show("Giá bán ra không được phép nhỏ hơn giá nhập vào kho!", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
 
-//        private void XuLyLuu()
-//        {
-//            if (string.IsNullOrWhiteSpace(MaSP) || string.IsNullOrWhiteSpace(TenSP) || string.IsNullOrWhiteSpace(GiaBanText))
-//            {
-//                MessageBox.Show("Vui lòng điền đầy đủ thông tin (Mã SP, Tên SP, Giá Bán)!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-//                return;
-//            }
-//            if (!decimal.TryParse(GiaBanText, out decimal gia) || gia < 0)
-//            {
-//                MessageBox.Show("Giá bán không hợp lệ!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-//                return;
-//            }
+                    var newSP = new SanPham()
+                    {
+                        MaSP = MaSP.Trim(),
+                        TenSP = TenSP.Trim(),
+                        MaLoai = SelectedLoai.MaLoai,
+                        MaNCC = SelectedNCC.MaNCC,
+                        Size = Size?.Trim(),
+                        MauSac = MauSac?.Trim(),
+                        GiaNhap = GiaNhap ?? 0,
+                        GiaBan = GiaBan ?? 0,
+                        SoLuongTon = SoLuongTon ?? 0,
+                        GhiChu = ""
+                    };
 
-//            try
-//            {
-//                ServiceResult result;
-//                string maSP = MaSP.Trim();
+                    db.SanPhams.Add(newSP);
+                    db.SaveChanges();
 
-//                if (_isEditing)
-//                {
-//                    result = _service.Update(new SAN_PHAM
-//                    {
-//                        MaSP = maSP,
-//                        TenSP = TenSP.Trim(),
-//                        MaLoai = MaLoai,
-//                        MaNSX = MaNSX,
-//                        MaDVT = MaDVT,
-//                        GiaBan = gia
-//                    });
-//                }
-//                else
-//                {
-//                    result = _service.Insert(new SAN_PHAM
-//                    {
-//                        MaSP = maSP,
-//                        TenSP = TenSP.Trim(),
-//                        MaLoai = MaLoai,
-//                        MaNSX = MaNSX,
-//                        MaDVT = MaDVT,
-//                        GiaBan = gia,
-//                        IsDeleted = false
-//                    });
-//                }
+                    MessageBox.Show("Thêm mới sản phẩm thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
 
-//                if (!result.Success)
-//                {
-//                    MessageBox.Show(result.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
-//                    return;
-//                }
+                    ExecuteSearch();
+                    ResetForm();
+                },
+                canExecute: p => true
+            );
 
-//                MessageBox.Show(result.Message, "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            // 2. CẬP NHẬT SẢN PHẨM (ĐÃ SỬA ĐỔI TOÀN DIỆN KIỂU DỮ LIỆU)
+            EditCommand = new RelayCommand(
+                execute: p => {
+                    if (!IsEditMode)
+                    {
+                        MessageBox.Show("Vui lòng chọn một sản phẩm từ bảng danh sách trước khi chỉnh sửa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
 
-//                LoadDanhSach();
-//                XuLyThemMoi();
-//            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-//            }
-//        }
+                    if (string.IsNullOrWhiteSpace(TenSP) || SelectedLoai == null || SelectedNCC == null)
+                    {
+                        MessageBox.Show("Vui lòng không bỏ trống các trường bắt buộc (*) !", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
 
-//        private void XuLyXoa()
-//        {
-//            if (!_isEditing || string.IsNullOrEmpty(MaSP))
-//            {
-//                MessageBox.Show("Vui lòng chọn một sản phẩm từ danh sách để xóa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
-//                return;
-//            }
+                    if ((GiaBan ?? 0) < (GiaNhap ?? 0))
+                    {
+                        MessageBox.Show("Giá bán ra không được nhỏ hơn giá nhập kho!", "Cảnh báo giá", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
 
-//            var confirm = MessageBox.Show("Bạn có chắc muốn ngừng kinh doanh sản phẩm này?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
-//            if (confirm != MessageBoxResult.Yes) return;
+                    var currentSP = db.SanPhams.SingleOrDefault(x => x.MaSP == MaSP);
+                    if (currentSP != null)
+                    {
+                        currentSP.TenSP = TenSP.Trim();
+                        currentSP.MaLoai = SelectedLoai.MaLoai;
+                        currentSP.MaNCC = SelectedNCC.MaNCC;
+                        currentSP.Size = Size?.Trim();
+                        currentSP.MauSac = MauSac?.Trim();
+                        currentSP.GiaNhap = GiaNhap ?? 0;
+                        currentSP.GiaBan = GiaBan ?? 0;
+                        currentSP.SoLuongTon = SoLuongTon ?? 0;
+                        currentSP.GhiChu = GhiChu?.Trim();
 
-//            var result = _service.Delete(MaSP);
-//            MessageBox.Show(result.Message, "Thông báo",
-//                result.Success ? MessageBoxButton.OK : MessageBoxButton.OK,
-//                result.Success ? MessageBoxImage.Information : MessageBoxImage.Error);
+                        db.SaveChanges();
+                        MessageBox.Show("Cập nhật thông tin sản phẩm thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
 
-//            if (result.Success)
-//            {
-//                LoadDanhSach();
-//                XuLyThemMoi();
-//            }
-//        }
+                        ExecuteSearch();
+                        ResetForm();
+                    }
+                },
+                canExecute: p => true
+            );
 
-//        private void XuLyHuy() => XuLyThemMoi();
-//    }
-//}
+            // 3. XÓA SẢN PHẨM
+            DeleteCommand = new RelayCommand(
+                execute: p => {
+                    if (!IsEditMode)
+                    {
+                        MessageBox.Show("Vui lòng chọn sản phẩm cần xóa từ bảng danh sách bên phải!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    var confirm = MessageBox.Show($"Bạn có chắc chắn muốn xóa sản phẩm mã {MaSP} không?", "Xác nhận xóa", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (confirm == MessageBoxResult.Yes)
+                    {
+                        try
+                        {
+                            var itemToRemove = db.SanPhams.SingleOrDefault(x => x.MaSP == MaSP);
+                            if (itemToRemove != null)
+                            {
+                                db.SanPhams.Remove(itemToRemove);
+                                db.SaveChanges();
+                                MessageBox.Show("Xóa sản phẩm thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                                ExecuteSearch();
+                                ResetForm();
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Không thể xóa sản phẩm này vì mã sản phẩm đã phát sinh lịch sử mua bán trong các Hóa Đơn!", "Lỗi ràng buộc dữ liệu", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                },
+                canExecute: p => true
+            );
+        }
+
+        private void LoadAllDataSources()
+        {
+            try
+            {
+                ListLoaiSP = new ObservableCollection<LoaiSanPham>(db.LoaiSanPhams.ToList());
+                ListNCC = new ObservableCollection<NhaCungCap>(db.NhaCungCaps.ToList());
+                ExecuteSearch();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message, "Lỗi kết nối", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void ExecuteSearch()
+        {
+            if (string.IsNullOrWhiteSpace(SearchText))
+            {
+                ListSanPham = new ObservableCollection<SanPham>(
+                    db.SanPhams.Include(x => x.LoaiSanPham).Include(x => x.NhaCungCap).ToList()
+                );
+            }
+            else
+            {
+                string key = SearchText.Trim().ToLower();
+                ListSanPham = new ObservableCollection<SanPham>(
+                    db.SanPhams.Include(x => x.LoaiSanPham).Include(x => x.NhaCungCap)
+                               .Where(x => x.TenSP.ToLower().Contains(key)).ToList()
+                );
+            }
+        }
+
+        private void ResetForm()
+        {
+            MaSP = string.Empty;
+            TenSP = string.Empty;
+            SelectedLoai = null;
+            SelectedNCC = null;
+            Size = string.Empty;
+            MauSac = string.Empty;
+            GiaNhap = 0;
+            GiaBan = 0;
+            SoLuongTon = 0;
+            GhiChu = string.Empty;
+            IsEditMode = false;
+            SelectedSanPham = null;
+        }
+    }
+}
