@@ -13,7 +13,6 @@ namespace QuanLyShopGiay.ViewModels
     {
         private readonly QLShopGiayEntities3 _db;
 
-        // --- Session info (bind lên header XAML) ---
         public string TenTaiKhoan => SessionManager.HoTenNV ?? SessionManager.TenDangNhap ?? "Chưa đăng nhập";
         public string TenVaiTro => SessionManager.TenVT ?? "N/A";
 

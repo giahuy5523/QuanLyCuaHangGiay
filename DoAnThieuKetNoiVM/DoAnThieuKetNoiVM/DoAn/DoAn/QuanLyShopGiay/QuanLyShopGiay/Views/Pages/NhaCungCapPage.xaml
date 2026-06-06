@@ -15,6 +15,7 @@
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
+'
 
 		<!-- HEADER: Tìm kiếm + Thông tin tài khoản (binding từ ViewModel) -->
 		<Grid Grid.Row="0" Margin="0,0,0,20">
