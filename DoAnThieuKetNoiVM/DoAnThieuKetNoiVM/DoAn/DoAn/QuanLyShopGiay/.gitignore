@@ -1,0 +1,10 @@
+# Bỏ qua thư mục và file rác của Visual Studio
+.vs/
+*.suo
+*.user
+*.pdb
+*.cache
+*.lref
+bin/
+obj/
+*.vsidx
