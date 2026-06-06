@@ -118,5 +118,13 @@ namespace QuanLyShopGiay.Helpers
         public static string MaNV { get; set; }
 
         public static string TenNV { get; set; }
+        public static string Quyen { get; set; }
+        public static bool IsLoggedIn => !string.IsNullOrEmpty(MaNV);
+        public static void Logout()
+        {
+            MaNV = null;
+            TenNV = null;
+            Quyen = null;
+        }
     }
 }

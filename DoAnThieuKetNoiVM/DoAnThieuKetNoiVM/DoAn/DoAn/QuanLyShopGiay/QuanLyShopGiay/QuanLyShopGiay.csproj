@@ -71,6 +71,7 @@
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Helpers\BoolToOpacityConverter.cs" />
     <Compile Include="Helpers\helper_pass.cs" />
+    <Compile Include="Helpers\Initializepasswordhelper.cs" />
     <Compile Include="Helpers\InverseBooltovisibilityconverter.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\SessionManager.cs" />

@@ -62,6 +62,7 @@ namespace  QuanLyShopGiay.ViewModels
                     // Lưu session
                     UserSession.MaNV = user.MaNhanVien;
                     UserSession.TenNV = user.TenNhanVien;
+                    UserSession.Quyen = user.Quyen;
 
                     // Mở MainWindow
                     MainWindow mainWindow = new MainWindow();
