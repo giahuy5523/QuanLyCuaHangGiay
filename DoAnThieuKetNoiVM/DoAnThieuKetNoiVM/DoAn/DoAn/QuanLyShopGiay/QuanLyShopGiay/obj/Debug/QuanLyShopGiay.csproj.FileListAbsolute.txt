@@ -39,3 +39,46 @@ C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKe
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLySh.C4D866E7.Up2Date
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\ucTimKiem.g.cs
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\ucTimKiem.baml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\bin\Debug\QuanLyShopGiay.exe.config
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\bin\Debug\QuanLyShopGiay.exe
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\bin\Debug\QuanLyShopGiay.pdb
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\bin\Debug\EntityFramework.dll
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\bin\Debug\EntityFramework.SqlServer.dll
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\bin\Debug\EntityFramework.xml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\bin\Debug\EntityFramework.SqlServer.xml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.csproj.AssemblyReference.cache
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\MainWindow.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Login.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\DashboardPage.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\DonNhapHangPage.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\HoaDonBanHangPage.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\KhachHangPage.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\LoaiSanPhamPage.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\NhanVienPage.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\SanPhamPage.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\TaiKhoanPage.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\ucTimKiem.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\App.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay_Content.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay_MarkupCompile.cache
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay_MarkupCompile.lref
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\App.baml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\MainWindow.baml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Login.baml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\DashboardPage.baml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\DonNhapHangPage.baml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\HoaDonBanHangPage.baml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\KhachHangPage.baml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\NhanVienPage.baml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\SanPhamPage.baml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\TaiKhoanPage.baml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\ucTimKiem.baml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\Views\Pages\LoaiSanPhamPage.baml
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.g.resources
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.Properties.Resources.resources
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.csproj.GenerateResource.cache
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.csproj.CoreCompileInputs.cache
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLySh.C4D866E7.Up2Date
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.exe
+D:\New folder (2)\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\obj\Debug\QuanLyShopGiay.pdb

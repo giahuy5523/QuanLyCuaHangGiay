@@ -35,6 +35,7 @@ namespace QuanLyShopGiay.ViewModels
         public ICommand NavHoaDonNhapHangCommand { get; }
         public ICommand NavNhanVienCommand { get; }
         public ICommand NavTaiKhoanCommand { get; }
+        public ICommand NavLoaiSanPhamCommand { get; }
         public ICommand DangXuatCommand { get; }
 
         public Action<string> Navigate { get; set; }
@@ -47,6 +48,7 @@ namespace QuanLyShopGiay.ViewModels
             NavKhachHangCommand = new RelayCommand(_ => ChangeNav("KhachHang", "Khách hàng"));
             NavHoaDonBanHangCommand = new RelayCommand(_ => ChangeNav("HoaDonBanHang", "Hóa đơn bán hàng"));
             NavHoaDonNhapHangCommand = new RelayCommand(_ => ChangeNav("NhapHang", "Hóa đơn nhập hàng"));
+            NavLoaiSanPhamCommand = new RelayCommand(_ => ChangeNav("LoaiSanPham", "Loại sản phẩm"));
             NavNhanVienCommand = new RelayCommand(_ => ChangeNav("NhanVien", "Nhân viên"));
             NavTaiKhoanCommand = new RelayCommand(_ => ChangeNav("TaiKhoan", "Tài khoản"));
             DangXuatCommand = new RelayCommand(_ => ThucHienDangXuat());

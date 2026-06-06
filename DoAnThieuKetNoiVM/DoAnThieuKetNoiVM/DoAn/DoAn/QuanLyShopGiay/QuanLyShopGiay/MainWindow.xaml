@@ -43,7 +43,7 @@
 
                         <Button Content="👟 Quản lý loại sản phẩm"
                                 Style="{StaticResource SidebarButton}"
-                                Command="{Binding NavSanPhamCommand}"/>
+                                Command="{Binding NavLoaiSanPhamCommand}"/>
 
                         <Button Content="👤 Quản lý Khách Hàng"
                                 Style="{StaticResource SidebarButton}"
