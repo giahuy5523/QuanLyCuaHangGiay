@@ -75,6 +75,7 @@
     <Compile Include="Helpers\InverseBooltovisibilityconverter.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\SessionManager.cs" />
+    <Compile Include="Helpers\StringToBooleanConverter.cs" />
     <Compile Include="Helpers\StringToVisibilityConverter.cs" />
     <Compile Include="Models\ChiTietHoaDon.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -130,6 +131,7 @@
     <Compile Include="ViewModels\LoaiSanPhamViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\NhanVienViewModel.cs" />
     <Compile Include="ViewModels\SanPhamViewModel.cs" />
     <Compile Include="ViewModels\ucTimKiemViewModel.cs" />
     <Compile Include="Views\Login.xaml.cs">

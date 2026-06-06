@@ -357,3 +357,13 @@ SELECT
     Quyen
 FROM NhanVien
 WHERE MaNhanVien IN ('NV01', 'NV02', 'NV03', 'NV04');
+
+-- Cập nhật lại chuỗi Quyen thành không dấu để đồng bộ với Code C# ViewModel
+UPDATE NhanVien SET Quyen = 'QuanLy' WHERE MaNhanVien = 'NV01';
+UPDATE NhanVien SET Quyen = 'BanHang' WHERE MaNhanVien IN ('NV02', 'NV03');
+UPDATE NhanVien SET Quyen = 'KhoQuy' WHERE MaNhanVien = 'NV04';
+GO
+
+-- Kiểm tra lại danh sách quyền sau khi chuẩn hóa
+SELECT MaNhanVien, TenNhanVien, TenDangNhap,MatKhau ,Quyen FROM NhanVien;
+GO
