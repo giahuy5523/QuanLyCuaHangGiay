@@ -14,8 +14,8 @@ namespace QuanLyShopGiay
 
         public MainWindow()
         {
-            // 1. Kiểm tra đã đăng nhập chưa
-            if (!UserSession.IsLoggedIn)
+            // 1. Kiểm tra đã đăng nhập chưa (dùng SessionManager)
+            if (!SessionManager.DaDangNhap)
             {
                 MessageBox.Show("Chưa đăng nhập!", "Lỗi");
                 this.Close();
@@ -73,9 +73,9 @@ namespace QuanLyShopGiay
                 try
                 {
                     // Đăng xuất session
-                    UserSession.Logout();
+                    SessionManager.DangXuat();
 
-                    // Mở LoginView
+                    // Mở Login Window
                     var login = new Login();
                     login.Show();
 
@@ -91,8 +91,8 @@ namespace QuanLyShopGiay
             // 7. Hiển thị trang Dashboard mặc định
             MainFrame.Navigate(new DashboardPage());
 
-            // 8. Cập nhật title
-            Title = $"Quản Lý Shop Giày - {UserSession.TenNV} ({UserSession.Quyen ?? "Không rõ"})";
+            // 8. Cập nhật title (dùng SessionManager)
+            Title = $"Quản Lý Shop Giày - {SessionManager.HoTenNV} ({SessionManager.TenVT})";
         }
     }
 }

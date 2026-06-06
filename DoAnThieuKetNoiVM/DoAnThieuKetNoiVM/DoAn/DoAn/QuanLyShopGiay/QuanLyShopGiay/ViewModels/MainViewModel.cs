@@ -18,7 +18,7 @@ namespace QuanLyShopGiay.ViewModels
         // ===== PROPERTIES =====
         public string TenNhanVien
         {
-            get => _tenNhanVien ?? UserSession.TenNV;
+            get => _tenNhanVien ?? SessionManager.HoTenNV; 
             set
             {
                 _tenNhanVien = value;
@@ -28,7 +28,7 @@ namespace QuanLyShopGiay.ViewModels
 
         public string Quyen
         {
-            get => _quyen ?? UserSession.Quyen;
+            get => _quyen ?? SessionManager.TenVT;  // ← Sửa
             set
             {
                 _quyen = value;
