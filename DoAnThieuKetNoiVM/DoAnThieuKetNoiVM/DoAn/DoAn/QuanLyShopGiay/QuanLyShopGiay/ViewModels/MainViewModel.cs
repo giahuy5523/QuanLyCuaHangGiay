@@ -9,6 +9,7 @@ namespace QuanLyShopGiay.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+      
         private string _tenNhanVien;
         private string _quyen;
 

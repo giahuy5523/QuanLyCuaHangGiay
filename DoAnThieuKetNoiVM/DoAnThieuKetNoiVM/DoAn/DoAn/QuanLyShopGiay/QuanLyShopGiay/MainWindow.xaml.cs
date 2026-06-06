@@ -14,24 +14,25 @@ namespace QuanLyShopGiay
 
         public MainWindow()
         {
-            // 1. Kiểm tra đã đăng nhập chưa (dùng SessionManager)
-            if (!SessionManager.DaDangNhap)
-            {
-                MessageBox.Show("Chưa đăng nhập!", "Lỗi");
-                this.Close();
-                return;
-            }
-
-            // 2. Khởi tạo ViewModel
-            _vm = new MainViewModel();
-
-            // 3. Gán DataContext TRƯỚC khi gán callback
-            this.DataContext = _vm;
-
-            // 4. Khởi tạo component (XAML)
+            // 1. Khởi tạo UI component từ XAML trước
             InitializeComponent();
 
-            // 5. Định nghĩa callback điều hướng trang
+            // 2. Lấy DataContext đã khai báo ở XAML để không bị đơ nút bấm (Khởi tạo kép)
+            _vm = this.DataContext as MainViewModel;
+            if (_vm == null)
+            {
+                _vm = new MainViewModel();
+                this.DataContext = _vm;
+            }
+
+            // ĐỒNG BỘ: Ép dữ liệu từ UserSession đăng nhập trực tiếp vào ViewModel để Sidebar nhìn thấy
+            if (_vm != null)
+            {
+                _vm.TenNhanVien = UserSession.TenNV;
+                _vm.Quyen = UserSession.Quyen;
+            }
+
+            // 3. Định nghĩa callback chuyển trang cho Frame
             _vm.Navigate = (pageName) =>
             {
                 try
@@ -67,19 +68,19 @@ namespace QuanLyShopGiay
                 }
             };
 
-            // 6. Định nghĩa callback đăng xuất
+            // 4. Định nghĩa callback đăng xuất
             _vm.MoLoginView = () =>
             {
                 try
                 {
-                    // Đăng xuất session
-                    SessionManager.DangXuat();
+                    // Xóa dữ liệu phiên làm việc tĩnh
+                    UserSession.Logout();
 
-                    // Mở Login Window
+                    // Mở Login mới dạng thường
                     var login = new Login();
                     login.Show();
 
-                    // Đóng MainWindow
+                    // Đóng MainWindow an toàn
                     this.Close();
                 }
                 catch (Exception ex)
@@ -88,11 +89,11 @@ namespace QuanLyShopGiay
                 }
             };
 
-            // 7. Hiển thị trang Dashboard mặc định
+            // 5. Hiển thị trang Dashboard mặc định khi vừa vào app
             MainFrame.Navigate(new DashboardPage());
 
-            // 8. Cập nhật title (dùng SessionManager)
-            Title = $"Quản Lý Shop Giày - {SessionManager.HoTenNV} ({SessionManager.TenVT})";
+            // 6. Cập nhật title Window ăn theo dữ liệu tĩnh UserSession chuẩn chỉnh
+            Title = $"Quản Lý Shop Giày - {UserSession.TenNV} ({UserSession.Quyen})";
         }
     }
 }

@@ -24,15 +24,10 @@
                     <Border DockPanel.Dock="Top" Background="#FF16202D" Padding="20,25">
                         <StackPanel>
                             <TextBlock Text="👟" FontSize="32" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Shop Giày" Foreground="White"
-                                       FontSize="18" FontWeight="Bold"
-                                       HorizontalAlignment="Center" Margin="0,8,0,0"/>
-                            <TextBlock Text="{Binding HoTenNV, StringFormat='Xin chào, {0}'}"
-                                       Foreground="#FF9AA5B1" FontSize="12"
-                                       HorizontalAlignment="Center" Margin="0,4,0,0"/>
-                            <TextBlock Text="{Binding TenVaiTro}"
-                                       Foreground="#FF6A8FA8" FontSize="11"
-                                       HorizontalAlignment="Center"/>
+                            <TextBlock Text="Shop Giày" Foreground="White" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+
+                            <TextBlock Text="{Binding HoTenNV, StringFormat='Xin chào, {0}'}" Foreground="#FF9AA5B1" FontSize="12" HorizontalAlignment="Center" Margin="0,4,0,0"/>
+                            <TextBlock Text="{Binding TenVaiTro}" Foreground="#FF6A8FA8" FontSize="11" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Border>
 
@@ -122,8 +117,6 @@
                        VerticalAlignment="Center" 
                        Margin="0,0,20,0"/>
 
-                        <views:ucNhanVienHeader DataContext="{Binding HeaderVM}" 
-                                    VerticalAlignment="Center"/>
                     </StackPanel>
                 </Grid>
             </Border>
