@@ -357,3 +357,110 @@ SELECT
     Quyen
 FROM NhanVien
 WHERE MaNhanVien IN ('NV01', 'NV02', 'NV03', 'NV04');
+<<<<<<< HEAD
+
+-- Cập nhật lại chuỗi Quyen thành không dấu để đồng bộ với Code C# ViewModel
+UPDATE NhanVien SET Quyen = 'QuanLy' WHERE MaNhanVien = 'NV01';
+UPDATE NhanVien SET Quyen = 'BanHang' WHERE MaNhanVien IN ('NV02', 'NV03');
+UPDATE NhanVien SET Quyen = 'KhoQuy' WHERE MaNhanVien = 'NV04';
+GO
+
+-- Kiểm tra lại danh sách quyền sau khi chuẩn hóa
+SELECT MaNhanVien, TenNhanVien, TenDangNhap,MatKhau ,Quyen FROM NhanVien;
+GO
+=======
+-- =========================================================
+-- THÊM BẢNG PHƯƠNG THỨC THANH TOÁN
+-- =========================================================
+
+
+-- 1. TẠO BẢNG PHƯƠNG THỨC THANH TOÁN
+CREATE TABLE PhuongThucThanhToan (
+    MaPhuongThuc VARCHAR(10) PRIMARY KEY,
+    TenPhuongThuc NVARCHAR(100) NOT NULL,
+    MoTa NVARCHAR(MAX),
+    TrangThai BIT DEFAULT 1  -- 1: Hoạt động, 0: Ngừng hoạt động
+);
+GO
+
+-- 2. CẬP NHẬT BẢNG HÓAĐƠN - THÊMKHÓA NGOÀI PHƯƠNG THỨC THANH TOÁN
+-- Thêm cột mới vào bảng HoaDon
+ALTER TABLE HoaDon
+ADD MaPhuongThuc VARCHAR(10) DEFAULT 'PT01';
+GO
+
+-- Thêm ràng buộc khóa ngoài
+ALTER TABLE HoaDon
+ADD CONSTRAINT FK_HoaDon_PhuongThuc 
+FOREIGN KEY (MaPhuongThuc) REFERENCES PhuongThucThanhToan(MaPhuongThuc);
+GO
+
+-- 3. CHÈN DỮ LIỆU PHƯƠNG THỨC THANH TOÁN
+INSERT INTO PhuongThucThanhToan (MaPhuongThuc, TenPhuongThuc, MoTa, TrangThai) VALUES
+('PT01', N'Tiền Mặt', N'Thanh toán bằng tiền mặt trực tiếp tại quầy', 1),
+('PT02', N'Thẻ Tín Dụng', N'Thanh toán bằng thẻ tín dụng (Visa, Mastercard, etc)', 1),
+('PT03', N'Thẻ Ghi Nợ', N'Thanh toán bằng thẻ ghi nợ', 1),
+('PT04', N'Chuyển Khoản Ngân Hàng', N'Thanh toán qua chuyển khoản ngân hàng', 1),
+('PT05', N'Ví Điện Tử Momo', N'Thanh toán qua ứng dụng Momo', 1),
+('PT06', N'Ví Điện Tử ZaloPay', N'Thanh toán qua ứng dụng ZaloPay', 1),
+('PT07', N'QR Code (NAPAS)', N'Thanh toán bằng quét mã QR', 1),
+('PT08', N'Thanh Toán Sau', N'Ghi nợ, thanh toán sau', 0);
+GO
+
+-- 4. CẬP NHẬT DỮ LIỆU HÓA ĐƠN CŨ VỚI PHƯƠNG THỨC THANH TOÁN MẶC ĐỊNH
+UPDATE HoaDon SET MaPhuongThuc = 'PT01' WHERE MaPhuongThuc IS NULL;
+GO
+
+-- 5. KIỂM TRA DỮ LIỆU
+SELECT * FROM PhuongThucThanhToan;
+GO
+
+SELECT 
+    hd.MaHD, 
+    hd.NgayLap,
+    kh.TenKhachHang,
+    nv.TenNhanVien,
+    hd.TongTien,
+    pt.TenPhuongThuc,
+    hd.TrangThai
+FROM HoaDon hd
+LEFT JOIN KhachHang kh ON hd.MaKhachHang = kh.MaKhachHang
+LEFT JOIN NhanVien nv ON hd.MaNhanVien = nv.MaNhanVien
+LEFT JOIN PhuongThucThanhToan pt ON hd.MaPhuongThuc = pt.MaPhuongThuc
+ORDER BY hd.NgayLap DESC;
+GO
+
+-- 6. TẠO VIEW MỚI - THỐNG KÊ DOANH THU THEO PHƯƠNG THỨC THANH TOÁN
+CREATE VIEW v_DoanhThuTheoPhuongThuc AS
+SELECT 
+    pt.TenPhuongThuc,
+    COUNT(hd.MaHD) AS SoLanThanhToan,
+    SUM(hd.TongTien) AS TongDoanhThu,
+    AVG(hd.TongTien) AS GiaTriTrungBinh
+FROM HoaDon hd
+JOIN PhuongThucThanhToan pt ON hd.MaPhuongThuc = pt.MaPhuongThuc
+WHERE hd.TrangThai = N'Đã thanh toán'
+GROUP BY pt.TenPhuongThuc, pt.MaPhuongThuc
+ORDER BY TongDoanhThu DESC;
+GO
+
+-- 7. TẠO VIEW - THEO DÕI PHƯƠNG THỨC THANH TOÁN THEO THÁNG
+CREATE VIEW v_DoanhThuPhuongThucTheoThang AS
+SELECT 
+    YEAR(hd.NgayLap) AS Nam,
+    MONTH(hd.NgayLap) AS Thang,
+    pt.TenPhuongThuc,
+    COUNT(hd.MaHD) AS SoLuongHoaDon,
+    SUM(hd.TongTien) AS TongDoanhThu
+FROM HoaDon hd
+JOIN PhuongThucThanhToan pt ON hd.MaPhuongThuc = pt.MaPhuongThuc
+WHERE hd.TrangThai = N'Đã thanh toán'
+GROUP BY YEAR(hd.NgayLap), MONTH(hd.NgayLap), pt.TenPhuongThuc, pt.MaPhuongThuc;
+GO
+
+-- 8. KIỂM TRA VIEW
+SELECT * FROM v_DoanhThuTheoPhuongThuc;
+SELECT * FROM v_DoanhThuPhuongThucTheoThang;
+GO
+
+>>>>>>> 8e91478e74e4e8dafc0b398cdcb43691acc9e1eb

@@ -37,8 +37,8 @@ namespace QuanLyShopGiay.ViewModels
                     TenSP = value.TenSP;
                     Size = value.Size;
                     MauSac = value.MauSac;
-                    GiaNhap = value.GiaNhap;
-                    GiaBan = value.GiaBan;
+                    GiaNhap = (decimal?)value.GiaNhap;
+                    GiaBan = (decimal?)value.GiaBan;
                     SoLuongTon = value.SoLuongTon ?? 0;
                     GhiChu = value.GhiChu;
 
@@ -152,8 +152,8 @@ namespace QuanLyShopGiay.ViewModels
                         MaNCC = SelectedNCC.MaNCC,
                         Size = Size?.Trim(),
                         MauSac = MauSac?.Trim(),
-                        GiaNhap = GiaNhap ?? 0,
-                        GiaBan = GiaBan ?? 0,
+                        GiaNhap = GiaNhap ?? 0m,
+                        GiaBan = GiaBan ?? 0m,
                         SoLuongTon = SoLuongTon ?? 0,
                         GhiChu = ""
                     };
@@ -198,8 +198,8 @@ namespace QuanLyShopGiay.ViewModels
                         currentSP.MaNCC = SelectedNCC.MaNCC;
                         currentSP.Size = Size?.Trim();
                         currentSP.MauSac = MauSac?.Trim();
-                        currentSP.GiaNhap = GiaNhap ?? 0;
-                        currentSP.GiaBan = GiaBan ?? 0;
+                        currentSP.GiaNhap = GiaNhap ?? 0m;
+                        currentSP.GiaBan = GiaBan ?? 0m;
                         currentSP.SoLuongTon = SoLuongTon ?? 0;
                         currentSP.GhiChu = GhiChu?.Trim();
 
