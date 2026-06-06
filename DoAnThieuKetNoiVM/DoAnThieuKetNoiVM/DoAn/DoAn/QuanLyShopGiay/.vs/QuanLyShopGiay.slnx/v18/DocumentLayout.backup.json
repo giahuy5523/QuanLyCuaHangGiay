@@ -325,7 +325,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -334,6 +334,30 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "QuanLyShopGiay\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml",
+              "RelativeToolTip": "QuanLyShopGiay\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-23T10:18:19.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAswCsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T15:11:08.387Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -349,17 +373,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\MainWindow.xaml",
-              "RelativeToolTip": "QuanLyShopGiay\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-23T10:18:19.673Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "SanPhamViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\SanPhamViewModel.cs",
@@ -369,19 +382,6 @@
               "ViewState": "AgIAAGYAAAAAAAAAAAAkwHEAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-02T22:56:16.325Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
-              "RelativeDocumentMoniker": "QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\QuanLyCuaHangGiay\\DoAnThieuKetNoiVM\\DoAnThieuKetNoiVM\\DoAn\\DoAn\\QuanLyShopGiay\\QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
-              "RelativeToolTip": "QuanLyShopGiay\\ViewModels\\MainViewModel.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwCsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-02T15:11:08.387Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
