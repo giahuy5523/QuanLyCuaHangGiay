@@ -343,3 +343,17 @@ SELECT * FROM NhanVien;
 SELECT * FROM v_DoanhThuTheoThang;
 EXEC sp_ThongKeDoanhThuTheoSanPham '2026-05-01', '2026-05-31';
 GO
+-- Cập nhật mật khẩu cho tất cả nhân viên test
+UPDATE NhanVien 
+SET MatKhau = '123456'
+WHERE MaNhanVien IN ('NV01', 'NV02', 'NV03', 'NV04');
+ 
+-- Kiểm tra kết quả
+SELECT 
+    MaNhanVien, 
+    TenNhanVien, 
+    TenDangNhap, 
+    MatKhau, 
+    Quyen
+FROM NhanVien
+WHERE MaNhanVien IN ('NV01', 'NV02', 'NV03', 'NV04');
