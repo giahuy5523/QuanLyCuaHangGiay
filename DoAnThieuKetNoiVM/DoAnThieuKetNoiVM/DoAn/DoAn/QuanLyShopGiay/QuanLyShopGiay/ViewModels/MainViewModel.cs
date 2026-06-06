@@ -1,92 +1,69 @@
-﻿using QuanLyShopGiay.Helpers;
+﻿using QuanLyShopGiay.Command;
+using QuanLyShopGiay.Helpers;
 using QuanLyShopGiay.Models;
-using QuanLyShopGiay.Command;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace QuanLyShopGiay.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        private string _tenNhanVien;
-        private string _quyen;
 
-        // ===== CALLBACK DELEGATES =====
+        private string _tieuDe = "Dashboard";
+
+        public string HoTenNV => SessionManager.HoTenNV ?? SessionManager.TenDangNhap;
+        public string TenVaiTro => SessionManager.TenVT ?? "N/A";
+        public string NgayHienTai => DateTime.Now.ToString("dddd, dd/MM/yyyy");
+
+        public string TieuDe
+        {
+            get => _tieuDe;
+            set => SetProperty(ref _tieuDe, value);
+        }
+
+        public bool CoQuyenAdmin => SessionManager.IsAdmin;
+
+        public ICommand NavDashboardCommand { get; }
+        public ICommand NavSanPhamCommand { get; }
+        public ICommand NavKhachHangCommand { get; }
+        public ICommand NavHoaDonBanHangCommand { get; }
+        public ICommand NavHoaDonNhapHangCommand { get; }
+        public ICommand NavNhanVienCommand { get; }
+        public ICommand NavTaiKhoanCommand { get; }
+        public ICommand DangXuatCommand { get; }
+
         public Action<string> Navigate { get; set; }
         public Action MoLoginView { get; set; }
 
-        // ===== PROPERTIES =====
-        public string TenNhanVien
-        {
-            get => _tenNhanVien ?? SessionManager.HoTenNV; 
-            set
-            {
-                _tenNhanVien = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string Quyen
-        {
-            get => _quyen ?? SessionManager.TenVT;  // ← Sửa
-            set
-            {
-                _quyen = value;
-                OnPropertyChanged();
-            }
-        }
-
-        // ===== COMMANDS =====
-        public ICommand NavigateToDashboardCommand { get; set; }
-        public ICommand NavigateToSanPhamCommand { get; set; }
-        public ICommand NavigateToKhachHangCommand { get; set; }
-        public ICommand NavigateToHoaDonCommand { get; set; }
-        public ICommand NavigateToNhanVienCommand { get; set; }
-        public ICommand NavigateToTaiKhoanCommand { get; set; }
-        public ICommand DangXuatCommand { get; set; }
-
         public MainViewModel()
         {
-            InitCommands();
+            NavDashboardCommand = new RelayCommand(_ => ChangeNav("Dashboard", "Dashboard"));
+            NavSanPhamCommand = new RelayCommand(_ => ChangeNav("SanPham", "Sản phẩm"));
+            NavKhachHangCommand = new RelayCommand(_ => ChangeNav("KhachHang", "Khách hàng"));
+            NavHoaDonBanHangCommand = new RelayCommand(_ => ChangeNav("HoaDon", "Hóa đơn bán hàng"));
+            NavHoaDonNhapHangCommand = new RelayCommand(_ => ChangeNav("NhapHang", "Hóa đơn nhập hàng"));
+            NavNhanVienCommand = new RelayCommand(_ => ChangeNav("NhanVien", "Nhân viên"));
+            NavTaiKhoanCommand = new RelayCommand(_ => ChangeNav("TaiKhoan", "Tài khoản"));
+            DangXuatCommand = new RelayCommand(_ => ThucHienDangXuat());
         }
 
-        private void InitCommands()
+        private void ChangeNav(string page, string tieuDe)
         {
-            NavigateToDashboardCommand = new RelayCommand(o =>
-            {
-                Navigate?.Invoke("Dashboard");
-            });
+            TieuDe = tieuDe;
+            Navigate?.Invoke(page);
+        }
 
-            NavigateToSanPhamCommand = new RelayCommand(o =>
+        private void ThucHienDangXuat()
+        {
+            var result = MessageBox.Show("Bạn có chắc muốn đăng xuất?", "Xác nhận",
+                MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
             {
-                Navigate?.Invoke("SanPham");
-            });
-
-            NavigateToKhachHangCommand = new RelayCommand(o =>
-            {
-                Navigate?.Invoke("KhachHang");
-            });
-
-            NavigateToHoaDonCommand = new RelayCommand(o =>
-            {
-                Navigate?.Invoke("HoaDon");
-            });
-
-            NavigateToNhanVienCommand = new RelayCommand(o =>
-            {
-                Navigate?.Invoke("NhanVien");
-            });
-
-            NavigateToTaiKhoanCommand = new RelayCommand(o =>
-            {
-                Navigate?.Invoke("TaiKhoan");
-            });
-
-            DangXuatCommand = new RelayCommand(o =>
-            {
+                SessionManager.DangXuat();
                 MoLoginView?.Invoke();
-            });
+            }
         }
     }
 }

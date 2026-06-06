@@ -2,14 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:helpers="clr-namespace:QuanLyShopGiay.Helpers"
-             StartupUri="Views/Login.xaml"
              ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
-
         <helpers:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
-
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
-
         <helpers:BoolToOpacityConverter x:Key="BoolToOpacityConverter"/>
 
         <Style x:Key="SidebarButton" TargetType="Button">
@@ -24,9 +20,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="border"
-                                Background="{TemplateBinding Background}"
-                                Padding="{TemplateBinding Padding}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
                             <ContentPresenter VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -41,6 +35,5 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Application.Resources>
 </Application>
