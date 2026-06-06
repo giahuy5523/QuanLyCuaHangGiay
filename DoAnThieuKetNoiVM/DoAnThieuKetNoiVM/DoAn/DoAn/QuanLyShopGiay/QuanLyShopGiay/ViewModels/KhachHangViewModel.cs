@@ -78,9 +78,9 @@ namespace QuanLyShopGiay.ViewModels
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Không thể kết nối cơ sở dữ liệu: " + ex.Message);
+                MessageBox.Show("Không thể kết nối cơ sở dữ liệu:\n" + ex.Message);
+                return;
             }
-
         
             SearchCommand = new RelayCommand(_ => LoadData());
             AddCommand = new RelayCommand(_ => ExecuteAdd(), _ => CanExecuteSave());
