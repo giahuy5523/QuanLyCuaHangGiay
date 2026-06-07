@@ -113,10 +113,7 @@ namespace QuanLyShopGiay.ViewModels
                     .Where(kh => kh.MaKhachHang != "KH01")
                     .Select(kh =>
                     {
-                        decimal tongChiTieu = _db.HoaDons
-                            .Where(hd => hd.MaKhachHang == kh.MaKhachHang
-                                      && hd.TrangThai == "Đã thanh toán")
-                            .Sum(hd => (decimal?)hd.TongTien) ?? 0;
+                        decimal tongChiTieu = (kh.Diem ?? 0) * 10000m;
 
                         return new KhachHangDisplayModel
                         {
@@ -125,7 +122,7 @@ namespace QuanLyShopGiay.ViewModels
                             DienThoai = kh.DienThoai,
                             Diem = kh.Diem ?? 0,
                             TongChiTieu = tongChiTieu,
-                            HangThanhVien = GetRankName(tongChiTieu)
+                            HangThanhVien = GetRankName(kh.Diem ?? 0)
                         };
                     })
                     .OrderBy(x => x.MaKhachHang)
@@ -134,11 +131,11 @@ namespace QuanLyShopGiay.ViewModels
             catch (Exception ex) { MessageBox.Show("Lỗi nạp dữ liệu: " + ex.Message); }
         }
 
-        private static string GetRankName(decimal totalAmount)
+        private static string GetRankName(int diem)
         {
-            if (totalAmount >= 30000000) return "Kim cương 💎";
-            if (totalAmount >= 15000000) return "Vàng 🥇";
-            if (totalAmount >= 5000000) return "Bạc 🥈";
+            if (diem >= 500) return "Kim cương 💎";
+            if (diem >= 200) return "Vàng 🥇";
+            if (diem >= 50)  return "Bạc 🥈";
             return "Thành viên mới 🌱";
         }
 
