@@ -20,7 +20,7 @@ namespace QuanLyShopGiay.ViewModels
 
     public class KhachHangViewModel : BaseViewModel
     {
-        private readonly QLShopGiayEntities3 _db;
+        private readonly QLShopGiayEntities _db;
 
         private ObservableCollection<KhachHangDisplayModel> _listKhachHang;
         public ObservableCollection<KhachHangDisplayModel> ListKhachHang
@@ -74,7 +74,7 @@ namespace QuanLyShopGiay.ViewModels
         {
             try
             {
-                _db = new QLShopGiayEntities3();
+                _db = new QLShopGiayEntities();
             }
             catch (Exception ex)
             {

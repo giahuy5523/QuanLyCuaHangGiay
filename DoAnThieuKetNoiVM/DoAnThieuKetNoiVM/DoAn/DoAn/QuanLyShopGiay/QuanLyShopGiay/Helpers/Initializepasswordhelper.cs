@@ -14,7 +14,7 @@ namespace QuanLyShopGiay.Utilities
         {
             try
             {
-                var db = new QLShopGiayEntities3();
+                var db = new  QLShopGiayEntities();
 
                 var testAccounts = new[]
                 {

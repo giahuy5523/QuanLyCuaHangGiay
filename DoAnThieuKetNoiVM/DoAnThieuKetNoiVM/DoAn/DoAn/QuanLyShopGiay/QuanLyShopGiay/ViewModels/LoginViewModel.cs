@@ -35,7 +35,7 @@ namespace QuanLyShopGiay.ViewModels
             }
         }
 
-        QLShopGiayEntities3 db = new QLShopGiayEntities3();
+        QLShopGiayEntities db = new QLShopGiayEntities();
 
         public RelayCommand LoginCommand { get; set; }
 

@@ -73,6 +73,17 @@ CREATE TABLE SanPham (
     FOREIGN KEY (MaNCC) REFERENCES NhaCungCap(MaNCC)
 );
 
+CREATE TABLE LichSuGiaBan (
+    MaLichSu INT IDENTITY(1,1) PRIMARY KEY,
+    MaSP VARCHAR(20) NOT NULL,
+    GiaCu DECIMAL(18,2) NOT NULL,
+    GiaMoi DECIMAL(18,2) NOT NULL,
+    NgayCapNhat DATETIME DEFAULT GETDATE(),
+    LyDoDoiGia NVARCHAR(250) DEFAULT N'Cập nhật giá định kỳ',
+    FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP) ON DELETE CASCADE
+);
+
+
 CREATE TABLE HoaDonNhap (
     MaHDN VARCHAR(20) PRIMARY KEY,
     NgayNhap DATETIME DEFAULT GETDATE(),
@@ -206,6 +217,22 @@ BEGIN
 END;
 GO
 
+CREATE TRIGGER trg_LichSuGiaBan
+ON SanPham
+AFTER UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    IF UPDATE(GiaBan)
+    BEGIN
+        INSERT INTO LichSuGiaBan(MaSP, GiaCu, GiaMoi, NgayCapNhat)
+        SELECT d.MaSP, d.GiaBan, i.GiaBan, GETDATE()
+        FROM deleted d
+        JOIN inserted i ON d.MaSP = i.MaSP
+        WHERE d.GiaBan <> i.GiaBan
+    END
+END
+GO
 -- =========================================================
 -- 5. KHỞI TẠO VIEW VÀ STORED PROCEDURE
 -- =========================================================
@@ -291,6 +318,19 @@ INSERT INTO SanPham (MaSP, TenSP, MaLoai, MaNCC, Size, MauSac, GiaNhap, GiaBan, 
 ('SP08', N'Biti''s Hunter X Dune', 'LH01', 'NCC04', '39', N'Đen', 650000, 1100000, 0, N'Phiên bản giới hạn'),
 ('SP09', N'Biti''s Hunter X Dune', 'LH01', 'NCC04', '40', N'Xanh Rêu', 650000, 1100000, 0, NULL),
 ('SP10', N'Giày Tây Oxford Premium', 'LH02', 'NCC04', '41', N'Nâu Đất', 900000, 1500000, 0, NULL);
+
+INSERT INTO LichSuGiaBan (MaSP, GiaCu, GiaMoi, NgayCapNhat, LyDoDoiGia) VALUES
+('SP01', 2800000, 2800000, '2026-04-01 08:00:00', N'Thiết lập giá bán ban đầu'),
+('SP02', 2800000, 2800000, '2026-04-01 08:00:00', N'Thiết lập giá bán ban đầu'),
+('SP03', 2850000, 2850000, '2026-04-01 08:00:00', N'Thiết lập giá bán ban đầu'),
+('SP04', 4500000, 4500000, '2026-04-02 09:30:00', N'Thiết lập giá bán ban đầu'),
+('SP05', 4550000, 4550000, '2026-04-02 09:30:00', N'Thiết lập giá bán ban đầu'),
+('SP06', 1900000, 1900000, '2026-04-03 10:15:00', N'Thiết lập giá bán ban đầu'),
+('SP07', 1900000, 1900000, '2026-04-03 10:15:00', N'Thiết lập giá bán ban đầu'),
+('SP08', 1100000, 1100000, '2026-04-05 14:00:00', N'Thiết lập giá bán ban đầu'),
+('SP09', 1100000, 1100000, '2026-04-05 14:00:00', N'Thiết lập giá bán ban đầu'),
+('SP10', 1500000, 1500000, '2026-04-06 11:20:00', N'Thiết lập giá bán ban đầu');
+GO
 
 -- Thực hiện Nhập hàng (Số lượng tồn kho tự tăng lên thông qua trigger)
 INSERT INTO HoaDonNhap (MaHDN, NgayNhap, MaNCC, MaNhanVien) VALUES ('HDN01', '2026-05-01 09:00:00', 'NCC01', 'NV04');

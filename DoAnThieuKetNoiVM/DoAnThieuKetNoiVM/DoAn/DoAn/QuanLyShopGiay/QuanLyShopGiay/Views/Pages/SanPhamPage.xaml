@@ -9,9 +9,6 @@
       Title="SanPhamPage"
       Background="White">
 
-    <Page.DataContext>
-        <local:SanPhamViewModel/>
-    </Page.DataContext>
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
@@ -58,8 +55,8 @@
 
                     <TextBlock Text="Giá Nhập (đ):" Margin="0,5,0,2" FontWeight="SemiBold"/>
                     <TextBox Text="{Binding GiaNhap, UpdateSourceTrigger=PropertyChanged}" 
-             IsReadOnly="True" 
-             Background="#EEEEEE" />    
+                             IsReadOnly="True" 
+                             Background="#EEEEEE" />
 
                     <TextBlock Text="Giá Bán (đ):" Margin="0,5,0,2" FontWeight="SemiBold" Foreground="DarkGreen"/>
                     <TextBox Text="{Binding GiaBan, UpdateSourceTrigger=PropertyChanged}"/>
@@ -80,15 +77,16 @@
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1.2*"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10" Grid.Row="0">
                 <TextBlock Text="Tìm kiếm tên sản phẩm:" VerticalAlignment="Center" Margin="0,0,10,0" FontWeight="SemiBold"/>
                 <TextBox Width="280" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, Delay=300}" VerticalContentAlignment="Center" Height="25"/>
             </StackPanel>
 
-            <DataGrid Grid.Row="1" 
+            <DataGrid Grid.Row="1" Margin="0,0,0,10"
                       ItemsSource="{Binding ListSanPham}" 
                       SelectedItem="{Binding SelectedSanPham, UpdateSourceTrigger=PropertyChanged}"
                       AutoGenerateColumns="False" 
@@ -106,6 +104,47 @@
                     <DataGridTextColumn Header="Tồn Kho" Binding="{Binding SoLuongTon}" Width="65"/>
                 </DataGrid.Columns>
             </DataGrid>
+
+            <GroupBox Header="Lịch Sử Thay Đổi Giá Của Sản Phẩm Đang Chọn" Grid.Row="2" Padding="5">
+                <DataGrid ItemsSource="{Binding ListLichSuGia}" 
+                          AutoGenerateColumns="False" 
+                          IsReadOnly="True" 
+                          Background="White" 
+                          GridLinesVisibility="Vertical"
+                          VerticalGridLinesBrush="#D3D3D3"
+                          HorizontalGridLinesBrush="Transparent">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Mã SP" Binding="{Binding MaSP}" Width="75"/>
+
+                        <DataGridTextColumn Header="Tên Sản Phẩm" Binding="{Binding SanPham.TenSP}" Width="*"/>
+
+                        <DataGridTextColumn Header="Giá Cũ" Binding="{Binding GiaCu, StringFormat={}{0:N0} đ}" Width="110">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="Foreground" Value="Gray"/>
+                                    <Setter Property="Margin" Value="0,0,5,0"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Giá Mới" Binding="{Binding GiaMoi, StringFormat={}{0:N0} đ}" Width="110">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="Foreground" Value="Red"/>
+                                    <Setter Property="Margin" Value="0,0,5,0"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Ngày áp dụng" Binding="{Binding NgayCapNhat, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Width="140"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
         </Grid>
     </Grid>
 </Page>

@@ -11,7 +11,7 @@ namespace QuanLyShopGiay.ViewModels
 {
     public class NhaCungCapViewModel : BaseViewModel
     {
-        private readonly QLShopGiayEntities3 _db;
+        private readonly QLShopGiayEntities _db;
 
         // Dùng SessionManager.CurrentUser thay vì HoTenNV/TenDangNhap/TenVT
         public string TenTaiKhoan => SessionManager.CurrentUser?.TenNhanVien ?? "Chưa đăng nhập";
@@ -72,7 +72,7 @@ namespace QuanLyShopGiay.ViewModels
         {
             try
             {
-                _db = new QLShopGiayEntities3();
+                _db = new QLShopGiayEntities();
                 LoadData();
             }
             catch (Exception ex)

@@ -13,7 +13,7 @@ namespace QuanLyShopGiay.ViewModels
 {
     public class LoaiSanPhamViewModel: BaseViewModel
     {
-        private QLShopGiayEntities3 db = new QLShopGiayEntities3();
+        private QLShopGiayEntities db = new QLShopGiayEntities();
 
         // Danh sách nạp lên DataGrid loại sản phẩm
         private ObservableCollection<LoaiSanPham> _listLoaiSP;

@@ -15,10 +15,10 @@ namespace QuanLyShopGiay.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class QLShopGiayEntities3 : DbContext
+    public partial class QLShopGiayEntities : DbContext
     {
-        public QLShopGiayEntities3()
-            : base("name=QLShopGiayEntities3")
+        public QLShopGiayEntities()
+            : base("name=QLShopGiayEntities")
         {
         }
     
@@ -39,6 +39,7 @@ namespace QuanLyShopGiay.Models
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<v_DoanhThuPhuongThucTheoThang> v_DoanhThuPhuongThucTheoThang { get; set; }
         public virtual DbSet<v_DoanhThuTheoPhuongThuc> v_DoanhThuTheoPhuongThuc { get; set; }
+        public virtual DbSet<LichSuGiaBan> LichSuGiaBans { get; set; }
     
         public virtual ObjectResult<sp_ThongKeDoanhThuTheoSanPham_Result> sp_ThongKeDoanhThuTheoSanPham(Nullable<System.DateTime> tuNgay, Nullable<System.DateTime> denNgay)
         {

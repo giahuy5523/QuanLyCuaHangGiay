@@ -39,7 +39,7 @@ namespace QuanLyShopGiay.ViewModels
 
     public class HoaDonBanHangViewModel : BaseViewModel
     {
-        private readonly QLShopGiayEntities3 _db = new QLShopGiayEntities3();
+        private readonly QLShopGiayEntities _db = new QLShopGiayEntities();
 
         private List<SanPham> _listSanPhamGoc = new List<SanPham>();
 
