@@ -412,10 +412,14 @@ INSERT INTO PhuongThucThanhToan (MaPhuongThuc, TenPhuongThuc, MoTa, TrangThai) V
 GO
 
 -- 4. TẠO CÁC VIEW (Đã thêm TOP 100 PERCENT để dùng được ORDER BY)
-IF OBJECT_ID('v_DoanhThuTheoPhuongThuc', 'V') IS NOT NULL DROP VIEW v_DoanhThuTheoPhuongThuc;
+-- Xóa view cũ
+IF OBJECT_ID('v_DoanhThuTheoPhuongThuc', 'V') IS NOT NULL 
+    DROP VIEW v_DoanhThuTheoPhuongThuc;
 GO
+
 CREATE VIEW v_DoanhThuTheoPhuongThuc AS
-SELECT                          
+SELECT 
+    ROW_NUMBER() OVER (ORDER BY SUM(hd.TongTien) DESC) AS Id,  -- ← PK giả
     pt.TenPhuongThuc,
     COUNT(hd.MaHD) AS SoLanThanhToan,
     SUM(hd.TongTien) AS TongDoanhThu
@@ -425,11 +429,14 @@ WHERE hd.TrangThai = N'Đã thanh toán'
 GROUP BY pt.TenPhuongThuc;
 GO
 
-IF OBJECT_ID('v_DoanhThuPhuongThucTheoThang', 'V') IS NOT NULL DROP VIEW v_DoanhThuPhuongThucTheoThang;
+-- Tương tự cho v_DoanhThuPhuongThucTheoThang
+IF OBJECT_ID('v_DoanhThuPhuongThucTheoThang', 'V') IS NOT NULL 
+    DROP VIEW v_DoanhThuPhuongThucTheoThang;
 GO
 
 CREATE VIEW v_DoanhThuPhuongThucTheoThang AS
 SELECT 
+    ROW_NUMBER() OVER (ORDER BY YEAR(hd.NgayLap), MONTH(hd.NgayLap)) AS Id,  -- ← PK giả
     YEAR(hd.NgayLap) AS Nam,
     MONTH(hd.NgayLap) AS Thang,
     pt.TenPhuongThuc,
@@ -439,4 +446,23 @@ FROM HoaDon hd
 JOIN PhuongThucThanhToan pt ON hd.MaPhuongThuc = pt.MaPhuongThuc
 WHERE hd.TrangThai = N'Đã thanh toán'
 GROUP BY YEAR(hd.NgayLap), MONTH(hd.NgayLap), pt.TenPhuongThuc;
+GO
+
+-- v_DoanhThuTheoThang cũng cần fix tương tự
+IF OBJECT_ID('v_DoanhThuTheoThang', 'V') IS NOT NULL 
+    DROP VIEW v_DoanhThuTheoThang;
+GO
+
+CREATE VIEW v_DoanhThuTheoThang AS
+SELECT 
+    ROW_NUMBER() OVER (ORDER BY YEAR(NgayLap), MONTH(NgayLap)) AS Id,  -- ← PK giả
+    YEAR(NgayLap) AS Nam,
+    MONTH(NgayLap) AS Thang,
+    COUNT(DISTINCT hd.MaHD) AS TongSoHoaDon,
+    SUM(ct.SoLuong) AS TongSanPhamDaBan,
+    SUM(hd.TongTien) AS TongDoanhThu
+FROM HoaDon hd
+JOIN ChiTietHoaDon ct ON hd.MaHD = ct.MaHD
+WHERE hd.TrangThai = N'Đã thanh toán'
+GROUP BY YEAR(NgayLap), MONTH(NgayLap);
 GO
