@@ -81,13 +81,13 @@ namespace QuanLyShopGiay.ViewModels
                 MessageBox.Show("Không thể kết nối cơ sở dữ liệu:\n" + ex.Message);
                 return;
             }
-        
+
             SearchCommand = new RelayCommand(_ => LoadData());
             AddCommand = new RelayCommand(_ => ExecuteAdd(), _ => CanExecuteSave());
             EditCommand = new RelayCommand(_ => ExecuteEdit(), _ => SelectedItem != null && CanExecuteSave());
-            DeleteCommand = new RelayCommand(_ => ExecuteDelete(), _ => SelectedItem != null);
+            DeleteCommand = new RelayCommand(_ => ExecuteDelete(), _ => SelectedItem != null && SelectedItem.MaKhachHang != "KH01");
             ClearCommand = new RelayCommand(_ => ClearInputs());
-        
+
             LoadData();
         }
 
@@ -101,23 +101,35 @@ namespace QuanLyShopGiay.ViewModels
                 if (!string.IsNullOrWhiteSpace(SearchKeyword))
                 {
                     string keyword = SearchKeyword.Trim().ToLower();
-                    query = query.Where(kh => kh.TenKhachHang.ToLower().Contains(keyword) || 
-                                              kh.MaKhachHang.ToLower().Contains(keyword) || 
-                                              (kh.DienThoai != null && kh.DienThoai.Contains(keyword)));
+                    query = query.Where(kh =>
+                        kh.TenKhachHang.ToLower().Contains(keyword) ||
+                        kh.MaKhachHang.ToLower().Contains(keyword) ||
+                        (kh.DienThoai != null && kh.DienThoai.Contains(keyword)));
                 }
 
-                ListKhachHang = new ObservableCollection<KhachHangDisplayModel>(query.ToList().Select(kh => {
-                    decimal tongChiTieu = _db.HoaDons.Where(hd => hd.MaKhachHang == kh.MaKhachHang && hd.TrangThai == "Đã thanh toán").Sum(hd => (decimal?)hd.TongTien) ?? 0;
-                    return new KhachHangDisplayModel
+                ListKhachHang = new ObservableCollection<KhachHangDisplayModel>(
+                    query.ToList()
+                    // FIX 1: Loại KH01 "Khách Hàng Lẻ" ra khỏi danh sách hiển thị
+                    .Where(kh => kh.MaKhachHang != "KH01")
+                    .Select(kh =>
                     {
-                        MaKhachHang = kh.MaKhachHang,
-                        TenKhachHang = kh.TenKhachHang,
-                        DienThoai = kh.DienThoai,
-                        Diem = kh.Diem ?? 0,
-                        TongChiTieu = tongChiTieu,
-                        HangThanhVien = GetRankName(tongChiTieu)
-                    };
-                }).OrderBy(x => x.MaKhachHang).ToList());
+                        decimal tongChiTieu = _db.HoaDons
+                            .Where(hd => hd.MaKhachHang == kh.MaKhachHang
+                                      && hd.TrangThai == "Đã thanh toán")
+                            .Sum(hd => (decimal?)hd.TongTien) ?? 0;
+
+                        return new KhachHangDisplayModel
+                        {
+                            MaKhachHang = kh.MaKhachHang,
+                            TenKhachHang = kh.TenKhachHang,
+                            DienThoai = kh.DienThoai,
+                            Diem = kh.Diem ?? 0,
+                            TongChiTieu = tongChiTieu,
+                            HangThanhVien = GetRankName(tongChiTieu)
+                        };
+                    })
+                    .OrderBy(x => x.MaKhachHang)
+                    .ToList());
             }
             catch (Exception ex) { MessageBox.Show("Lỗi nạp dữ liệu: " + ex.Message); }
         }
@@ -132,7 +144,7 @@ namespace QuanLyShopGiay.ViewModels
 
         private void ClearInputs()
         {
-            _selectedItem = null; 
+            _selectedItem = null;
             OnPropertyChanged(nameof(SelectedItem));
             MaKhachHang = TenKhachHang = DienThoai = string.Empty;
             Diem = 0;
@@ -141,11 +153,20 @@ namespace QuanLyShopGiay.ViewModels
 
         private bool CanExecuteSave()
         {
-            return !string.IsNullOrWhiteSpace(TenKhachHang) && !string.IsNullOrWhiteSpace(DienThoai);
+            return !string.IsNullOrWhiteSpace(TenKhachHang) &&
+                   !string.IsNullOrWhiteSpace(DienThoai);
         }
 
         private void ExecuteAdd()
         {
+            // FIX 2: Không cho tạo khách hàng trùng số điện thoại
+            if (_db.KhachHangs.Any(k => k.DienThoai == DienThoai.Trim() && k.MaKhachHang != "KH01"))
+            {
+                MessageBox.Show("Số điện thoại này đã tồn tại cho khách hàng khác!",
+                    "Trùng dữ liệu", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             try
             {
                 string newId = GenerateNextId();
@@ -161,12 +182,24 @@ namespace QuanLyShopGiay.ViewModels
                 _db.SaveChanges();
                 LoadData();
                 ClearInputs();
+                MessageBox.Show($"Đã thêm khách hàng {newId} thành công!", "Thành công",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex) { MessageBox.Show("Lỗi thêm mới: " + ex.Message); }
         }
 
         private void ExecuteEdit()
         {
+            // FIX 2: Không cho sửa thành số điện thoại trùng với khách khác
+            if (_db.KhachHangs.Any(k => k.DienThoai == DienThoai.Trim()
+                                     && k.MaKhachHang != SelectedItem.MaKhachHang
+                                     && k.MaKhachHang != "KH01"))
+            {
+                MessageBox.Show("Số điện thoại này đã tồn tại cho khách hàng khác!",
+                    "Trùng dữ liệu", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             try
             {
                 var kh = _db.KhachHangs.FirstOrDefault(x => x.MaKhachHang == SelectedItem.MaKhachHang);
@@ -186,7 +219,9 @@ namespace QuanLyShopGiay.ViewModels
 
         private void ExecuteDelete()
         {
-            if (MessageBox.Show("Xóa khách hàng này và toàn bộ dữ liệu liên quan?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show(
+                $"Xóa khách hàng '{SelectedItem.TenKhachHang}' và toàn bộ dữ liệu liên quan?",
+                "Xác nhận xóa", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 try
                 {
@@ -200,7 +235,6 @@ namespace QuanLyShopGiay.ViewModels
                             _db.ChiTietHoaDons.RemoveRange(cthds);
                         }
                         _db.HoaDons.RemoveRange(hds);
-
                         _db.KhachHangs.Remove(kh);
                         _db.SaveChanges();
                         LoadData();

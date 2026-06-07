@@ -1,16 +1,21 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using QuanLyShopGiay.Models;
 using QuanLyShopGiay.Command;
+using QuanLyShopGiay.Helpers;
 
 namespace QuanLyShopGiay.ViewModels
 {
     public class NhaCungCapViewModel : BaseViewModel
     {
-        private readonly QLShopGiayEntities _db;
+        private readonly QLShopGiayEntities3 _db;
+
+        // Dùng SessionManager.CurrentUser thay vì HoTenNV/TenDangNhap/TenVT
+        public string TenTaiKhoan => SessionManager.CurrentUser?.TenNhanVien ?? "Chưa đăng nhập";
+        public string TenVaiTro => SessionManager.CurrentUser?.Quyen ?? "N/A";
 
         private ObservableCollection<NhaCungCap> _listNhaCungCap;
         public ObservableCollection<NhaCungCap> ListNhaCungCap
@@ -31,39 +36,22 @@ namespace QuanLyShopGiay.ViewModels
                     TenNCC = value.TenNCC;
                     SDT = value.SDT;
                     DiaChi = value.DiaChi;
-                    IsMaNCCEnabled = false; // Chọn nhà cung cấp cũ thì KHÓA ô sửa mã lại
+                    IsMaNCCEnabled = false;
                 }
             }
         }
 
-        #region Input Form Properties
         private string _maNCC;
-        public string MaNCC
-        {
-            get => _maNCC;
-            set => SetProperty(ref _maNCC, value);
-        }
+        public string MaNCC { get => _maNCC; set => SetProperty(ref _maNCC, value); }
 
         private string _tenNCC;
-        public string TenNCC
-        {
-            get => _tenNCC;
-            set => SetProperty(ref _tenNCC, value);
-        }
+        public string TenNCC { get => _tenNCC; set => SetProperty(ref _tenNCC, value); }
 
         private string _sdt;
-        public string SDT
-        {
-            get => _sdt;
-            set => SetProperty(ref _sdt, value);
-        }
+        public string SDT { get => _sdt; set => SetProperty(ref _sdt, value); }
 
         private string _diaChi;
-        public string DiaChi
-        {
-            get => _diaChi;
-            set => SetProperty(ref _diaChi, value);
-        }
+        public string DiaChi { get => _diaChi; set => SetProperty(ref _diaChi, value); }
 
         private string _searchText;
         public string SearchText
@@ -73,12 +61,7 @@ namespace QuanLyShopGiay.ViewModels
         }
 
         private bool _isMaNCCEnabled = true;
-        public bool IsMaNCCEnabled
-        {
-            get => _isMaNCCEnabled;
-            set => SetProperty(ref _isMaNCCEnabled, value);
-        }
-        #endregion
+        public bool IsMaNCCEnabled { get => _isMaNCCEnabled; set => SetProperty(ref _isMaNCCEnabled, value); }
 
         public ICommand AddCommand { get; set; }
         public ICommand SaveCommand { get; set; }
@@ -87,59 +70,80 @@ namespace QuanLyShopGiay.ViewModels
 
         public NhaCungCapViewModel()
         {
-            _db = new QLShopGiayEntities();
-            LoadData();
+            try
+            {
+                _db = new QLShopGiayEntities3();
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể kết nối cơ sở dữ liệu:\n" + ex.Message,
+                    "Lỗi kết nối", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             AddCommand = new RelayCommand(
-                (p) => {
+                (p) =>
+                {
                     try
                     {
                         string targetMaNCC = MaNCC?.Trim();
                         string sdtInput = SDT?.Trim() ?? "";
 
-                        // Bắt buộc kiểm tra định dạng độ dài 10-15 ký tự số trước khi đẩy về SQL tránh dính CHECK constraint
+                        if (string.IsNullOrWhiteSpace(targetMaNCC))
+                        {
+                            MessageBox.Show("Vui lòng nhập Mã Nhà Cung Cấp!", "Thiếu thông tin",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                            return;
+                        }
                         if (sdtInput.Length < 10 || sdtInput.Length > 15 || !sdtInput.All(char.IsDigit))
                         {
-                            MessageBox.Show("Lỗi: Số điện thoại phải là chuỗi số có độ dài từ 10 đến 15 số!", "Sai định dạng", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            MessageBox.Show("Số điện thoại phải là chuỗi số từ 10 đến 15 ký tự!", "Sai định dạng",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
                             return;
                         }
-
-                        if (_db.NhaCungCap.Any(x => x.MaNCC == targetMaNCC))
+                        if (_db.NhaCungCaps.Any(x => x.MaNCC == targetMaNCC))
                         {
-                            MessageBox.Show("Mã đối tác cung cấp này đã có sẵn trên hệ thống!");
+                            MessageBox.Show("Mã nhà cung cấp này đã tồn tại!", "Trùng mã",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
                             return;
                         }
 
-                        var ncc = new NhaCungCap()
+                        _db.NhaCungCaps.Add(new NhaCungCap
                         {
                             MaNCC = targetMaNCC,
                             TenNCC = TenNCC.Trim(),
                             SDT = sdtInput,
                             DiaChi = string.IsNullOrWhiteSpace(DiaChi) ? null : DiaChi.Trim()
-                        };
-                        _db.NhaCungCap.Add(ncc);
+                        });
                         _db.SaveChanges();
                         LoadData();
                         ClearInputs();
-                        MessageBox.Show("Đã thêm mới đối tác nhà cung cấp thành công!");
+                        MessageBox.Show("Thêm nhà cung cấp thành công!", "Thành công",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (Exception ex) { MessageBox.Show("Lỗi: " + ex.Message); }
                 },
-                (p) => IsMaNCCEnabled && !string.IsNullOrWhiteSpace(MaNCC) && !string.IsNullOrWhiteSpace(TenNCC) && !string.IsNullOrWhiteSpace(SDT)
+                (p) => IsMaNCCEnabled &&
+                       !string.IsNullOrWhiteSpace(MaNCC) &&
+                       !string.IsNullOrWhiteSpace(TenNCC) &&
+                       !string.IsNullOrWhiteSpace(SDT)
             );
 
             SaveCommand = new RelayCommand(
-                (p) => {
+                (p) =>
+                {
                     try
                     {
                         string sdtInput = SDT?.Trim() ?? "";
                         if (sdtInput.Length < 10 || sdtInput.Length > 15 || !sdtInput.All(char.IsDigit))
                         {
-                            MessageBox.Show("Lỗi số điện thoại không hợp lệ (Phải từ 10-15 số).");
+                            MessageBox.Show("Số điện thoại không hợp lệ (10-15 ký tự số).", "Sai định dạng",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
                             return;
                         }
 
-                        var ncc = _db.NhaCungCap.FirstOrDefault(x => x.MaNCC == SelectedItem.MaNCC);
+                        var ncc = _db.NhaCungCaps.FirstOrDefault(x => x.MaNCC == SelectedItem.MaNCC);
                         if (ncc != null)
                         {
                             ncc.TenNCC = TenNCC.Trim();
@@ -148,38 +152,45 @@ namespace QuanLyShopGiay.ViewModels
                             _db.SaveChanges();
                             LoadData();
                             ClearInputs();
-                            MessageBox.Show("Lưu thay đổi thông tin nhà cung cấp thành công!");
+                            MessageBox.Show("Lưu thay đổi thành công!", "Thành công",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                     }
                     catch (Exception ex) { MessageBox.Show("Lỗi hệ thống: " + ex.Message); }
                 },
-                (p) => SelectedItem != null && !string.IsNullOrWhiteSpace(TenNCC) && !string.IsNullOrWhiteSpace(SDT)
+                (p) => SelectedItem != null &&
+                       !string.IsNullOrWhiteSpace(TenNCC) &&
+                       !string.IsNullOrWhiteSpace(SDT)
             );
 
             DeleteCommand = new RelayCommand(
-                (p) => {
-                    var confirm = MessageBox.Show($"Xác nhận xóa nhà cung cấp '{SelectedItem.TenNCC}'?", "Hỏi xóa", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    if (confirm == MessageBoxResult.Yes)
+                (p) =>
+                {
+                    if (MessageBox.Show($"Xác nhận xóa nhà cung cấp '{SelectedItem.TenNCC}'?",
+                        "Xác nhận xóa", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        string targetMaNCC = SelectedItem.MaNCC;
-
-                        // Chống crash: Kiểm tra xem NCC này đã có Sản phẩm hoặc Hóa đơn nhập nào chưa trước khi xóa khỏi DB
-                        bool hasRelatedData = _db.SanPham.Any(sp => sp.MaNCC == targetMaNCC) || _db.HoaDonNhap.Any(hdn => hdn.MaNCC == targetMaNCC);
-                        if (hasRelatedData)
+                        try
                         {
-                            MessageBox.Show("Không cho phép xóa! Nhà cung cấp đã có dữ liệu hàng hóa hoặc hóa đơn nhập hàng tồn tại.", "Lỗi dữ liệu", MessageBoxButton.OK, MessageBoxImage.Stop);
-                            return;
-                        }
+                            string targetMaNCC = SelectedItem.MaNCC;
+                            if (_db.SanPhams.Any(sp => sp.MaNCC == targetMaNCC) ||
+                                _db.HoaDonNhaps.Any(hdn => hdn.MaNCC == targetMaNCC))
+                            {
+                                MessageBox.Show("Không thể xóa! Nhà cung cấp đang có sản phẩm hoặc hóa đơn nhập liên quan.",
+                                    "Không thể xóa", MessageBoxButton.OK, MessageBoxImage.Stop);
+                                return;
+                            }
 
-                        var ncc = _db.NhaCungCap.FirstOrDefault(x => x.MaNCC == targetMaNCC);
-                        if (ncc != null)
-                        {
-                            _db.NhaCungCap.Remove(ncc);
-                            _db.SaveChanges();
-                            LoadData();
-                            ClearInputs();
-                            MessageBox.Show("Đã xóa nhà cung cấp.");
+                            var ncc = _db.NhaCungCaps.FirstOrDefault(x => x.MaNCC == targetMaNCC);
+                            if (ncc != null)
+                            {
+                                _db.NhaCungCaps.Remove(ncc);
+                                _db.SaveChanges();
+                                LoadData();
+                                ClearInputs();
+                                MessageBox.Show("Đã xóa nhà cung cấp thành công.");
+                            }
                         }
+                        catch (Exception ex) { MessageBox.Show("Lỗi khi xóa: " + ex.Message); }
                     }
                 },
                 (p) => SelectedItem != null
@@ -190,19 +201,25 @@ namespace QuanLyShopGiay.ViewModels
 
         private void LoadData()
         {
-            var query = _db.NhaCungCap.AsQueryable();
+            var query = _db.NhaCungCaps.AsQueryable();
             if (!string.IsNullOrWhiteSpace(SearchText))
             {
                 string kw = SearchText.Trim().ToLower();
-                query = query.Where(x => x.TenNCC.ToLower().Contains(kw) || x.MaNCC.ToLower().Contains(kw) || x.SDT.Contains(kw));
+                query = query.Where(x =>
+                    x.TenNCC.ToLower().Contains(kw) ||
+                    x.MaNCC.ToLower().Contains(kw) ||
+                    x.SDT.Contains(kw));
             }
-            ListNhaCungCap = new ObservableCollection<NhaCungCap>(query.OrderBy(x => x.MaNCC).ToList());
+            ListNhaCungCap = new ObservableCollection<NhaCungCap>(
+                query.OrderBy(x => x.MaNCC).ToList());
         }
 
         private void ClearInputs()
         {
-            _selectedItem = null; OnPropertyChanged(nameof(SelectedItem));
-            MaNCC = TenNCC = SDT = DiaChi = string.Empty; IsMaNCCEnabled = true;
+            _selectedItem = null;
+            OnPropertyChanged(nameof(SelectedItem));
+            MaNCC = TenNCC = SDT = DiaChi = string.Empty;
+            IsMaNCCEnabled = true;
         }
     }
 }

@@ -141,6 +141,7 @@
     <Compile Include="ViewModels\LoaiSanPhamViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\NhaCungCapViewModel.cs" />
     <Compile Include="ViewModels\NhanVienViewModel.cs" />
     <Compile Include="ViewModels\SanPhamViewModel.cs" />
     <Compile Include="Views\ChonBienTheDialog.xaml.cs">
@@ -163,6 +164,9 @@
     </Compile>
     <Compile Include="Views\Pages\LoaiSanPhamPage.xaml.cs">
       <DependentUpon>LoaiSanPhamPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\NhaCungCapPage.xaml.cs">
+      <DependentUpon>NhaCungCapPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\NhanVienPage.xaml.cs">
       <DependentUpon>NhanVienPage.xaml</DependentUpon>
@@ -212,6 +216,10 @@
     <Page Include="Views\Pages\LoaiSanPhamPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Pages\NhaCungCapPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\NhanVienPage.xaml">
       <SubType>Designer</SubType>
