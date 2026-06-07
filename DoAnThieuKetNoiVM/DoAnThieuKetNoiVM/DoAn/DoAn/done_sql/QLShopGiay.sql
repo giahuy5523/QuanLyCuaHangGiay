@@ -463,4 +463,3 @@ SELECT * FROM v_DoanhThuTheoPhuongThuc;
 SELECT * FROM v_DoanhThuPhuongThucTheoThang;
 GO
 
->>>>>>> 8e91478e74e4e8dafc0b398cdcb43691acc9e1eb
