@@ -17,14 +17,14 @@
         </Grid.RowDefinitions>
 
         <!-- HEADER -->
-        <Grid Grid.Row="0" Margin="0,0,0,20">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                <TextBox Width="300" Height="36" Padding="10,0" VerticalContentAlignment="Center"
-                         Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
-            </StackPanel>
+        <Grid Grid.Row="0" Margin="0,0,0,16">
+            <TextBox Width="300" Height="36" Padding="10,0" HorizontalAlignment="Left"
+                     VerticalContentAlignment="Center" FontSize="13"
+                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <TextBlock Text="Tài khoản: " Foreground="#FF555555" FontSize="13"/>
-                <TextBlock Text="{Binding TenTaiKhoan}" FontWeight="Bold" Foreground="#FF2980B9" FontSize="13" Margin="0,0,16,0"/>
+                <TextBlock Text="{Binding TenTaiKhoan}" FontWeight="Bold" Foreground="#FF2980B9"
+                           FontSize="13" Margin="0,0,16,0"/>
                 <TextBlock Text="Quyền: " Foreground="#FF555555" FontSize="13"/>
                 <TextBlock Text="{Binding TenVaiTro}" FontWeight="Bold" Foreground="#FF27AE60" FontSize="13"/>
             </StackPanel>
@@ -32,7 +32,7 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="310"/>
+                <ColumnDefinition Width="290"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
@@ -40,13 +40,18 @@
             <Border Grid.Column="0" Background="White" CornerRadius="12" Padding="16"
                     Margin="0,0,16,0" BorderBrush="#FFE0E0E0" BorderThickness="1" VerticalAlignment="Top">
                 <StackPanel>
-                    <TextBlock Text="QUẢN LÝ NHÀ CUNG CẤP" FontSize="15" FontWeight="Bold"
+                    <TextBlock Text="QUẢN LÝ NHÀ CUNG CẤP" FontSize="14" FontWeight="Bold"
                                Foreground="#FF1E2A38" Margin="0,0,0,16" HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="Mã Nhà Cung Cấp:" Foreground="#FF555555" FontSize="12" Margin="0,0,0,4"/>
-                    <TextBox Height="36" Padding="10,0" FontSize="13" VerticalContentAlignment="Center"
-                             IsEnabled="{Binding IsMaNCCEnabled}"
-                             Text="{Binding MaNCC, UpdateSourceTrigger=PropertyChanged}"/>
+                    <!-- Mã NCC: chỉ hiển thị khi đang sửa, ẩn khi thêm mới -->
+                    <StackPanel>
+                        <TextBlock Text="Mã Nhà Cung Cấp:" Foreground="#FF555555" FontSize="12" Margin="0,0,0,4"/>
+                        <TextBox Height="36" Padding="10,0" FontSize="13" VerticalContentAlignment="Center"
+                                 IsReadOnly="True" Background="#FFEAEAEA"
+                                 Text="{Binding MaNCC}"/>
+                        <TextBlock Margin="0,4,0,0" FontSize="11" Foreground="#FF888888"
+                                   Text="(Mã được tạo tự động)"/>
+                    </StackPanel>
 
                     <TextBlock Text="Tên Nhà Cung Cấp (*):" Foreground="#FF555555" FontSize="12" Margin="0,12,0,4"/>
                     <TextBox Height="36" Padding="10,0" FontSize="13" VerticalContentAlignment="Center"
@@ -102,7 +107,7 @@
                               SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Mã NCC"           Binding="{Binding MaNCC}"  Width="90"/>
-                            <DataGridTextColumn Header="Tên Nhà Cung Cấp" Binding="{Binding TenNCC}" Width="220"/>
+                            <DataGridTextColumn Header="Tên Nhà Cung Cấp" Binding="{Binding TenNCC}" Width="200"/>
                             <DataGridTextColumn Header="Địa Chỉ"          Binding="{Binding DiaChi}" Width="*"/>
                             <DataGridTextColumn Header="Số Điện Thoại"    Binding="{Binding SDT}"    Width="130"/>
                         </DataGrid.Columns>
