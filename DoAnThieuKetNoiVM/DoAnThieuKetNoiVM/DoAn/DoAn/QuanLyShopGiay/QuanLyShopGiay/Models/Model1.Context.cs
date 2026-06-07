@@ -20,6 +20,7 @@ namespace QuanLyShopGiay.Models
         public QLShopGiayEntities3()
             : base("name=QLShopGiayEntities3")
         {
+            this.Database.CommandTimeout = 60;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
