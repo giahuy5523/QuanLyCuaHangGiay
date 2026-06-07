@@ -13,9 +13,8 @@ namespace QuanLyShopGiay.ViewModels
     {
         private readonly QLShopGiayEntities3 _db;
 
-        // Dùng SessionManager.CurrentUser thay vì HoTenNV/TenDangNhap/TenVT
         public string TenTaiKhoan => SessionManager.CurrentUser?.TenNhanVien ?? "Chưa đăng nhập";
-        public string TenVaiTro => SessionManager.CurrentUser?.Quyen ?? "N/A";
+        public string TenVaiTro   => SessionManager.CurrentUser?.Quyen       ?? "N/A";
 
         private ObservableCollection<NhaCungCap> _listNhaCungCap;
         public ObservableCollection<NhaCungCap> ListNhaCungCap
@@ -32,11 +31,10 @@ namespace QuanLyShopGiay.ViewModels
             {
                 if (SetProperty(ref _selectedItem, value) && value != null)
                 {
-                    MaNCC = value.MaNCC;
+                    MaNCC  = value.MaNCC;
                     TenNCC = value.TenNCC;
-                    SDT = value.SDT;
+                    SDT    = value.SDT;
                     DiaChi = value.DiaChi;
-                    IsMaNCCEnabled = false;
                 }
             }
         }
@@ -60,13 +58,10 @@ namespace QuanLyShopGiay.ViewModels
             set { if (SetProperty(ref _searchText, value)) LoadData(); }
         }
 
-        private bool _isMaNCCEnabled = true;
-        public bool IsMaNCCEnabled { get => _isMaNCCEnabled; set => SetProperty(ref _isMaNCCEnabled, value); }
-
-        public ICommand AddCommand { get; set; }
-        public ICommand SaveCommand { get; set; }
+        public ICommand AddCommand    { get; set; }
+        public ICommand SaveCommand   { get; set; }
         public ICommand DeleteCommand { get; set; }
-        public ICommand ClearCommand { get; set; }
+        public ICommand ClearCommand  { get; set; }
 
         public NhaCungCapViewModel()
         {
@@ -87,12 +82,11 @@ namespace QuanLyShopGiay.ViewModels
                 {
                     try
                     {
-                        string targetMaNCC = MaNCC?.Trim();
                         string sdtInput = SDT?.Trim() ?? "";
 
-                        if (string.IsNullOrWhiteSpace(targetMaNCC))
+                        if (string.IsNullOrWhiteSpace(TenNCC))
                         {
-                            MessageBox.Show("Vui lòng nhập Mã Nhà Cung Cấp!", "Thiếu thông tin",
+                            MessageBox.Show("Vui lòng nhập Tên Nhà Cung Cấp!", "Thiếu thông tin",
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                             return;
                         }
@@ -102,32 +96,26 @@ namespace QuanLyShopGiay.ViewModels
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                             return;
                         }
-                        if (_db.NhaCungCaps.Any(x => x.MaNCC == targetMaNCC))
-                        {
-                            MessageBox.Show("Mã nhà cung cấp này đã tồn tại!", "Trùng mã",
-                                MessageBoxButton.OK, MessageBoxImage.Warning);
-                            return;
-                        }
+
+                        // Tự sinh mã NCC
+                        string newMaNCC = GenerateNextId();
 
                         _db.NhaCungCaps.Add(new NhaCungCap
                         {
-                            MaNCC = targetMaNCC,
+                            MaNCC  = newMaNCC,
                             TenNCC = TenNCC.Trim(),
-                            SDT = sdtInput,
+                            SDT    = sdtInput,
                             DiaChi = string.IsNullOrWhiteSpace(DiaChi) ? null : DiaChi.Trim()
                         });
                         _db.SaveChanges();
                         LoadData();
                         ClearInputs();
-                        MessageBox.Show("Thêm nhà cung cấp thành công!", "Thành công",
+                        MessageBox.Show($"Đã thêm nhà cung cấp {newMaNCC} thành công!", "Thành công",
                             MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (Exception ex) { MessageBox.Show("Lỗi: " + ex.Message); }
                 },
-                (p) => IsMaNCCEnabled &&
-                       !string.IsNullOrWhiteSpace(MaNCC) &&
-                       !string.IsNullOrWhiteSpace(TenNCC) &&
-                       !string.IsNullOrWhiteSpace(SDT)
+                (p) => !string.IsNullOrWhiteSpace(TenNCC) && !string.IsNullOrWhiteSpace(SDT)
             );
 
             SaveCommand = new RelayCommand(
@@ -147,7 +135,7 @@ namespace QuanLyShopGiay.ViewModels
                         if (ncc != null)
                         {
                             ncc.TenNCC = TenNCC.Trim();
-                            ncc.SDT = sdtInput;
+                            ncc.SDT    = sdtInput;
                             ncc.DiaChi = string.IsNullOrWhiteSpace(DiaChi) ? null : DiaChi.Trim();
                             _db.SaveChanges();
                             LoadData();
@@ -207,7 +195,7 @@ namespace QuanLyShopGiay.ViewModels
                 string kw = SearchText.Trim().ToLower();
                 query = query.Where(x =>
                     x.TenNCC.ToLower().Contains(kw) ||
-                    x.MaNCC.ToLower().Contains(kw) ||
+                    x.MaNCC.ToLower().Contains(kw)  ||
                     x.SDT.Contains(kw));
             }
             ListNhaCungCap = new ObservableCollection<NhaCungCap>(
@@ -219,7 +207,20 @@ namespace QuanLyShopGiay.ViewModels
             _selectedItem = null;
             OnPropertyChanged(nameof(SelectedItem));
             MaNCC = TenNCC = SDT = DiaChi = string.Empty;
-            IsMaNCCEnabled = true;
+        }
+
+        // Tự sinh mã NCC tiếp theo: NCC01 → NCC05, NCC06...
+        private string GenerateNextId()
+        {
+            var maxId = _db.NhaCungCaps
+                .Select(x => x.MaNCC)
+                .ToList()
+                .Where(x => x.StartsWith("NCC") && x.Length > 3)
+                .Select(x => int.TryParse(x.Substring(3), out int id) ? id : 0)
+                .DefaultIfEmpty(0)
+                .Max();
+
+            return string.Format("NCC{0:D2}", maxId + 1);
         }
     }
 }
