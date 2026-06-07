@@ -12,15 +12,9 @@ DEBUG;TRACE
 C:\Users\Lenovo\Documents\GitHub\QuanLyCuaHangGiay\DoAnThieuKetNoiVM\DoAnThieuKetNoiVM\DoAn\DoAn\QuanLyShopGiay\QuanLyShopGiay\App.xaml
 11-1397748251
 2-1223955081
-<<<<<<< HEAD
-49-414837764
+51-1833477433
 19-234270874
 MainWindow.xaml;Views\ChonBienTheDialog.xaml;Views\Login.xaml;Views\Pages\DashboardPage.xaml;Views\Pages\DonNhapHangPage.xaml;Views\Pages\HoaDonBanHangPage.xaml;Views\Pages\KhachHangPage.xaml;Views\Pages\LoaiSanPhamPage.xaml;Views\Pages\NhanVienPage.xaml;Views\Pages\SanPhamPage.xaml;Views\Pages\TaiKhoanPage.xaml;
-=======
-49110582289
-19426571514
-MainWindow.xaml;Views\Login.xaml;Views\Pages\DashboardPage.xaml;Views\Pages\DonNhapHangPage.xaml;Views\Pages\HoaDonBanHangPage.xaml;Views\Pages\KhachHangPage.xaml;Views\Pages\LoaiSanPhamPage.xaml;Views\Pages\NhanVienPage.xaml;Views\Pages\SanPhamPage.xaml;Views\Pages\TaiKhoanPage.xaml;Views\ucTimKiem.xaml;
->>>>>>> 4558ed35c12e748ca243f5ea3bd4d7c68b860c8e
 
-True
+False
 
