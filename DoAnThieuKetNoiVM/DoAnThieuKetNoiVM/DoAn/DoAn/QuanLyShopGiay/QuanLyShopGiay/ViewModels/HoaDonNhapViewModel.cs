@@ -214,6 +214,7 @@ namespace QuanLyShopGiay.ViewModels
 
                     foreach (var ct in DsChiTiet)
                     {
+                        // 1. Chỉ thêm chi tiết hóa đơn nhập (Trigger SQL sẽ tự động gánh việc tăng số lượng tồn)
                         var chiTiet = new ChiTietHoaDonNhap
                         {
                             MaHDN = MaPhieuNhap,
@@ -222,6 +223,15 @@ namespace QuanLyShopGiay.ViewModels
                             GiaNhap = ct.DonGiaNhap
                         };
                         db.ChiTietHoaDonNhaps.Add(chiTiet);
+
+                        // 2. Nếu muốn cập nhật giá nhập mới nhất cho sản phẩm đó, ta cập nhật trực tiếp 
+                        // giá mà KHÔNG ĐỘNG CHẠM gì tới thuộc tính SoLuongTon trong C# nữa.
+                        var sp = db.SanPhams.FirstOrDefault(x => x.MaSP == ct.MaSanPham);
+                        if (sp != null)
+                        {
+                            sp.GiaNhap = ct.DonGiaNhap;
+                            db.Entry(sp).State = System.Data.Entity.EntityState.Modified;
+                        }
                     }
 
                     db.SaveChanges();

@@ -57,9 +57,11 @@
                     </Grid>
 
                     <TextBlock Text="Giá Nhập (đ):" Margin="0,5,0,2" FontWeight="SemiBold"/>
-                    <TextBox Text="{Binding GiaNhap, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding GiaNhap, UpdateSourceTrigger=PropertyChanged}" 
+             IsReadOnly="True" 
+             Background="#EEEEEE" />    
 
-                    <TextBlock Text="Giá Bán (đ) - Tự động tính tăng 10%:" Margin="0,5,0,2" FontWeight="SemiBold" Foreground="DarkGreen"/>
+                    <TextBlock Text="Giá Bán (đ):" Margin="0,5,0,2" FontWeight="SemiBold" Foreground="DarkGreen"/>
                     <TextBox Text="{Binding GiaBan, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <TextBlock Text="Số Lượng Tồn Kho:" Margin="0,5,0,2" FontWeight="SemiBold"/>
