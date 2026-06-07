@@ -46,7 +46,7 @@
                     <StackPanel Grid.Column="2">
                         <Label Content="Ngày Nhập:" FontWeight="Bold"/>
                         <DatePicker SelectedDate="{Binding NgayNhap}" 
-                                    Height="35" Padding="10"/>
+                                    Height="40" Padding="10"/>
                     </StackPanel>
                 </Grid>
             </GroupBox>
@@ -68,12 +68,29 @@
                     <!-- FIX 2: DisplayMemberPath và SelectedValuePath sai tên DB
                          SanPham có MaSP và TenSP, không phải MaSanPham/TenSanPham -->
                     <StackPanel Grid.Column="0" Margin="0,0,10,0">
-                        <Label Content="Sản phẩm:" FontWeight="Bold"/>
-                        <ComboBox ItemsSource="{Binding DsSanPham}"
-                                  SelectedValue="{Binding ChiTietInput.MaSP}"
-                                  DisplayMemberPath="TenSP"
-                                  SelectedValuePath="MaSP"
-                                  Height="35" Padding="10"/>
+                        <!-- Thay ComboBox sản phẩm cũ bằng cái này -->
+                        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                            <Label Content="Sản phẩm:" FontWeight="Bold"/>
+                            <ComboBox ItemsSource="{Binding DsSanPham}"
+              SelectedValue="{Binding ChiTietInput.MaSP}"
+              SelectedValuePath="MaSP"
+              Height="35" Padding="10">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding TenSP}" FontWeight="SemiBold"/>
+                                            <TextBlock Text=" | Size: " Foreground="#7F8C8D"/>
+                                            <TextBlock Text="{Binding Size}" Foreground="#E74C3C"/>
+                                            <TextBlock Text=" - " Foreground="#7F8C8D"/>
+                                            <TextBlock Text="{Binding MauSac}" Foreground="#2980B9"/>
+                                            <TextBlock Text=" (Tồn: " Foreground="#7F8C8D"/>
+                                            <TextBlock Text="{Binding SoLuongTon}" Foreground="#27AE60"/>
+                                            <TextBlock Text=")" Foreground="#7F8C8D"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
                     </StackPanel>
 
                     <!-- FIX 3: GiaNhap không nên IsEnabled=False 

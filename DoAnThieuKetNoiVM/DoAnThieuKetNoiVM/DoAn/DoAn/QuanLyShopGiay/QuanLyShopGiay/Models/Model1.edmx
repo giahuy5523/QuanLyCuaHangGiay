@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QLShopGiayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QLShopGiayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ChiTietHoaDon">
           <Key>
             <PropertyRef Name="MaHD" />
@@ -116,6 +116,7 @@ warning 6002: The table/view 'QLShopGiay.dbo.v_DoanhThuPhuongThucTheoThang' does
           <Key>
             <PropertyRef Name="TenPhuongThuc" />
           </Key>
+          <Property Name="Id" Type="bigint" />
           <Property Name="Nam" Type="int" />
           <Property Name="Thang" Type="int" />
           <Property Name="TenPhuongThuc" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -123,8 +124,20 @@ warning 6002: The table/view 'QLShopGiay.dbo.v_DoanhThuPhuongThucTheoThang' does
           <Property Name="TongDoanhThu" Type="decimal" Precision="38" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoPhuongThuc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_DoanhThuTheoPhuongThuc">
+          <Key>
+            <PropertyRef Name="TenPhuongThuc" />
+          </Key>
+          <Property Name="Id" Type="bigint" />
+          <Property Name="TenPhuongThuc" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SoLanThanhToan" Type="int" />
+          <Property Name="TongDoanhThu" Type="decimal" Precision="38" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="v_DoanhThuTheoThang">
+          <Property Name="Id" Type="bigint" />
           <Property Name="Nam" Type="int" />
           <Property Name="Thang" Type="int" />
           <Property Name="TongSoHoaDon" Type="int" />
@@ -280,12 +293,21 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="v_DoanhThuPhuongThucTheoThang" EntityType="Self.v_DoanhThuPhuongThucTheoThang" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
+    [v_DoanhThuPhuongThucTheoThang].[Id] AS [Id], 
     [v_DoanhThuPhuongThucTheoThang].[Nam] AS [Nam], 
     [v_DoanhThuPhuongThucTheoThang].[Thang] AS [Thang], 
     [v_DoanhThuPhuongThucTheoThang].[TenPhuongThuc] AS [TenPhuongThuc], 
     [v_DoanhThuPhuongThucTheoThang].[SoLuongHoaDon] AS [SoLuongHoaDon], 
     [v_DoanhThuPhuongThucTheoThang].[TongDoanhThu] AS [TongDoanhThu]
     FROM [dbo].[v_DoanhThuPhuongThucTheoThang] AS [v_DoanhThuPhuongThucTheoThang]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_DoanhThuTheoPhuongThuc" EntityType="Self.v_DoanhThuTheoPhuongThuc" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_DoanhThuTheoPhuongThuc].[Id] AS [Id], 
+    [v_DoanhThuTheoPhuongThuc].[TenPhuongThuc] AS [TenPhuongThuc], 
+    [v_DoanhThuTheoPhuongThuc].[SoLanThanhToan] AS [SoLanThanhToan], 
+    [v_DoanhThuTheoPhuongThuc].[TongDoanhThu] AS [TongDoanhThu]
+    FROM [dbo].[v_DoanhThuTheoPhuongThuc] AS [v_DoanhThuTheoPhuongThuc]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__ChiTietHo__MaHDN__571DF1D5" Association="Self.FK__ChiTietHo__MaHDN__571DF1D5">
             <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
@@ -332,7 +354,8 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             <End Role="HoaDon" EntitySet="HoaDon" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLShopGiayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -370,11 +393,11 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
           <Property Name="MaNhanVien" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="TongTien" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaPhuongThuc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK__ChiTietHoa__MaHD__6477ECF3" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
           <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKhachH__5EBF139D" FromRole="HoaDon" ToRole="KhachHang" />
           <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDon__MaNhanVi__5FB337D6" FromRole="HoaDon" ToRole="NhanVien" />
-          <Property Name="MaPhuongThuc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PhuongThucThanhToan" Relationship="QLShopGiayModel.FK_HoaDon_PhuongThuc" FromRole="HoaDon" ToRole="PhuongThucThanhToan" />
+          <NavigationProperty Name="PhuongThucThanhToan" Relationship="Self.FK_HoaDon_PhuongThuc" FromRole="HoaDon" ToRole="PhuongThucThanhToan" />
         </EntityType>
         <EntityType Name="HoaDonNhap">
           <Key>
@@ -434,6 +457,16 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
           <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__MaNhanVi__5FB337D6" FromRole="NhanVien" ToRole="HoaDon" />
           <NavigationProperty Name="HoaDonNhaps" Relationship="Self.FK__HoaDonNha__MaNha__52593CB8" FromRole="NhanVien" ToRole="HoaDonNhap" />
         </EntityType>
+        <EntityType Name="PhuongThucThanhToan">
+          <Key>
+            <PropertyRef Name="MaPhuongThuc" />
+          </Key>
+          <Property Name="MaPhuongThuc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenPhuongThuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="Boolean" />
+          <NavigationProperty Name="HoaDons" Relationship="Self.FK_HoaDon_PhuongThuc" FromRole="PhuongThucThanhToan" ToRole="HoaDon" />
+        </EntityType>
         <EntityType Name="SanPham">
           <Key>
             <PropertyRef Name="MaSP" />
@@ -452,6 +485,26 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
           <NavigationProperty Name="ChiTietHoaDonNhaps" Relationship="Self.FK__ChiTietHoa__MaSP__5812160E" FromRole="SanPham" ToRole="ChiTietHoaDonNhap" />
           <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK__SanPham__MaLoai__4BAC3F29" FromRole="SanPham" ToRole="LoaiSanPham" />
           <NavigationProperty Name="NhaCungCap" Relationship="Self.FK__SanPham__MaNCC__4CA06362" FromRole="SanPham" ToRole="NhaCungCap" />
+        </EntityType>
+        <EntityType Name="v_DoanhThuPhuongThucTheoThang">
+          <Key>
+            <PropertyRef Name="TenPhuongThuc" />
+          </Key>
+          <Property Name="Id" Type="Int64" />
+          <Property Name="Nam" Type="Int32" />
+          <Property Name="Thang" Type="Int32" />
+          <Property Name="TenPhuongThuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoLuongHoaDon" Type="Int32" />
+          <Property Name="TongDoanhThu" Type="Decimal" Precision="38" Scale="2" />
+        </EntityType>
+        <EntityType Name="v_DoanhThuTheoPhuongThuc">
+          <Key>
+            <PropertyRef Name="TenPhuongThuc" />
+          </Key>
+          <Property Name="Id" Type="Int64" />
+          <Property Name="TenPhuongThuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoLanThanhToan" Type="Int32" />
+          <Property Name="TongDoanhThu" Type="Decimal" Precision="38" Scale="2" />
         </EntityType>
         <Association Name="FK__ChiTietHoa__MaHD__6477ECF3">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
@@ -525,6 +578,18 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HoaDon_PhuongThuc">
+          <End Role="PhuongThucThanhToan" Type="Self.PhuongThucThanhToan" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhuongThucThanhToan">
+              <PropertyRef Name="MaPhuongThuc" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="MaPhuongThuc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__HoaDonNha__MaNCC__5165187F">
           <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
           <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
@@ -573,7 +638,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QLShopGiayEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="QLShopGiayEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
           <EntitySet Name="ChiTietHoaDonNhaps" EntityType="Self.ChiTietHoaDonNhap" />
           <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
@@ -582,7 +647,10 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
           <EntitySet Name="LoaiSanPhams" EntityType="Self.LoaiSanPham" />
           <EntitySet Name="NhaCungCaps" EntityType="Self.NhaCungCap" />
           <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+          <EntitySet Name="PhuongThucThanhToans" EntityType="Self.PhuongThucThanhToan" />
           <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+          <EntitySet Name="v_DoanhThuPhuongThucTheoThang" EntityType="Self.v_DoanhThuPhuongThucTheoThang" />
+          <EntitySet Name="v_DoanhThuTheoPhuongThuc" EntityType="Self.v_DoanhThuTheoPhuongThuc" />
           <AssociationSet Name="FK__ChiTietHoa__MaHD__6477ECF3" Association="Self.FK__ChiTietHoa__MaHD__6477ECF3">
             <End Role="HoaDon" EntitySet="HoaDons" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
@@ -607,6 +675,10 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="HoaDon" EntitySet="HoaDons" />
           </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_PhuongThuc" Association="Self.FK_HoaDon_PhuongThuc">
+            <End Role="PhuongThucThanhToan" EntitySet="PhuongThucThanhToans" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
           <AssociationSet Name="FK__HoaDonNha__MaNCC__5165187F" Association="Self.FK__HoaDonNha__MaNCC__5165187F">
             <End Role="NhaCungCap" EntitySet="NhaCungCaps" />
             <End Role="HoaDonNhap" EntitySet="HoaDonNhaps" />
@@ -627,12 +699,6 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             <Parameter Name="TuNgay" Mode="In" Type="DateTime" />
             <Parameter Name="DenNgay" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <EntitySet Name="PhuongThucThanhToans" EntityType="QLShopGiayModel.PhuongThucThanhToan" />
-          <EntitySet Name="v_DoanhThuPhuongThucTheoThang" EntityType="QLShopGiayModel.v_DoanhThuPhuongThucTheoThang" />
-          <AssociationSet Name="FK_HoaDon_PhuongThuc" Association="QLShopGiayModel.FK_HoaDon_PhuongThuc">
-            <End Role="PhuongThucThanhToan" EntitySet="PhuongThucThanhToans" />
-            <End Role="HoaDon" EntitySet="HoaDons" />
-          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_ThongKeDoanhThuTheoSanPham_Result">
           <Property Type="String" Name="TenLoaiSanPham" Nullable="false" MaxLength="100" />
@@ -643,44 +709,12 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
           <Property Type="Int32" Name="SoLuongDaBan" Nullable="true" />
           <Property Type="Decimal" Name="DoanhThuThuVe" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
-        <EntityType Name="PhuongThucThanhToan">
-          <Key>
-            <PropertyRef Name="MaPhuongThuc" />
-          </Key>
-          <Property Name="MaPhuongThuc" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="TenPhuongThuc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TrangThai" Type="Boolean" />
-          <NavigationProperty Name="HoaDons" Relationship="QLShopGiayModel.FK_HoaDon_PhuongThuc" FromRole="PhuongThucThanhToan" ToRole="HoaDon" />
-        </EntityType>
-        <EntityType Name="v_DoanhThuPhuongThucTheoThang">
-          <Key>
-            <PropertyRef Name="TenPhuongThuc" />
-          </Key>
-          <Property Name="Nam" Type="Int32" />
-          <Property Name="Thang" Type="Int32" />
-          <Property Name="TenPhuongThuc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SoLuongHoaDon" Type="Int32" />
-          <Property Name="TongDoanhThu" Type="Decimal" Precision="38" Scale="2" />
-        </EntityType>
-        <Association Name="FK_HoaDon_PhuongThuc">
-          <End Type="QLShopGiayModel.PhuongThucThanhToan" Role="PhuongThucThanhToan" Multiplicity="0..1" />
-          <End Type="QLShopGiayModel.HoaDon" Role="HoaDon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PhuongThucThanhToan">
-              <PropertyRef Name="MaPhuongThuc" />
-            </Principal>
-            <Dependent Role="HoaDon">
-              <PropertyRef Name="MaPhuongThuc" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QLShopGiayModelStoreContainer" CdmEntityContainer="QLShopGiayEntities3">
+        <EntityContainerMapping StorageEntityContainer="QLShopGiayModelStoreContainer" CdmEntityContainer="QLShopGiayEntities">
           <EntitySetMapping Name="ChiTietHoaDons">
             <EntityTypeMapping TypeName="QLShopGiayModel.ChiTietHoaDon">
               <MappingFragment StoreEntitySet="ChiTietHoaDon">
@@ -704,13 +738,13 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
           <EntitySetMapping Name="HoaDons">
             <EntityTypeMapping TypeName="QLShopGiayModel.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
-                <ScalarProperty Name="MaPhuongThuc" ColumnName="MaPhuongThuc" />
                 <ScalarProperty Name="MaHD" ColumnName="MaHD" />
                 <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
                 <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="TongTien" ColumnName="TongTien" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="MaPhuongThuc" ColumnName="MaPhuongThuc" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -768,6 +802,16 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PhuongThucThanhToans">
+            <EntityTypeMapping TypeName="QLShopGiayModel.PhuongThucThanhToan">
+              <MappingFragment StoreEntitySet="PhuongThucThanhToan">
+                <ScalarProperty Name="MaPhuongThuc" ColumnName="MaPhuongThuc" />
+                <ScalarProperty Name="TenPhuongThuc" ColumnName="TenPhuongThuc" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SanPhams">
             <EntityTypeMapping TypeName="QLShopGiayModel.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
@@ -784,6 +828,28 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="v_DoanhThuPhuongThucTheoThang">
+            <EntityTypeMapping TypeName="QLShopGiayModel.v_DoanhThuPhuongThucTheoThang">
+              <MappingFragment StoreEntitySet="v_DoanhThuPhuongThucTheoThang">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nam" ColumnName="Nam" />
+                <ScalarProperty Name="Thang" ColumnName="Thang" />
+                <ScalarProperty Name="TenPhuongThuc" ColumnName="TenPhuongThuc" />
+                <ScalarProperty Name="SoLuongHoaDon" ColumnName="SoLuongHoaDon" />
+                <ScalarProperty Name="TongDoanhThu" ColumnName="TongDoanhThu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_DoanhThuTheoPhuongThuc">
+            <EntityTypeMapping TypeName="QLShopGiayModel.v_DoanhThuTheoPhuongThuc">
+              <MappingFragment StoreEntitySet="v_DoanhThuTheoPhuongThuc">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenPhuongThuc" ColumnName="TenPhuongThuc" />
+                <ScalarProperty Name="SoLanThanhToan" ColumnName="SoLanThanhToan" />
+                <ScalarProperty Name="TongDoanhThu" ColumnName="TongDoanhThu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_ThongKeDoanhThuTheoSanPham" FunctionName="QLShopGiayModel.Store.sp_ThongKeDoanhThuTheoSanPham">
             <ResultMapping>
               <ComplexTypeMapping TypeName="QLShopGiayModel.sp_ThongKeDoanhThuTheoSanPham_Result">
@@ -797,27 +863,6 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="PhuongThucThanhToans">
-            <EntityTypeMapping TypeName="QLShopGiayModel.PhuongThucThanhToan">
-              <MappingFragment StoreEntitySet="PhuongThucThanhToan">
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="TenPhuongThuc" ColumnName="TenPhuongThuc" />
-                <ScalarProperty Name="MaPhuongThuc" ColumnName="MaPhuongThuc" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="v_DoanhThuPhuongThucTheoThang">
-            <EntityTypeMapping TypeName="QLShopGiayModel.v_DoanhThuPhuongThucTheoThang">
-              <MappingFragment StoreEntitySet="v_DoanhThuPhuongThucTheoThang">
-                <ScalarProperty Name="TongDoanhThu" ColumnName="TongDoanhThu" />
-                <ScalarProperty Name="SoLuongHoaDon" ColumnName="SoLuongHoaDon" />
-                <ScalarProperty Name="TenPhuongThuc" ColumnName="TenPhuongThuc" />
-                <ScalarProperty Name="Thang" ColumnName="Thang" />
-                <ScalarProperty Name="Nam" ColumnName="Nam" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -34,11 +34,11 @@
     <Property Name="MaNhanVien" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="TongTien" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaPhuongThuc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK__ChiTietHoa__MaHD__6477ECF3" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
     <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKhachH__5EBF139D" FromRole="HoaDon" ToRole="KhachHang" />
     <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDon__MaNhanVi__5FB337D6" FromRole="HoaDon" ToRole="NhanVien" />
-    <Property Name="MaPhuongThuc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="PhuongThucThanhToan" Relationship="QLShopGiayModel.FK_HoaDon_PhuongThuc" FromRole="HoaDon" ToRole="PhuongThucThanhToan" />
+    <NavigationProperty Name="PhuongThucThanhToan" Relationship="Self.FK_HoaDon_PhuongThuc" FromRole="HoaDon" ToRole="PhuongThucThanhToan" />
   </EntityType>
   <EntityType Name="HoaDonNhap">
     <Key>
@@ -98,6 +98,16 @@
     <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__MaNhanVi__5FB337D6" FromRole="NhanVien" ToRole="HoaDon" />
     <NavigationProperty Name="HoaDonNhaps" Relationship="Self.FK__HoaDonNha__MaNha__52593CB8" FromRole="NhanVien" ToRole="HoaDonNhap" />
   </EntityType>
+  <EntityType Name="PhuongThucThanhToan">
+    <Key>
+      <PropertyRef Name="MaPhuongThuc" />
+    </Key>
+    <Property Name="MaPhuongThuc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenPhuongThuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.FK_HoaDon_PhuongThuc" FromRole="PhuongThucThanhToan" ToRole="HoaDon" />
+  </EntityType>
   <EntityType Name="SanPham">
     <Key>
       <PropertyRef Name="MaSP" />
@@ -116,6 +126,26 @@
     <NavigationProperty Name="ChiTietHoaDonNhaps" Relationship="Self.FK__ChiTietHoa__MaSP__5812160E" FromRole="SanPham" ToRole="ChiTietHoaDonNhap" />
     <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK__SanPham__MaLoai__4BAC3F29" FromRole="SanPham" ToRole="LoaiSanPham" />
     <NavigationProperty Name="NhaCungCap" Relationship="Self.FK__SanPham__MaNCC__4CA06362" FromRole="SanPham" ToRole="NhaCungCap" />
+  </EntityType>
+  <EntityType Name="v_DoanhThuPhuongThucTheoThang">
+    <Key>
+      <PropertyRef Name="TenPhuongThuc" />
+    </Key>
+    <Property Name="Id" Type="Int64" />
+    <Property Name="Nam" Type="Int32" />
+    <Property Name="Thang" Type="Int32" />
+    <Property Name="TenPhuongThuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoLuongHoaDon" Type="Int32" />
+    <Property Name="TongDoanhThu" Type="Decimal" Precision="38" Scale="2" />
+  </EntityType>
+  <EntityType Name="v_DoanhThuTheoPhuongThuc">
+    <Key>
+      <PropertyRef Name="TenPhuongThuc" />
+    </Key>
+    <Property Name="Id" Type="Int64" />
+    <Property Name="TenPhuongThuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoLanThanhToan" Type="Int32" />
+    <Property Name="TongDoanhThu" Type="Decimal" Precision="38" Scale="2" />
   </EntityType>
   <Association Name="FK__ChiTietHoa__MaHD__6477ECF3">
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
@@ -189,6 +219,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_HoaDon_PhuongThuc">
+    <End Role="PhuongThucThanhToan" Type="Self.PhuongThucThanhToan" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhuongThucThanhToan">
+        <PropertyRef Name="MaPhuongThuc" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaPhuongThuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__HoaDonNha__MaNCC__5165187F">
     <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
     <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
@@ -237,7 +279,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QLShopGiayEntities3" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="QLShopGiayEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
     <EntitySet Name="ChiTietHoaDonNhaps" EntityType="Self.ChiTietHoaDonNhap" />
     <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
@@ -246,7 +288,10 @@
     <EntitySet Name="LoaiSanPhams" EntityType="Self.LoaiSanPham" />
     <EntitySet Name="NhaCungCaps" EntityType="Self.NhaCungCap" />
     <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+    <EntitySet Name="PhuongThucThanhToans" EntityType="Self.PhuongThucThanhToan" />
     <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+    <EntitySet Name="v_DoanhThuPhuongThucTheoThang" EntityType="Self.v_DoanhThuPhuongThucTheoThang" />
+    <EntitySet Name="v_DoanhThuTheoPhuongThuc" EntityType="Self.v_DoanhThuTheoPhuongThuc" />
     <AssociationSet Name="FK__ChiTietHoa__MaHD__6477ECF3" Association="Self.FK__ChiTietHoa__MaHD__6477ECF3">
       <End Role="HoaDon" EntitySet="HoaDons" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
@@ -271,6 +316,10 @@
       <End Role="NhanVien" EntitySet="NhanViens" />
       <End Role="HoaDon" EntitySet="HoaDons" />
     </AssociationSet>
+    <AssociationSet Name="FK_HoaDon_PhuongThuc" Association="Self.FK_HoaDon_PhuongThuc">
+      <End Role="PhuongThucThanhToan" EntitySet="PhuongThucThanhToans" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
     <AssociationSet Name="FK__HoaDonNha__MaNCC__5165187F" Association="Self.FK__HoaDonNha__MaNCC__5165187F">
       <End Role="NhaCungCap" EntitySet="NhaCungCaps" />
       <End Role="HoaDonNhap" EntitySet="HoaDonNhaps" />
@@ -291,12 +340,6 @@
       <Parameter Name="TuNgay" Mode="In" Type="DateTime" />
       <Parameter Name="DenNgay" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <EntitySet Name="PhuongThucThanhToans" EntityType="QLShopGiayModel.PhuongThucThanhToan" />
-    <EntitySet Name="v_DoanhThuPhuongThucTheoThang" EntityType="QLShopGiayModel.v_DoanhThuPhuongThucTheoThang" />
-    <AssociationSet Name="FK_HoaDon_PhuongThuc" Association="QLShopGiayModel.FK_HoaDon_PhuongThuc">
-      <End Role="PhuongThucThanhToan" EntitySet="PhuongThucThanhToans" />
-      <End Role="HoaDon" EntitySet="HoaDons" />
-    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_ThongKeDoanhThuTheoSanPham_Result">
     <Property Type="String" Name="TenLoaiSanPham" Nullable="false" MaxLength="100" />
@@ -307,36 +350,4 @@
     <Property Type="Int32" Name="SoLuongDaBan" Nullable="true" />
     <Property Type="Decimal" Name="DoanhThuThuVe" Nullable="true" Precision="38" Scale="2" />
   </ComplexType>
-  <EntityType Name="PhuongThucThanhToan">
-    <Key>
-      <PropertyRef Name="MaPhuongThuc" />
-    </Key>
-    <Property Name="MaPhuongThuc" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="TenPhuongThuc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="TrangThai" Type="Boolean" />
-    <NavigationProperty Name="HoaDons" Relationship="QLShopGiayModel.FK_HoaDon_PhuongThuc" FromRole="PhuongThucThanhToan" ToRole="HoaDon" />
-  </EntityType>
-  <EntityType Name="v_DoanhThuPhuongThucTheoThang">
-    <Key>
-      <PropertyRef Name="TenPhuongThuc" />
-    </Key>
-    <Property Name="Nam" Type="Int32" />
-    <Property Name="Thang" Type="Int32" />
-    <Property Name="TenPhuongThuc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="SoLuongHoaDon" Type="Int32" />
-    <Property Name="TongDoanhThu" Type="Decimal" Precision="38" Scale="2" />
-  </EntityType>
-  <Association Name="FK_HoaDon_PhuongThuc">
-    <End Type="QLShopGiayModel.PhuongThucThanhToan" Role="PhuongThucThanhToan" Multiplicity="0..1" />
-    <End Type="QLShopGiayModel.HoaDon" Role="HoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PhuongThucThanhToan">
-        <PropertyRef Name="MaPhuongThuc" />
-      </Principal>
-      <Dependent Role="HoaDon">
-        <PropertyRef Name="MaPhuongThuc" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

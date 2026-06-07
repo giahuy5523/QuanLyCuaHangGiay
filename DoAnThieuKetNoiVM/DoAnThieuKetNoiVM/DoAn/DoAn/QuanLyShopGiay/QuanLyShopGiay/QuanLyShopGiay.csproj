@@ -129,6 +129,9 @@
     <Compile Include="Models\v_DoanhThuPhuongThucTheoThang.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\v_DoanhThuTheoPhuongThuc.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\HoaDonBanHangViewModel.cs" />

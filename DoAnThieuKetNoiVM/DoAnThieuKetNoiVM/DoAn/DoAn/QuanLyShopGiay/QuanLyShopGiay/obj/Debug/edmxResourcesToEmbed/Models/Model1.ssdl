@@ -111,6 +111,7 @@ warning 6002: The table/view 'QLShopGiay.dbo.v_DoanhThuPhuongThucTheoThang' does
     <Key>
       <PropertyRef Name="TenPhuongThuc" />
     </Key>
+    <Property Name="Id" Type="bigint" />
     <Property Name="Nam" Type="int" />
     <Property Name="Thang" Type="int" />
     <Property Name="TenPhuongThuc" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -118,8 +119,20 @@ warning 6002: The table/view 'QLShopGiay.dbo.v_DoanhThuPhuongThucTheoThang' does
     <Property Name="TongDoanhThu" Type="decimal" Precision="38" Scale="2" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoPhuongThuc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_DoanhThuTheoPhuongThuc">
+    <Key>
+      <PropertyRef Name="TenPhuongThuc" />
+    </Key>
+    <Property Name="Id" Type="bigint" />
+    <Property Name="TenPhuongThuc" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SoLanThanhToan" Type="int" />
+    <Property Name="TongDoanhThu" Type="decimal" Precision="38" Scale="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="v_DoanhThuTheoThang">
+          <Property Name="Id" Type="bigint" />
           <Property Name="Nam" Type="int" />
           <Property Name="Thang" Type="int" />
           <Property Name="TongSoHoaDon" Type="int" />
@@ -275,12 +288,21 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="v_DoanhThuPhuongThucTheoThang" EntityType="Self.v_DoanhThuPhuongThucTheoThang" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
+    [v_DoanhThuPhuongThucTheoThang].[Id] AS [Id], 
     [v_DoanhThuPhuongThucTheoThang].[Nam] AS [Nam], 
     [v_DoanhThuPhuongThucTheoThang].[Thang] AS [Thang], 
     [v_DoanhThuPhuongThucTheoThang].[TenPhuongThuc] AS [TenPhuongThuc], 
     [v_DoanhThuPhuongThucTheoThang].[SoLuongHoaDon] AS [SoLuongHoaDon], 
     [v_DoanhThuPhuongThucTheoThang].[TongDoanhThu] AS [TongDoanhThu]
     FROM [dbo].[v_DoanhThuPhuongThucTheoThang] AS [v_DoanhThuPhuongThucTheoThang]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_DoanhThuTheoPhuongThuc" EntityType="Self.v_DoanhThuTheoPhuongThuc" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_DoanhThuTheoPhuongThuc].[Id] AS [Id], 
+    [v_DoanhThuTheoPhuongThuc].[TenPhuongThuc] AS [TenPhuongThuc], 
+    [v_DoanhThuTheoPhuongThuc].[SoLanThanhToan] AS [SoLanThanhToan], 
+    [v_DoanhThuTheoPhuongThuc].[TongDoanhThu] AS [TongDoanhThu]
+    FROM [dbo].[v_DoanhThuTheoPhuongThuc] AS [v_DoanhThuTheoPhuongThuc]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK__ChiTietHo__MaHDN__571DF1D5" Association="Self.FK__ChiTietHo__MaHDN__571DF1D5">
       <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />

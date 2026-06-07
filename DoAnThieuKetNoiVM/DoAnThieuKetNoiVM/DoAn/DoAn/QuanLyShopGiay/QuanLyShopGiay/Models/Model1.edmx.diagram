@@ -4,29 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="770115fe732f47f1aab8ca1a03303154" Name="Diagram1" ZoomLevel="55">
+      <Diagram DiagramId="52dea9f8e8504bb5803ac16510489f21" Name="Diagram1">
         <EntityTypeShape EntityType="QLShopGiayModel.ChiTietHoaDon" Width="1.5" PointX="8.25" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLShopGiayModel.ChiTietHoaDonNhap" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLShopGiayModel.HoaDon" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLShopGiayModel.HoaDon" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="QLShopGiayModel.HoaDonNhap" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLShopGiayModel.KhachHang" Width="1.5" PointX="3.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLShopGiayModel.KhachHang" Width="1.5" PointX="3.75" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLShopGiayModel.LoaiSanPham" Width="1.5" PointX="3.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLShopGiayModel.NhaCungCap" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLShopGiayModel.NhanVien" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLShopGiayModel.PhuongThucThanhToan" Width="1.5" PointX="3.75" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLShopGiayModel.SanPham" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLShopGiayModel.v_DoanhThuPhuongThucTheoThang" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLShopGiayModel.v_DoanhThuTheoPhuongThuc" Width="1.5" PointX="8.75" PointY="8.375" IsExpanded="true" />
         <AssociationConnector Association="QLShopGiayModel.FK__ChiTietHoa__MaHD__6477ECF3" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopGiayModel.FK__ChiTietHoa__MaSP__656C112C" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopGiayModel.FK__ChiTietHo__MaHDN__571DF1D5" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopGiayModel.FK__ChiTietHoa__MaSP__5812160E" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopGiayModel.FK__HoaDon__MaKhachH__5EBF139D" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopGiayModel.FK__HoaDon__MaNhanVi__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="QLShopGiayModel.FK_HoaDon_PhuongThuc" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopGiayModel.FK__HoaDonNha__MaNCC__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopGiayModel.FK__HoaDonNha__MaNha__52593CB8" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopGiayModel.FK__SanPham__MaLoai__4BAC3F29" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopGiayModel.FK__SanPham__MaNCC__4CA06362" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="QLShopGiayModel.PhuongThucThanhToan" Width="1.5" PointX="0.75" PointY="8.875" />
-        <EntityTypeShape EntityType="QLShopGiayModel.v_DoanhThuPhuongThucTheoThang" Width="1.5" PointX="8.75" PointY="8.75" />
-        <AssociationConnector Association="QLShopGiayModel.FK_HoaDon_PhuongThuc" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

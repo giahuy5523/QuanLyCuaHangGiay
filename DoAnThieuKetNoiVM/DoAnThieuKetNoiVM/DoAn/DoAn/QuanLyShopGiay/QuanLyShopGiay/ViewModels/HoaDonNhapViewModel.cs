@@ -162,7 +162,7 @@ namespace QuanLyShopGiay.ViewModels
                         DsChiTiet.Add(new ChiTietPhieuNhapDisplay
                         {
                             MaSanPham = sanPham.MaSP,
-                            TenSanPham = sanPham.TenSP,
+                            TenSanPham = $"{sanPham.TenSP} | Size {sanPham.Size} - {sanPham.MauSac}",
                             SoLuong = ChiTietInput.SoLuong,
                             DonGiaNhap = ChiTietInput.GiaNhap,
                             ThanhTien = ChiTietInput.SoLuong * ChiTietInput.GiaNhap
@@ -247,6 +247,15 @@ namespace QuanLyShopGiay.ViewModels
         private void ResetChiTiet()
         {
             ChiTietInput = new PhieuNhapInputFields();
+            ChiTietInput.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(PhieuNhapInputFields.MaSP))
+                {
+                    var sp = DsSanPham?.FirstOrDefault(x => x.MaSP == ChiTietInput.MaSP);
+                    if (sp != null)
+                        ChiTietInput.GiaNhap = sp.GiaNhap ?? 0;
+                }
+            };
         }
 
         private void ResetForm()

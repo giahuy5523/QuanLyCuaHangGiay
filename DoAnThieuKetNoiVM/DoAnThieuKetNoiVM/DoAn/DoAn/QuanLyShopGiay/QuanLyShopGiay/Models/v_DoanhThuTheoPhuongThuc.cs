@@ -12,13 +12,11 @@ namespace QuanLyShopGiay.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class v_DoanhThuPhuongThucTheoThang
+    public partial class v_DoanhThuTheoPhuongThuc
     {
         public Nullable<long> Id { get; set; }
-        public Nullable<int> Nam { get; set; }
-        public Nullable<int> Thang { get; set; }
         public string TenPhuongThuc { get; set; }
-        public Nullable<int> SoLuongHoaDon { get; set; }
+        public Nullable<int> SoLanThanhToan { get; set; }
         public Nullable<decimal> TongDoanhThu { get; set; }
     }
 }
