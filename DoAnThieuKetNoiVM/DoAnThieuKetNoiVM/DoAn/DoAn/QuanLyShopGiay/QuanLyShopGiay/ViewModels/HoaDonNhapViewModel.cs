@@ -7,34 +7,34 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
-namespace QuanLyShopGiay.ViewModels 
+namespace QuanLyShopGiay.ViewModels
 {
     public class HoaDonNhapViewModel : BaseViewModel
     {
+<<<<<<< HEAD
         // 1. Khởi tạo DbContext khớp với database QLShopGiay của bạn
         private QLShopGiayEntities db = new QLShopGiayEntities();
+=======
+        private QLShopGiayEntities3 db = new QLShopGiayEntities3();
+>>>>>>> f550e8ebbcaa34291bf0b6e1456ff4166e57045e
 
-        // Biến lưu trữ cho thuộc tính phiếu nhập
         private string _maPhieuNhap;
         private string _maNCC;
         private DateTime _ngayNhap = DateTime.Now;
         private decimal _tongTien;
-
-        // Biến hỗ trợ nhập liệu dòng chi tiết hiện tại từ giao diện
         private PhieuNhapInputFields _chiTietInput = new PhieuNhapInputFields();
 
-        // Các danh sách Binding lên giao diện UI
         private ObservableCollection<ChiTietPhieuNhapDisplay> _dsChiTiet;
+        private ObservableCollection<HoaDonNhapDisplay> _dsHoaDonNhap; // 
         private ObservableCollection<SanPham> _dsSanPham;
         private ObservableCollection<NhaCungCap> _dsNCC;
 
-        // Hệ thống Commands (Sử dụng ICommand để chuẩn hóa MVVM)
         public ICommand TaoPhieuCommand { get; set; }
         public ICommand ThemSanPhamCommand { get; set; }
         public ICommand LuuPhieuCommand { get; set; }
         public ICommand HuyCommand { get; set; }
 
-        // --- PROPERTIES BINDING ---
+        // ── Properties ──────────────────────────────────────────────────────────
         public string MaPhieuNhap
         {
             get => _maPhieuNhap;
@@ -71,6 +71,12 @@ namespace QuanLyShopGiay.ViewModels
             set { _dsChiTiet = value; OnPropertyChanged(); }
         }
 
+        public ObservableCollection<HoaDonNhapDisplay> DsHoaDonNhap
+        {
+            get => _dsHoaDonNhap;
+            set { _dsHoaDonNhap = value; OnPropertyChanged(); }
+        }
+
         public ObservableCollection<SanPham> DsSanPham
         {
             get => _dsSanPham;
@@ -83,13 +89,14 @@ namespace QuanLyShopGiay.ViewModels
             set { _dsNCC = value; OnPropertyChanged(); }
         }
 
-        // --- CONSTRUCTOR ---
+        // ── Constructor ─────────────────────────────────────────────────────────
         public HoaDonNhapViewModel()
         {
             LoadData();
             InitCommands();
         }
 
+        // ── LoadData ────────────────────────────────────────────────────────────
         private void LoadData()
         {
             try
@@ -98,6 +105,8 @@ namespace QuanLyShopGiay.ViewModels
                 DsNCC = new ObservableCollection<NhaCungCap>(db.NhaCungCaps.ToList());
                 DsChiTiet = new ObservableCollection<ChiTietPhieuNhapDisplay>();
                 TongTien = 0;
+                ResetChiTiet();
+                LoadDsHoaDonNhap(); 
             }
             catch (Exception ex)
             {
@@ -105,11 +114,29 @@ namespace QuanLyShopGiay.ViewModels
             }
         }
 
+        private void LoadDsHoaDonNhap()
+        {
+            var dsHDN = db.HoaDonNhaps
+                .Join(db.NhaCungCaps,
+                      hdn => hdn.MaNCC,
+                      ncc => ncc.MaNCC,
+                      (hdn, ncc) => new HoaDonNhapDisplay
+                      {
+                          MaHDN = hdn.MaHDN,
+                          TenNCC = ncc.TenNCC,
+                          NgayNhap = hdn.NgayNhap,
+                          TongTien = hdn.TongTien
+                      })
+                .OrderByDescending(x => x.NgayNhap)
+                .ToList();
+
+            DsHoaDonNhap = new ObservableCollection<HoaDonNhapDisplay>(dsHDN);
+        }
+
+        // ── Commands ────────────────────────────────────────────────────────────
         private void InitCommands()
         {
-
-            // Lệnh 1: Tạo mới phiếu nhập & Tự động sinh mã phiếu
-            TaoPhieuCommand = new RelayCommand(o=>
+            TaoPhieuCommand = new RelayCommand(o =>
             {
                 var lastPhieu = db.HoaDonNhaps
                     .OrderByDescending(x => x.MaHDN)
@@ -120,9 +147,7 @@ namespace QuanLyShopGiay.ViewModels
                 {
                     string suffix = lastPhieu.MaHDN.Substring(10);
                     if (int.TryParse(suffix, out int num))
-                    {
                         nextNum = num + 1;
-                    }
                 }
 
                 MaPhieuNhap = "PN" + DateTime.Now.ToString("yyyyMMdd") + nextNum.ToString("D4");
@@ -131,10 +156,11 @@ namespace QuanLyShopGiay.ViewModels
                 ResetChiTiet();
             });
 
-            // Lệnh 2: Thêm tạm thời sản phẩm từ các ô nhập liệu vào DataGrid
             ThemSanPhamCommand = new RelayCommand(o =>
             {
-                if (string.IsNullOrEmpty(ChiTietInput.MaSP) || ChiTietInput.SoLuong <= 0 || ChiTietInput.GiaNhap <= 0)
+                if (string.IsNullOrEmpty(ChiTietInput.MaSP) ||
+                    ChiTietInput.SoLuong <= 0 ||
+                    ChiTietInput.GiaNhap <= 0)
                 {
                     MessageBox.Show("Vui lòng kiểm tra lại Sản phẩm, Số lượng và Đơn giá nhập!",
                         "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -147,8 +173,6 @@ namespace QuanLyShopGiay.ViewModels
                 {
                     existing.SoLuong += ChiTietInput.SoLuong;
                     existing.ThanhTien = existing.SoLuong * existing.DonGiaNhap;
-
-                    // Làm mới Grid để UI cập nhật dữ liệu
                     var temp = DsChiTiet;
                     DsChiTiet = null;
                     DsChiTiet = temp;
@@ -156,7 +180,6 @@ namespace QuanLyShopGiay.ViewModels
                 else
                 {
                     var sanPham = DsSanPham.FirstOrDefault(sp => sp.MaSP == ChiTietInput.MaSP);
-
                     if (sanPham != null)
                     {
                         DsChiTiet.Add(new ChiTietPhieuNhapDisplay
@@ -174,7 +197,6 @@ namespace QuanLyShopGiay.ViewModels
                 ResetChiTiet();
             });
 
-            // Lệnh 3: Lưu chính thức thông tin xuống Database
             LuuPhieuCommand = new RelayCommand(o =>
             {
                 if (string.IsNullOrWhiteSpace(MaPhieuNhap))
@@ -205,7 +227,7 @@ namespace QuanLyShopGiay.ViewModels
                         MaHDN = MaPhieuNhap,
                         NgayNhap = NgayNhap,
                         TongTien = TongTien,
-                        MaNCC = MaNCC,        
+                        MaNCC = MaNCC,
                         MaNhanVien = SessionHelper.MaNhanVienHienTai
                     };
 
@@ -214,18 +236,14 @@ namespace QuanLyShopGiay.ViewModels
 
                     foreach (var ct in DsChiTiet)
                     {
-                        // 1. Chỉ thêm chi tiết hóa đơn nhập (Trigger SQL sẽ tự động gánh việc tăng số lượng tồn)
-                        var chiTiet = new ChiTietHoaDonNhap
+                        db.ChiTietHoaDonNhaps.Add(new ChiTietHoaDonNhap
                         {
                             MaHDN = MaPhieuNhap,
                             MaSP = ct.MaSanPham,
                             SoLuong = ct.SoLuong,
                             GiaNhap = ct.DonGiaNhap
-                        };
-                        db.ChiTietHoaDonNhaps.Add(chiTiet);
+                        });
 
-                        // 2. Nếu muốn cập nhật giá nhập mới nhất cho sản phẩm đó, ta cập nhật trực tiếp 
-                        // giá mà KHÔNG ĐỘNG CHẠM gì tới thuộc tính SoLuongTon trong C# nữa.
                         var sp = db.SanPhams.FirstOrDefault(x => x.MaSP == ct.MaSanPham);
                         if (sp != null)
                         {
@@ -236,22 +254,21 @@ namespace QuanLyShopGiay.ViewModels
 
                     db.SaveChanges();
 
-                    MessageBox.Show("Lưu phiếu nhập kho thành công và đã tự động cập nhật số lượng tồn hàng!",
+                    MessageBox.Show("Lưu phiếu nhập kho thành công!",
                         "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    LoadDsHoaDonNhap();
                     ResetForm();
                 }
                 catch (Exception ex)
                 {
-                    string errorMsg = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
-                    MessageBox.Show("Lỗi hệ thống khi lưu: " + errorMsg, "Thất bại", MessageBoxButton.OK, MessageBoxImage.Error);
+                    string errorMsg = ex.InnerException?.Message ?? ex.Message;
+                    MessageBox.Show("Lỗi hệ thống khi lưu: " + errorMsg,
+                        "Thất bại", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
 
-            // Lệnh 4: Hủy thao tác hiện tại
-            HuyCommand = new RelayCommand(o =>
-            {
-                ResetForm();
-            });
+            HuyCommand = new RelayCommand(o => ResetForm());
         }
 
         private void ResetChiTiet()
@@ -279,7 +296,8 @@ namespace QuanLyShopGiay.ViewModels
         }
     }
 
-    // Các class phụ trợ giữ nguyên cấu trúc kế thừa từ BaseViewModel chung của bạn
+    // ── Helper classes ───────────────────────────────────────────────────────────
+
     public class PhieuNhapInputFields : BaseViewModel
     {
         private string _maSP;
@@ -324,5 +342,13 @@ namespace QuanLyShopGiay.ViewModels
             get => _thanhTien;
             set { _thanhTien = value; OnPropertyChanged(); }
         }
+    }
+
+    public class HoaDonNhapDisplay
+    {
+        public string MaHDN { get; set; }
+        public string TenNCC { get; set; }
+        public DateTime? NgayNhap { get; set; }
+        public decimal? TongTien { get; set; }
     }
 }

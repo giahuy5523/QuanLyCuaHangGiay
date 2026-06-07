@@ -1,4 +1,4 @@
-﻿using QuanLyShopGiay.Command;
+using QuanLyShopGiay.Command;
 using QuanLyShopGiay.Helpers;
 using QuanLyShopGiay.Models;
 using System;
@@ -36,6 +36,10 @@ namespace QuanLyShopGiay.ViewModels
         public ICommand NavNhanVienCommand { get; }
         public ICommand NavTaiKhoanCommand { get; }
         public ICommand NavLoaiSanPhamCommand { get; }
+        
+        // THÊM: Lệnh điều hướng cho Nhà cung cấp
+        public ICommand NavNhaCungCapCommand { get; }
+        
         public ICommand DangXuatCommand { get; }
 
         public Action<string> Navigate { get; set; }
@@ -51,6 +55,10 @@ namespace QuanLyShopGiay.ViewModels
             NavLoaiSanPhamCommand = new RelayCommand(_ => ChangeNav("LoaiSanPham", "Loại sản phẩm"));
             NavNhanVienCommand = new RelayCommand(_ => ChangeNav("NhanVien", "Nhân viên"));
             NavTaiKhoanCommand = new RelayCommand(_ => ChangeNav("TaiKhoan", "Tài khoản"));
+            
+            // THÊM: Khởi tạo lệnh điều hướng tương ứng sang trang "NhaCungCap" với tiêu đề tương ứng
+            NavNhaCungCapCommand = new RelayCommand(_ => ChangeNav("NhaCungCap", "Nhà cung cấp"));
+            
             DangXuatCommand = new RelayCommand(_ => ThucHienDangXuat());
         }
 

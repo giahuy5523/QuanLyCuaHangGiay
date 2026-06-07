@@ -61,6 +61,10 @@
                                 Style="{StaticResource SidebarButton}"
                                 Command="{Binding NavNhanVienCommand}"/>
 
+                        <Button Content="🏢  Nhà cung cấp"
+                                Style="{StaticResource SidebarButton}"
+                                Command="{Binding NavNhaCungCapCommand}"/>
+
                         <Button Content="🔑  Tài khoản"
                                 Style="{StaticResource SidebarButton}"
                                 Command="{Binding NavTaiKhoanCommand}"

@@ -57,7 +57,9 @@ namespace QuanLyShopGiay.ViewModels
 
                 if (user != null)
                 {
-                    SessionManager.CurrentUser = user;
+                    UserSession.TenNV = user.TenNhanVien;
+                    UserSession.Quyen = user.Quyen;
+                    UserSession.MaNV = user.MaNhanVien;
 
                     // Tìm cửa sổ Login đang hiển thị để chuyển màn hình
                     var loginWindow = Application.Current.Windows.OfType<Login>().FirstOrDefault();

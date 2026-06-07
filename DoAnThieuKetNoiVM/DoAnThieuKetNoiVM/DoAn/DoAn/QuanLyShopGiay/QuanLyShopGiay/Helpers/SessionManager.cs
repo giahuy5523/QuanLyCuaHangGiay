@@ -10,7 +10,7 @@ namespace QuanLyShopGiay.Helpers
     public static class SessionManager
     {
         public static NhanVien CurrentUser { get; set; }
-
+        public static string MaNhanVienHienTai => UserSession.MaNV;
         // Kiểm tra xem người dùng hiện tại có phải là Quản lý/Admin hay không
         public static bool IsAdmin
         {
