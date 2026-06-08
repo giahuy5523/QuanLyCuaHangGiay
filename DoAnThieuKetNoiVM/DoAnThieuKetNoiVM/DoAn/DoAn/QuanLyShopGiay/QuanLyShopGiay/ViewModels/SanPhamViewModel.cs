@@ -383,7 +383,6 @@ namespace QuanLyShopGiay.ViewModels
                              .Include(x => x.SanPham)
                              .Where(x => x.MaSP == maSP)
                              .OrderByDescending(x => x.NgayCapNhat) // Sắp xếp ngày mới đổi lên đầu
-                             .Take(1) // ĐÚNG YÊU CẦU: Chỉ giữ lại 1 dòng lịch sử mới nhất
                              .ToList();
 
                 ListLichSuGia = new ObservableCollection<LichSuGiaBan>(data);
