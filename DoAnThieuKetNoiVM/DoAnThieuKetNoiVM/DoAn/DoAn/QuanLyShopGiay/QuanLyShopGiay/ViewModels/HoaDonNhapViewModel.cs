@@ -11,7 +11,8 @@ namespace QuanLyShopGiay.ViewModels
 {
     public class HoaDonNhapViewModel : BaseViewModel
     {
-        private QLShopGiayEntities3 db = new QLShopGiayEntities3();
+        // 1. Khởi tạo DbContext khớp với database QLShopGiay của bạn
+        private QLShopGiayEntities db = new QLShopGiayEntities();
 
         private string _maPhieuNhap;
         private string _maNCC;

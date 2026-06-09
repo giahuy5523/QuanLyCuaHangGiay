@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLShopGiayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QLShopGiayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ChiTietHoaDon">
           <Key>
             <PropertyRef Name="MaHD" />
@@ -55,6 +55,17 @@
           <Property Name="TenKhachHang" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="DienThoai" Type="varchar" MaxLength="15" />
           <Property Name="Diem" Type="int" />
+        </EntityType>
+        <EntityType Name="LichSuGiaBan">
+          <Key>
+            <PropertyRef Name="MaLichSu" />
+          </Key>
+          <Property Name="MaLichSu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaSP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="GiaCu" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="GiaMoi" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="NgayCapNhat" Type="datetime" />
+          <Property Name="LyDoDoiGia" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="LoaiSanPham">
           <Key>
@@ -134,17 +145,7 @@ warning 6002: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoPhuongThuc' does not 
           <Property Name="SoLanThanhToan" Type="int" />
           <Property Name="TongDoanhThu" Type="decimal" Precision="38" Scale="2" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="v_DoanhThuTheoThang">
-          <Property Name="Id" Type="bigint" />
-          <Property Name="Nam" Type="int" />
-          <Property Name="Thang" Type="int" />
-          <Property Name="TongSoHoaDon" Type="int" />
-          <Property Name="TongSanPhamDaBan" Type="int" />
-          <Property Name="TongDoanhThu" Type="decimal" Precision="38" Scale="2" />
-        </EntityType>-->
-        <Association Name="FK__ChiTietHo__MaHDN__571DF1D5">
+        <Association Name="FK__ChiTietHo__MaHDN__6EF57B66">
           <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="1" />
           <End Role="ChiTietHoaDonNhap" Type="Self.ChiTietHoaDonNhap" Multiplicity="*" />
           <ReferentialConstraint>
@@ -156,7 +157,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHoa__MaHD__6477ECF3">
+        <Association Name="FK__ChiTietHoa__MaHD__7C4F7684">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
           <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,7 +169,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHoa__MaSP__5812160E">
+        <Association Name="FK__ChiTietHoa__MaSP__6FE99F9F">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
           <End Role="ChiTietHoaDonNhap" Type="Self.ChiTietHoaDonNhap" Multiplicity="*" />
           <ReferentialConstraint>
@@ -180,7 +181,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHoa__MaSP__656C112C">
+        <Association Name="FK__ChiTietHoa__MaSP__7D439ABD">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
           <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -192,7 +193,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDon__MaKhachH__5EBF139D">
+        <Association Name="FK__HoaDon__MaKhachH__76969D2E">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -204,7 +205,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDon__MaNhanVi__5FB337D6">
+        <Association Name="FK__HoaDon__MaNhanVi__778AC167">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -216,7 +217,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonNha__MaNCC__5165187F">
+        <Association Name="FK__HoaDonNha__MaNCC__693CA210">
           <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
           <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
           <ReferentialConstraint>
@@ -228,7 +229,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonNha__MaNha__52593CB8">
+        <Association Name="FK__HoaDonNha__MaNha__6A30C649">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonNhap" Type="Self.HoaDonNhap" Multiplicity="*" />
           <ReferentialConstraint>
@@ -240,7 +241,21 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SanPham__MaLoai__4BAC3F29">
+        <Association Name="FK__LichSuGiaB__MaSP__6477ECF3">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LichSuGiaBan" Type="Self.LichSuGiaBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="MaSP" />
+            </Principal>
+            <Dependent Role="LichSuGiaBan">
+              <PropertyRef Name="MaSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SanPham__MaLoai__5EBF139D">
           <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="0..1" />
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -252,7 +267,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SanPham__MaNCC__4CA06362">
+        <Association Name="FK__SanPham__MaNCC__5FB337D6">
           <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -286,6 +301,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDonNhap" EntityType="Self.HoaDonNhap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LichSuGiaBan" EntityType="Self.LichSuGiaBan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiSanPham" EntityType="Self.LoaiSanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhaCungCap" EntityType="Self.NhaCungCap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
@@ -309,43 +325,47 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
     [v_DoanhThuTheoPhuongThuc].[TongDoanhThu] AS [TongDoanhThu]
     FROM [dbo].[v_DoanhThuTheoPhuongThuc] AS [v_DoanhThuTheoPhuongThuc]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__ChiTietHo__MaHDN__571DF1D5" Association="Self.FK__ChiTietHo__MaHDN__571DF1D5">
+          <AssociationSet Name="FK__ChiTietHo__MaHDN__6EF57B66" Association="Self.FK__ChiTietHo__MaHDN__6EF57B66">
             <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
             <End Role="ChiTietHoaDonNhap" EntitySet="ChiTietHoaDonNhap" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHoa__MaHD__6477ECF3" Association="Self.FK__ChiTietHoa__MaHD__6477ECF3">
+          <AssociationSet Name="FK__ChiTietHoa__MaHD__7C4F7684" Association="Self.FK__ChiTietHoa__MaHD__7C4F7684">
             <End Role="HoaDon" EntitySet="HoaDon" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHoa__MaSP__5812160E" Association="Self.FK__ChiTietHoa__MaSP__5812160E">
+          <AssociationSet Name="FK__ChiTietHoa__MaSP__6FE99F9F" Association="Self.FK__ChiTietHoa__MaSP__6FE99F9F">
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="ChiTietHoaDonNhap" EntitySet="ChiTietHoaDonNhap" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHoa__MaSP__656C112C" Association="Self.FK__ChiTietHoa__MaSP__656C112C">
+          <AssociationSet Name="FK__ChiTietHoa__MaSP__7D439ABD" Association="Self.FK__ChiTietHoa__MaSP__7D439ABD">
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDon__MaKhachH__5EBF139D" Association="Self.FK__HoaDon__MaKhachH__5EBF139D">
+          <AssociationSet Name="FK__HoaDon__MaKhachH__76969D2E" Association="Self.FK__HoaDon__MaKhachH__76969D2E">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="HoaDon" EntitySet="HoaDon" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDon__MaNhanVi__5FB337D6" Association="Self.FK__HoaDon__MaNhanVi__5FB337D6">
+          <AssociationSet Name="FK__HoaDon__MaNhanVi__778AC167" Association="Self.FK__HoaDon__MaNhanVi__778AC167">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="HoaDon" EntitySet="HoaDon" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonNha__MaNCC__5165187F" Association="Self.FK__HoaDonNha__MaNCC__5165187F">
+          <AssociationSet Name="FK__HoaDonNha__MaNCC__693CA210" Association="Self.FK__HoaDonNha__MaNCC__693CA210">
             <End Role="NhaCungCap" EntitySet="NhaCungCap" />
             <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonNha__MaNha__52593CB8" Association="Self.FK__HoaDonNha__MaNha__52593CB8">
+          <AssociationSet Name="FK__HoaDonNha__MaNha__6A30C649" Association="Self.FK__HoaDonNha__MaNha__6A30C649">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="HoaDonNhap" EntitySet="HoaDonNhap" />
           </AssociationSet>
-          <AssociationSet Name="FK__SanPham__MaLoai__4BAC3F29" Association="Self.FK__SanPham__MaLoai__4BAC3F29">
+          <AssociationSet Name="FK__LichSuGiaB__MaSP__6477ECF3" Association="Self.FK__LichSuGiaB__MaSP__6477ECF3">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="LichSuGiaBan" EntitySet="LichSuGiaBan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SanPham__MaLoai__5EBF139D" Association="Self.FK__SanPham__MaLoai__5EBF139D">
             <End Role="LoaiSanPham" EntitySet="LoaiSanPham" />
             <End Role="SanPham" EntitySet="SanPham" />
           </AssociationSet>
-          <AssociationSet Name="FK__SanPham__MaNCC__4CA06362" Association="Self.FK__SanPham__MaNCC__4CA06362">
+          <AssociationSet Name="FK__SanPham__MaNCC__5FB337D6" Association="Self.FK__SanPham__MaNCC__5FB337D6">
             <End Role="NhaCungCap" EntitySet="NhaCungCap" />
             <End Role="SanPham" EntitySet="SanPham" />
           </AssociationSet>
@@ -354,8 +374,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             <End Role="HoaDon" EntitySet="HoaDon" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLShopGiayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -485,6 +504,7 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
           <NavigationProperty Name="ChiTietHoaDonNhaps" Relationship="Self.FK__ChiTietHoa__MaSP__5812160E" FromRole="SanPham" ToRole="ChiTietHoaDonNhap" />
           <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK__SanPham__MaLoai__4BAC3F29" FromRole="SanPham" ToRole="LoaiSanPham" />
           <NavigationProperty Name="NhaCungCap" Relationship="Self.FK__SanPham__MaNCC__4CA06362" FromRole="SanPham" ToRole="NhaCungCap" />
+          <NavigationProperty Name="LichSuGiaBans" Relationship="QLShopGiayModel.FK__LichSuGiaB__MaSP__6477ECF3" FromRole="SanPham" ToRole="LichSuGiaBan" />
         </EntityType>
         <EntityType Name="v_DoanhThuPhuongThucTheoThang">
           <Key>
@@ -699,6 +719,11 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
             <Parameter Name="TuNgay" Mode="In" Type="DateTime" />
             <Parameter Name="DenNgay" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="LichSuGiaBans" EntityType="QLShopGiayModel.LichSuGiaBan" />
+          <AssociationSet Name="FK__LichSuGiaB__MaSP__6477ECF3" Association="QLShopGiayModel.FK__LichSuGiaB__MaSP__6477ECF3">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="LichSuGiaBan" EntitySet="LichSuGiaBans" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_ThongKeDoanhThuTheoSanPham_Result">
           <Property Type="String" Name="TenLoaiSanPham" Nullable="false" MaxLength="100" />
@@ -709,6 +734,32 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
           <Property Type="Int32" Name="SoLuongDaBan" Nullable="true" />
           <Property Type="Decimal" Name="DoanhThuThuVe" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
+        <EntityType Name="LichSuGiaBan">
+          <Key>
+            <PropertyRef Name="MaLichSu" />
+          </Key>
+          <Property Name="MaLichSu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaSP" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GiaCu" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="GiaMoi" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="NgayCapNhat" Type="DateTime" Precision="3" />
+          <Property Name="LyDoDoiGia" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SanPham" Relationship="QLShopGiayModel.FK__LichSuGiaB__MaSP__6477ECF3" FromRole="LichSuGiaBan" ToRole="SanPham" />
+        </EntityType>
+        <Association Name="FK__LichSuGiaB__MaSP__6477ECF3">
+          <End Type="QLShopGiayModel.SanPham" Role="SanPham" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="QLShopGiayModel.LichSuGiaBan" Role="LichSuGiaBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="MaSP" />
+            </Principal>
+            <Dependent Role="LichSuGiaBan">
+              <PropertyRef Name="MaSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -863,6 +914,18 @@ warning 6013: The table/view 'QLShopGiay.dbo.v_DoanhThuTheoThang' does not have 
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="LichSuGiaBans">
+            <EntityTypeMapping TypeName="QLShopGiayModel.LichSuGiaBan">
+              <MappingFragment StoreEntitySet="LichSuGiaBan">
+                <ScalarProperty Name="LyDoDoiGia" ColumnName="LyDoDoiGia" />
+                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+                <ScalarProperty Name="GiaMoi" ColumnName="GiaMoi" />
+                <ScalarProperty Name="GiaCu" ColumnName="GiaCu" />
+                <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+                <ScalarProperty Name="MaLichSu" ColumnName="MaLichSu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

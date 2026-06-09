@@ -23,7 +23,7 @@ namespace QuanLyShopGiay.ViewModels
 
         private void LoadData()
         {
-            using (var db = new QLShopGiayEntities3())
+            using (var db = new QLShopGiayEntities())
             {
                 // 1. Doanh thu: Lấy tất cả đơn "Đã thanh toán" (không lọc ngày)
                 Revenue = string.Format("{0:N0} ₫", db.HoaDons

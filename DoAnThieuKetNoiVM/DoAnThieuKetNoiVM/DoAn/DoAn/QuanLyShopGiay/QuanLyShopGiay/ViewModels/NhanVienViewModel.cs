@@ -218,7 +218,7 @@ namespace QuanLyShopGiay.ViewModels
         {
             try
             {
-                using (var db = new QLShopGiayEntities3())
+                using (var db = new QLShopGiayEntities())
                 {
                     var list = db.NhanViens.ToList();
                     DanhSachNV = new ObservableCollection<NhanVien>(list);
@@ -234,7 +234,7 @@ namespace QuanLyShopGiay.ViewModels
         {
             try
             {
-                using (var db = new QLShopGiayEntities3())
+                using (var db = new QLShopGiayEntities())
                 {
                     if (string.IsNullOrWhiteSpace(_tuKhoa))
                     {
@@ -317,7 +317,7 @@ namespace QuanLyShopGiay.ViewModels
 
             try
             {
-                using (var db = new QLShopGiayEntities3())
+                using (var db = new QLShopGiayEntities())
                 {
                     if (!MaNVReadOnly) // THỜI ĐIỂM: THÊM MỚI
                     {
@@ -405,7 +405,7 @@ namespace QuanLyShopGiay.ViewModels
 
             try
             {
-                using (var db = new QLShopGiayEntities3())
+                using (var db = new QLShopGiayEntities())
                 {
                     var nv = db.NhanViens.FirstOrDefault(n => n.MaNhanVien == SelectedNV.MaNhanVien);
                     if (nv == null) return;

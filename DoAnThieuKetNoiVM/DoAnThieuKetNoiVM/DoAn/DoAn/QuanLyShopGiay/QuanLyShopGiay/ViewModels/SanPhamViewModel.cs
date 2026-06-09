@@ -13,7 +13,7 @@ namespace QuanLyShopGiay.ViewModels
 {
     public class SanPhamViewModel : BaseViewModel
     {
-        private QLShopGiayEntities3 db = new QLShopGiayEntities3();
+        private QLShopGiayEntities db = new QLShopGiayEntities();
 
         private ObservableCollection<SanPham> _listSanPham;
         public ObservableCollection<SanPham> ListSanPham
@@ -24,6 +24,13 @@ namespace QuanLyShopGiay.ViewModels
 
         public ObservableCollection<LoaiSanPham> ListLoaiSP { get; set; }
         public ObservableCollection<NhaCungCap> ListNCC { get; set; }
+
+        private ObservableCollection<LichSuGiaBan> _listLichSuGia;
+        public ObservableCollection<LichSuGiaBan> ListLichSuGia
+        {
+            get => _listLichSuGia;
+            set => SetProperty(ref _listLichSuGia, value);
+        }
 
         private SanPham _selectedSanPham;
         public SanPham SelectedSanPham
@@ -46,6 +53,7 @@ namespace QuanLyShopGiay.ViewModels
                     SelectedNCC = ListNCC.FirstOrDefault(x => x.MaNCC == value.MaNCC);
 
                     IsEditMode = true;
+                    LoadLichSuGia(value.MaSP);
                 }
             }
         }
@@ -87,10 +95,7 @@ namespace QuanLyShopGiay.ViewModels
         public decimal? GiaNhap
         {
             get => _giaNhap;
-            set
-            {
-                SetProperty(ref _giaNhap, value);
-            }
+            set => SetProperty(ref _giaNhap, value);
         }
 
         private decimal? _giaBan;
@@ -117,7 +122,6 @@ namespace QuanLyShopGiay.ViewModels
             AddCommand = new RelayCommand(
                 execute: p =>
                 {
-                    // Kiểm tra nhập liệu cơ bản (Bỏ bớt bắt buộc điền Mã sản phẩm bằng tay vì sẽ tự kiểm tra trùng)
                     if (string.IsNullOrWhiteSpace(TenSP) || SelectedLoai == null || SelectedNCC == null)
                     {
                         MessageBox.Show("Vui lòng điền các thông tin bắt buộc: Tên SP, Loại và Nhà cung cấp!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -126,7 +130,6 @@ namespace QuanLyShopGiay.ViewModels
 
                     try
                     {
-                        // CHỨC NĂNG QUAN TRỌNG: Kiểm tra xem có sản phẩm nào đã tồn tại trùng khớp các thuộc tính cốt lõi không
                         var spTrung = db.SanPhams.FirstOrDefault(x =>
                             x.TenSP.Trim().ToLower() == TenSP.Trim().ToLower() &&
                             x.MaLoai == SelectedLoai.MaLoai &&
@@ -137,16 +140,13 @@ namespace QuanLyShopGiay.ViewModels
 
                         if (spTrung != null)
                         {
-                            // NẾU TỒN TẠI SẢN PHẨM TRÙNG: Tiến hành hỏi ý kiến để cộng dồn số lượng vào kho
                             var xacNhan = MessageBox.Show($"Sản phẩm này đã tồn tại trong hệ thống (Mã: {spTrung.MaSP} - Số lượng hiện tại: {spTrung.SoLuongTon}).\n\nBạn có muốn CỘNG DỒN {SoLuongTon ?? 0} sản phẩm mới nhập này vào lô hàng cũ không?",
                                                           "Phát hiện sản phẩm trùng khớp", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                             if (xacNhan == MessageBoxResult.Yes)
                             {
-                                // Cộng dồn số lượng tồn kho
                                 spTrung.SoLuongTon = (spTrung.SoLuongTon ?? 0) + (SoLuongTon ?? 0);
 
-                                // Cập nhật lại giá bán mới nếu người dùng nhập thay đổi
                                 if ((GiaBan ?? 0) > 0)
                                 {
                                     spTrung.GiaBan = GiaBan ?? 0m;
@@ -160,14 +160,12 @@ namespace QuanLyShopGiay.ViewModels
                                 ExecuteSearch();
                                 ResetForm();
                             }
-                            return; // Thoát hàm xử lý thêm mới, không chạy xuống phần sinh mã mới phía dưới
+                            return;
                         }
 
-                        // --- TRƯỜNG HỢP LÀ SẢN PHẨM MỚI HOÀN TOÀN (TỰ ĐỘNG SINH MÃ SP0001, SP0002...) ---
                         string maMoi = MaSP?.Trim();
                         if (string.IsNullOrWhiteSpace(maMoi))
                         {
-                            // Tìm mã sản phẩm lớn nhất hiện tại trong DB
                             var lastSP = db.SanPhams.OrderByDescending(x => x.MaSP).FirstOrDefault();
                             int nextNum = 1;
                             if (lastSP != null && lastSP.MaSP.StartsWith("SP"))
@@ -177,11 +175,10 @@ namespace QuanLyShopGiay.ViewModels
                                     nextNum = num + 1;
                                 }
                             }
-                            maMoi = "SP" + nextNum.ToString("D4"); // Định dạng thành chuỗi dạng SP0001
+                            maMoi = "SP" + nextNum.ToString("D4");
                         }
                         else
                         {
-                            // Nếu người dùng cố tình tự nhập mã thủ công, kiểm tra xem mã đó có bị trùng trong DB không
                             if (db.SanPhams.Any(x => x.MaSP == maMoi))
                             {
                                 MessageBox.Show("Mã sản phẩm này đã được sử dụng trong hệ thống!", "Lỗi trùng mã", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -195,7 +192,6 @@ namespace QuanLyShopGiay.ViewModels
                             return;
                         }
 
-                        // Tiến hành chèn bản ghi mới hoàn toàn vào Database
                         var newSP = new SanPham()
                         {
                             MaSP = maMoi,
@@ -226,7 +222,7 @@ namespace QuanLyShopGiay.ViewModels
                 canExecute: p => true
             );
 
-            // 2. CẬP NHẬT SẢN PHẨM (ĐÃ SỬA ĐỔI TOÀN DIỆN KIỂU DỮ LIỆU)
+            // 2. CẬP NHẬT SẢN PHẨM (ĐÃ SỬA LỖI OBJECTCONTEXT)
             EditCommand = new RelayCommand(
                 execute: p =>
                 {
@@ -248,24 +244,36 @@ namespace QuanLyShopGiay.ViewModels
                         return;
                     }
 
-                    var currentSP = db.SanPhams.SingleOrDefault(x => x.MaSP == MaSP);
-                    if (currentSP != null)
+                    try
                     {
-                        currentSP.TenSP = TenSP.Trim();
-                        currentSP.MaLoai = SelectedLoai.MaLoai;
-                        currentSP.MaNCC = SelectedNCC.MaNCC;
-                        currentSP.Size = Size?.Trim();
-                        currentSP.MauSac = MauSac?.Trim();
-                        currentSP.GiaNhap = GiaNhap ?? 0m;
-                        currentSP.GiaBan = GiaBan ?? 0m;
-                        currentSP.SoLuongTon = SoLuongTon ?? 0;
-                        currentSP.GhiChu = GhiChu?.Trim();
+                        // Khắc phục lỗi ObjectContext: Lấy lại thực thể có Tracking từ DbContext hiện tại dựa vào MaSP
+                        var currentSP = db.SanPhams.FirstOrDefault(x => x.MaSP == MaSP);
+                        if (currentSP != null)
+                        {
+                            currentSP.TenSP = TenSP.Trim();
+                            currentSP.MaLoai = SelectedLoai.MaLoai;
+                            currentSP.MaNCC = SelectedNCC.MaNCC;
+                            currentSP.Size = Size?.Trim();
+                            currentSP.MauSac = MauSac?.Trim();
+                            currentSP.GiaNhap = GiaNhap ?? 0m;
+                            currentSP.GiaBan = GiaBan ?? 0m;
+                            currentSP.SoLuongTon = SoLuongTon ?? 0;
+                            currentSP.GhiChu = GhiChu?.Trim();
 
-                        db.SaveChanges();
-                        MessageBox.Show("Cập nhật thông tin sản phẩm thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
+                            db.SaveChanges();
+                            MessageBox.Show("Cập nhật thông tin sản phẩm thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                        ExecuteSearch();
-                        ResetForm();
+                            ExecuteSearch();
+                            ResetForm();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy sản phẩm cần cập nhật trong cơ sở dữ liệu!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi trong quá trình cập nhật dữ liệu: " + ex.Message, "Thất bại", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 },
                 canExecute: p => true
@@ -275,14 +283,12 @@ namespace QuanLyShopGiay.ViewModels
             DeleteCommand = new RelayCommand(
                 execute: p =>
                 {
-                    // Kiểm tra xem người dùng đã thực sự click chọn một dòng trên DataGrid chưa
                     if (SelectedSanPham == null)
                     {
                         MessageBox.Show("Vui lòng click chọn 1 sản phẩm từ bảng danh sách bên phải trước khi bấm Xóa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                         return;
                     }
 
-                    // Hỏi xác nhận trước khi xóa vĩnh viễn
                     var confirm = MessageBox.Show($"Bạn có chắc chắn muốn xóa vĩnh viễn sản phẩm: {SelectedSanPham.TenSP} (Mã: {SelectedSanPham.MaSP}) không?",
                                                  "Xác nhận xóa hàng", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
@@ -290,11 +296,9 @@ namespace QuanLyShopGiay.ViewModels
                     {
                         try
                         {
-                            // Tìm thực thể chuẩn xác nhất đang nằm trong Database
                             var itemToRemove = db.SanPhams.FirstOrDefault(x => x.MaSP == SelectedSanPham.MaSP);
                             if (itemToRemove != null)
                             {
-                                // KIỂM TRA RÀNG BUỘC TOÀN VẸN: Nếu sản phẩm này đã phát sinh giao dịch trong Chi Tiết Phiếu Nhập hoặc Chi Tiết Hóa Đơn Bán
                                 bool daTungSuDung = db.ChiTietHoaDonNhaps.Any(x => x.MaSP == itemToRemove.MaSP) ||
                                                     db.ChiTietHoaDons.Any(x => x.MaSP == itemToRemove.MaSP);
 
@@ -305,7 +309,6 @@ namespace QuanLyShopGiay.ViewModels
                                     return;
                                 }
 
-                                // Tiến hành xóa khỏi database nếu không dính dáng đến hóa đơn nào
                                 db.SanPhams.Remove(itemToRemove);
                                 db.SaveChanges();
 
@@ -324,6 +327,7 @@ namespace QuanLyShopGiay.ViewModels
                 canExecute: p => true
             );
         }
+
         private void LoadAllDataSources()
         {
             try
@@ -342,13 +346,13 @@ namespace QuanLyShopGiay.ViewModels
         {
             try
             {
-                // BƯỚC QUAN TRỌNG: Làm mới toàn bộ danh sách Sản phẩm từ Database gốc, 
-                // hủy bỏ mọi dữ liệu cũ đang bị lưu tạm trên RAM của trang này.
-                foreach (var entry in db.ChangeTracker.Entries<SanPham>())
+                // 1. Ép DbContext giải phóng các thực thể cũ để tránh giữ cache sai lệch
+                foreach (var entry in db.ChangeTracker.Entries().ToList())
                 {
-                    entry.Reload();
+                    entry.State = System.Data.Entity.EntityState.Detached;
                 }
 
+                // 2. Tiến hành lấy dữ liệu mới
                 if (string.IsNullOrWhiteSpace(SearchText))
                 {
                     ListSanPham = new ObservableCollection<SanPham>(
@@ -370,6 +374,25 @@ namespace QuanLyShopGiay.ViewModels
             }
         }
 
+        // CHỈ LẤY 1 BẢN GHI LỊCH SỬ GIÁ MỚI NHẤT
+        private void LoadLichSuGia(string maSP)
+        {
+            try
+            {
+                var data = db.LichSuGiaBans
+                             .Include(x => x.SanPham)
+                             .Where(x => x.MaSP == maSP)
+                             .OrderByDescending(x => x.NgayCapNhat) // Sắp xếp ngày mới đổi lên đầu
+                             .ToList();
+
+                ListLichSuGia = new ObservableCollection<LichSuGiaBan>(data);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi lấy thông tin lịch sử giá: " + ex.Message);
+            }
+        }
+
         private void ResetForm()
         {
             MaSP = string.Empty;
@@ -384,6 +407,7 @@ namespace QuanLyShopGiay.ViewModels
             GhiChu = string.Empty;
             IsEditMode = false;
             SelectedSanPham = null;
+            ListLichSuGia = null;
         }
     }
 }

@@ -28,6 +28,8 @@
         <AssociationConnector Association="QLShopGiayModel.FK__HoaDonNha__MaNha__52593CB8" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopGiayModel.FK__SanPham__MaLoai__4BAC3F29" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopGiayModel.FK__SanPham__MaNCC__4CA06362" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLShopGiayModel.LichSuGiaBan" Width="1.5" PointX="8.25" PointY="11.25" />
+        <AssociationConnector Association="QLShopGiayModel.FK__LichSuGiaB__MaSP__6477ECF3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

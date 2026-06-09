@@ -19,6 +19,7 @@ namespace QuanLyShopGiay.Models
         {
             this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
             this.ChiTietHoaDonNhaps = new HashSet<ChiTietHoaDonNhap>();
+            this.LichSuGiaBans = new HashSet<LichSuGiaBan>();
         }
     
         public string MaSP { get; set; }
@@ -38,5 +39,7 @@ namespace QuanLyShopGiay.Models
         public virtual ICollection<ChiTietHoaDonNhap> ChiTietHoaDonNhaps { get; set; }
         public virtual LoaiSanPham LoaiSanPham { get; set; }
         public virtual NhaCungCap NhaCungCap { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LichSuGiaBan> LichSuGiaBans { get; set; }
     }
 }

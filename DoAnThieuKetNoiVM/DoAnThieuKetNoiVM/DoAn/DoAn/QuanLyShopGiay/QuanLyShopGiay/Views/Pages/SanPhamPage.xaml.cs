@@ -10,7 +10,7 @@ namespace QuanLyShopGiay.Views.Pages
         public SanPhamPage()
         {
             InitializeComponent();
-
+            this.DataContext = new SanPhamViewModel();
         }
 
     }
