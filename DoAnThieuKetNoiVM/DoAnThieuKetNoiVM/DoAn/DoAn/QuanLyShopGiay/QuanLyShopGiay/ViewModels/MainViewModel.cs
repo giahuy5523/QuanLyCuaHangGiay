@@ -1,9 +1,11 @@
 using QuanLyShopGiay.Command;
 using QuanLyShopGiay.Helpers;
 using QuanLyShopGiay.Models;
+using QuanLyShopGiay.Views.Pages;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace QuanLyShopGiay.ViewModels
@@ -11,6 +13,7 @@ namespace QuanLyShopGiay.ViewModels
     public class MainViewModel : BaseViewModel
     {
         private string _tieuDe = "Dashboard";
+        private Frame _mainFrame;
 
         public string HoTenNV => !string.IsNullOrEmpty(UserSession.TenNV) ? UserSession.TenNV : "Chưa đăng nhập";
         public string TenVaiTro => !string.IsNullOrEmpty(UserSession.Quyen) ? UserSession.Quyen : "N/A";
@@ -41,10 +44,15 @@ namespace QuanLyShopGiay.ViewModels
         public ICommand NavNhaCungCapCommand { get; }
         
         public ICommand DangXuatCommand { get; }
+        public ICommand BaoCaoTonKhoCommand { get; }
+        public ICommand XemThongKeMenuCommand { get; }
 
         public Action<string> Navigate { get; set; }
         public Action MoLoginView { get; set; }
-
+        public void SetFrame(Frame frame)
+        {
+            _mainFrame = frame;
+        }
         public MainViewModel()
         {
             NavDashboardCommand = new RelayCommand(_ => ChangeNav("Dashboard", "Dashboard"));
@@ -55,11 +63,9 @@ namespace QuanLyShopGiay.ViewModels
             NavLoaiSanPhamCommand = new RelayCommand(_ => ChangeNav("LoaiSanPham", "Loại sản phẩm"));
             NavNhanVienCommand = new RelayCommand(_ => ChangeNav("NhanVien", "Nhân viên"));
             NavTaiKhoanCommand = new RelayCommand(_ => ChangeNav("TaiKhoan", "Tài khoản"));
-            
-            // THÊM: Khởi tạo lệnh điều hướng tương ứng sang trang "NhaCungCap" với tiêu đề tương ứng
-            NavNhaCungCapCommand = new RelayCommand(_ => ChangeNav("NhaCungCap", "Nhà cung cấp"));
-            
-            DangXuatCommand = new RelayCommand(_ => ThucHienDangXuat());
+
+            BaoCaoTonKhoCommand = new RelayCommand(_ => MoTonKho());
+            XemThongKeMenuCommand = new RelayCommand(_ => MoThongKe());
         }
 
         private void ChangeNav(string page, string tieuDe)
@@ -77,6 +83,33 @@ namespace QuanLyShopGiay.ViewModels
                 UserSession.Logout();
                 MoLoginView?.Invoke();
             }
+        }
+        private void MoTonKho()
+        {
+            var vm = new InBaoCaoViewModel
+            {
+                LoaiBaoCao = "TonKho"
+            };
+
+            vm.KhoiTaoBaoCao();
+
+            _mainFrame?.Navigate(new InBaoCaoPage(vm));
+
+            TieuDe = "Báo Cáo Tồn Kho";
+        }
+
+        private void MoThongKe()
+        {
+            var vm = new InBaoCaoViewModel
+            {
+                LoaiBaoCao = "ThongKe",
+                TuNgay = DateTime.Now.AddMonths(-1),
+                DenNgay = DateTime.Now
+            };
+            vm.KhoiTaoBaoCao();
+
+            _mainFrame?.Navigate(new InBaoCaoPage(vm));
+            TieuDe = "Thống Kê Doanh Thu";
         }
     }
 }

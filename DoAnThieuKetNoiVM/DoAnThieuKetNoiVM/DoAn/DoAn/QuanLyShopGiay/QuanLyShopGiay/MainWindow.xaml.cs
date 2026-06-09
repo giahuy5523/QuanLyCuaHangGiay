@@ -69,6 +69,13 @@ namespace QuanLyShopGiay
 
             // TRANG MẶC ĐỊNH KHI MỞ APP
             MainFrame.Navigate(new Views.Pages.DashboardPage());
+
+
+            this.Loaded += (s, e) =>
+            {
+                var vm = DataContext as MainViewModel;
+                vm?.SetFrame(MainFrame); // ← Truyền Frame vào ViewModel
+            };
         }
     }
 }

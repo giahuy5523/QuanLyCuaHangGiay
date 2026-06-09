@@ -69,7 +69,12 @@
                                 Style="{StaticResource SidebarButton}"
                                 Command="{Binding NavTaiKhoanCommand}"
                                 Visibility="{Binding CoQuyenAdmin, Converter={StaticResource BoolToVisibilityConverter}}"/>
-
+                        <Button Content="📄  Báo cáo tồn kho"
+        Style="{StaticResource SidebarButton}"
+        Command="{Binding BaoCaoTonKhoCommand}"/>
+                            <Button Content="📊  Thống Kê Doanh Thu"
+        Style="{StaticResource SidebarButton}"
+        Command="{Binding XemThongKeMenuCommand}"/>
                     </StackPanel>
 
                     <Border DockPanel.Dock="Bottom" Padding="12,12">
