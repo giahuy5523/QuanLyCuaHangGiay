@@ -294,13 +294,13 @@ INSERT INTO NhaCungCap (MaNCC, TenNCC, DiaChi, SDT) VALUES
 ('NCC04', N'Công ty Cổ phần Biti''s Việt Nam', N'Chợ Lớn, Quận 6, HCM', '02838554900');
 
 INSERT INTO NhanVien (MaNhanVien, TenNhanVien, GioiTinh, NgaySinh, DiaChi, SoDienThoai, TenDangNhap, MatKhau, Quyen) VALUES 
-('NV01', N'Nguyễn Quản Lý', N'Nam', '1990-05-15', N'Quận 1, HCM', '0912345678', 'quanly', '123456', N'Quản lý'),
-('NV02', N'Trần Bán Hàng', N'Nữ', '1998-11-20', N'Quận 3, HCM', '0988888888', 'banhang1', '123456', N'Nhân viên'),
-('NV03', N'Lê Thu Ngân', N'Nữ', '2001-02-25', N'Bình Thạnh, HCM', '0977777777', 'thungan', '123456', N'Nhân viên'),
+('NV01', N'Nguyễn Hoàng Gia Huy', N'Nam', '1990-05-15', N'Quận 1, HCM', '0912345678', 'quanly', '123456', N'Quản lý'),
+('NV02', N'Trịnh Nguyễn Quốc Khánh', N'Nam', '1998-11-20', N'Quận 3, HCM', '0988888888', 'banhang1', '123456', N'Nhân viên'),
+('NV03', N'Nguyễn Quốc Đạt', N'Nữ', '2001-02-25', N'Bình Thạnh, HCM', '0977777777', 'thungan', '123456', N'Nhân viên'),
 ('NV04', N'Phạm Kho Quỹ', N'Nam', '1995-07-12', N'Gò Vấp, HCM', '0966666666', 'khoquy', '123456', N'Nhân viên');
 
 INSERT INTO KhachHang (MaKhachHang, TenKhachHang, DienThoai, Diem) VALUES 
-('KH01', N'Khách Hàng Lẻ', '0000000000', 0),
+
 ('KH02', N'Nguyễn Đình Anh', '0901234567', 120),
 ('KH03', N'Trần Thị Bo', '0908889991', 50),
 ('KH04', N'Phạm Hồng Phúc', '0911223344', 85),
