@@ -1,4 +1,4 @@
-﻿using QuanLyShopGiay.Command; 
+﻿using QuanLyShopGiay.Command;
 using QuanLyShopGiay.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace QuanLyShopGiay.ViewModels
 {
-    public class LoaiSanPhamViewModel: BaseViewModel
+    public class LoaiSanPhamViewModel : BaseViewModel
     {
         private QLShopGiayEntities3 db = new QLShopGiayEntities3();
 
@@ -34,7 +34,7 @@ namespace QuanLyShopGiay.ViewModels
                 {
                     MaLoai = value.MaLoai;
                     TenLoai = value.TenLoai;
-                    IsEditMode = true; // Khóa ô nhập Mã Loại khi đang sửa
+                    IsEditMode = true;
                 }
             }
         }
@@ -63,6 +63,23 @@ namespace QuanLyShopGiay.ViewModels
         private string _maLoai; public string MaLoai { get => _maLoai; set => SetProperty(ref _maLoai, value); }
         private string _tenLoai; public string TenLoai { get => _tenLoai; set => SetProperty(ref _tenLoai, value); }
 
+        // ===== LỊCH SỬ THAO TÁC =====
+        private ObservableCollection<string> _lichSuThaoTac = new ObservableCollection<string>();
+        public ObservableCollection<string> LichSuThaoTac
+        {
+            get => _lichSuThaoTac;
+            set => SetProperty(ref _lichSuThaoTac, value);
+        }
+
+        private void ThemLichSu(string hanhDong, string maLoai, string tenLoai)
+        {
+            string thoiGian = DateTime.Now.ToString("HH:mm:ss dd/MM/yyyy");
+            string ghiChu = $"[{thoiGian}]  {hanhDong}  |  Mã: {maLoai}  |  Tên: {tenLoai}";
+            LichSuThaoTac.Insert(0, ghiChu); // Chèn lên đầu để thao tác mới nhất hiển thị trên cùng
+        }
+
+        public ICommand ClearHistoryCommand { get; set; }
+
         // Khai báo các lệnh thực thi hành động
         public ICommand AddCommand { get; set; }
         public ICommand EditCommand { get; set; }
@@ -71,22 +88,24 @@ namespace QuanLyShopGiay.ViewModels
 
         public LoaiSanPhamViewModel()
         {
-            ExecuteSearch(); // Tải toàn bộ danh sách khi vừa mở màn hình lên
+            ExecuteSearch();
 
-            // Định nghĩa các nút lệnh Command
             ResetCommand = new RelayCommand(p => ResetForm());
 
-            // 1. CHỨC NĂNG THÊM MỚI (CÓ VALIDATION)
+            ClearHistoryCommand = new RelayCommand(p =>
+            {
+                LichSuThaoTac.Clear();
+            });
+
+            // 1. CHỨC NĂNG THÊM MỚI
             AddCommand = new RelayCommand(p =>
             {
-                // Validation: Kiểm tra bỏ trống dữ liệu
                 if (string.IsNullOrWhiteSpace(MaLoai) || string.IsNullOrWhiteSpace(TenLoai))
                 {
                     MessageBox.Show("Vui lòng điền đầy đủ Mã loại và Tên loại sản phẩm!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                // Validation: Kiểm tra trùng khóa chính
                 if (db.LoaiSanPhams.Any(x => x.MaLoai == MaLoai.Trim()))
                 {
                     MessageBox.Show("Mã loại sản phẩm này đã tồn tại trên hệ thống!", "Lỗi dữ liệu", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -103,11 +122,12 @@ namespace QuanLyShopGiay.ViewModels
                 db.SaveChanges();
                 MessageBox.Show("Thêm mới loại sản phẩm thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
 
+                ThemLichSu("✅ THÊM MỚI", MaLoai.Trim(), TenLoai.Trim());
                 ExecuteSearch();
                 ResetForm();
             });
 
-            // 2. CHỨC NĂNG CẬP NHẬT (SỬA)
+            // 2. CHỨC NĂNG CẬP NHẬT
             EditCommand = new RelayCommand(p =>
             {
                 if (!IsEditMode)
@@ -125,16 +145,18 @@ namespace QuanLyShopGiay.ViewModels
                 var currentLoai = db.LoaiSanPhams.SingleOrDefault(x => x.MaLoai == MaLoai);
                 if (currentLoai != null)
                 {
+                    string tenCu = currentLoai.TenLoai;
                     currentLoai.TenLoai = TenLoai.Trim();
                     db.SaveChanges();
                     MessageBox.Show("Cập nhật thông tin thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
 
+                    ThemLichSu($"✏️ CẬP NHẬT  (Tên cũ: {tenCu})", MaLoai, TenLoai.Trim());
                     ExecuteSearch();
                     ResetForm();
                 }
             });
 
-            // 3. CHỨC NĂNG XÓA (CÓ RÀNG BUỘC KHÓA NGOẠI)
+            // 3. CHỨC NĂNG XÓA
             DeleteCommand = new RelayCommand(p =>
             {
                 if (!IsEditMode)
@@ -151,24 +173,26 @@ namespace QuanLyShopGiay.ViewModels
                         var target = db.LoaiSanPhams.SingleOrDefault(x => x.MaLoai == MaLoai);
                         if (target != null)
                         {
+                            string maXoa = target.MaLoai;
+                            string tenXoa = target.TenLoai;
+
                             db.LoaiSanPhams.Remove(target);
                             db.SaveChanges();
                             MessageBox.Show("Xóa danh mục loại sản phẩm thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
 
+                            ThemLichSu("🗑️ XÓA BỎ", maXoa, tenXoa);
                             ExecuteSearch();
                             ResetForm();
                         }
                     }
                     catch (Exception)
                     {
-                        // Xử lý chặn crash phần mềm do lỗi liên kết khóa ngoại với bảng SanPham
                         MessageBox.Show("Không thể xóa loại sản phẩm này vì đang có sản phẩm thuộc danh mục này trong kho hàng!", "Lỗi ràng buộc dữ liệu", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             });
         }
 
-        // Xử lý Tìm kiếm / Tải danh sách
         private void ExecuteSearch()
         {
             if (string.IsNullOrWhiteSpace(SearchText))
@@ -184,7 +208,6 @@ namespace QuanLyShopGiay.ViewModels
             }
         }
 
-        // Đưa form nhập liệu về trạng thái trống ban đầu
         private void ResetForm()
         {
             MaLoai = string.Empty;
