@@ -6,114 +6,234 @@
       xmlns:local="clr-namespace:QuanLyShopGiay.ViewModels"
       mc:Ignorable="d"
       Title="NhaCungCapPage">
+
     <Page.DataContext>
         <local:NhaCungCapViewModel/>
     </Page.DataContext>
 
-    <Grid Margin="24">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Width="1100" Height="900">
+        <Grid Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-        <!-- HEADER -->
-        <Grid Grid.Row="0" Margin="0,0,0,16">
-            <TextBox Width="300" Height="36" Padding="10,0" HorizontalAlignment="Left"
-                     VerticalContentAlignment="Center" FontSize="13"
-                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <TextBlock Text="Tài khoản: " Foreground="#FF555555" FontSize="13"/>
-                <TextBlock Text="{Binding TenTaiKhoan}" FontWeight="Bold" Foreground="#FF2980B9"
-                           FontSize="13" Margin="0,0,16,0"/>
-                <TextBlock Text="Quyền: " Foreground="#FF555555" FontSize="13"/>
-                <TextBlock Text="{Binding TenVaiTro}" FontWeight="Bold" Foreground="#FF27AE60" FontSize="13"/>
-            </StackPanel>
-        </Grid>
-
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="290"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <!-- FORM -->
-            <Border Grid.Column="0" Background="White" CornerRadius="12" Padding="16"
-                    Margin="0,0,16,0" BorderBrush="#FFE0E0E0" BorderThickness="1" VerticalAlignment="Top">
-                <StackPanel>
-                    <TextBlock Text="QUẢN LÝ NHÀ CUNG CẤP" FontSize="14" FontWeight="Bold"
-                               Foreground="#FF1E2A38" Margin="0,0,0,16" HorizontalAlignment="Center"/>
-
-                    <!-- Mã NCC: chỉ hiển thị khi đang sửa, ẩn khi thêm mới -->
-                    <StackPanel>
-                        <TextBlock Text="Mã Nhà Cung Cấp:" Foreground="#FF555555" FontSize="12" Margin="0,0,0,4"/>
-                        <TextBox Height="36" Padding="10,0" FontSize="13" VerticalContentAlignment="Center"
-                                 IsReadOnly="True" Background="#FFEAEAEA"
-                                 Text="{Binding MaNCC}"/>
-                        <TextBlock Margin="0,4,0,0" FontSize="11" Foreground="#FF888888"
-                                   Text="(Mã được tạo tự động)"/>
-                    </StackPanel>
-
-                    <TextBlock Text="Tên Nhà Cung Cấp (*):" Foreground="#FF555555" FontSize="12" Margin="0,12,0,4"/>
-                    <TextBox Height="36" Padding="10,0" FontSize="13" VerticalContentAlignment="Center"
-                             Text="{Binding TenNCC, UpdateSourceTrigger=PropertyChanged}"/>
-
-                    <TextBlock Text="Số Điện Thoại (10-15 số):" Foreground="#FF555555" FontSize="12" Margin="0,12,0,4"/>
-                    <TextBox Height="36" Padding="10,0" FontSize="13" VerticalContentAlignment="Center"
-                             Text="{Binding SDT, UpdateSourceTrigger=PropertyChanged}"/>
-
-                    <TextBlock Text="Địa Chỉ:" Foreground="#FF555555" FontSize="12" Margin="0,12,0,4"/>
-                    <TextBox Height="50" Padding="10,6" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
-                             Text="{Binding DiaChi, UpdateSourceTrigger=PropertyChanged}"/>
-
-                    <Grid Margin="0,20,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="6"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="6"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Content="Thêm" Height="36"
-                                Background="#FF1E2A38" Foreground="White" FontWeight="SemiBold"
-                                Command="{Binding AddCommand}"/>
-                        <Button Grid.Column="2" Content="Lưu" Height="36"
-                                Background="#FF27AE60" Foreground="White" FontWeight="SemiBold"
-                                Command="{Binding SaveCommand}"/>
-                        <Button Grid.Column="4" Content="Xóa" Height="36"
-                                Background="#FFEF4444" Foreground="White" FontWeight="SemiBold"
-                                Command="{Binding DeleteCommand}"/>
-                    </Grid>
-
-                    <Button Content="Làm Mới" Height="34" Margin="0,8,0,0"
-                            Background="#FF9AA5B1" Foreground="White" FontWeight="SemiBold"
-                            Command="{Binding ClearCommand}"/>
+            <!-- ROW 0: HEADER (tìm kiếm + thông tin tài khoản) -->
+            <Grid Grid.Row="0" Margin="0,0,0,16">
+                <TextBox Width="300" Height="36" Padding="10,0" HorizontalAlignment="Left"
+                         VerticalContentAlignment="Center" FontSize="13"
+                         Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock Text="Tài khoản: " Foreground="#FF555555" FontSize="13"/>
+                    <TextBlock Text="{Binding TenTaiKhoan}" FontWeight="Bold" Foreground="#FF2980B9"
+                               FontSize="13" Margin="0,0,16,0"/>
+                    <TextBlock Text="Quyền: " Foreground="#FF555555" FontSize="13"/>
+                    <TextBlock Text="{Binding TenVaiTro}" FontWeight="Bold" Foreground="#FF27AE60" FontSize="13"/>
                 </StackPanel>
-            </Border>
+            </Grid>
 
-            <!-- DANH SÁCH -->
-            <Border Grid.Column="1" Background="White" CornerRadius="12" Padding="16"
-                    BorderBrush="#FFE0E0E0" BorderThickness="1">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Danh Sách Nhà Cung Cấp"
-                               FontSize="14" FontWeight="SemiBold" Foreground="#FF555555" Margin="4,0,0,12"/>
-                    <DataGrid Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True"
-                              CanUserResizeRows="False" GridLinesVisibility="Horizontal"
-                              HeadersVisibility="Column" BorderThickness="0" RowHeight="42" FontSize="13"
-                              ItemsSource="{Binding ListNhaCungCap}"
-                              SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <!-- ROW 1: FORM (trái) + DANH SÁCH (phải) -->
+            <Grid Grid.Row="1" Margin="0,0,0,16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="290"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- FORM -->
+                <Border Grid.Column="0" Background="White" CornerRadius="12" Padding="16"
+                        Margin="0,0,16,0" BorderBrush="#FFE0E0E0" BorderThickness="1" VerticalAlignment="Top">
+                    <StackPanel>
+                        <TextBlock Text="QUẢN LÝ NHÀ CUNG CẤP" FontSize="14" FontWeight="Bold"
+                                   Foreground="#FF1E2A38" Margin="0,0,0,16" HorizontalAlignment="Center"/>
+
+                        <StackPanel>
+                            <TextBlock Text="Mã Nhà Cung Cấp:" Foreground="#FF555555" FontSize="12" Margin="0,0,0,4"/>
+                            <TextBox Height="36" Padding="10,0" FontSize="13" VerticalContentAlignment="Center"
+                                     IsReadOnly="True" Background="#FFEAEAEA"
+                                     Text="{Binding MaNCC}"/>
+                            <TextBlock Margin="0,4,0,0" FontSize="11" Foreground="#FF888888"
+                                       Text="(Mã được tạo tự động)"/>
+                        </StackPanel>
+
+                        <TextBlock Text="Tên Nhà Cung Cấp (*):" Foreground="#FF555555" FontSize="12" Margin="0,12,0,4"/>
+                        <TextBox Height="36" Padding="10,0" FontSize="13" VerticalContentAlignment="Center"
+                                 Text="{Binding TenNCC, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Text="Số Điện Thoại (10-15 số):" Foreground="#FF555555" FontSize="12" Margin="0,12,0,4"/>
+                        <TextBox Height="36" Padding="10,0" FontSize="13" VerticalContentAlignment="Center"
+                                 Text="{Binding SDT, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Text="Địa Chỉ:" Foreground="#FF555555" FontSize="12" Margin="0,12,0,4"/>
+                        <TextBox Height="50" Padding="10,6" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True"
+                                 Text="{Binding DiaChi, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Grid Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Content="Thêm" Height="36"
+                                    Background="#FF1E2A38" Foreground="White" FontWeight="SemiBold"
+                                    Command="{Binding AddCommand}"/>
+                            <Button Grid.Column="2" Content="Lưu" Height="36"
+                                    Background="#FF27AE60" Foreground="White" FontWeight="SemiBold"
+                                    Command="{Binding SaveCommand}"/>
+                            <Button Grid.Column="4" Content="Xóa" Height="36"
+                                    Background="#FFEF4444" Foreground="White" FontWeight="SemiBold"
+                                    Command="{Binding DeleteCommand}"/>
+                        </Grid>
+
+                        <Button Content="Làm Mới" Height="34" Margin="0,8,0,0"
+                                Background="#FF9AA5B1" Foreground="White" FontWeight="SemiBold"
+                                Command="{Binding ClearCommand}"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- DANH SÁCH -->
+                <Border Grid.Column="1" Background="White" CornerRadius="12" Padding="16"
+                        BorderBrush="#FFE0E0E0" BorderThickness="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Danh Sách Nhà Cung Cấp"
+                                   FontSize="14" FontWeight="SemiBold" Foreground="#FF555555" Margin="4,0,0,12"/>
+                        <DataGrid Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True"
+                                  CanUserResizeRows="False" GridLinesVisibility="Horizontal"
+                                  HeadersVisibility="Column" BorderThickness="0" RowHeight="42" FontSize="13"
+                                  ItemsSource="{Binding ListNhaCungCap}"
+                                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Mã NCC"           Binding="{Binding MaNCC}"  Width="90"/>
+                                <DataGridTextColumn Header="Tên Nhà Cung Cấp" Binding="{Binding TenNCC}" Width="200"/>
+                                <DataGridTextColumn Header="Địa Chỉ"          Binding="{Binding DiaChi}" Width="*"/>
+                                <DataGridTextColumn Header="Số Điện Thoại"    Binding="{Binding SDT}"    Width="130"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- ROW 2: LỊCH SỬ PHIẾU NHẬP -->
+            <GroupBox Grid.Row="2" Margin="0,0,0,16">
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="📦 LỊCH SỬ PHIẾU NHẬP KHO" FontWeight="Bold" FontSize="13" VerticalAlignment="Center"/>
+                        <Border Background="#3E58E2" CornerRadius="10" Padding="6,2" Margin="10,0,6,0">
+                            <TextBlock Text="{Binding SoPhieuNhap, StringFormat={}{0} phiếu}"
+                                       Foreground="White" FontSize="11" FontWeight="SemiBold"/>
+                        </Border>
+                        <Border Background="#28A745" CornerRadius="10" Padding="6,2">
+                            <TextBlock Text="{Binding TieuDePhieuNhap}"
+                                       Foreground="White" FontSize="11" FontWeight="SemiBold"/>
+                        </Border>
+                    </StackPanel>
+                </GroupBox.Header>
+
+                <StackPanel Margin="0,4,0,0">
+
+                    <!-- Thanh lọc -->
+                    <Border Background="#F0F4FF" CornerRadius="6" Padding="12,8" Margin="0,0,0,10"
+                            BorderBrush="#C5D0F5" BorderThickness="1">
+                        <WrapPanel Orientation="Horizontal">
+
+                            <!-- Tìm kiếm -->
+                            <StackPanel Margin="0,0,16,6">
+                                <TextBlock Text="Tìm kiếm (mã / NCC / nhân viên)" FontSize="11"
+                                           Foreground="#555" Margin="0,0,0,3"/>
+                                <TextBox Width="220" Height="30" VerticalContentAlignment="Center" Padding="6,0"
+                                         Text="{Binding SearchPhieuNhap, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+
+                            <!-- Từ ngày -->
+                            <StackPanel Margin="0,0,16,6">
+                                <TextBlock Text="Từ ngày" FontSize="11" Foreground="#555" Margin="0,0,0,3"/>
+                                <DatePicker SelectedDate="{Binding TuNgayFilter}" Width="140" Height="30"/>
+                            </StackPanel>
+
+                            <!-- Đến ngày -->
+                            <StackPanel Margin="0,0,16,6">
+                                <TextBlock Text="Đến ngày" FontSize="11" Foreground="#555" Margin="0,0,0,3"/>
+                                <DatePicker SelectedDate="{Binding DenNgayFilter}" Width="140" Height="30"/>
+                            </StackPanel>
+
+                            <!-- Checkbox chỉ xem NCC đang chọn -->
+                            <StackPanel VerticalAlignment="Bottom" Margin="0,0,16,8">
+                                <CheckBox Content="Chỉ xem NCC đang chọn"
+                                          IsChecked="{Binding ChiXemNccDangChon, Mode=TwoWay}"
+                                          FontSize="12" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <!-- Nút lọc -->
+                            <StackPanel VerticalAlignment="Bottom" Margin="0,0,8,6">
+                                <Button Content="🔍 Lọc" Width="80" Height="30"
+                                        Background="#3E58E2" Foreground="White"
+                                        Command="{Binding SearchPhieuNhapCommand}"/>
+                            </StackPanel>
+
+                            <!-- Nút reset -->
+                            <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,6">
+                                <Button Content="↺ Đặt lại" Width="85" Height="30"
+                                        Background="#6C757D" Foreground="White"
+                                        Command="{Binding ResetPhieuNhapCommand}"/>
+                            </StackPanel>
+                        </WrapPanel>
+                    </Border>
+
+                    <!-- Thống kê tổng -->
+                    <Border Background="#EEF2FF" CornerRadius="6" Padding="12,8" Margin="0,0,0,8"
+                            BorderBrush="#C5D0F5" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Tổng giá trị nhập kho:" FontWeight="SemiBold"
+                                       Foreground="#3E58E2" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                            <TextBlock Text="{Binding TongTienNhapText}" FontWeight="Bold" FontSize="15"
+                                       Foreground="#28A745" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- DataGrid lịch sử -->
+                    <DataGrid ItemsSource="{Binding LichSuPhieuNhap}"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              IsReadOnly="True"
+                              MaxHeight="220"
+                              GridLinesVisibility="Horizontal"
+                              HeadersVisibility="Column"
+                              BorderThickness="0"
+                              RowHeight="38"
+                              FontSize="13">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Mã NCC"           Binding="{Binding MaNCC}"  Width="90"/>
-                            <DataGridTextColumn Header="Tên Nhà Cung Cấp" Binding="{Binding TenNCC}" Width="200"/>
-                            <DataGridTextColumn Header="Địa Chỉ"          Binding="{Binding DiaChi}" Width="*"/>
-                            <DataGridTextColumn Header="Số Điện Thoại"    Binding="{Binding SDT}"    Width="130"/>
+                            <DataGridTextColumn Header="Mã HĐ Nhập"
+                                                Binding="{Binding MaHDN}" Width="140"/>
+                            <DataGridTextColumn Header="Nhà cung cấp"
+                                                Binding="{Binding TenNCC}" Width="*"/>
+                            <DataGridTextColumn Header="Nhân viên lập"
+                                                Binding="{Binding TenNhanVien}" Width="150"/>
+                            <DataGridTextColumn Header="Ngày nhập"
+                                                Binding="{Binding NgayNhap, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Width="160"/>
+                            <DataGridTextColumn Header="Tổng tiền"
+                                                Binding="{Binding TongTien, StringFormat={}{0:N0} ₫}" Width="130"/>
                         </DataGrid.Columns>
+
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Style.Triggers>
+                                    <Trigger Property="AlternationIndex" Value="1">
+                                        <Setter Property="Background" Value="#F5F7FF"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
                     </DataGrid>
-                </Grid>
-            </Border>
+
+                </StackPanel>
+            </GroupBox>
+
         </Grid>
-    </Grid>
+    </ScrollViewer>
 </Page>
