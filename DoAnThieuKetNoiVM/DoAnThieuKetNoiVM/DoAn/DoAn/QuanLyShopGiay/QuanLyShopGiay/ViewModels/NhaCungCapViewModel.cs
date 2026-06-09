@@ -14,7 +14,7 @@ namespace QuanLyShopGiay.ViewModels
         private readonly QLShopGiayEntities _db;
 
         public string TenTaiKhoan => SessionManager.CurrentUser?.TenNhanVien ?? "Chưa đăng nhập";
-        public string TenVaiTro   => SessionManager.CurrentUser?.Quyen       ?? "N/A";
+        public string TenVaiTro => SessionManager.CurrentUser?.Quyen ?? "N/A";
 
         private ObservableCollection<NhaCungCap> _listNhaCungCap;
         public ObservableCollection<NhaCungCap> ListNhaCungCap
@@ -31,10 +31,13 @@ namespace QuanLyShopGiay.ViewModels
             {
                 if (SetProperty(ref _selectedItem, value) && value != null)
                 {
-                    MaNCC  = value.MaNCC;
+                    MaNCC = value.MaNCC;
                     TenNCC = value.TenNCC;
-                    SDT    = value.SDT;
+                    SDT = value.SDT;
                     DiaChi = value.DiaChi;
+
+                    // Khi chọn NCC → lọc phiếu nhập theo NCC đó
+                    LoadLichSuPhieuNhap();
                 }
             }
         }
@@ -58,10 +61,58 @@ namespace QuanLyShopGiay.ViewModels
             set { if (SetProperty(ref _searchText, value)) LoadData(); }
         }
 
-        public ICommand AddCommand    { get; set; }
-        public ICommand SaveCommand   { get; set; }
+        // ── Lịch sử phiếu nhập ──────────────────────────────────────────────────
+        private ObservableCollection<LichSuPhieuNhapDisplay> _lichSuPhieuNhap;
+        public ObservableCollection<LichSuPhieuNhapDisplay> LichSuPhieuNhap
+        {
+            get => _lichSuPhieuNhap;
+            set => SetProperty(ref _lichSuPhieuNhap, value);
+        }
+
+        private string _tongTienNhapText = "0 ₫";
+        public string TongTienNhapText { get => _tongTienNhapText; set => SetProperty(ref _tongTienNhapText, value); }
+
+        private int _soPhieuNhap;
+        public int SoPhieuNhap { get => _soPhieuNhap; set => SetProperty(ref _soPhieuNhap, value); }
+
+        private string _tieuDePhieuNhap = "TẤT CẢ NHÀ CUNG CẤP";
+        public string TieuDePhieuNhap { get => _tieuDePhieuNhap; set => SetProperty(ref _tieuDePhieuNhap, value); }
+
+        // ── Bộ lọc phiếu nhập ───────────────────────────────────────────────────
+        private string _searchPhieuNhap;
+        public string SearchPhieuNhap
+        {
+            get => _searchPhieuNhap;
+            set => SetProperty(ref _searchPhieuNhap, value);
+        }
+
+        private DateTime? _tuNgayFilter;
+        public DateTime? TuNgayFilter
+        {
+            get => _tuNgayFilter;
+            set => SetProperty(ref _tuNgayFilter, value);
+        }
+
+        private DateTime? _denNgayFilter;
+        public DateTime? DenNgayFilter
+        {
+            get => _denNgayFilter;
+            set => SetProperty(ref _denNgayFilter, value);
+        }
+
+        private bool _chiXemNccDangChon;
+        public bool ChiXemNccDangChon
+        {
+            get => _chiXemNccDangChon;
+            set { if (SetProperty(ref _chiXemNccDangChon, value)) LoadLichSuPhieuNhap(); }
+        }
+
+        public ICommand AddCommand { get; set; }
+        public ICommand SaveCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
-        public ICommand ClearCommand  { get; set; }
+        public ICommand ClearCommand { get; set; }
+        public ICommand SearchPhieuNhapCommand { get; set; }
+        public ICommand ResetPhieuNhapCommand { get; set; }
 
         public NhaCungCapViewModel()
         {
@@ -69,6 +120,7 @@ namespace QuanLyShopGiay.ViewModels
             {
                 _db = new QLShopGiayEntities();
                 LoadData();
+                LoadLichSuPhieuNhap();
             }
             catch (Exception ex)
             {
@@ -97,14 +149,13 @@ namespace QuanLyShopGiay.ViewModels
                             return;
                         }
 
-                        // Tự sinh mã NCC
                         string newMaNCC = GenerateNextId();
 
                         _db.NhaCungCaps.Add(new NhaCungCap
                         {
-                            MaNCC  = newMaNCC,
+                            MaNCC = newMaNCC,
                             TenNCC = TenNCC.Trim(),
-                            SDT    = sdtInput,
+                            SDT = sdtInput,
                             DiaChi = string.IsNullOrWhiteSpace(DiaChi) ? null : DiaChi.Trim()
                         });
                         _db.SaveChanges();
@@ -135,7 +186,7 @@ namespace QuanLyShopGiay.ViewModels
                         if (ncc != null)
                         {
                             ncc.TenNCC = TenNCC.Trim();
-                            ncc.SDT    = sdtInput;
+                            ncc.SDT = sdtInput;
                             ncc.DiaChi = string.IsNullOrWhiteSpace(DiaChi) ? null : DiaChi.Trim();
                             _db.SaveChanges();
                             LoadData();
@@ -185,6 +236,8 @@ namespace QuanLyShopGiay.ViewModels
             );
 
             ClearCommand = new RelayCommand((p) => ClearInputs(), (p) => true);
+            SearchPhieuNhapCommand = new RelayCommand(_ => LoadLichSuPhieuNhap());
+            ResetPhieuNhapCommand = new RelayCommand(_ => ResetFilterPhieuNhap());
         }
 
         private void LoadData()
@@ -195,11 +248,86 @@ namespace QuanLyShopGiay.ViewModels
                 string kw = SearchText.Trim().ToLower();
                 query = query.Where(x =>
                     x.TenNCC.ToLower().Contains(kw) ||
-                    x.MaNCC.ToLower().Contains(kw)  ||
+                    x.MaNCC.ToLower().Contains(kw) ||
                     x.SDT.Contains(kw));
             }
             ListNhaCungCap = new ObservableCollection<NhaCungCap>(
                 query.OrderBy(x => x.MaNCC).ToList());
+        }
+
+        // ── Tải lịch sử phiếu nhập ──────────────────────────────────────────────
+        private void LoadLichSuPhieuNhap()
+        {
+            if (_db == null) return;
+            try
+            {
+                var query = _db.HoaDonNhaps
+                    .Join(_db.NhaCungCaps,
+                          hdn => hdn.MaNCC,
+                          ncc => ncc.MaNCC,
+                          (hdn, ncc) => new { hdn, TenNCC = ncc.TenNCC })
+                    .Join(_db.NhanViens,
+                          x => x.hdn.MaNhanVien,
+                          nv => nv.MaNhanVien,
+                          (x, nv) => new { x.hdn, x.TenNCC, TenNhanVien = nv.TenNhanVien })
+                    .AsQueryable();
+
+                // Nếu tick "Chỉ xem NCC đang chọn" hoặc đang có NCC được chọn → lọc theo MaNCC
+                string maNccFilter = ChiXemNccDangChon && SelectedItem != null
+                    ? SelectedItem.MaNCC
+                    : null;
+
+                if (!string.IsNullOrEmpty(maNccFilter))
+                    query = query.Where(x => x.hdn.MaNCC == maNccFilter);
+
+                // Lọc từ khóa (mã HĐN, tên NCC, tên nhân viên)
+                if (!string.IsNullOrWhiteSpace(SearchPhieuNhap))
+                {
+                    string kw = SearchPhieuNhap.Trim().ToLower();
+                    query = query.Where(x =>
+                        x.hdn.MaHDN.ToLower().Contains(kw) ||
+                        x.TenNCC.ToLower().Contains(kw) ||
+                        x.TenNhanVien.ToLower().Contains(kw));
+                }
+
+                if (TuNgayFilter.HasValue)
+                    query = query.Where(x => x.hdn.NgayNhap >= TuNgayFilter.Value);
+                if (DenNgayFilter.HasValue)
+                {
+                    var denNgayCuoiNgay = DenNgayFilter.Value.Date.AddDays(1);
+                    query = query.Where(x => x.hdn.NgayNhap < denNgayCuoiNgay);
+                }
+
+                var result = query
+                    .OrderByDescending(x => x.hdn.NgayNhap)
+                    .Select(x => new LichSuPhieuNhapDisplay
+                    {
+                        MaHDN = x.hdn.MaHDN,
+                        TenNCC = x.TenNCC,
+                        TenNhanVien = x.TenNhanVien,
+                        NgayNhap = x.hdn.NgayNhap,
+                        TongTien = x.hdn.TongTien
+                    })
+                    .ToList();
+
+                LichSuPhieuNhap = new ObservableCollection<LichSuPhieuNhapDisplay>(result);
+                SoPhieuNhap = result.Count;
+                TongTienNhapText = string.Format("{0:N0} ₫", result.Sum(x => x.TongTien ?? 0));
+
+                TieuDePhieuNhap = (ChiXemNccDangChon && SelectedItem != null)
+                    ? $"NCC: {SelectedItem.TenNCC}"
+                    : "TẤT CẢ NHÀ CUNG CẤP";
+            }
+            catch (Exception ex) { MessageBox.Show("Lỗi tải lịch sử phiếu nhập: " + ex.Message); }
+        }
+
+        private void ResetFilterPhieuNhap()
+        {
+            SearchPhieuNhap = string.Empty;
+            TuNgayFilter = null;
+            DenNgayFilter = null;
+            ChiXemNccDangChon = false;
+            LoadLichSuPhieuNhap();
         }
 
         private void ClearInputs()
@@ -207,9 +335,11 @@ namespace QuanLyShopGiay.ViewModels
             _selectedItem = null;
             OnPropertyChanged(nameof(SelectedItem));
             MaNCC = TenNCC = SDT = DiaChi = string.Empty;
+            // Reset về xem tất cả khi bỏ chọn NCC
+            ChiXemNccDangChon = false;
+            LoadLichSuPhieuNhap();
         }
 
-        // Tự sinh mã NCC tiếp theo: NCC01 → NCC05, NCC06...
         private string GenerateNextId()
         {
             var maxId = _db.NhaCungCaps
