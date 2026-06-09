@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuanLyShopGiay.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800" Background="White"
+      d:DesignHeight="600" d:DesignWidth="900" Background="White"
       Title="LoaiSanPhamPage">
     <Page.DataContext>
         <local:LoaiSanPhamViewModel/>
@@ -17,6 +17,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <!-- CỘT TRÁI: Form nhập liệu -->
         <GroupBox Header="Thông Tin Loại Sản Phẩm" Grid.Column="0" Margin="0,0,10,0" Padding="10">
             <StackPanel>
                 <TextBlock Text="Mã Loại * (Không sửa khi cập nhật):" Margin="0,5,0,2" FontWeight="SemiBold"/>
@@ -27,36 +28,92 @@
                 <TextBox Text="{Binding TenLoai, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <UniformGrid Columns="2" Margin="0,20,0,0">
-                    <Button Content="THÊM MỚI" Command="{Binding AddCommand}" Height="35" Margin="2" Background="#2196F3" Foreground="White" FontWeight="Bold"/>
-                    <Button Content="CẬP NHẬT" Command="{Binding EditCommand}" Height="35" Margin="2" Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
-                    <Button Content="XÓA BỎ" Command="{Binding DeleteCommand}" Height="35" Margin="2" Background="#F44336" Foreground="White" FontWeight="Bold"/>
-                    <Button Content="LÀM MỚI" Command="{Binding ResetCommand}" Height="35" Margin="2" Background="#757575" Foreground="White" FontWeight="Bold"/>
+                    <Button Content="THÊM MỚI"  Command="{Binding AddCommand}"    Height="35" Margin="2" Background="#2196F3" Foreground="White" FontWeight="Bold"/>
+                    <Button Content="CẬP NHẬT"  Command="{Binding EditCommand}"   Height="35" Margin="2" Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
+                    <Button Content="XÓA BỎ"    Command="{Binding DeleteCommand}" Height="35" Margin="2" Background="#F44336" Foreground="White" FontWeight="Bold"/>
+                    <Button Content="LÀM MỚI"   Command="{Binding ResetCommand}"  Height="35" Margin="2" Background="#757575" Foreground="White" FontWeight="Bold"/>
                 </UniformGrid>
             </StackPanel>
         </GroupBox>
 
+        <!-- CỘT PHẢI: Danh sách + Lịch sử -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
+                <!-- Thanh tìm kiếm -->
                 <RowDefinition Height="*"/>
+                <!-- DataGrid -->
+                <RowDefinition Height="180"/>
+                <!-- Panel lịch sử -->
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <!-- THANH TÌM KIẾM -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10" Grid.Row="0">
                 <TextBlock Text="Tìm kiếm tên loại:" VerticalAlignment="Center" Margin="0,0,10,0" FontWeight="SemiBold"/>
-                <TextBox Width="200" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, Delay=300}" VerticalContentAlignment="Center" Height="25"/>
+                <TextBox Width="200" 
+                         Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, Delay=300}" 
+                         VerticalContentAlignment="Center" Height="25"/>
             </StackPanel>
 
-            <DataGrid Grid.Row="1" 
+            <!-- DATAGRID DANH SÁCH -->
+            <DataGrid Grid.Row="1"
                       ItemsSource="{Binding ListLoaiSP}" 
                       SelectedItem="{Binding SelectedLoaiSP, UpdateSourceTrigger=PropertyChanged}"
                       AutoGenerateColumns="False" 
                       IsReadOnly="True" 
-                      AlternatingRowBackground="#F9F9F9">
+                      AlternatingRowBackground="#F9F9F9"
+                      Margin="0,0,0,8">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã Loại Sản Phẩm" Binding="{Binding MaLoai}" Width="150"/>
                     <DataGridTextColumn Header="Tên Loại Sản Phẩm" Binding="{Binding TenLoai}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
+
+            <!-- PANEL LỊCH SỬ THAO TÁC -->
+            <GroupBox Grid.Row="2" Padding="6,4,6,6">
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="📋 Lịch Sử Thao Tác" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        <Button Content="Xóa lịch sử"
+                                Command="{Binding ClearHistoryCommand}"
+                                Margin="12,0,0,0"
+                                Padding="8,2"
+                                FontSize="11"
+                                Background="#ECEFF1"
+                                BorderBrush="#B0BEC5"
+                                Cursor="Hand"/>
+                    </StackPanel>
+                </GroupBox.Header>
+
+                <ListBox ItemsSource="{Binding LichSuThaoTac}"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" 
+                                       FontSize="12"
+                                       Padding="2,3"
+                                       TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Style.Triggers>
+                                <!-- Dòng chẵn lẻ xen kẽ màu nền nhẹ -->
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                    <Setter Property="Background" Value="White"/>
+                                </Trigger>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                    <Setter Property="Background" Value="#F5F5F5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </GroupBox>
         </Grid>
     </Grid>
 </Page>

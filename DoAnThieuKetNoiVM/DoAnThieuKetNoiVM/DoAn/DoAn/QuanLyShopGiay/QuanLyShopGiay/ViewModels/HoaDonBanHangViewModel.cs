@@ -37,6 +37,18 @@ namespace QuanLyShopGiay.ViewModels
         public decimal ThanhTien => DonGia * SoLuong;
     }
 
+
+    public class LichSuHoaDonItem
+    {
+        public string MaHD { get; set; }
+        public string TenKhachHang { get; set; }
+        public string TenNhanVien { get; set; }
+        public DateTime? NgayLap { get; set; }
+        public string TenPhuongThuc { get; set; }
+        public decimal? TongTien { get; set; }
+        public string TrangThai { get; set; }
+    }
+
     public class HoaDonBanHangViewModel : BaseViewModel
     {
         private readonly QLShopGiayEntities _db = new QLShopGiayEntities();
@@ -49,6 +61,7 @@ namespace QuanLyShopGiay.ViewModels
         public ObservableCollection<KhachHang> ListKhachHang { get; } = new ObservableCollection<KhachHang>();
         public ObservableCollection<PhuongThucThanhToan> ListPhuongThuc { get; } = new ObservableCollection<PhuongThucThanhToan>();
         public ObservableCollection<LoaiSanPham> ListLoaiHang { get; } = new ObservableCollection<LoaiSanPham>(); // ← FIX: thêm collection này
+        public ObservableCollection<LichSuHoaDonItem> LichSuHoaDon { get; } = new ObservableCollection<LichSuHoaDonItem>();
 
         // ── Properties ──────────────────────────────────────────────────────────
         private KhachHang _khachHangDangChon;
@@ -132,6 +145,7 @@ namespace QuanLyShopGiay.ViewModels
 
             KhachHangDangChon = ListKhachHang.FirstOrDefault(k => k.MaKhachHang == "KH01");
             PhuongThucDangChon = ListPhuongThuc.FirstOrDefault(p => p.MaPhuongThuc == "PT01");
+            LoadLichSuHoaDon();
         }
 
         // ── ApplyFilter ─────────────────────────────────────────────────────────
@@ -333,6 +347,34 @@ namespace QuanLyShopGiay.ViewModels
             }
         }
 
+
+        // ── Lịch sử hóa đơn ──────────────────────────────────────────────────────
+        private void LoadLichSuHoaDon()
+        {
+            LichSuHoaDon.Clear();
+            var dsHD = (from hd in _db.HoaDons
+                        join kh in _db.KhachHangs on hd.MaKhachHang equals kh.MaKhachHang into khGroup
+                        from kh in khGroup.DefaultIfEmpty()
+                        join nv in _db.NhanViens on hd.MaNhanVien equals nv.MaNhanVien into nvGroup
+                        from nv in nvGroup.DefaultIfEmpty()
+                        join pt in _db.PhuongThucThanhToans on hd.MaPhuongThuc equals pt.MaPhuongThuc into ptGroup
+                        from pt in ptGroup.DefaultIfEmpty()
+                        orderby hd.NgayLap descending
+                        select new LichSuHoaDonItem
+                        {
+                            MaHD = hd.MaHD,
+                            TenKhachHang = kh != null ? kh.TenKhachHang : hd.MaKhachHang,
+                            TenNhanVien = nv != null ? nv.TenNhanVien : hd.MaNhanVien,
+                            NgayLap = hd.NgayLap,
+                            TenPhuongThuc = pt != null ? pt.TenPhuongThuc : hd.MaPhuongThuc,
+                            TongTien = hd.TongTien,
+                            TrangThai = hd.TrangThai
+                        }).Take(50).ToList();
+
+            foreach (var item in dsHD)
+                LichSuHoaDon.Add(item);
+        }
+
         // ── Reset sau thanh toán ─────────────────────────────────────────────────
         private void ResetAfterCheckout()
         {
@@ -343,6 +385,7 @@ namespace QuanLyShopGiay.ViewModels
             _listSanPhamGoc = _db.SanPhams.ToList();
             ListSanPham.Clear();
             foreach (var sp in _listSanPhamGoc) ListSanPham.Add(sp);
+            LoadLichSuHoaDon();
         }
     }
 }
