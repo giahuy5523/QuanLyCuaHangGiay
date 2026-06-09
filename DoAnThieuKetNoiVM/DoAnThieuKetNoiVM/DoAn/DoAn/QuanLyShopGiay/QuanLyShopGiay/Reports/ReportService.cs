@@ -56,12 +56,11 @@ namespace QuanLyShopGiay.Reports
                 {
                     _reportViewer.LocalReport.ReportPath = "Reports/Rpt_ThongKeDoanhThu.rdlc";
 
-                    // 1. Tự động lấy ngày nhỏ nhất và lớn nhất từ bảng Hóa đơn trong Database
-                    // Nếu Database trống chưa có hóa đơn, mặc định lấy từ 30 ngày trước đến ngày hiện tại
-                    DateTime dateTuNgay = db.HoaDons.Select(hd => (DateTime?)hd.NgayLap).Min()
-                                          ?? DateTime.Now.AddDays(-30);
-                    DateTime dateDenNgay = db.HoaDons.Select(hd => (DateTime?)hd.NgayLap).Max()
-                                          ?? DateTime.Now;
+                    // Từ ngày: Lấy hóa đơn bán đầu tiên trong hệ thống
+                    DateTime dateTuNgay = db.HoaDons.Select(hd => (DateTime?)hd.NgayLap).Min() ?? DateTime.Now.AddDays(-30);
+
+                    // Đến ngày: Luôn lấy đến thời điểm hiện tại khi bấm xem báo cáo để quét được mọi giao dịch mới nhất
+                    DateTime dateDenNgay = DateTime.Now;
 
                     // 2. Gọi Stored Procedure truyền vào 2 mốc ngày lấy từ Database
                     var data = db.sp_ThongKeDoanhThuTheoSanPham(dateTuNgay, dateDenNgay).ToList();
