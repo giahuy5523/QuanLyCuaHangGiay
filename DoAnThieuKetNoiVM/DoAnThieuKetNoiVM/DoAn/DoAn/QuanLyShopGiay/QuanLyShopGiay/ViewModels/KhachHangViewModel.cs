@@ -18,6 +18,16 @@ namespace QuanLyShopGiay.ViewModels
         public string HangThanhVien { get; set; }
     }
 
+    // ── Display model cho lịch sử phiếu nhập ────────────────────────────────────
+    public class LichSuPhieuNhapDisplay
+    {
+        public string MaHDN { get; set; }
+        public string TenNCC { get; set; }
+        public string TenNhanVien { get; set; }
+        public DateTime? NgayNhap { get; set; }
+        public decimal? TongTien { get; set; }
+    }
+
     public class KhachHangViewModel : BaseViewModel
     {
         private readonly QLShopGiayEntities _db;
@@ -64,11 +74,49 @@ namespace QuanLyShopGiay.ViewModels
         private string _searchKeyword;
         public string SearchKeyword { get => _searchKeyword; set => SetProperty(ref _searchKeyword, value); }
 
+        // ── Lịch sử phiếu nhập ──────────────────────────────────────────────────
+        private ObservableCollection<LichSuPhieuNhapDisplay> _lichSuPhieuNhap;
+        public ObservableCollection<LichSuPhieuNhapDisplay> LichSuPhieuNhap
+        {
+            get => _lichSuPhieuNhap;
+            set => SetProperty(ref _lichSuPhieuNhap, value);
+        }
+
+        private string _tongTienNhapText = "0 ₫";
+        public string TongTienNhapText { get => _tongTienNhapText; set => SetProperty(ref _tongTienNhapText, value); }
+
+        private int _soPhieuNhap;
+        public int SoPhieuNhap { get => _soPhieuNhap; set => SetProperty(ref _soPhieuNhap, value); }
+
+        // ── Lọc lịch sử phiếu nhập ──────────────────────────────────────────────
+        private string _searchPhieuNhap;
+        public string SearchPhieuNhap
+        {
+            get => _searchPhieuNhap;
+            set => SetProperty(ref _searchPhieuNhap, value);
+        }
+
+        private DateTime? _tuNgayFilter;
+        public DateTime? TuNgayFilter
+        {
+            get => _tuNgayFilter;
+            set => SetProperty(ref _tuNgayFilter, value);
+        }
+
+        private DateTime? _denNgayFilter;
+        public DateTime? DenNgayFilter
+        {
+            get => _denNgayFilter;
+            set => SetProperty(ref _denNgayFilter, value);
+        }
+
         public ICommand SearchCommand { get; }
         public ICommand AddCommand { get; }
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand ClearCommand { get; }
+        public ICommand SearchPhieuNhapCommand { get; }
+        public ICommand ResetPhieuNhapCommand { get; }
 
         public KhachHangViewModel()
         {
@@ -87,8 +135,11 @@ namespace QuanLyShopGiay.ViewModels
             EditCommand = new RelayCommand(_ => ExecuteEdit(), _ => SelectedItem != null && CanExecuteSave());
             DeleteCommand = new RelayCommand(_ => ExecuteDelete(), _ => SelectedItem != null && SelectedItem.MaKhachHang != "KH01");
             ClearCommand = new RelayCommand(_ => ClearInputs());
+            SearchPhieuNhapCommand = new RelayCommand(_ => LoadLichSuPhieuNhap());
+            ResetPhieuNhapCommand = new RelayCommand(_ => ResetFilterPhieuNhap());
 
             LoadData();
+            LoadLichSuPhieuNhap();
         }
 
         private void LoadData()
@@ -107,22 +158,30 @@ namespace QuanLyShopGiay.ViewModels
                         (kh.DienThoai != null && kh.DienThoai.Contains(keyword)));
                 }
 
+                var tongChiTieuDict = _db.HoaDons
+                    .Where(h => h.TrangThai == "Đã thanh toán" && h.MaKhachHang != null)
+                    .GroupBy(h => h.MaKhachHang)
+                    .Select(g => new { MaKH = g.Key, Tong = g.Sum(h => (decimal?)h.TongTien) ?? 0 })
+                    .ToDictionary(x => x.MaKH, x => x.Tong);
+
                 ListKhachHang = new ObservableCollection<KhachHangDisplayModel>(
                     query.ToList()
-                    // FIX 1: Loại KH01 "Khách Hàng Lẻ" ra khỏi danh sách hiển thị
                     .Where(kh => kh.MaKhachHang != "KH01")
                     .Select(kh =>
                     {
-                        decimal tongChiTieu = (kh.Diem ?? 0) * 10000m;
+                        int diem = kh.Diem ?? 0;
+                        decimal tongChiTieu = tongChiTieuDict.ContainsKey(kh.MaKhachHang)
+                            ? tongChiTieuDict[kh.MaKhachHang]
+                            : 0m;
 
                         return new KhachHangDisplayModel
                         {
                             MaKhachHang = kh.MaKhachHang,
                             TenKhachHang = kh.TenKhachHang,
                             DienThoai = kh.DienThoai,
-                            Diem = kh.Diem ?? 0,
+                            Diem = diem,
                             TongChiTieu = tongChiTieu,
-                            HangThanhVien = GetRankName(kh.Diem ?? 0)
+                            HangThanhVien = GetRankName(tongChiTieu)
                         };
                     })
                     .OrderBy(x => x.MaKhachHang)
@@ -131,11 +190,74 @@ namespace QuanLyShopGiay.ViewModels
             catch (Exception ex) { MessageBox.Show("Lỗi nạp dữ liệu: " + ex.Message); }
         }
 
-        private static string GetRankName(int diem)
+        // ── Tải lịch sử phiếu nhập ──────────────────────────────────────────────
+        private void LoadLichSuPhieuNhap()
         {
-            if (diem >= 500) return "Kim cương 💎";
-            if (diem >= 200) return "Vàng 🥇";
-            if (diem >= 50)  return "Bạc 🥈";
+            if (_db == null) return;
+            try
+            {
+                var query = _db.HoaDonNhaps
+                    .Join(_db.NhaCungCaps,
+                          hdn => hdn.MaNCC,
+                          ncc => ncc.MaNCC,
+                          (hdn, ncc) => new { hdn, TenNCC = ncc.TenNCC })
+                    .Join(_db.NhanViens,
+                          x => x.hdn.MaNhanVien,
+                          nv => nv.MaNhanVien,
+                          (x, nv) => new { x.hdn, x.TenNCC, TenNhanVien = nv.TenNhanVien })
+                    .AsQueryable();
+
+                // Lọc theo từ khóa (mã HĐN hoặc tên NCC)
+                if (!string.IsNullOrWhiteSpace(SearchPhieuNhap))
+                {
+                    string kw = SearchPhieuNhap.Trim().ToLower();
+                    query = query.Where(x =>
+                        x.hdn.MaHDN.ToLower().Contains(kw) ||
+                        x.TenNCC.ToLower().Contains(kw) ||
+                        x.TenNhanVien.ToLower().Contains(kw));
+                }
+
+                // Lọc theo khoảng thời gian
+                if (TuNgayFilter.HasValue)
+                    query = query.Where(x => x.hdn.NgayNhap >= TuNgayFilter.Value);
+                if (DenNgayFilter.HasValue)
+                {
+                    var denNgayCuoiNgay = DenNgayFilter.Value.Date.AddDays(1);
+                    query = query.Where(x => x.hdn.NgayNhap < denNgayCuoiNgay);
+                }
+
+                var result = query
+                    .OrderByDescending(x => x.hdn.NgayNhap)
+                    .Select(x => new LichSuPhieuNhapDisplay
+                    {
+                        MaHDN = x.hdn.MaHDN,
+                        TenNCC = x.TenNCC,
+                        TenNhanVien = x.TenNhanVien,
+                        NgayNhap = x.hdn.NgayNhap,
+                        TongTien = x.hdn.TongTien
+                    })
+                    .ToList();
+
+                LichSuPhieuNhap = new ObservableCollection<LichSuPhieuNhapDisplay>(result);
+                SoPhieuNhap = result.Count;
+                TongTienNhapText = string.Format("{0:N0} ₫", result.Sum(x => x.TongTien ?? 0));
+            }
+            catch (Exception ex) { MessageBox.Show("Lỗi tải lịch sử phiếu nhập: " + ex.Message); }
+        }
+
+        private void ResetFilterPhieuNhap()
+        {
+            SearchPhieuNhap = string.Empty;
+            TuNgayFilter = null;
+            DenNgayFilter = null;
+            LoadLichSuPhieuNhap();
+        }
+
+        private static string GetRankName(decimal tongChiTieu)
+        {
+            if (tongChiTieu >= 50_000_000) return "Kim cương 💎";
+            if (tongChiTieu >= 20_000_000) return "Vàng 🥇";
+            if (tongChiTieu >= 5_000_000) return "Bạc 🥈";
             return "Thành viên mới 🌱";
         }
 
@@ -156,7 +278,6 @@ namespace QuanLyShopGiay.ViewModels
 
         private void ExecuteAdd()
         {
-            // FIX 2: Không cho tạo khách hàng trùng số điện thoại
             if (_db.KhachHangs.Any(k => k.DienThoai == DienThoai.Trim() && k.MaKhachHang != "KH01"))
             {
                 MessageBox.Show("Số điện thoại này đã tồn tại cho khách hàng khác!",
@@ -187,7 +308,6 @@ namespace QuanLyShopGiay.ViewModels
 
         private void ExecuteEdit()
         {
-            // FIX 2: Không cho sửa thành số điện thoại trùng với khách khác
             if (_db.KhachHangs.Any(k => k.DienThoai == DienThoai.Trim()
                                      && k.MaKhachHang != SelectedItem.MaKhachHang
                                      && k.MaKhachHang != "KH01"))
